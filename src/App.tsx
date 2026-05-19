@@ -1,13 +1,12 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useGameData } from '@/hooks/useGameData'
 import { usePanelState } from '@/hooks/usePanelState'
 import { UnitPanel } from '@/components/UnitPanel/UnitPanel'
 import { DamageCalculator } from '@/components/DamageCalculator/DamageCalculator'
-import type { Weapon, ModelProfile, CombatModifiers } from '@/types'
+import { resolveModifiers } from '@/utils/mathhammer'
+import type { Weapon, ModelProfile, CombatType } from '@/types'
 
 type MobileTab = 'attacker' | 'result' | 'defender'
-
-const DEFAULT_MODS: CombatModifiers = { hitMod: 0, rerollHitsOf1: false, rerollAllHits: false }
 
 export default function App() {
   const gameData = useGameData()
@@ -17,7 +16,60 @@ export default function App() {
   const [selectedWeapon, setSelectedWeapon] = useState<Weapon | null>(null)
   const [defenderModel, setDefenderModel] = useState<ModelProfile | null>(null)
   const [mobileTab, setMobileTab] = useState<MobileTab>('attacker')
-  const [combatMods, setCombatMods] = useState<CombatModifiers>(DEFAULT_MODS)
+  const [combatType, setCombatType] = useState<CombatType>('ranged')
+  const [attackerActiveIds, setAttackerActiveIds] = useState<Set<string>>(new Set())
+  const [defenderActiveIds, setDefenderActiveIds] = useState<Set<string>>(new Set())
+
+  // Derive combatType from selected weapon
+  useEffect(() => {
+    if (selectedWeapon) {
+      setCombatType(selectedWeapon.range === 'Melee' ? 'melee' : 'ranged')
+    }
+  }, [selectedWeapon])
+
+  // Clear modifier selections when faction changes
+  useEffect(() => {
+    setAttackerActiveIds(new Set())
+  }, [leftPanel.selection.factionId])
+
+  useEffect(() => {
+    setDefenderActiveIds(new Set())
+  }, [rightPanel.selection.factionId])
+
+  function toggleAttackerModifier(id: string) {
+    setAttackerActiveIds(prev => {
+      const next = new Set(prev)
+      if (next.has(id)) next.delete(id); else next.add(id)
+      return next
+    })
+  }
+
+  function toggleDefenderModifier(id: string) {
+    setDefenderActiveIds(prev => {
+      const next = new Set(prev)
+      if (next.has(id)) next.delete(id); else next.add(id)
+      return next
+    })
+  }
+
+  const attackerMods = resolveModifiers(
+    attackerActiveIds,
+    selectedWeapon,
+    leftPanel.selection.factionId,
+    leftPanel.selection.detachmentId,
+  )
+  const defenderMods = resolveModifiers(
+    defenderActiveIds,
+    null,
+    rightPanel.selection.factionId,
+    rightPanel.selection.detachmentId,
+  )
+
+  // Merge: defender contributes saveMod (e.g. cover) into the final modifier set
+  const mods = {
+    ...attackerMods,
+    saveMod: attackerMods.saveMod + defenderMods.saveMod,
+  }
 
   const effectiveDefenderModel = defenderModel ?? rightPanel.selectedUnit?.models[0] ?? null
   const attackerName = leftPanel.selectedUnit?.name ?? ''
@@ -110,6 +162,9 @@ export default function App() {
             side="left"
             onWeaponChange={setSelectedWeapon}
             selectedWeapon={selectedWeapon}
+            combatType={combatType}
+            activeModifierIds={attackerActiveIds}
+            onModifierToggle={toggleAttackerModifier}
           />
         )}
         {mobileTab === 'result' && (
@@ -118,8 +173,9 @@ export default function App() {
             defenderModel={effectiveDefenderModel}
             attackerName={attackerName}
             defenderName={defenderName}
-            mods={combatMods}
-            onModsChange={setCombatMods}
+            mods={mods}
+            combatType={combatType}
+            onCombatTypeChange={setCombatType}
           />
         )}
         {mobileTab === 'defender' && (
@@ -128,6 +184,9 @@ export default function App() {
             panel={rightPanel}
             side="right"
             onModelChange={setDefenderModel}
+            combatType={combatType}
+            activeModifierIds={defenderActiveIds}
+            onModifierToggle={toggleDefenderModifier}
           />
         )}
       </div>
@@ -141,6 +200,9 @@ export default function App() {
             side="left"
             onWeaponChange={setSelectedWeapon}
             selectedWeapon={selectedWeapon}
+            combatType={combatType}
+            activeModifierIds={attackerActiveIds}
+            onModifierToggle={toggleAttackerModifier}
           />
         </div>
         <div className="border-r border-rim-bright overflow-y-auto bg-surface-2 sticky-col">
@@ -150,8 +212,9 @@ export default function App() {
               defenderModel={effectiveDefenderModel}
               attackerName={attackerName}
               defenderName={defenderName}
-              mods={combatMods}
-              onModsChange={setCombatMods}
+              mods={mods}
+              combatType={combatType}
+              onCombatTypeChange={setCombatType}
             />
           </div>
         </div>
@@ -161,6 +224,9 @@ export default function App() {
             panel={rightPanel}
             side="right"
             onModelChange={setDefenderModel}
+            combatType={combatType}
+            activeModifierIds={defenderActiveIds}
+            onModifierToggle={toggleDefenderModifier}
           />
         </div>
       </div>

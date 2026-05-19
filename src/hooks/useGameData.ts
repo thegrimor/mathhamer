@@ -47,6 +47,7 @@ function parseSustainedHits(desc: string): number {
 
 function parseWeapon(raw: RawDatasheetWargear): Weapon {
   const desc = (raw.description ?? '').toLowerCase()
+  const type = raw.type ?? ''
   return {
     line: parseInt(raw.line) || 0,
     name: raw.name,
@@ -62,6 +63,7 @@ function parseWeapon(raw: RawDatasheetWargear): Weapon {
     isBlast: desc.includes('blast'),
     isDevastatingWounds: desc.includes('devastating wounds'),
     isLethalHits: desc.includes('lethal hits'),
+    isHeavy: /\bheavy\b/i.test(type),
     sustainedHitsValue: parseSustainedHits(desc),
   }
 }
