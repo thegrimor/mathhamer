@@ -65,13 +65,14 @@ export default function App() {
     rightPanel.selection.detachmentId,
   )
 
-  // Merge: defender contributes penalty modifiers (saves, hit penalty, T bonus, damage reduction, FNP)
+  // Merge: defender contributes penalty modifiers into the attacker's calculation
   const mods = {
     ...attackerMods,
-    hitMod: attackerMods.hitMod + defenderMods.hitMod,
-    woundMod: attackerMods.woundMod + defenderMods.woundMod,
-    saveMod: attackerMods.saveMod + defenderMods.saveMod,
-    damageReduction: attackerMods.damageReduction + defenderMods.damageReduction,
+    hitMod:              attackerMods.hitMod + defenderMods.hitMod,
+    woundMod:            attackerMods.woundMod + defenderMods.woundMod,
+    apMod:               attackerMods.apMod + defenderMods.apMod,
+    saveMod:             attackerMods.saveMod + defenderMods.saveMod,
+    damageReduction:     attackerMods.damageReduction + defenderMods.damageReduction,
     feelNoPainThreshold:
       defenderMods.feelNoPainThreshold !== null
         ? defenderMods.feelNoPainThreshold
