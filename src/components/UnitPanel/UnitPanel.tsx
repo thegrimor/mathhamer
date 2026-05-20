@@ -78,31 +78,31 @@ export function UnitPanel({
             onSelectIndex={handleModelSelect}
           />
 
-          {/* Weapons section */}
-          <div>
-            <div className="px-3 py-2 text-xs font-display uppercase tracking-wide text-gold border-b border-rim-bright bg-surface-2">
-              Armamento
-              {isAttacker && (
+          {/* Weapons section — attacker only */}
+          {isAttacker && (
+            <div>
+              <div className="px-3 py-2 text-xs font-display uppercase tracking-wide text-gold border-b border-rim-bright bg-surface-2">
+                Armamento
                 <span className="text-parchment-dim normal-case tracking-normal font-mono ml-2">
                   (selecciona para calcular)
                 </span>
+              </div>
+              {selectedUnit.weapons.length === 0 ? (
+                <p className="px-3 py-2 text-[10px] font-mono text-parchment-dim">
+                  Sin armas registradas.
+                </p>
+              ) : (
+                selectedUnit.weapons.map((w, i) => (
+                  <WeaponCard
+                    key={`${w.name}-${i}`}
+                    weapon={w}
+                    isSelected={!!selectedWeapon && selectedWeapon.name === w.name && selectedWeapon.line === w.line}
+                    onSelect={handleWeaponSelect}
+                  />
+                ))
               )}
             </div>
-            {selectedUnit.weapons.length === 0 ? (
-              <p className="px-3 py-2 text-[10px] font-mono text-parchment-dim">
-                Sin armas registradas.
-              </p>
-            ) : (
-              selectedUnit.weapons.map((w, i) => (
-                <WeaponCard
-                  key={`${w.name}-${i}`}
-                  weapon={w}
-                  isSelected={isAttacker && !!selectedWeapon && selectedWeapon.name === w.name && selectedWeapon.line === w.line}
-                  onSelect={handleWeaponSelect}
-                />
-              ))
-            )}
-          </div>
+          )}
 
           {activeModifierIds && onModifierToggle && (
             <ModifierPanel

@@ -90,6 +90,17 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
 
   {
+    id: 'adm_strat_haloscreed_targeting',
+    label: 'TARGETING OVERRIDE — Crítico en 5+ (1CP)',
+    description: 'Haloscreed Battle Clade: impacto sin modificar de 5+ cuenta como Golpe Crítico hasta el final de la fase',
+    factionId: 'AdM',
+    detachmentId: '000000984',
+    isStratagem: true,
+    cpCost: 1,
+    effects: { critThreshold: 5 },
+  },
+
+  {
     id: 'adm_strat_haloscreed_protocols',
     label: 'ERADICATION PROTOCOLS — Repetir 1s (1CP)',
     description: 'Haloscreed Battle Clade: repetir tiradas de herida de 1 (y de impacto de 1 si HALO OVERRIDE) hasta el final de la fase',
@@ -237,6 +248,16 @@ export const MODIFIER_RULES: ModifierRule[] = [
     factionId: 'AC',
     combatType: 'melee',
     effects: { lethalHitsBonus: true },
+  },
+
+  {
+    id: 'ac_shield_crit5',
+    label: 'Shield Host — Golpe Crítico en 5+ (CàC)',
+    description: 'Impacto sin modificar de 5+ = Golpe Crítico en ataques CàC',
+    factionId: 'AC',
+    detachmentId: '000000765',
+    combatType: 'melee',
+    effects: { critThreshold: 5 },
   },
 
   {
@@ -424,6 +445,17 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
 
   {
+    id: 'dg_strat_champions_blessings',
+    label: 'BLESSINGS OF FILTH — Crítico en 5+ (1CP)',
+    description: 'Champions of Contagion: impacto sin modificar de 5+ cuenta como Golpe Crítico hasta el final de la fase',
+    factionId: 'DG',
+    detachmentId: '000001051',
+    isStratagem: true,
+    cpCost: 1,
+    effects: { critThreshold: 5 },
+  },
+
+  {
     id: 'dg_strat_champions_malignance',
     label: 'MALIGNANCE MAGNIFIED — Repetir impacto+herida (2CP)',
     description: 'Champions of Contagion: si el objetivo está por debajo de Starting Strength, repetir impactos y heridas hasta el final de la fase',
@@ -492,6 +524,18 @@ export const MODIFIER_RULES: ModifierRule[] = [
     isStratagem: true,
     cpCost: 1,
     effects: { rerollHitsOf1: true },
+  },
+
+  {
+    id: 'dg_strat_vectors_chinks',
+    label: 'CHINKS IN THE ARMOUR — Crítico 5+ disparo (1CP)',
+    description: 'Vectors of Death and Disease: los ataques de disparo de la unidad tienen [CRITICAL HIT] si la tirada de impacto es 5+ hasta el final de la fase',
+    factionId: 'DG',
+    detachmentId: '000000930',
+    combatType: 'ranged',
+    isStratagem: true,
+    cpCost: 1,
+    effects: { critThreshold: 5 },
   },
 
   {
@@ -575,7 +619,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
     combatType: 'melee',
     isStratagem: true,
     cpCost: 1,
-    effects: { lethalHitsBonus: true },
+    effects: { lethalHitsBonus: true, critThreshold: 5 },
   },
 
   {
@@ -588,6 +632,18 @@ export const MODIFIER_RULES: ModifierRule[] = [
     isStratagem: true,
     cpCost: 2,
     effects: { feelNoPainThreshold: 5 },
+  },
+
+  {
+    id: 'tyr_strat_invasion_adrenal',
+    label: 'ADRENAL SURGE — Crítico 5+ CàC (2CP)',
+    description: 'Invasion Fleet: armas CàC de la unidad dentro de Rango de Sinapse tienen [CRITICAL HIT] si la tirada de impacto es 5+ hasta el final de la fase de lucha',
+    factionId: 'TYR',
+    detachmentId: '000000748',
+    combatType: 'melee',
+    isStratagem: true,
+    cpCost: 2,
+    effects: { critThreshold: 5 },
   },
 
   {
@@ -718,7 +774,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
     detachmentId: '000000770',
     isStratagem: true,
     cpCost: 1,
-    effects: { sustainedHitsBonus: 1 },
+    effects: { sustainedHitsBonus: 1, critThreshold: 5 },
   },
 
   {

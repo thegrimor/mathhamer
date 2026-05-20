@@ -11,15 +11,21 @@ function RuleButton({ rule, active, onToggle }: { rule: ModifierRule; active: bo
   return (
     <button
       onClick={() => onToggle(rule.id)}
-      title={rule.description}
-      className={`text-left px-2 py-1.5 border transition-colors text-xs font-mono leading-snug ${
+      className={`text-left px-2 py-1.5 border transition-colors ${
         active
           ? 'border-gold bg-gold/20 text-gold-bright'
           : 'border-rim-bright text-parchment hover:border-gold/50 hover:text-parchment'
       }`}
     >
-      <span className="mr-1.5">{active ? '▶' : '○'}</span>
-      {rule.label}{cpLabel}
+      <div className="text-xs font-mono leading-snug">
+        <span className="mr-1.5">{active ? '▶' : '○'}</span>
+        {rule.label}{cpLabel}
+      </div>
+      {rule.isStratagem && rule.description && (
+        <div className="text-[10px] font-mono leading-snug mt-0.5 pl-4 opacity-70">
+          {rule.description}
+        </div>
+      )}
     </button>
   )
 }
