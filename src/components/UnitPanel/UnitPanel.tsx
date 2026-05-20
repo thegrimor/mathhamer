@@ -80,7 +80,7 @@ export function UnitPanel({
 
           {/* Weapons section */}
           <div>
-            <div className="px-3 py-1.5 text-[9px] font-display uppercase tracking-widest text-gold border-b border-rim-bright bg-surface-2">
+            <div className="px-3 py-2 text-xs font-display uppercase tracking-wide text-gold border-b border-rim-bright bg-surface-2">
               Armamento
               {isAttacker && (
                 <span className="text-parchment-dim normal-case tracking-normal font-mono ml-2">

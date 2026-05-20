@@ -1,6 +1,9 @@
 import type { ModifierRule } from '@/types'
 
 export const MODIFIER_RULES: ModifierRule[] = [
+  // ═══ Universal ═══
+  { id: 'cover', label: 'En cobertura', description: 'Defensor en cobertura: AP del arma se reduce en 1', combatType: 'ranged', target: 'defender', effects: { saveMod: -1 } },
+
   // ═══ Adeptus Custodes (AC) ═══
   { id: 'ac_martial_mastery', label: "Martial Mastery", factionId: 'AC', detachmentId: '000000765', target: 'attacker', effects: { apMod: 1 } },
   { id: 'ac_revered_companions', label: "Revered Companions", factionId: 'AC', detachmentId: '000000861', target: 'defender', effects: { hitMod: 1, feelNoPainThreshold: 5 } },
