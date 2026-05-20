@@ -310,6 +310,28 @@ export const MODIFIER_RULES: ModifierRule[] = [
     sustainedHitsBonus: 1,
   },
   },
+  {
+    id: 'ldr_000002088_tenacious_spirit',
+    label: 'Aleya — +1 impactar, +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, add 1 to the Hit roll if that unit is below its Starting Strength, and add 1 to the Wound roll as well if that unit is Below Half-strength.',
+    factionId: 'AC',
+    leaderDatasheetId: '000002088',
+    effects: {
+    hitMod: 1,
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000002519_golden_laurels',
+    label: 'Valerian — empeora PA atacante (Líder)',
+    description: 'While this model is leading a unit, each time a melee attack targets that unit, worsen the Armour Penetration characteristic of that attack by 1.',
+    factionId: 'AC',
+    leaderDatasheetId: '000002519',
+    target: 'defender',
+    effects: {
+    apMod: -1,
+  },
+  },
 
   // ═══ AE ═══
   {
@@ -707,6 +729,90 @@ export const MODIFIER_RULES: ModifierRule[] = [
     hitMod: -1,
   },
   },
+  {
+    id: 'ldr_000000570_bringer_of_the_true_death',
+    label: 'Illic Nightspear — repetir heridas (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, you can re-roll the Wound roll.',
+    factionId: 'AE',
+    leaderDatasheetId: '000000570',
+    effects: {
+    rerollAllWounds: true,
+  },
+  },
+  {
+    id: 'ldr_000000573_shadow_hunter',
+    label: 'Karandras — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, add 1 to the Hit roll.',
+    factionId: 'AE',
+    leaderDatasheetId: '000000573',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000630_reaper_of_souls',
+    label: 'Irillyth — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, add 1 to the Hit roll.',
+    factionId: 'AE',
+    leaderDatasheetId: '000000630',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000001400_way_of_the_shaper_psychic',
+    label: 'Bonesinger — FNP 6+ (Líder)',
+    description: 'While this model is leading a unit, Wraith Construct models in that unit have the Feel No Pain 6+ ability.',
+    factionId: 'AE',
+    leaderDatasheetId: '000001400',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 6,
+  },
+  },
+  {
+    id: 'ldr_000002543_yvraine_s_champion',
+    label: 'The Visarch — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, other Character models attached to that unit have the Feel No Pain 4+ ability.',
+    factionId: 'AE',
+    leaderDatasheetId: '000002543',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  {
+    id: 'ldr_000003914_overlord',
+    label: 'Ynnari Archon — repetir heridas 1 (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, re-roll a Wound roll of 1. While that unit is below its Starting Strength, each time a model in that unit makes an attack, you can re-roll the Wound roll instead.',
+    factionId: 'AE',
+    leaderDatasheetId: '000003914',
+    effects: {
+    rerollWoundsOf1: true,
+  },
+  },
+  {
+    id: 'ldr_000003915_storm_of_blades',
+    label: 'Ynnari Succubus — Sustained Hits 1, CàC (Líder)',
+    description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'AE',
+    leaderDatasheetId: '000003915',
+    combatType: 'melee',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000004193_piratical_hero',
+    label: 'Prince Yriel — +1 impactar, Sustained Hits 1 (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, that attack has the [SUSTAINED HITS 1] ability and add 1 to the Hit roll.',
+    factionId: 'AE',
+    leaderDatasheetId: '000004193',
+    effects: {
+    hitMod: 1,
+    sustainedHitsBonus: 1,
+  },
+  },
 
   // ═══ AM ═══
   {
@@ -948,6 +1054,60 @@ export const MODIFIER_RULES: ModifierRule[] = [
     apMod: 2,
   },
   },
+  {
+    id: 'ldr_000000713_cold_steel_and_courage',
+    label: '‘Iron Hand’ Straken — Lethal Hits, CàC (Líder)',
+    description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'AM',
+    leaderDatasheetId: '000000713',
+    combatType: 'melee',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000000714_harker_s_hellraisers',
+    label: 'Sergeant Harker — -1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a ranged attack targets that unit, if the attacking model is more than 12" away, subtract 1 from the Hit roll.',
+    factionId: 'AM',
+    leaderDatasheetId: '000000714',
+    effects: {
+    hitMod: -1,
+  },
+  },
+  {
+    id: 'ldr_000000889_malign_wardings_psychic',
+    label: 'Primaris Psyker — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks.',
+    factionId: 'AM',
+    leaderDatasheetId: '000000889',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  {
+    id: 'ldr_000001394_war_hymns',
+    label: 'Ministorum Priest — Sustained Hits 1, CàC (Líder)',
+    description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'AM',
+    leaderDatasheetId: '000001394',
+    combatType: 'melee',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000002607_senior_officer',
+    label: 'Cadian Castellan — Sustained Hits 1, disparo (Líder)',
+    description: 'While this model is leading a unit, ranged weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'AM',
+    leaderDatasheetId: '000002607',
+    combatType: 'ranged',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
 
   // ═══ AS ═══
   {
@@ -1151,6 +1311,91 @@ export const MODIFIER_RULES: ModifierRule[] = [
     cpCost: 1,
     effects: {
     rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'ldr_000000901_medicus_ministorum',
+    label: 'Hospitaller — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability.',
+    factionId: 'AS',
+    leaderDatasheetId: '000000901',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000001553_righteous_smiting',
+    label: 'Ministorum Priest — +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Wound roll.',
+    factionId: 'AS',
+    leaderDatasheetId: '000001553',
+    effects: {
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000002064_the_pulpit_of_saint_holline_s_basilica',
+    label: 'Junith Eruita — -1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time an attack targets that unit, subtract 1 from the Hit roll.',
+    factionId: 'AS',
+    leaderDatasheetId: '000002064',
+    target: 'defender',
+    effects: {
+    hitMod: -1,
+  },
+  },
+  {
+    id: 'ldr_000002472_fury_of_the_righteous',
+    label: 'Palatine — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'AS',
+    leaderDatasheetId: '000002472',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000002479_abbess_sanctorum',
+    label: 'Morvenn Vahl — repetir impactos, repetir heridas (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, you can re-roll the Hit roll and you can re-roll the Wound roll.',
+    factionId: 'AS',
+    leaderDatasheetId: '000002479',
+    effects: {
+    rerollAllHits: true,
+    rerollAllWounds: true,
+  },
+  },
+  {
+    id: 'aura_000002063_simulacrum_of_the_argent_shroud_aura',
+    label: 'Triumph Of Saint Katherine — repetir heridas 1 (Aura)',
+    description: 'While a friendly ADEPTA SORORITAS unit is within 6" of this model, each time a model in that unit makes a ranged attack, re-roll a Wound roll of 1.',
+    factionId: 'AS',
+    sourceDatasheetId: '000002063',
+    effects: {
+    rerollWoundsOf1: true,
+  },
+  },
+  {
+    id: 'aura_000002063_icon_of_the_valorous_heart_aura',
+    label: 'Triumph Of Saint Katherine — FNP 6+ (Aura)',
+    description: 'While a friendly ADEPTA SORORITAS unit is within 6" of this model, models in that unit have the Feel No Pain 6+ ability.',
+    factionId: 'AS',
+    sourceDatasheetId: '000002063',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 6,
+  },
+  },
+  {
+    id: 'aura_000002063_petals_of_the_bloody_rose_aura',
+    label: 'Triumph Of Saint Katherine — +1 PA, CàC (Aura)',
+    description: 'While a friendly ADEPTA SORORITAS unit is within 6" of this model, improve the Armour Penetration characteristic of melee weapons equipped by models in that unit by 1.',
+    factionId: 'AS',
+    sourceDatasheetId: '000002063',
+    combatType: 'melee',
+    effects: {
+    apMod: 1,
   },
   },
 
@@ -1406,6 +1651,48 @@ export const MODIFIER_RULES: ModifierRule[] = [
     woundMod: 1,
   },
   },
+  {
+    id: 'ldr_000000839_lord_of_the_machine_cult',
+    label: 'Tech-priest Dominus — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability. If that unit has the Electro-Priests keyword, models in that unit have the Feel No Pain 4+ ability instead.',
+    factionId: 'AdM',
+    leaderDatasheetId: '000000839',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000001580_galvanic_field',
+    label: 'Tech-priest Manipulus — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'AdM',
+    leaderDatasheetId: '000001580',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000002478_control_edict',
+    label: 'Skitarii Marshal — repetir impactos (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, you can re-roll the Hit roll.',
+    factionId: 'AdM',
+    leaderDatasheetId: '000002478',
+    effects: {
+    rerollAllHits: true,
+  },
+  },
+  {
+    id: 'aura_000000840_omnissiah_s_blessing',
+    label: 'Tech-priest Enginseer — FNP 5+ (Aura)',
+    description: 'In your Command phase, select one friendly ADEPTUS MECHANICUS model within 3" of this model. That model regains up to D3 lost wounds and, if it is a VEHICLE model, until the start of your next Command phase, that model has the Feel No Pain 5+ ability. Each model can only be selected for this ability',
+    factionId: 'AdM',
+    sourceDatasheetId: '000000840',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
 
   // ═══ AoI ═══
   {
@@ -1656,6 +1943,69 @@ export const MODIFIER_RULES: ModifierRule[] = [
     apMod: 1,
   },
   },
+  {
+    id: 'ldr_000000874_no_mercy',
+    label: 'Inquisitor Greyfax — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack that targets a unit that is Below Half-strength, add 1 to the Hit roll.',
+    factionId: 'AoI',
+    leaderDatasheetId: '000000874',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000002090_xenos_hunter',
+    label: 'Inquisitor Draxus — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack that targets an enemy unit that does not have the IMPERIUM or CHAOS keywords, add 1 to the Hit roll.',
+    factionId: 'AoI',
+    leaderDatasheetId: '000002090',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000003812_holy_hatred',
+    label: 'Ministorum Priest — Sustained Hits 1, CàC (Líder)',
+    description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'AoI',
+    leaderDatasheetId: '000003812',
+    combatType: 'melee',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000003814_tactical_instinct',
+    label: 'Watch Captain Artemis — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'AoI',
+    leaderDatasheetId: '000003814',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000003829_inconceivable_augmentation',
+    label: 'Jokaero Weaponsmith — Lethal Hits, disparo (Líder)',
+    description: 'While this model is leading a unit, ranged weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'AoI',
+    leaderDatasheetId: '000003829',
+    combatType: 'ranged',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000004173_ward_against_the_malefic_arts',
+    label: 'Inquisitor Ostromandeus — -1 impactar, -1 herir (Líder)',
+    description: 'While this unit is leading a unit, each time a Psychic Attack targets that unit, subtract 1 from the Hit roll and subtract 1 from the Wound roll.',
+    factionId: 'AoI',
+    leaderDatasheetId: '000004173',
+    effects: {
+    hitMod: -1,
+    woundMod: -1,
+  },
+  },
 
   // ═══ CD ═══
   {
@@ -1810,6 +2160,175 @@ export const MODIFIER_RULES: ModifierRule[] = [
     cpCost: 1,
     effects: {
     apMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000001139_lethal_caress',
+    label: 'Herald Of Slaanesh On Steed Of Slaanesh — +1 PA, CàC (Líder)',
+    description: 'While this model is leading a unit, improve the Armour Penetration characteristic of melee weapons equipped by models in that unit by 1.',
+    factionId: 'CD',
+    leaderDatasheetId: '000001139',
+    combatType: 'melee',
+    effects: {
+    apMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000001455_bloodmaster',
+    label: 'Bloodmaster — +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, add 1 to the Wound roll.',
+    factionId: 'CD',
+    leaderDatasheetId: '000001455',
+    effects: {
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000001462_changecaster',
+    label: 'Changecaster — Sustained Hits 1, disparo (Líder)',
+    description: 'While this model is leading a unit, ranged weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'CD',
+    leaderDatasheetId: '000001462',
+    combatType: 'ranged',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000001463_fateskimmer',
+    label: 'Fateskimmer — Lethal Hits, CàC (Líder)',
+    description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'CD',
+    leaderDatasheetId: '000001463',
+    combatType: 'melee',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000001467_poxbringer',
+    label: 'Poxbringer — crítico 5+ (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, a successful unmodified Hit roll of 5+ scores a Critical Hit.',
+    factionId: 'CD',
+    leaderDatasheetId: '000001467',
+    effects: {
+    critThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000001469_keep_counting',
+    label: 'Spoilpox Scrivener — Sustained Hits 1, CàC (Líder)',
+    description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'CD',
+    leaderDatasheetId: '000001469',
+    combatType: 'melee',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000004049_cursed_wardings_psychic',
+    label: 'Rogue Psyker — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks.',
+    factionId: 'CD',
+    leaderDatasheetId: '000004049',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  {
+    id: 'ldr_000004062_dark_zealotry',
+    label: 'Dark Apostle — +1 herir (Líder)',
+    description: 'While this unit is leading a unit and contains a DARK APOSTLE model, each time a model in that unit makes a melee attack, add 1 to the Wound roll.',
+    factionId: 'CD',
+    leaderDatasheetId: '000004062',
+    effects: {
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000004068_prescience_psychic',
+    label: 'Sorcerer — -1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time an attack targets that unit, subtract 1 from the Hit roll.',
+    factionId: 'CD',
+    leaderDatasheetId: '000004068',
+    target: 'defender',
+    effects: {
+    hitMod: -1,
+  },
+  },
+  {
+    id: 'ldr_000004070_gift_of_poxes_psychic',
+    label: 'Sorcerer On Palanquin Of Nurgle — Sustained Hits 1 (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'CD',
+    leaderDatasheetId: '000004070',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'aura_000001120_daemon_lord_of_tzeentch_aura',
+    label: 'Lord of Change — +1 F (Aura)',
+    description: 'While a friendly Tzeentch Legiones Daemonica unit is within 6" of this model, each time a model in that unit makes a ranged attack, add 1 to the Strength characteristic of that attack.',
+    factionId: 'CD',
+    sourceDatasheetId: '000001120',
+    effects: {
+    strengthMod: 1,
+  },
+  },
+  {
+    id: 'aura_000001137_daemon_lord_of_slaanesh_aura',
+    label: 'Keeper Of Secrets — +1 PA, CàC (Aura)',
+    description: 'While a friendly Slaanesh Legiones Daemonica unit is within 6" of this model, improve the Armour Penetration of melee weapons in that unit by 1.',
+    factionId: 'CD',
+    sourceDatasheetId: '000001137',
+    combatType: 'melee',
+    effects: {
+    apMod: 1,
+  },
+  },
+  {
+    id: 'aura_000001141_tormentbringer_aura',
+    label: 'Tormentbringer On Exalted Seeker Chariot — Sustained Hits 1, CàC (Aura)',
+    description: 'While a friendly Slaanesh Legiones Daemonica unit is within 6" of this model, melee weapons in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'CD',
+    sourceDatasheetId: '000001141',
+    combatType: 'melee',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'aura_000001148_shadow_lord_aura_psychic',
+    label: 'Be’lakor — repetir impactos 1 (Aura)',
+    description: 'While a friendly Legiones Daemonica or Shadow Legion unit is within 6" of this model, each time a model in that unit makes an attack, re-roll a Hit roll of 1.',
+    factionId: 'CD',
+    sourceDatasheetId: '000001148',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'aura_000002582_daemon_lord_of_khorne_aura',
+    label: 'Bloodthirster — +1 impactar (Aura)',
+    description: 'While a friendly Khorne Legiones Daemonica unit is within 6" of this model, each time a model in that unit makes a melee attack, add 1 to the Hit roll.',
+    factionId: 'CD',
+    sourceDatasheetId: '000002582',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'aura_000004100_tormentbringer_aura',
+    label: 'Tormentbringer — Sustained Hits 1, CàC (Aura)',
+    description: 'While a friendly Slaanesh Legiones Daemonica unit is within 6" of this model, melee weapons in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'CD',
+    sourceDatasheetId: '000004100',
+    combatType: 'melee',
+    effects: {
+    sustainedHitsBonus: 1,
   },
   },
 
@@ -2270,6 +2789,100 @@ export const MODIFIER_RULES: ModifierRule[] = [
     damageReduction: 1,
   },
   },
+  {
+    id: 'ldr_000000936_dark_zealotry',
+    label: 'Dark Apostle — +1 herir (Líder)',
+    description: 'While this unit is leading a unit and contains a DARK APOSTLE model, each time a model in that unit makes a melee attack, add 1 to the Wound roll.',
+    factionId: 'CSM',
+    leaderDatasheetId: '000000936',
+    effects: {
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000938_prescience_psychic',
+    label: 'Sorcerer — -1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time an attack targets that unit, subtract 1 from the Hit roll.',
+    factionId: 'CSM',
+    leaderDatasheetId: '000000938',
+    target: 'defender',
+    effects: {
+    hitMod: -1,
+  },
+  },
+  {
+    id: 'ldr_000000940_prescience_psychic',
+    label: 'Sorcerer On Bike — -1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time an attack targets that unit, subtract 1 from the Hit roll.',
+    factionId: 'CSM',
+    leaderDatasheetId: '000000940',
+    target: 'defender',
+    effects: {
+    hitMod: -1,
+  },
+  },
+  {
+    id: 'ldr_000000942_gift_of_poxes_psychic',
+    label: 'Sorcerer On Palanquin Of Nurgle — Sustained Hits 1 (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'CSM',
+    leaderDatasheetId: '000000942',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000001355_dark_champion',
+    label: 'Exalted Champion — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, add 1 to the Hit roll.',
+    factionId: 'CSM',
+    leaderDatasheetId: '000001355',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000001584_warp_sighted_butcher',
+    label: 'Master Of Executions — repetir impactos, repetir heridas (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack that targets a unit that is below its Starting Strength, you can re-roll the Hit roll. If that unit is Below Half-strength, you can re-roll the Wound roll as well.',
+    factionId: 'CSM',
+    leaderDatasheetId: '000001584',
+    effects: {
+    rerollAllHits: true,
+    rerollAllWounds: true,
+  },
+  },
+  {
+    id: 'ldr_000001600_cursed_wardings_psychic',
+    label: 'Rogue Psyker — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks.',
+    factionId: 'CSM',
+    leaderDatasheetId: '000001600',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  {
+    id: 'aura_000000924_paragon_of_hatred_aura',
+    label: 'Abaddon The Despoiler — repetir impactos (Aura)',
+    description: 'While a friendly HERETIC ASTARTES unit is within 6" (excluding DAMNED units) of this model, each time a model in that unit makes an attack, you can re-roll the Hit roll.',
+    factionId: 'CSM',
+    sourceDatasheetId: '000000924',
+    effects: {
+    rerollAllHits: true,
+  },
+  },
+  {
+    id: 'aura_000002679_unholy_mechanisms_aura',
+    label: 'Vashtorr The Arkifane — +2 F (Aura)',
+    description: 'While a friendly Daemon Vehicle unit is within 6" of this model, add 2 to the Strength characteristic of weapons equipped by models in that unit.',
+    factionId: 'CSM',
+    sourceDatasheetId: '000002679',
+    effects: {
+    strengthMod: 2,
+  },
+  },
 
   // ═══ DG ═══
   {
@@ -2427,6 +3040,88 @@ export const MODIFIER_RULES: ModifierRule[] = [
     effects: {
     rerollAllHits: true,
     rerollAllWounds: true,
+  },
+  },
+  {
+    id: 'ldr_000001037_chaos_lord',
+    label: 'Death Guard Chaos Lord — repetir impactos 1 (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, re-roll a Hit roll of 1.',
+    factionId: 'DG',
+    leaderDatasheetId: '000001037',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'ldr_000001038_chaos_lord',
+    label: 'Death Guard Chaos Lord In Terminator Armour — repetir impactos 1 (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, re-roll a Hit roll of 1.',
+    factionId: 'DG',
+    leaderDatasheetId: '000001038',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'ldr_000001053_the_destroyer_hive',
+    label: 'Typhus — -1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a melee attack targets that unit, subtract 1 from the Hit roll.',
+    factionId: 'DG',
+    leaderDatasheetId: '000001053',
+    effects: {
+    hitMod: -1,
+  },
+  },
+  {
+    id: 'ldr_000001054_vector_of_disease',
+    label: 'Lord of Contagion — Sustained Hits 1, CàC (Líder)',
+    description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [SUSTAINED HITS 1] and [LANCE] abilities.',
+    factionId: 'DG',
+    leaderDatasheetId: '000001054',
+    combatType: 'melee',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000001055_gift_of_contagion_psychic',
+    label: 'Malignant Plaguecaster — Sustained Hits 1 (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack that targets a unit that is Afflicted, that attack has the [SUSTAINED HITS 1] ability.',
+    factionId: 'DG',
+    leaderDatasheetId: '000001055',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000001368_foul_infusion',
+    label: 'Biologus Putrifier — crítico 5+, Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability. In addition, each time a model in that unit makes an attack, a Critical Hit is scored on an unmodified Hit roll of 5+, instead of only a 6.',
+    factionId: 'DG',
+    leaderDatasheetId: '000001368',
+    effects: {
+    critThreshold: 5,
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000002460_virulent_aura',
+    label: 'Lord of Virulence — repetir heridas (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a ranged attack, you can re-roll the Wound roll.',
+    factionId: 'DG',
+    leaderDatasheetId: '000002460',
+    effects: {
+    rerollAllWounds: true,
+  },
+  },
+  {
+    id: 'ldr_000003600_gift_of_poxes_psychic',
+    label: 'Sorcerer On Palanquin Of Nurgle — Sustained Hits 1 (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'DG',
+    leaderDatasheetId: '000003600',
+    effects: {
+    sustainedHitsBonus: 1,
   },
   },
 
@@ -2662,6 +3357,28 @@ export const MODIFIER_RULES: ModifierRule[] = [
     effects: {
     apMod: 1,
     lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000000639_storm_of_blades',
+    label: 'Succubus — Sustained Hits 1, CàC (Líder)',
+    description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'DRU',
+    leaderDatasheetId: '000000639',
+    combatType: 'melee',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000004198_piratical_hero',
+    label: 'Prince Yriel — +1 impactar, Sustained Hits 1 (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, that attack has the [SUSTAINED HITS 1] ability and add 1 to the Hit roll.',
+    factionId: 'DRU',
+    leaderDatasheetId: '000004198',
+    effects: {
+    hitMod: 1,
+    sustainedHitsBonus: 1,
   },
   },
 
@@ -2920,6 +3637,49 @@ export const MODIFIER_RULES: ModifierRule[] = [
     hitMod: -1,
   },
   },
+  {
+    id: 'ldr_000004078_perfectionists',
+    label: 'Lord Exultant — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'EC',
+    leaderDatasheetId: '000004078',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000004084_obsessive_annunciation',
+    label: 'Lord Kakophonist — Sustained Hits 1, disparo (Líder)',
+    description: 'While this model is leading a unit, ranged weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'EC',
+    leaderDatasheetId: '000004084',
+    combatType: 'ranged',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'aura_000004086_excessive_vigour_aura',
+    label: 'Daemon Prince of Slaanesh — +1 PA, CàC (Aura)',
+    description: 'While a friendly Slaanesh unit is within 6" of this model, if that unit made a Charge move this turn, improve the Armour Penetration characteristic of melee weapons equipped by models in that unit by 1.',
+    factionId: 'EC',
+    sourceDatasheetId: '000004086',
+    combatType: 'melee',
+    effects: {
+    apMod: 1,
+  },
+  },
+  {
+    id: 'aura_000004097_daemon_lord_of_slaanesh_aura',
+    label: 'Keeper of Secrets — +1 PA, CàC (Aura)',
+    description: 'While a friendly Legions of Excess unit is within 6" of this model, improve the Armour Penetration characteristic of melee weapons equipped by models in that unit by 1.',
+    factionId: 'EC',
+    sourceDatasheetId: '000004097',
+    combatType: 'melee',
+    effects: {
+    apMod: 1,
+  },
+  },
 
   // ═══ GC ═══
   {
@@ -3113,6 +3873,92 @@ export const MODIFIER_RULES: ModifierRule[] = [
     rerollHitsOf1: true,
   },
   },
+  {
+    id: 'ldr_000000509_cult_demagogue',
+    label: 'Primus — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, you can add 1 to the Hit roll.',
+    factionId: 'GC',
+    leaderDatasheetId: '000000509',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000510_nexus_of_devotion',
+    label: 'Acolyte Iconward — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability. If that unit has the Hybrid Metamorphs keyword, models in that unit have the Feel No Pain 4+ ability instead.',
+    factionId: 'GC',
+    leaderDatasheetId: '000000510',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000001568_bodyguard',
+    label: 'Locus — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, other Character models attached to that unit have the Feel No Pain 4+ ability.',
+    factionId: 'GC',
+    leaderDatasheetId: '000001568',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  {
+    id: 'ldr_000001572_twisted_science',
+    label: 'Biophagus — Lethal Hits, CàC (Líder)',
+    description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'GC',
+    leaderDatasheetId: '000001572',
+    combatType: 'melee',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000003715_bio_horror_disruption_psychic',
+    label: 'Benefictus — Lethal Hits, disparo (Líder)',
+    description: 'While this model is leading a unit, ranged weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'GC',
+    leaderDatasheetId: '000003715',
+    combatType: 'ranged',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000003880_alpha_warrior',
+    label: 'Winged Tyranid Prime — Sustained Hits 1 (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'GC',
+    leaderDatasheetId: '000003880',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000003938_senior_officer',
+    label: 'Cadian Castellan — Sustained Hits 1, disparo (Líder)',
+    description: 'While this model is leading a unit, ranged weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'GC',
+    leaderDatasheetId: '000003938',
+    combatType: 'ranged',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000003943_malign_wardings_psychic',
+    label: 'Primaris Psyker — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks.',
+    factionId: 'GC',
+    leaderDatasheetId: '000003943',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
 
   // ═══ GK ═══
   {
@@ -3274,6 +4120,60 @@ export const MODIFIER_RULES: ModifierRule[] = [
     cpCost: 1,
     effects: {
     rerollWoundsOf1: true,
+  },
+  },
+  {
+    id: 'ldr_000000374_sanctuary_psychic',
+    label: 'Grand Master Voldus — -1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time an attack targets that unit, subtract 1 from the Hit roll.',
+    factionId: 'GK',
+    leaderDatasheetId: '000000374',
+    target: 'defender',
+    effects: {
+    hitMod: -1,
+  },
+  },
+  {
+    id: 'ldr_000000376_hammerhand_psychic',
+    label: 'Brother-captain — Lethal Hits, CàC (Líder)',
+    description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'GK',
+    leaderDatasheetId: '000000376',
+    combatType: 'melee',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000001361_sanctic_hood',
+    label: 'Brotherhood Librarian — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks.',
+    factionId: 'GK',
+    leaderDatasheetId: '000001361',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  {
+    id: 'aura_000000390_wisdom_of_the_ancients_aura',
+    label: 'Grey Knights Dreadnought — repetir impactos 1, repetir heridas 1 (Aura)',
+    description: 'While a friendly Grey Knights Infantry unit is within 6" of this model, each time a model in that unit makes an attack, re-roll a Hit roll of 1 and re-roll a Wound roll of 1.',
+    factionId: 'GK',
+    sourceDatasheetId: '000000390',
+    effects: {
+    rerollHitsOf1: true,
+    rerollWoundsOf1: true,
+  },
+  },
+  {
+    id: 'aura_000000399_blessing_of_the_omnissiah',
+    label: 'Brotherhood Techmarine — +1 impactar (Aura)',
+    description: 'In your Command phase, you can select one friendly Grey Knights Vehicle model within 3" of this model. That model regains up to D3 lost wounds and, until the start of your next Command phase, each time that VEHICLE model makes an attack, add 1 to the Hit roll. Each model can only be selected for thi',
+    factionId: 'GK',
+    sourceDatasheetId: '000000399',
+    effects: {
+    hitMod: 1,
   },
   },
 
@@ -3496,6 +4396,27 @@ export const MODIFIER_RULES: ModifierRule[] = [
     effects: {
     rerollAllHits: true,
     rerollAllWounds: true,
+  },
+  },
+  {
+    id: 'ldr_000002594_kindred_hero',
+    label: 'Kâhl — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'LoV',
+    leaderDatasheetId: '000002594',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000002596_fortify_psychic',
+    label: 'Grimnyr — FNP 5+ (Líder)',
+    description: 'While this unit is leading a unit, models in that unit have the Feel No Pain 5+ ability.',
+    factionId: 'LoV',
+    leaderDatasheetId: '000002596',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
   },
   },
 
@@ -3833,6 +4754,145 @@ export const MODIFIER_RULES: ModifierRule[] = [
     rerollAllHits: true,
   },
   },
+  {
+    id: 'ldr_000000531_lord_of_the_pyrrhian_eternals',
+    label: 'Anrakyr The Traveller — +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, add 1 to the Wound roll.',
+    factionId: 'NEC',
+    leaderDatasheetId: '000000531',
+    effects: {
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000002109_united_in_destruction',
+    label: 'Skorpekh Lord — Lethal Hits, CàC (Líder)',
+    description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'NEC',
+    leaderDatasheetId: '000002109',
+    combatType: 'melee',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000002352_rites_of_reanimation',
+    label: 'Technomancer — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability.',
+    factionId: 'NEC',
+    leaderDatasheetId: '000002352',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000002354_timesplinter_mantle',
+    label: 'Chronomancer — -1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time an attack targets that unit, subtract 1 from the Hit roll.',
+    factionId: 'NEC',
+    leaderDatasheetId: '000002354',
+    target: 'defender',
+    effects: {
+    hitMod: -1,
+  },
+  },
+  {
+    id: 'aura_000000551_fabricator_claw_array_aura',
+    label: 'Canoptek Spyders — FNP 6+ (Aura)',
+    description: 'While a friendly Necrons Vehicle unit is within 6" of the bearer, that unit has the Feel No Pain 6+ ability.',
+    factionId: 'NEC',
+    sourceDatasheetId: '000000551',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 6,
+  },
+  },
+  {
+    id: 'aura_000000558_gloom_prism_aura',
+    label: 'Canoptek Tomb Stalker — FNP 4+ (Aura)',
+    description: 'While a friendly NECRONS unit is within 6" of the bearer, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks.',
+    factionId: 'NEC',
+    sourceDatasheetId: '000000558',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  {
+    id: 'aura_000000560_gloom_prism_aura',
+    label: 'Canoptek Tomb Sentinel — FNP 4+ (Aura)',
+    description: 'While a friendly NECRONS unit is within 6" of the bearer, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks.',
+    factionId: 'NEC',
+    sourceDatasheetId: '000000560',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  {
+    id: 'aura_000002092_mechanical_augmentation_aura',
+    label: 'Illuminor Szeras — empeora PA atacante (Aura)',
+    description: 'While a friendly Necrons Battleline unit is within 3" of this model, each time a model in that unit makes an attack, improve the Armour Penetration characteristic of that attack by 1, and each time an attack targets that unit, worsen the Armour Penetration characteristic of that attack by 1.',
+    factionId: 'NEC',
+    sourceDatasheetId: '000002092',
+    target: 'defender',
+    effects: {
+    apMod: -1,
+  },
+  },
+  {
+    id: 'aura_000002360_phaeron_of_the_stars_aura',
+    label: 'The Silent King — repetir impactos 1, repetir heridas 1 (Aura)',
+    description: 'While a friendly NECRONS unit (excluding Monster units) is within 6" of this unit’s Szarekh model, each time a model in that unit makes an attack, re-roll a Hit roll of 1 and re-roll a Wound roll of 1.',
+    factionId: 'NEC',
+    sourceDatasheetId: '000002360',
+    effects: {
+    rerollHitsOf1: true,
+    rerollWoundsOf1: true,
+  },
+  },
+  {
+    id: 'aura_000002360_phaeron_of_the_blades_aura',
+    label: 'The Silent King — +1 F (Aura)',
+    description: 'While a friendly NECRONS unit (excluding Monster units) is within 6" of this unit’s Szarekh model, you can re-roll Charge rolls made for that unit and each time a model in that unit makes a melee attack, add 1 to the Strength characteristic of that attack.',
+    factionId: 'NEC',
+    sourceDatasheetId: '000002360',
+    effects: {
+    strengthMod: 1,
+  },
+  },
+  {
+    id: 'aura_000002361_reanimation_nodes_aura',
+    label: 'Convergence Of Dominion — FNP 6+ (Aura)',
+    description: 'While a friendly Necrons Infantry unit is within 6" of this Fortification, models in that unit have Feel No Pain 6+ ability.',
+    factionId: 'NEC',
+    sourceDatasheetId: '000002361',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 6,
+  },
+  },
+  {
+    id: 'aura_000004186_infectious_murder_madness_aura',
+    label: 'Nekrosor Ammentar — Sustained Hits 1 (Aura)',
+    description: 'While a friendly NECRONS unit (excluding Monster and Titanic units) is within 6" of this model, each time a model in that unit makes an attack, if that model has the Destroyer Cult keyword or that enemy unit is the closest eligible target, that attack has the [SUSTAINED HITS 1] ability.',
+    factionId: 'NEC',
+    sourceDatasheetId: '000004186',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'aura_000004186_prophet_of_destruction',
+    label: 'Nekrosor Ammentar — repetir heridas 1 (Aura)',
+    description: 'Each time this model destroys an enemy unit, select one other friendly Destroyer Cult unit within 9" of it. Until the end of the phase, each time a model in that unit makes an attack, re-roll a Wound roll of 1.',
+    factionId: 'NEC',
+    sourceDatasheetId: '000004186',
+    effects: {
+    rerollWoundsOf1: true,
+  },
+  },
 
   // ═══ ORK ═══
   {
@@ -4166,6 +5226,215 @@ export const MODIFIER_RULES: ModifierRule[] = [
     critThreshold: 5,
   },
   },
+  {
+    id: 'ldr_000000001_might_is_right',
+    label: 'Warboss — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Hit roll.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000000001',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000002_might_is_right',
+    label: 'Warboss In Mega Armour — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Hit roll.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000000002',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000003_speedboss',
+    label: 'Warboss On Warbike — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Hit roll.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000000003',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000006_more_dakka',
+    label: 'Big Mek In Mega Armour — repetir impactos 1 (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a ranged attack, re-roll a Hit roll of 1.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000000006',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'ldr_000000007_more_dakka',
+    label: 'Big Mek On Warbike — repetir impactos 1 (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a ranged attack, re-roll a Hit roll of 1.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000000007',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'ldr_000000008_prophet_of_da_great_waaagh',
+    label: 'Ghazghkull Thraka — +1 impactar, crítico 5+, +1 herir (Líder)',
+    description: 'While this unit is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Hit roll and add 1 to the Wound roll and if the Waaagh! is active for your army, a Critical Hit is scored on a successful unmodified Hit roll of 5+.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000000008',
+    effects: {
+    hitMod: 1,
+    woundMod: 1,
+    critThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000000009_flashiest_gitz',
+    label: 'Kaptin Badrukk — repetir impactos (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a ranged attack, you can re-roll the Hit roll.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000000009',
+    effects: {
+    rerollAllHits: true,
+  },
+  },
+  {
+    id: 'ldr_000000010_drill_boss',
+    label: 'Boss Zagstruk — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Hit roll.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000000010',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000013_dok_s_toolz',
+    label: 'Painboy — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000000013',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000000014_dok_s_toolz',
+    label: 'Painboy On Warbike — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000000014',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000000015_mad_dok',
+    label: 'Mad Dok Grotsnik — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000000015',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000001536_more_dakka',
+    label: 'Big Mek With Shokk Attack Gun — repetir impactos 1 (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a ranged attack, re-roll a Hit roll of 1.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000001536',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'ldr_000001537_speedboss',
+    label: 'Deffkilla Wartrike — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Hit roll.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000001537',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000001993_da_revolushun',
+    label: 'Da Red Gobbo — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, add 1 to the Hit roll.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000001993',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000002080_more_dakka',
+    label: 'Big Mek With Kustom Force Field — repetir impactos 1 (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a ranged attack, re-roll a Hit roll of 1.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000002080',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'ldr_000002488_super_runts',
+    label: 'Zodgrod Wortsnagga — +1 impactar, +1 herir (Líder)',
+    description: 'While this model is leading a unit: Models in that unit have the Scouts 9" ability. Each time a model in that unit makes an attack, add 1 to the Hit roll and add 1 to the Wound roll. Each time an attack targets that unit, subtract 1 from the Wound roll.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000002488',
+    target: 'defender',
+    effects: {
+    hitMod: 1,
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000002489_beastboss',
+    label: 'Beastboss — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Hit roll.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000002489',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000002491_dok_s_toolz',
+    label: 'Painboss — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000002491',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000003707_more_dakka',
+    label: 'Big Mek — repetir impactos 1 (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a ranged attack, re-roll a Hit roll of 1.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000003707',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'aura_000000008_ghazghkull_s_waaagh_banner_aura',
+    label: 'Ghazghkull Thraka — Lethal Hits, CàC (Aura)',
+    description: 'While a friendly ORKS unit is within 12" of Makari, if the Waaagh! is active for your army, melee weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'ORK',
+    sourceDatasheetId: '000000008',
+    combatType: 'melee',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
 
   // ═══ QI ═══
   {
@@ -4374,6 +5643,37 @@ export const MODIFIER_RULES: ModifierRule[] = [
     lethalHitsBonus: true,
   },
   },
+  {
+    id: 'ldr_000003839_lord_of_the_machine_cult',
+    label: 'Tech-priest Dominus — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability. If that unit has the Electro-Priests keyword, models in that unit have the Feel No Pain 4+ ability instead.',
+    factionId: 'QI',
+    leaderDatasheetId: '000003839',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000003840_galvanic_field',
+    label: 'Tech-priest Manipulus — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'QI',
+    leaderDatasheetId: '000003840',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000003841_control_edict',
+    label: 'Skitarii Marshal — repetir impactos (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, you can re-roll the Hit roll.',
+    factionId: 'QI',
+    leaderDatasheetId: '000003841',
+    effects: {
+    rerollAllHits: true,
+  },
+  },
 
   // ═══ QT ═══
   {
@@ -4527,6 +5827,68 @@ export const MODIFIER_RULES: ModifierRule[] = [
     cpCost: 1,
     effects: {
     feelNoPainThreshold: 6,
+  },
+  },
+  {
+    id: 'ldr_000003848_cursed_wardings_psychic',
+    label: 'Rogue Psyker — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks.',
+    factionId: 'QT',
+    leaderDatasheetId: '000003848',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  {
+    id: 'aura_000001096_offerings_for_the_dark_gods_aura',
+    label: 'Chaos Cerastus Knight Castigator — Sustained Hits 1, disparo (Aura)',
+    description: 'While a friendly War Dog model is within 6" of this model, ranged weapons equipped by that WAR DOG model have the [SUSTAINED HITS 1] ability.',
+    factionId: 'QT',
+    sourceDatasheetId: '000001096',
+    combatType: 'ranged',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'aura_000001097_consumed_with_hunger_aura',
+    label: 'Chaos Cerastus Knight Atrapos — repetir impactos (Aura)',
+    description: 'While a friendly War Dog model is within 6" of this model, each time that WAR DOG model makes an attack that targets a TITANIC or TOWERING unit, you can re-roll the Hit roll.',
+    factionId: 'QT',
+    sourceDatasheetId: '000001097',
+    effects: {
+    rerollAllHits: true,
+  },
+  },
+  {
+    id: 'aura_000001660_taskmaster_aura',
+    label: 'Knight Desecrator — repetir impactos 1 (Aura)',
+    description: 'While a friendly War Dog model is within 9" of this model, each time that WAR DOG model makes a ranged attack, re-roll a Hit roll of 1.',
+    factionId: 'QT',
+    sourceDatasheetId: '000001660',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'aura_000001661_frenzied_rampage_aura',
+    label: 'Knight Rampager — repetir impactos 1 (Aura)',
+    description: 'While a friendly War Dog model is within 9" of this model, each time that WAR DOG model makes a melee attack, re-roll a Hit roll of 1.',
+    factionId: 'QT',
+    sourceDatasheetId: '000001661',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'aura_000004134_close_range_killers_aura',
+    label: 'Knight Ruinator — +1 PA (Aura)',
+    description: 'While a friendly War Dog model is within 9" of this model, each time that WAR DOG model makes an attack that targets the closest enemy unit, improve the Armour Penetration characteristic of that attack by 1.',
+    factionId: 'QT',
+    sourceDatasheetId: '000004134',
+    effects: {
+    apMod: 1,
   },
   },
 
@@ -6166,6 +7528,624 @@ export const MODIFIER_RULES: ModifierRule[] = [
     apMod: -1,
   },
   },
+  {
+    id: 'ldr_000000060_surgical_precision',
+    label: 'Apothecary Biologis — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000060',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000000079_psychic_hood',
+    label: 'Librarian In Terminator Armour — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000079',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  {
+    id: 'ldr_000000079_veil_of_time_psychic',
+    label: 'Librarian In Terminator Armour — Sustained Hits 1 (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000079',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000000083_angel_s_wrath',
+    label: 'Captain With Jump Pack — +1 F, CàC (Líder)',
+    description: 'While this model is leading a unit, each time that unit ends a Charge move, until the end of the turn, add 1 to the Strength characteristic of melee weapons equipped by models in that unit.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000083',
+    combatType: 'melee',
+    effects: {
+    strengthMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000094_litany_of_hate',
+    label: 'Chaplain On Bike — +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Wound roll.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000094',
+    effects: {
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000112_litany_of_hate',
+    label: 'Chaplain With Jump Pack — +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Wound roll.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000112',
+    effects: {
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000115_litany_of_hate',
+    label: 'Chaplain In Terminator Armour — +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Wound roll.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000115',
+    effects: {
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000119_psychic_hood',
+    label: 'Librarian In Phobos Armour — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000119',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  {
+    id: 'ldr_000000127_rites_of_tempering',
+    label: 'Iron Father Feirros — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000127',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000000151_warden_of_the_imperium_nihilus',
+    label: 'Commander Dante — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, add 1 to Advance and Charge rolls made for that unit and each time a model in that unit makes an attack, add 1 to the Hit roll.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000151',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000158_sanguinary_priest',
+    label: 'Sanguinary Priest — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000158',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000000158_blood_chalice',
+    label: 'Sanguinary Priest — +1 PA, CàC (Líder)',
+    description: 'While this model is leading a unit, improve the Armour Penetration characteristic of melee weapons equipped by models in that unit by 1.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000158',
+    combatType: 'melee',
+    effects: {
+    apMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000159_sanguinary_priest',
+    label: 'Sanguinary Priest on Bike — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000159',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000000159_blood_chalice',
+    label: 'Sanguinary Priest on Bike — +1 PA, CàC (Líder)',
+    description: 'While this model is leading a unit, improve the Armour Penetration characteristic of melee weapons equipped by models in that unit by 1.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000159',
+    combatType: 'melee',
+    effects: {
+    apMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000160_sanguinary_priest',
+    label: 'Brother Corbulo — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000160',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000000164_guardian_of_the_lost',
+    label: 'Lemartes — −1 daño (Líder)',
+    description: 'While this model is leading a unit, each time an attack is allocated to a model in that unit, subtract 1 from the Damage characteristic of that attack.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000164',
+    target: 'defender',
+    effects: {
+    damageReduction: 1,
+  },
+  },
+  {
+    id: 'ldr_000000164_fury_unbound',
+    label: 'Lemartes — Lethal Hits, CàC (Líder)',
+    description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [LETHAL HITS] ability',
+    factionId: 'SM',
+    leaderDatasheetId: '000000164',
+    combatType: 'melee',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000000218_supreme_grand_master',
+    label: 'Azrael — Sustained Hits 1 (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000218',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000000225_exemplar_of_hate',
+    label: 'Asmodai — repetir impactos (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, you can re-roll the Hit roll.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000225',
+    effects: {
+    rerollAllHits: true,
+  },
+  },
+  {
+    id: 'ldr_000000226_psychic_hood',
+    label: 'Ezekiel — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000226',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  {
+    id: 'ldr_000000285_war_howl',
+    label: 'Ragnar Blackmane — repetir heridas (Líder)',
+    description: 'While this model is leading a Blood Claws unit, each time a model in that unit makes a melee attack, you can re-roll the Wound roll. While this model is leading a Wolf Guard Headtakers unit, that unit is eligible to declare a charge in a turn in which it Advanced.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000285',
+    effects: {
+    rerollAllWounds: true,
+  },
+  },
+  {
+    id: 'ldr_000000286_refuse_to_accept_defeat',
+    label: 'Krom Dragongaze — +1 impactar, +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, add 1 to the Hit roll if that unit is below its Starting Strength, and add 1 to the Wound roll as well if that unit is Below Half-strength.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000286',
+    effects: {
+    hitMod: 1,
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000288_born_of_wolves',
+    label: 'Canis Wolfborn — Sustained Hits 1, CàC (Líder)',
+    description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000288',
+    combatType: 'melee',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000000297_oathbound',
+    label: 'Ulrik The Slayer — +1 impactar, +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Hit roll. If that attack targets a unit that has this model’s Slayer’s Oath keyword (see above), add 1 to the Wound roll as well.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000297',
+    effects: {
+    hitMod: 1,
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000300_tactical_precision',
+    label: 'Wolf Guard Battle Leader In Terminator Armour — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit with have the [LETHAL HITS] ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000300',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000000301_tactical_precision',
+    label: 'Wolf Guard Battle Leader On Thunderwolf — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000301',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000000304_pelt_of_the_doppegangrel',
+    label: 'Lukas The Trickster — -1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time an attack targets that unit, subtract 1 from the Hit roll.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000304',
+    target: 'defender',
+    effects: {
+    hitMod: -1,
+  },
+  },
+  {
+    id: 'ldr_000001162_voice_of_experience',
+    label: 'Sergeant Telion — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, improve the Objective Control characteristic of models in that unit by 1 and each time a model in that unit makes an attack, add 1 to the Hit roll.',
+    factionId: 'SM',
+    leaderDatasheetId: '000001162',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000001162_guiding_hand',
+    label: 'Sergeant Telion — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, each time that unit is selected to shoot or fight, select one of the following abilities to apply to weapons equipped by models in that unit until the end of the phase: [LETHAL HITS] [PRECISION] [SUSTAINED HITS 1]',
+    factionId: 'SM',
+    leaderDatasheetId: '000001162',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000001174_litany_of_hate',
+    label: 'Chaplain — +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Wound roll.',
+    factionId: 'SM',
+    leaderDatasheetId: '000001174',
+    effects: {
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000001344_psychic_hood',
+    label: 'Librarian with Jump Pack — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks.',
+    factionId: 'SM',
+    leaderDatasheetId: '000001344',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  {
+    id: 'ldr_000001344_might_of_heroes_psychic',
+    label: 'Librarian with Jump Pack — +1 PA, CàC (Líder)',
+    description: 'While this model is leading a unit, improve the Armour Penetration characteristic of melee weapons equipped by models in that unit by 1.',
+    factionId: 'SM',
+    leaderDatasheetId: '000001344',
+    combatType: 'melee',
+    effects: {
+    apMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000001345_tactical_precision',
+    label: 'Lieutenant In Reiver Armour — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000001345',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000001346_tactical_precision',
+    label: 'Lieutenant — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000001346',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000001348_psychic_hood',
+    label: 'Librarian on Bike — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks.',
+    factionId: 'SM',
+    leaderDatasheetId: '000001348',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  {
+    id: 'ldr_000001611_master_of_prescience_psychic',
+    label: 'Chief Librarian Tigurius — -1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time an attack targets that unit, subtract 1 from the Hit roll. In addition, once per battle round, you can target that unit with one of the following Stratagems for OCP: Counter-offensive; Fire Overwatch; Go to Ground; Heroic Intervention',
+    factionId: 'SM',
+    leaderDatasheetId: '000001611',
+    target: 'defender',
+    effects: {
+    hitMod: -1,
+  },
+  },
+  {
+    id: 'ldr_000002100_unto_the_anvil',
+    label: 'Adrax Agatone — repetir heridas (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, you can re-roll the Wound roll.',
+    factionId: 'SM',
+    leaderDatasheetId: '000002100',
+    effects: {
+    rerollAllWounds: true,
+  },
+  },
+  {
+    id: 'ldr_000002266_psychic_hood',
+    label: 'Librarian — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks.',
+    factionId: 'SM',
+    leaderDatasheetId: '000002266',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  {
+    id: 'ldr_000002468_tactical_precision',
+    label: 'Deathwing Strikemaster — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000002468',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000002530_tactical_precision',
+    label: 'Lieutenant In Phobos Armour — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000002530',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000002677_keep_the_banner_high',
+    label: 'Ancient In Terminator Armour — +1 impactar, +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, add 1 to the Hit roll if that unit is below its Starting Strength, and add 1 to the Wound roll as well if that unit is Below Half-strength.',
+    factionId: 'SM',
+    leaderDatasheetId: '000002677',
+    effects: {
+    hitMod: 1,
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000002713_to_the_last',
+    label: 'Pedro Kantor — +1 impactar, +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, add 1 to the Hit roll if that unit is below its Starting Strength, and add 1 to the Wound roll as well if that unit is Below Half-strength.',
+    factionId: 'SM',
+    leaderDatasheetId: '000002713',
+    effects: {
+    hitMod: 1,
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000002738_sanguinary_priest',
+    label: 'Sanguinary Priest With Jump Pack — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000002738',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000002738_blood_chalice',
+    label: 'Sanguinary Priest With Jump Pack — +1 PA, CàC (Líder)',
+    description: 'While this model is leading a unit, improve the Armour Penetration characteristic of melee weapons equipped by models in that unit by 1.',
+    factionId: 'SM',
+    leaderDatasheetId: '000002738',
+    combatType: 'melee',
+    effects: {
+    apMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000002792_litanies_of_the_devout',
+    label: 'Chaplain Grimaldus — repetir impactos (Líder)',
+    description: 'While this unit is leading a unit and contains a Chaplain Grimaldus model, each time a model in that unit makes a melee attack, you can re-roll the Hit roll.',
+    factionId: 'SM',
+    leaderDatasheetId: '000002792',
+    effects: {
+    rerollAllHits: true,
+  },
+  },
+  {
+    id: 'ldr_000002793_vehement_aggression',
+    label: 'Castellan — repetir impactos 1 (Líder)',
+    description: 'While this model is leading a unit, each time that unit is selected to fight, take a Leadership test for that unit: if passed, until the end of the phase, each time a model in that unit makes an attack, you can re-roll the Hit roll; if failed, until the end of the phase, each time a model in that un',
+    factionId: 'SM',
+    leaderDatasheetId: '000002793',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'ldr_000002796_inspirational_exemplar',
+    label: 'Marshal — crítico 5+ (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, an unmodified Hit roll of 5+ scores a Critical Hit.',
+    factionId: 'SM',
+    leaderDatasheetId: '000002796',
+    effects: {
+    critThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000003833_lost_to_fury',
+    label: 'Death Company Captain with Jump Pack — Sustained Hits 1, CàC (Líder)',
+    description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000003833',
+    combatType: 'melee',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000003872_tactical_instinct',
+    label: 'Watch Captain Artemis — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000003872',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000004129_litany_of_hate',
+    label: 'Wolf Priest — +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Wound roll.',
+    factionId: 'SM',
+    leaderDatasheetId: '000004129',
+    effects: {
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000004130_tempered_ferocity',
+    label: 'Wolf Guard Battle Leader — repetir impactos 1, Sustained Hits 1 (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability and, each time a model in that unit makes an attack that targets an enemy unit within 6", re-roll a Hit roll of 1.',
+    factionId: 'SM',
+    leaderDatasheetId: '000004130',
+    effects: {
+    sustainedHitsBonus: 1,
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'ldr_000004180_litany_of_hate',
+    label: 'Chaplain Kastiel — +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Wound roll.',
+    factionId: 'SM',
+    leaderDatasheetId: '000004180',
+    effects: {
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'aura_000000117_wisdom_of_the_ancients_aura',
+    label: 'Dreadnought — repetir impactos 1 (Aura)',
+    description: 'While a friendly Adeptus Astartes Infantry unit is within 6" of this model, each time a model in that unit makes an attack, re-roll a Hit roll of 1.',
+    factionId: 'SM',
+    sourceDatasheetId: '000000117',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'aura_000000120_wisdom_of_the_ancients_aura',
+    label: 'Venerable Dreadnought (Legendary) — repetir impactos 1 (Aura)',
+    description: 'While a friendly Adeptus Astartes Infantry unit is within 6" of this model, each time a model in that unit makes an attack, re-roll a Hit roll of 1.',
+    factionId: 'SM',
+    sourceDatasheetId: '000000120',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'aura_000000127_master_of_the_forge',
+    label: 'Iron Father Feirros — +1 impactar (Aura)',
+    description: 'In your Command phase, select one friendly ADEPTUS ASTARTES VEHICLE model within 3" of this model. That model regains up to 3 lost wounds and, until the start of your next Command phase, each time that VEHICLE model makes an attack, add 1 to the Hit roll. You cannot select a unit for this ability th',
+    factionId: 'SM',
+    sourceDatasheetId: '000000127',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'aura_000000140_blessing_of_the_omnissiah',
+    label: 'Techmarine — +1 impactar (Aura)',
+    description: 'In your Command phase, you can select one friendly Adeptus Astartes Vehicle model within 3" of this model. That model regains up to D3 lost wounds and, until the start of your next Command phase, each time that Vehicle model makes an attack, add 1 to the Hit roll. Each model can only be selected for',
+    factionId: 'SM',
+    sourceDatasheetId: '000000140',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'aura_000000308_blessing_of_the_omnissiah',
+    label: 'Iron Priest On Thunderwolf — +1 impactar (Aura)',
+    description: 'In your Command phase, you can select one friendly Adeptus Astartes Vehicle model within 3" of this model. That model regains up to D3 lost wounds and, until the start of your next Command phase, each time that VEHICLE model makes an attack, add 1 to the Hit roll. Each model can only be selected for',
+    factionId: 'SM',
+    sourceDatasheetId: '000000308',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'aura_000001527_blessing_of_the_omnissiah',
+    label: 'Techmarine on Bike — +1 impactar (Aura)',
+    description: 'In your Command phase, you can select one friendly Adeptus Astartes Vehicle model within 3" of this model. That model regains up to D3 lost wounds and, until the start of your next Command phase, each time that VEHICLE model makes an attack, add 1 to the Hit roll. Each model can only be selected for',
+    factionId: 'SM',
+    sourceDatasheetId: '000001527',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'aura_000002682_martial_exemplar_aura',
+    label: 'Lion El’jonson — repetir impactos 1, repetir heridas 1 (Aura)',
+    description: 'While a friendly ADEPTUS ASTARTES unit is within 6" of this model, each time a model in that unit makes a melee attack, re-roll a Hit roll of 1 and re-roll a Wound roll of 1.',
+    factionId: 'SM',
+    sourceDatasheetId: '000002682',
+    effects: {
+    rerollHitsOf1: true,
+    rerollWoundsOf1: true,
+  },
+  },
 
   // ═══ TAU ═══
   {
@@ -6451,6 +8431,112 @@ export const MODIFIER_RULES: ModifierRule[] = [
     critThreshold: 5,
   },
   },
+  {
+    id: 'ldr_000000404_failure_is_not_an_option',
+    label: 'Ethereal — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability.',
+    factionId: 'TAU',
+    leaderDatasheetId: '000000404',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000000406_way_of_the_short_blade',
+    label: 'Commander Farsight — +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack that targets an enemy unit within 9", add 1 to the Wound roll.',
+    factionId: 'TAU',
+    leaderDatasheetId: '000000406',
+    effects: {
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000410_structural_analyser',
+    label: 'Darkstrider — +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a ranged attack, add 1 to the Wound roll.',
+    factionId: 'TAU',
+    leaderDatasheetId: '000000410',
+    effects: {
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000001477_crisis_commander',
+    label: 'Commander In Crisis Battlesuit — repetir impactos 1 (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a ranged attack, re-roll a Hit roll of 1.',
+    factionId: 'TAU',
+    leaderDatasheetId: '000001477',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'ldr_000001478_enforcer_commander',
+    label: 'Commander In Enforcer Battlesuit — empeora PA atacante (Líder)',
+    description: 'While this model is leading a unit, each time a ranged attack targets that unit, worsen the Armour Penetration characteristic of that attack by 1.',
+    factionId: 'TAU',
+    leaderDatasheetId: '000001478',
+    target: 'defender',
+    effects: {
+    apMod: -1,
+  },
+  },
+  {
+    id: 'ldr_000003704_ritual_butchery',
+    label: 'Kroot Flesh Shaper — Sustained Hits 1, CàC (Líder)',
+    description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'TAU',
+    leaderDatasheetId: '000003704',
+    combatType: 'melee',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000003704_rites_of_feasting',
+    label: 'Kroot Flesh Shaper — FNP 6+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 6+ ability. If that unit destroys one or more enemy units in the Fight phase, until the end of the battle, models in that unit have the Feel No Pain 5+ ability instead.',
+    factionId: 'TAU',
+    leaderDatasheetId: '000003704',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 6,
+  },
+  },
+  {
+    id: 'aura_000000407_hero_of_the_empire_aura',
+    label: 'Commander Shadowsun — repetir impactos 1 (Aura)',
+    description: 'While a friendly T’AU EMPIRE unit is within 6" of this model, each time a model in that unit makes a ranged attack, re-roll a Hit roll of 1.',
+    factionId: 'TAU',
+    sourceDatasheetId: '000000407',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'aura_000000431_xv02_pilot_battlesuit',
+    label: 'Longstrike — Lethal Hits, disparo (Aura)',
+    description: 'In your Command phase, you can select one friendly Hammerhead Gunship unit within 12". Until the start of your next Command phase, ranged weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'TAU',
+    sourceDatasheetId: '000000431',
+    combatType: 'ranged',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'aura_000001392_baggage_harness_aura',
+    label: 'Great Knarloc — Sustained Hits 1, disparo (Aura)',
+    description: 'While a friendly Kroot unit is within 3" of the bearer, ranged weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'TAU',
+    sourceDatasheetId: '000001392',
+    combatType: 'ranged',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
 
   // ═══ TS ═══
   {
@@ -6599,6 +8685,56 @@ export const MODIFIER_RULES: ModifierRule[] = [
     cpCost: 1,
     effects: {
     woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000001016_empyric_guidance_psychic',
+    label: 'Sorcerer — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'TS',
+    leaderDatasheetId: '000001016',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000001017_empyric_guidance_psychic',
+    label: 'Sorcerer In Terminator Armour — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'TS',
+    leaderDatasheetId: '000001017',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000001472_bestial_prophet',
+    label: 'Tzaangor Shaman — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, add 1 to the Hit roll.',
+    factionId: 'TS',
+    leaderDatasheetId: '000001472',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000002500_malefic_maelstrom_psychic',
+    label: 'Infernal Master — Sustained Hits 1 (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'TS',
+    leaderDatasheetId: '000002500',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'aura_000004124_daemon_lord_of_tzeentch_aura',
+    label: 'Lord of Change — +1 F (Aura)',
+    description: 'While a friendly Scintillating Legions unit is within 6" of this model, each time a model in that unit makes a ranged attack, add 1 to the Strength characteristic of that attack.',
+    factionId: 'TS',
+    sourceDatasheetId: '000004124',
+    effects: {
+    strengthMod: 1,
   },
   },
 
@@ -6904,6 +9040,71 @@ export const MODIFIER_RULES: ModifierRule[] = [
     strengthMod: 2,
   },
   },
+  {
+    id: 'ldr_000000462_alpha_leader',
+    label: 'Old One Eye — repetir impactos (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, you can re-roll the Hit roll.',
+    factionId: 'TYR',
+    leaderDatasheetId: '000000462',
+    effects: {
+    rerollAllHits: true,
+  },
+  },
+  {
+    id: 'ldr_000002688_node_lash_psychic',
+    label: 'Neurotyrant — +1 impactar, +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, add 1 to the Hit roll. If the target is Battle-shocked, add 1 to the Wound roll as well.',
+    factionId: 'TYR',
+    leaderDatasheetId: '000002688',
+    effects: {
+    hitMod: 1,
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000002694_alpha_warrior',
+    label: 'Winged Tyranid Prime — Sustained Hits 1 (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'TYR',
+    leaderDatasheetId: '000002694',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'aura_000000460_onslaught_aura_psychic',
+    label: 'Hive Tyrant — Lethal Hits, disparo (Aura)',
+    description: 'While a friendly TYRANIDS unit is within 6" of this model, ranged weapons equipped by models in that unit have the [ASSAULT] and [LETHAL HITS] abilities.',
+    factionId: 'TYR',
+    sourceDatasheetId: '000000460',
+    combatType: 'ranged',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'aura_000000465_brood_progenitor_aura_psychic',
+    label: 'Tervigon — Lethal Hits, disparo (Aura)',
+    description: 'While a friendly Termagants unit is within 6" of this model, ranged weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'TYR',
+    sourceDatasheetId: '000000465',
+    combatType: 'ranged',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+
+  // ═══ UN ═══
+  {
+    id: 'aura_000002363_drone_commander_aura',
+    label: 'Guardian Drone — +1 impactar (Aura)',
+    description: 'While a friendly Spindle Drones unit is within 6" of this model, each time a model in that unit makes an attack, add 1 to the Hit roll.',
+    factionId: 'UN',
+    sourceDatasheetId: '000002363',
+    effects: {
+    hitMod: 1,
+  },
+  },
 
   // ═══ WE ═══
   {
@@ -7071,6 +9272,38 @@ export const MODIFIER_RULES: ModifierRule[] = [
     cpCost: 1,
     effects: {
     woundMod: -1,
+  },
+  },
+  {
+    id: 'ldr_000002622_legendary_killer',
+    label: 'Khârn The Betrayer — repetir impactos 1, repetir heridas 1 (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, re-roll a Hit roll of 1 and re-roll a Wound roll of 1.',
+    factionId: 'WE',
+    leaderDatasheetId: '000002622',
+    effects: {
+    rerollHitsOf1: true,
+    rerollWoundsOf1: true,
+  },
+  },
+  {
+    id: 'aura_000002630_beacons_of_rage_aura',
+    label: 'Eightbound — +1 impactar, +1 herir (Aura)',
+    description: 'While a friendly WORLD EATERS unit is within 6" of this unit, each time a model in that unit makes a melee attack that targets a unit (excluding MONSTERS and VEHICLES ), add 1 to the Hit roll. If that attack targets a unit (excluding MONSTERS and VEHICLES ) that is Below Half-strength, add 1 to the',
+    factionId: 'WE',
+    sourceDatasheetId: '000002630',
+    effects: {
+    hitMod: 1,
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'aura_000004105_daemon_lord_of_khorne_aura',
+    label: 'Bloodthirster — +1 impactar (Aura)',
+    description: 'While a friendly Blood Legions unit is within 6" of this model, each time a model in that unit makes a melee attack, add 1 to the Hit roll.',
+    factionId: 'WE',
+    sourceDatasheetId: '000004105',
+    effects: {
+    hitMod: 1,
   },
   },
 ]

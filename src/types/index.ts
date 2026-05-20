@@ -204,6 +204,9 @@ export interface ModifierRule {
   description?: string
   factionId?: string
   detachmentId?: string
+  datasheetId?: string        // ability de esta unidad concreta
+  leaderDatasheetId?: string  // ability de un líder adjunto a la unidad
+  sourceDatasheetId?: string  // aura de una unidad de soporte (no adjunta)
   combatType?: CombatType
   target?: 'attacker' | 'defender'
   isStratagem?: boolean

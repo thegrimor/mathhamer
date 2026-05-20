@@ -28,14 +28,14 @@ export default function App() {
     }
   }, [selectedWeapon])
 
-  // Clear modifier selections when faction changes
+  // Clear modifier selections when faction or unit changes
   useEffect(() => {
     setAttackerActiveIds(new Set())
-  }, [leftPanel.selection.factionId])
+  }, [leftPanel.selection.factionId, leftPanel.selection.datasheetId])
 
   useEffect(() => {
     setDefenderActiveIds(new Set())
-  }, [rightPanel.selection.factionId])
+  }, [rightPanel.selection.factionId, rightPanel.selection.datasheetId])
 
   function toggleAttackerModifier(id: string) {
     setAttackerActiveIds(prev => {

@@ -41,13 +41,14 @@ export function UnitPanel({
   }
 
   const visibleRules = useMemo(() => {
-    const { factionId, detachmentId } = panel.selection
+    const { factionId, detachmentId, datasheetId } = panel.selection
     return MODIFIER_RULES.filter(rule => {
       const ruleTarget = rule.target ?? 'attacker'
       if (isAttacker && ruleTarget === 'defender') return false
       if (!isAttacker && ruleTarget === 'attacker') return false
       if (rule.factionId && rule.factionId !== factionId) return false
       if (rule.detachmentId && rule.detachmentId !== detachmentId) return false
+      if (rule.datasheetId && rule.datasheetId !== datasheetId) return false
       if (rule.combatType && rule.combatType !== combatType) return false
       if (rule.id === 'weapon_heavy' && !selectedWeapon?.isHeavy) return false
       return true
