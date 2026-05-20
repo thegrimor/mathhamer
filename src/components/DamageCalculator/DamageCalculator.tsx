@@ -188,7 +188,9 @@ export function DamageCalculator({
             ? ` (ef.${weapon.S + mods.strengthMod + mods.woundMod})`
             : ''}
           {' '}AP:{weapon.AP}
-          {mods.apMod !== 0 ? ` (ef.${weapon.AP - mods.apMod})` : ''}
+          {(mods.apMod !== 0 || mods.saveMod !== 0)
+            ? ` (ef.${Math.min(0, weapon.AP - mods.apMod) - mods.saveMod})`
+            : ''}
           {weapon.isTorrent && ' [Torrent]'}
           {(weapon.isLethalHits || mods.lethalHitsBonus) && ' [Lethal Hits]'}
           {(weapon.sustainedHitsValue + mods.sustainedHitsBonus) > 0

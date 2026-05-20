@@ -138,7 +138,12 @@ export function calculateDamage(
   const avgAttacks  = parseDiceAverage(weapon.A)
   const pHit        = weapon.isTorrent ? 1 : hitProbabilityWithMods(weapon.bsWs, mods)
   const pWound      = woundProbabilityWithMods(weapon.S, defenderModel.T, mods)
-  const effectiveAP = weapon.AP + mods.apMod + mods.saveMod
+  // apMod > 0 = attacker improves AP (more penetrating), < 0 = defender reduces AP (AoC).
+  // Clamp to 0: AP can't become positive (AoC on AP 0 weapon has no further benefit).
+  // saveMod (cover) is applied separately — it directly shifts the save threshold,
+  // so it works even at AP 0 (cover still helps against non-penetrating attacks).
+  const apAdjusted  = Math.min(0, weapon.AP - mods.apMod)
+  const effectiveAP = apAdjusted - mods.saveMod
   const pFailSave   = saveFailProbability(defenderModel.Sv, defenderModel.invSv, effectiveAP)
 
   const CRIT       = 1 / 6
