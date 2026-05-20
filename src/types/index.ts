@@ -174,13 +174,41 @@ export interface Weapon {
   isBlast: boolean
   isDevastatingWounds: boolean
   isLethalHits: boolean
-  sustainedHitsValue: number  // 0 if none; average for dice (D3→2)
+  isHeavy: boolean
+  sustainedHitsValue: number
 }
 
+export type CombatType = 'ranged' | 'melee' | 'any'
+
 export interface CombatModifiers {
-  hitMod: number           // +1 = easier to hit (threshold -1), covers faction rules
+  hitMod: number
   rerollHitsOf1: boolean
   rerollAllHits: boolean
+  critThreshold: number
+  strengthMod: number
+  woundMod: number
+  rerollWoundsOf1: boolean
+  rerollAllWounds: boolean
+  lethalHitsBonus: boolean
+  sustainedHitsBonus: number
+  apMod: number
+  saveMod: number
+  damageMod: number
+  damageReduction: number
+  feelNoPainThreshold: number | null
+}
+
+export interface ModifierRule {
+  id: string
+  label: string
+  description?: string
+  factionId?: string
+  detachmentId?: string
+  combatType?: CombatType
+  target?: 'attacker' | 'defender'
+  isStratagem?: boolean
+  cpCost?: number
+  effects: Partial<CombatModifiers>
 }
 
 export interface Ability {

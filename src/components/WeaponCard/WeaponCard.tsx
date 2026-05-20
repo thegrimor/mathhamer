@@ -21,6 +21,9 @@ export function WeaponCard({ weapon, isSelected, onSelect }: Props) {
   const dFixed = parseFloat(weapon.D)
   const aFixed = parseFloat(weapon.A)
 
+  const hasBadges = weapon.isTorrent || weapon.isBlast || weapon.isDevastatingWounds ||
+    weapon.isLethalHits || weapon.isHeavy || weapon.sustainedHitsValue > 0
+
   return (
     <button
       onClick={() => onSelect(weapon)}
@@ -31,13 +34,13 @@ export function WeaponCard({ weapon, isSelected, onSelect }: Props) {
       }`}
     >
       <div className="flex items-baseline justify-between gap-2">
-        <span className={`text-xs font-mono font-bold truncate ${isSelected ? 'text-gold' : 'text-parchment'}`}>
+        <span className={`text-sm font-mono font-bold truncate ${isSelected ? 'text-gold' : 'text-parchment'}`}>
           {weapon.name}
         </span>
-        <span className="text-[9px] text-parchment-dim font-mono shrink-0">{weapon.range}</span>
+        <span className="text-xs text-parchment-dim font-mono shrink-0">{weapon.range}</span>
       </div>
 
-      <div className="flex flex-wrap gap-x-3 gap-y-0.5 mt-1 text-[10px] font-mono text-parchment-dim">
+      <div className="flex flex-wrap gap-x-3 gap-y-0.5 mt-1 text-xs font-mono text-parchment-dim">
         <span title="Ataques">
           A:{weapon.A}{!isNaN(aFixed) && avgA !== aFixed ? ` (≈${avgA.toFixed(1)})` : ''}
         </span>
@@ -49,12 +52,14 @@ export function WeaponCard({ weapon, isSelected, onSelect }: Props) {
         </span>
       </div>
 
-      {(weapon.isTorrent || weapon.isBlast || weapon.isDevastatingWounds || weapon.isLethalHits) && (
+      {hasBadges && (
         <div className="flex gap-1 mt-1 flex-wrap">
-          {weapon.isTorrent          && <Badge label="Torrent" />}
-          {weapon.isBlast            && <Badge label="Blast" />}
+          {weapon.isTorrent           && <Badge label="Torrent" />}
+          {weapon.isBlast             && <Badge label="Blast" />}
           {weapon.isDevastatingWounds && <Badge label="Dev. Wounds" />}
-          {weapon.isLethalHits       && <Badge label="Lethal Hits" />}
+          {weapon.isLethalHits        && <Badge label="Lethal Hits" />}
+          {weapon.isHeavy             && <Badge label="Heavy" />}
+          {weapon.sustainedHitsValue > 0 && <Badge label={`Sustained ${weapon.sustainedHitsValue}`} />}
         </div>
       )}
     </button>
