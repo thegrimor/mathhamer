@@ -65,10 +65,17 @@ export default function App() {
     rightPanel.selection.detachmentId,
   )
 
-  // Merge: defender contributes saveMod (e.g. cover) into the final modifier set
+  // Merge: defender contributes penalty modifiers (saves, hit penalty, T bonus, damage reduction, FNP)
   const mods = {
     ...attackerMods,
+    hitMod: attackerMods.hitMod + defenderMods.hitMod,
+    woundMod: attackerMods.woundMod + defenderMods.woundMod,
     saveMod: attackerMods.saveMod + defenderMods.saveMod,
+    damageReduction: attackerMods.damageReduction + defenderMods.damageReduction,
+    feelNoPainThreshold:
+      defenderMods.feelNoPainThreshold !== null
+        ? defenderMods.feelNoPainThreshold
+        : attackerMods.feelNoPainThreshold,
   }
 
   const effectiveDefenderModel = defenderModel ?? rightPanel.selectedUnit?.models[0] ?? null

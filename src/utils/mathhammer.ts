@@ -84,6 +84,7 @@ export const DEFAULT_MODS: CombatModifiers = {
   woundMod: 0,
   apMod: 0,
   saveMod: 0,
+  damageReduction: 0,
   feelNoPainThreshold: null,
 }
 
@@ -113,6 +114,7 @@ export function resolveModifiers(
     if (e.woundMod !== undefined)           result.woundMod += e.woundMod
     if (e.apMod !== undefined)              result.apMod += e.apMod
     if (e.saveMod !== undefined)            result.saveMod += e.saveMod
+    if (e.damageReduction !== undefined)    result.damageReduction += e.damageReduction
     if (e.feelNoPainThreshold != null) {
       result.feelNoPainThreshold = result.feelNoPainThreshold === null
         ? e.feelNoPainThreshold
@@ -147,7 +149,15 @@ export function calculateDamage(
   const pFailSave = saveFailProbability(
     defenderModel.Sv, defenderModel.invSv, weapon.AP, mods.apMod, mods.saveMod,
   )
-  const avgDmgPerWound = parseDiceAverage(weapon.D)
+
+  const rawDmg = parseDiceAverage(weapon.D)
+  const avgDmgPerWound = mods.damageReduction > 0
+    ? Math.max(rawDmg - mods.damageReduction, 1)
+    : rawDmg
+
+  const fnpP = mods.feelNoPainThreshold !== null
+    ? Math.max(1 / 6, Math.min(5 / 6, (7 - mods.feelNoPainThreshold) / 6))
+    : 0
 
   const sustainedExtraHits = effectiveSustained > 0 ? avgAttacks * CRIT_P * effectiveSustained : 0
 
@@ -167,7 +177,7 @@ export function calculateDamage(
   }
 
   const expectedFailedSaves = expectedWounds * pFailSave
-  const expectedTotalDamage  = expectedFailedSaves * avgDmgPerWound
+  const expectedTotalDamage  = expectedFailedSaves * avgDmgPerWound * (1 - fnpP)
 
   return {
     weaponName: weapon.name,

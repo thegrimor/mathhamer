@@ -193,6 +193,7 @@ export interface CombatModifiers {
   woundMod: number                // shifts effective S for wound (positive = easier to wound)
   apMod: number                   // additional AP (positive = better penetration)
   saveMod: number                 // shift save threshold (positive = harder save for defender)
+  damageReduction: number         // subtract from each wound's damage (min 1 per wound)
   feelNoPainThreshold: number | null
 }
 
@@ -204,6 +205,8 @@ export interface ModifierRule {
   detachmentId?: string
   combatType?: CombatType
   target?: 'attacker' | 'defender'  // default 'attacker'
+  isStratagem?: boolean
+  cpCost?: number
   effects: Partial<CombatModifiers>
 }
 
