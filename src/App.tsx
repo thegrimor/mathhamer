@@ -4,6 +4,7 @@ import { usePanelState } from '@/hooks/usePanelState'
 import { UnitPanel } from '@/components/UnitPanel/UnitPanel'
 import { DamageCalculator } from '@/components/DamageCalculator/DamageCalculator'
 import { resolveModifiers } from '@/utils/mathhammer'
+import { MODIFIER_RULES } from '@/data/modifiers'
 import type { Weapon, ModelProfile, CombatType } from '@/types'
 
 type MobileTab = 'attacker' | 'result' | 'defender'
@@ -52,18 +53,8 @@ export default function App() {
     })
   }
 
-  const attackerMods = resolveModifiers(
-    attackerActiveIds,
-    selectedWeapon,
-    leftPanel.selection.factionId,
-    leftPanel.selection.detachmentId,
-  )
-  const defenderMods = resolveModifiers(
-    defenderActiveIds,
-    null,
-    rightPanel.selection.factionId,
-    rightPanel.selection.detachmentId,
-  )
+  const attackerMods = resolveModifiers(Array.from(attackerActiveIds), MODIFIER_RULES)
+  const defenderMods = resolveModifiers(Array.from(defenderActiveIds), MODIFIER_RULES)
 
   // Merge: defender contributes penalty modifiers into the attacker's calculation
   const mods = {

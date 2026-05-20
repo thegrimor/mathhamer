@@ -64,7 +64,7 @@ export function DamageCalculator({
 }: Props) {
   const hasActiveMods =
     mods.hitMod !== 0 || mods.rerollHitsOf1 || mods.rerollAllHits ||
-    mods.critThreshold !== 6 || mods.sustainedHitsBonus !== 0 || mods.lethalHitsBonus ||
+    mods.sustainedHitsBonus !== 0 || mods.lethalHitsBonus ||
     mods.strengthMod !== 0 || mods.rerollWoundsOf1 || mods.rerollAllWounds ||
     mods.woundMod !== 0 || mods.apMod !== 0 || mods.saveMod !== 0
 
