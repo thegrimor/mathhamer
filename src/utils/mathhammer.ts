@@ -63,6 +63,7 @@ export const DEFAULT_MODS: CombatModifiers = {
   hitMod: 0,
   rerollHitsOf1: false,
   rerollAllHits: false,
+  critThreshold: 6,
   strengthMod: 0,
   woundMod: 0,
   rerollWoundsOf1: false,
@@ -95,6 +96,7 @@ export function resolveModifiers(activeIds: string[], rules: ModifierRule[]): Co
     if (e.rerollAllWounds)     result.rerollAllWounds      = true
     if (e.lethalHitsBonus)     result.lethalHitsBonus      = true
     if (e.sustainedHitsBonus)  result.sustainedHitsBonus   = Math.max(result.sustainedHitsBonus, e.sustainedHitsBonus)
+    if (e.critThreshold != null) result.critThreshold      = Math.min(result.critThreshold, e.critThreshold)
     if (e.feelNoPainThreshold != null) {
       result.feelNoPainThreshold = result.feelNoPainThreshold === null
         ? e.feelNoPainThreshold
@@ -123,6 +125,7 @@ export function mergeMods(
     rerollAllWounds:    base.rerollAllWounds    || attackerRuleMods.rerollAllWounds,
     lethalHitsBonus:    base.lethalHitsBonus    || attackerRuleMods.lethalHitsBonus,
     sustainedHitsBonus: Math.max(base.sustainedHitsBonus, attackerRuleMods.sustainedHitsBonus),
+    critThreshold:      Math.min(base.critThreshold, attackerRuleMods.critThreshold),
     feelNoPainThreshold:
       defenderRuleMods.feelNoPainThreshold !== null
         ? defenderRuleMods.feelNoPainThreshold
@@ -146,7 +149,7 @@ export function calculateDamage(
   const effectiveAP = apAdjusted - mods.saveMod
   const pFailSave   = saveFailProbability(defenderModel.Sv, defenderModel.invSv, effectiveAP)
 
-  const CRIT       = 1 / 6
+  const CRIT       = (7 - mods.critThreshold) / 6   // 1/6 normally, 2/6 when crits on 5+
   const isLethal   = weapon.isLethalHits || mods.lethalHitsBonus
   const sustainedX = weapon.sustainedHitsValue + mods.sustainedHitsBonus
   const sustainedExtraHits = sustainedX > 0 ? avgAttacks * CRIT * sustainedX : 0

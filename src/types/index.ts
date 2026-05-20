@@ -184,6 +184,7 @@ export interface CombatModifiers {
   hitMod: number
   rerollHitsOf1: boolean
   rerollAllHits: boolean
+  critThreshold: number
   strengthMod: number
   woundMod: number
   rerollWoundsOf1: boolean
