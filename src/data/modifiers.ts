@@ -6,7 +6,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
 
   // ═══ Adeptus Custodes (AC) ═══
   { id: 'ac_martial_mastery', label: "Martial Mastery", factionId: 'AC', detachmentId: '000000765', target: 'attacker', effects: { apMod: 1 } },
-  { id: 'ac_revered_companions', label: "Revered Companions", factionId: 'AC', detachmentId: '000000861', target: 'defender', effects: { hitMod: 1, feelNoPainThreshold: 5 } },
+  { id: 'ac_revered_companions', label: "Revered Companions", factionId: 'AC', detachmentId: '000000861', target: 'defender', effects: { hitMod: -1, feelNoPainThreshold: 5 } },
   { id: 'ac_priority_quarry', label: "Priority Quarry", factionId: 'AC', detachmentId: '000000910', target: 'attacker', effects: { rerollHitsOf1: true } },
   { id: 'ac_auric_armour', label: "Auric Armour", factionId: 'AC', detachmentId: '000000986', target: 'attacker', effects: { rerollHitsOf1: true, rerollWoundsOf1: true } },
   { id: 'ac_against_all_odds', label: "Against All Odds", factionId: 'AC', detachmentId: '000001029', target: 'attacker', effects: { hitMod: 1 } },
@@ -17,7 +17,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   { id: 'ac_s_blades_of_the_vigilators', label: "BLADES OF THE VIGILATORS", factionId: 'AC', detachmentId: '000000910', isStratagem: true, cpCost: 1, target: 'defender', combatType: 'melee', effects: { woundMod: -1 } },
   { id: 'ac_s_anathema_blademastery', label: "ANATHEMA BLADEMASTERY", factionId: 'AC', detachmentId: '000000862', isStratagem: true, cpCost: 1, target: 'attacker', combatType: 'melee', effects: { rerollAllHits: true, rerollAllWounds: true } },
   { id: 'ac_s_witch_hunters', label: "WITCH HUNTERS", factionId: 'AC', detachmentId: '000000862', isStratagem: true, cpCost: 1, target: 'attacker', effects: { lethalHitsBonus: true, sustainedHitsBonus: 1 } },
-  { id: 'ac_s_psy_chaff_volley', label: "PSY-CHAFF VOLLEY", factionId: 'AC', detachmentId: '000000862', isStratagem: true, cpCost: 1, target: 'defender', combatType: 'ranged', effects: { hitMod: -1, apMod: 1 } },
+  { id: 'ac_s_psy_chaff_volley', label: "PSY-CHAFF VOLLEY", factionId: 'AC', detachmentId: '000000862', isStratagem: true, cpCost: 1, target: 'defender', combatType: 'ranged', effects: { hitMod: -1, apMod: -1 } },
   { id: 'ac_s_archeotech_munitions', label: "ARCHEOTECH MUNITIONS", factionId: 'AC', detachmentId: '000000765', isStratagem: true, cpCost: 1, target: 'attacker', combatType: 'ranged', effects: { lethalHitsBonus: true, sustainedHitsBonus: 1 } },
   { id: 'ac_s_arcane_genetic_alchemy', label: "ARCANE GENETIC ALCHEMY", factionId: 'AC', detachmentId: '000000765', isStratagem: true, cpCost: 1, target: 'defender', effects: { feelNoPainThreshold: 4 } },
   { id: 'ac_s_unwavering_sentinels', label: "UNWAVERING SENTINELS", factionId: 'AC', detachmentId: '000000765', isStratagem: true, cpCost: 1, target: 'defender', combatType: 'melee', effects: { hitMod: -1 } },
@@ -417,7 +417,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   { id: 'sm_master_of_wolves', label: "Master of Wolves", factionId: 'SM', detachmentId: '000001126', target: 'attacker', effects: { hitMod: 1, lethalHitsBonus: true, sustainedHitsBonus: 1 } },
   { id: 'sm_interlocking_tactics', label: "Interlocking Tactics", factionId: 'SM', detachmentId: '000001130', target: 'attacker', effects: { rerollHitsOf1: true } },
   { id: 'sm_rapid_drop_deployment', label: "Rapid-drop Deployment", factionId: 'SM', detachmentId: '000001131', target: 'attacker', effects: { rerollHitsOf1: true, rerollWoundsOf1: true } },
-  { id: 'sm_oath_of_reclamation', label: "Oath of Reclamation", factionId: 'SM', detachmentId: '000001132', target: 'defender', effects: { woundMod: -1, apMod: 1 } },
+  { id: 'sm_oath_of_reclamation', label: "Oath of Reclamation", factionId: 'SM', detachmentId: '000001132', target: 'defender', effects: { woundMod: -1, apMod: -1 } },
   { id: 'sm_focused_response', label: "Focused Response", factionId: 'SM', detachmentId: '000001139', target: 'defender', effects: { hitMod: -1 } },
   { id: 'sm_adaptive_defence', label: "Adaptive Defence", factionId: 'SM', detachmentId: '000001146', target: 'attacker', effects: { rerollHitsOf1: true, rerollWoundsOf1: true } },
   { id: 'sm_s_heroes_of_the_chapter', label: "HEROES OF THE CHAPTER", factionId: 'SM', detachmentId: '000000798', isStratagem: true, cpCost: 1, target: 'attacker', effects: { hitMod: 1 } },
