@@ -1415,8 +1415,8 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'adm_protector_doctrina',
-    label: 'Doctrina Protectora — +1 impactar (disparo)',
-    description: 'Protector Imperative: Improve the Ballistic Skill characteristic of ranged weapons by 1 (ranged weapons also gain [HEAVY]).',
+    label: 'Doctrina Protectora — [HEAVY] +1 impactar, disparo',
+    description: 'Protector Imperative: ranged weapons gain [HEAVY] and +1 BS (Ballistic Skill).',
     factionId: 'AdM',
     combatType: 'ranged',
     effects: {
@@ -1425,8 +1425,8 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'adm_protector_doctrina_def',
-    label: 'Doctrina Protectora — −1 impactar contra unidad (defensor, CàC)',
-    description: 'Protector Imperative: Each time a melee attack targets this BATTLELINE unit (or within 6" of friendly AdM BATTLELINE), subtract 1 from the Hit roll.',
+    label: 'Doctrina Protectora — −1 impactar melee recibido (posición Battleline)',
+    description: 'Protector Imperative (conditional): Each time a melee attack targets this unit, if this unit is BATTLELINE or within 6" of friendly AdM BATTLELINE, subtract 1 from the Hit roll.',
     factionId: 'AdM',
     combatType: 'melee',
     target: 'defender',
@@ -1436,8 +1436,8 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'adm_conqueror_doctrina',
-    label: 'Doctrina Conquistadora — +1 impactar (CàC)',
-    description: 'Conqueror Imperative: Improve the Weapon Skill characteristic of melee weapons by 1.',
+    label: 'Doctrina Conquistadora — [ASSAULT] +1 impactar, CàC',
+    description: 'Conqueror Imperative: ranged weapons gain [ASSAULT] and melee weapons get +1 WS (Weapon Skill).',
     factionId: 'AdM',
     combatType: 'melee',
     effects: {
@@ -1446,8 +1446,8 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'adm_conqueror_doctrina_ap',
-    label: 'Doctrina Conquistadora — +1 PA (CàC, Battleline)',
-    description: 'Conqueror Imperative: Each time a BATTLELINE model makes an attack (or within 6" of friendly AdM BATTLELINE), improve the Armour Penetration characteristic by 1.',
+    label: 'Doctrina Conquistadora — +1 PA, CàC (posición Battleline)',
+    description: 'Conqueror Imperative (conditional): if this unit is BATTLELINE or within 6" of friendly AdM BATTLELINE, improve the Armour Penetration of melee attacks by 1.',
     factionId: 'AdM',
     combatType: 'melee',
     effects: {
