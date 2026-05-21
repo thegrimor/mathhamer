@@ -9350,6 +9350,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   { id: 'opb_000000571_asurmen', label: '[OPB] Asurmen — crítico 4+ (Devastating Wounds)', factionId: 'AE', leaderDatasheetId: '000000571', effects: { critThreshold: 4 } },
   { id: 'opb_000002538_solitaire_ae', label: '[OPB] Solitaire — +3 ataques', factionId: 'AE', leaderDatasheetId: '000002538', effects: { attacksMod: 3 } },
   { id: 'opb_000000714_harker', label: '[OPB] Sergeant Harker — +6 ataques, Sustained +3', factionId: 'AM', leaderDatasheetId: '000000714', effects: { attacksMod: 6, sustainedHitsBonus: 3 } },
+  { id: 'opb_000000899_canoness', label: '[OPB] Canoness — Inv 2+ (Defensor)', factionId: 'AS', leaderDatasheetId: '000000899', target: 'defender', effects: { feelNoPainThreshold: 2 } },
   { id: 'opb_000003714_canoness_jp', label: '[OPB] Canoness con Jump Pack — +3 ataques, crítico 5+', factionId: 'AS', leaderDatasheetId: '000003714', effects: { attacksMod: 3, critThreshold: 5 } },
   { id: 'opb_000003811_aveline', label: '[OPB] Celestian Sacresant Aveline — +3 ataques, crítico 5+', factionId: 'AS', leaderDatasheetId: '000003811', effects: { attacksMod: 3, critThreshold: 5 } },
   { id: 'opb_000001580_manipulus', label: '[OPB] Tech-priest Manipulus — FNP 4+ (Invuln)', factionId: 'AdM', leaderDatasheetId: '000001580', target: 'defender', effects: { feelNoPainThreshold: 4 } },
