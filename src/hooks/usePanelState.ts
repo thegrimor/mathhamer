@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
 import type { GameData, PanelSelection, Datasheet, Detachment, DetachmentAbility, Stratagem } from '@/types'
+import { MODIFIER_RULES } from '@/data/modifiers'
 
 export interface PanelState {
   selection: PanelSelection
@@ -45,9 +46,16 @@ export function usePanelState(gameData: GameData): PanelState {
 
   const availableCharacters = useMemo(() => {
     if (!selectedUnit) return []
-    return selectedUnit.leaderFooter
+    const factionId = selectedUnit.factionId
+    const leaderIds = new Set(
+      MODIFIER_RULES
+        .filter(r => r.leaderDatasheetId && r.factionId === factionId)
+        .map(r => r.leaderDatasheetId!)
+    )
+    return [...leaderIds]
       .map(id => gameData.datasheets.find(ds => ds.id === id))
       .filter((ds): ds is Datasheet => ds !== undefined)
+      .sort((a, b) => a.name.localeCompare(b.name))
   }, [gameData.datasheets, selectedUnit])
 
   const detachmentAbilities = useMemo(

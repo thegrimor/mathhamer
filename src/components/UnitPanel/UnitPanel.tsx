@@ -49,6 +49,7 @@ export function UnitPanel({
       if (rule.factionId && rule.factionId !== factionId) return false
       if (rule.detachmentId && rule.detachmentId !== detachmentId) return false
       if (rule.datasheetId && rule.datasheetId !== datasheetId) return false
+      if (rule.leaderDatasheetId && rule.leaderDatasheetId !== panel.selection.characterId) return false
       if (rule.combatType && rule.combatType !== combatType) return false
       if (rule.id === 'weapon_heavy' && !selectedWeapon?.isHeavy) return false
       return true

@@ -1401,6 +1401,36 @@ export const MODIFIER_RULES: ModifierRule[] = [
 
   // ═══ AdM ═══
   {
+    id: 'adm_cawl_machine_vengeance',
+    label: 'Cawl — Venganza Máquina (re-roll impactar)',
+    description: 'Invocation of Machine Vengeance: Each time a model in a friendly ADEPTUS MECHANICUS unit makes an attack that targets your Machine Vengeance target, you can re-roll the Hit roll.',
+    factionId: 'AdM',
+    sourceDatasheetId: '000000838',
+    effects: {
+    rerollAllHits: true,
+  },
+  },
+  {
+    id: 'adm_protector_doctrina',
+    label: 'Doctrina Protectora — repetir impactos 1 (disparo)',
+    description: 'Protector Imperative active: each time a model in a Skitarii unit makes a ranged attack, re-roll a Hit roll of 1.',
+    factionId: 'AdM',
+    combatType: 'ranged',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'adm_conqueror_doctrina',
+    label: 'Doctrina Conquistadora — repetir heridas 1 (CàC)',
+    description: 'Conqueror Imperative active: each time a model in a Skitarii unit makes a melee attack, re-roll a Wound roll of 1.',
+    factionId: 'AdM',
+    combatType: 'melee',
+    effects: {
+    rerollWoundsOf1: true,
+  },
+  },
+  {
     id: 'adm_benedictions_of_the_omnissiah',
     label: 'Benedictions Of The Omnissiah — +1 PA, CàC',
     description: 'At the start of the first battle round, select one of the following Benedictions of the Omnissiah to be active for CULT MECHANICUS units from your army until the end of the battle: Panegyric Procession Each time a CULT MECHANICUS model from your army makes a ranged attack that targets a unit within',
@@ -5893,6 +5923,24 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
 
   // ═══ SM ═══
+  {
+    id: 'sm_oath_of_moment',
+    label: 'Juramento del Momento — re-roll impactar',
+    description: 'Army rule: at the start of your Command phase, select one enemy unit as your Oath of Moment target. Each time a model with this ability makes an attack that targets that unit, you can re-roll the Hit roll.',
+    factionId: 'SM',
+    effects: {
+    rerollAllHits: true,
+  },
+  },
+  {
+    id: 'sm_oath_of_moment_wound',
+    label: 'Juramento del Momento — re-roll herir (destacamento Codex)',
+    description: 'Army rule (Codex SM detachment only): add 1 to the Wound roll against your Oath of Moment target.',
+    factionId: 'SM',
+    effects: {
+    rerollAllWounds: true,
+  },
+  },
   {
     id: 'sm_red_thirst',
     label: 'Red Thirst — +2 F, CàC',
