@@ -5,6 +5,8 @@ interface Props {
   weapon: Weapon
   isSelected: boolean
   onSelect: (w: Weapon) => void
+  heavyModActive?: boolean
+  onHeavyToggle?: () => void
 }
 
 function Badge({ label }: { label: string }) {
@@ -15,7 +17,7 @@ function Badge({ label }: { label: string }) {
   )
 }
 
-export function WeaponCard({ weapon, isSelected, onSelect }: Props) {
+export function WeaponCard({ weapon, isSelected, onSelect, heavyModActive, onHeavyToggle }: Props) {
   const avgD = parseDiceAverage(weapon.D)
   const avgA = parseDiceAverage(weapon.A)
   const dFixed = parseFloat(weapon.D)
@@ -53,13 +55,25 @@ export function WeaponCard({ weapon, isSelected, onSelect }: Props) {
       </div>
 
       {hasBadges && (
-        <div className="flex gap-1 mt-1 flex-wrap">
+        <div className="flex gap-1 mt-1 flex-wrap items-center">
           {weapon.isTorrent           && <Badge label="Torrent" />}
           {weapon.isBlast             && <Badge label="Blast" />}
           {weapon.isDevastatingWounds && <Badge label="Dev. Wounds" />}
           {weapon.isLethalHits        && <Badge label="Lethal Hits" />}
           {weapon.isHeavy             && <Badge label="Heavy" />}
           {weapon.sustainedHitsValue > 0 && <Badge label={`Sustained ${weapon.sustainedHitsValue}`} />}
+          {weapon.isHeavy && onHeavyToggle && (
+            <button
+              onClick={e => { e.stopPropagation(); onHeavyToggle() }}
+              className={`text-[8px] px-1.5 py-0.5 border font-mono transition-colors ${
+                heavyModActive
+                  ? 'border-crimson text-crimson bg-crimson/10'
+                  : 'border-rim-bright text-parchment-dim hover:border-gold/50'
+              }`}
+            >
+              {heavyModActive ? '▶ Movido (−1)' : '○ Se movió'}
+            </button>
+          )}
         </div>
       )}
     </button>

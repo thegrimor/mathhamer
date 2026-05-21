@@ -1,5 +1,21 @@
 import type { Weapon, ModelProfile, DamageBreakdown, CombatModifiers, ModifierRule } from '@/types'
 
+export function parseDiceAverageWithReroll(expr: string, rerollAll: boolean, rerollOf1: boolean): number {
+  const base = parseDiceAverage(expr)
+  if (!rerollAll && !rerollOf1) return base
+  const s = expr.trim().toUpperCase()
+  const match = s.match(/^(\d*)D(\d+)([+-]\d+)?$/)
+  if (!match) return base  // fixed damage value, reroll irrelevant
+  const coeff = match[1] ? parseInt(match[1]) : 1
+  const faces = parseInt(match[2])
+  const bonus = match[3] ? parseInt(match[3]) : 0
+  const baseAvg = (1 + faces) / 2
+  // E[max(X,Y)] = (faces+1)*(4*faces-1) / (6*faces)
+  if (rerollAll) return coeff * (faces + 1) * (4 * faces - 1) / (6 * faces) + bonus
+  // E[X | reroll 1s] = baseAvg + (baseAvg - 1) / faces
+  return coeff * (baseAvg + (baseAvg - 1) / faces) + bonus
+}
+
 export function parseDiceAverage(expr: string): number {
   const s = expr.trim().toUpperCase()
   const match = s.match(/^(\d*)D(\d+)([+-]\d+)?$/)
@@ -72,8 +88,11 @@ export const DEFAULT_MODS: CombatModifiers = {
   sustainedHitsBonus: 0,
   apMod: 0,
   saveMod: 0,
+  attacksMod: 0,
   damageMod: 0,
   damageReduction: 0,
+  rerollDamageOf1: false,
+  rerollAllDamage: false,
   feelNoPainThreshold: null,
 }
 
@@ -88,12 +107,15 @@ export function resolveModifiers(activeIds: string[], rules: ModifierRule[]): Co
     if (e.apMod)               result.apMod               += e.apMod
     if (e.saveMod)             result.saveMod             += e.saveMod
     if (e.strengthMod)         result.strengthMod         += e.strengthMod
+    if (e.attacksMod)          result.attacksMod          += e.attacksMod
     if (e.damageMod)           result.damageMod           += e.damageMod
     if (e.damageReduction)     result.damageReduction     += e.damageReduction
     if (e.rerollHitsOf1)       result.rerollHitsOf1        = true
     if (e.rerollAllHits)       result.rerollAllHits        = true
     if (e.rerollWoundsOf1)     result.rerollWoundsOf1      = true
     if (e.rerollAllWounds)     result.rerollAllWounds      = true
+    if (e.rerollDamageOf1)     result.rerollDamageOf1      = true
+    if (e.rerollAllDamage)     result.rerollAllDamage      = true
     if (e.lethalHitsBonus)     result.lethalHitsBonus      = true
     if (e.sustainedHitsBonus)  result.sustainedHitsBonus   = Math.max(result.sustainedHitsBonus, e.sustainedHitsBonus)
     if (e.critThreshold != null) result.critThreshold      = Math.min(result.critThreshold, e.critThreshold)
@@ -117,12 +139,15 @@ export function mergeMods(
     apMod:              base.apMod              + attackerRuleMods.apMod              + defenderRuleMods.apMod,
     saveMod:            base.saveMod            + attackerRuleMods.saveMod            + defenderRuleMods.saveMod,
     strengthMod:        base.strengthMod        + attackerRuleMods.strengthMod        + defenderRuleMods.strengthMod,
+    attacksMod:         base.attacksMod         + attackerRuleMods.attacksMod,
     damageMod:          base.damageMod          + attackerRuleMods.damageMod          + defenderRuleMods.damageMod,
     damageReduction:    base.damageReduction    + attackerRuleMods.damageReduction    + defenderRuleMods.damageReduction,
     rerollHitsOf1:      base.rerollHitsOf1      || attackerRuleMods.rerollHitsOf1,
     rerollAllHits:      base.rerollAllHits      || attackerRuleMods.rerollAllHits,
     rerollWoundsOf1:    base.rerollWoundsOf1    || attackerRuleMods.rerollWoundsOf1,
     rerollAllWounds:    base.rerollAllWounds    || attackerRuleMods.rerollAllWounds,
+    rerollDamageOf1:    base.rerollDamageOf1    || attackerRuleMods.rerollDamageOf1,
+    rerollAllDamage:    base.rerollAllDamage    || attackerRuleMods.rerollAllDamage,
     lethalHitsBonus:    base.lethalHitsBonus    || attackerRuleMods.lethalHitsBonus,
     sustainedHitsBonus: Math.max(base.sustainedHitsBonus, attackerRuleMods.sustainedHitsBonus),
     critThreshold:      Math.min(base.critThreshold, attackerRuleMods.critThreshold),
@@ -138,7 +163,7 @@ export function calculateDamage(
   defenderModel: ModelProfile,
   mods: CombatModifiers = DEFAULT_MODS,
 ): DamageBreakdown {
-  const avgAttacks  = parseDiceAverage(weapon.A)
+  const avgAttacks  = parseDiceAverage(weapon.A) + mods.attacksMod
   const pHit        = weapon.isTorrent ? 1 : hitProbabilityWithMods(weapon.bsWs, mods)
   const pWound      = woundProbabilityWithMods(weapon.S, defenderModel.T, mods)
   // apMod > 0 = attacker improves AP (more penetrating), < 0 = defender reduces AP (AoC).
@@ -170,7 +195,7 @@ export function calculateDamage(
   }
 
   const expectedFailedSaves = expectedWounds * pFailSave
-  const rawDmg        = parseDiceAverage(weapon.D) + mods.damageMod
+  const rawDmg        = parseDiceAverageWithReroll(weapon.D, mods.rerollAllDamage, mods.rerollDamageOf1) + mods.damageMod
   const avgDmgPerWound = mods.damageReduction > 0
     ? Math.max(rawDmg - mods.damageReduction, 1)
     : rawDmg
@@ -192,5 +217,7 @@ export function calculateDamage(
     expectedFailedSaves,
     avgDamagePerWound: avgDmgPerWound,
     expectedTotalDamage,
+    expectedKills: expectedTotalDamage / (defenderModel.W || 1),
+    effectiveAP: effectiveAP,
   }
 }

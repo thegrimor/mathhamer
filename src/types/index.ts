@@ -193,8 +193,11 @@ export interface CombatModifiers {
   sustainedHitsBonus: number
   apMod: number
   saveMod: number
+  attacksMod: number
   damageMod: number
   damageReduction: number
+  rerollDamageOf1: boolean
+  rerollAllDamage: boolean
   feelNoPainThreshold: number | null
 }
 
@@ -285,4 +288,6 @@ export interface DamageBreakdown {
   expectedFailedSaves: number
   avgDamagePerWound: number
   expectedTotalDamage: number
+  expectedKills: number
+  effectiveAP: number
 }
