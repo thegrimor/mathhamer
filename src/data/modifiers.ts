@@ -9382,5 +9382,13 @@ export const MODIFIER_RULES: ModifierRule[] = [
 
   // ── Estratagemas de re-roll de daño ─────────────────────────────────────────
   { id: 'strat_command_reroll_damage', label: 'Command Re-Roll — re-roll dado de daño (1CP)', isStratagem: true, cpCost: 1, effects: { rerollDamageOf1: true } },
-  { id: 'ae_soulsight', label: 'SOULSIGHT — repetir impactos/heridas/daño (AE 1CP)', isStratagem: true, cpCost: 1, factionId: 'AE', detachmentId: '000000786', effects: { rerollAllHits: true, rerollAllWounds: true, rerollAllDamage: true } },
+
+  // ── AE Armoured Warhost (000000990) — estrat completo ───────────────────────
+  { id: 'ae_soulsight_warhost', label: 'SOULSIGHT — repetir 1 impacto/1 herida/1 daño, disparo (AE Warhost, 1CP)', description: 'Armoured Warhost: Until the end of the phase, each time your unit is selected to shoot, you can re-roll one Hit roll, one Wound roll and one Damage roll made for a model in your unit.', factionId: 'AE', detachmentId: '000000990', combatType: 'ranged', isStratagem: true, cpCost: 1, effects: { rerollHitsOf1: true, rerollWoundsOf1: true, rerollDamageOf1: true } },
+  { id: 'ae_layered_wards', label: 'LAYERED WARDS — FNP 5+ vs heridas mortales (AE Warhost, 1CP)', description: 'Armoured Warhost: Until the end of the phase, models in your unit have the Feel No Pain 5+ ability against mortal wounds.', factionId: 'AE', detachmentId: '000000990', isStratagem: true, cpCost: 1, target: 'defender', effects: { feelNoPainThreshold: 5 } },
+
+  // ── AdM Cohort Cybernetica (000000823) ──────────────────────────────────────
+  { id: 'adm_auto_divinatory', label: 'AUTO-DIVINATORY TARGETING — BS 3+ e ignora cobertura, disparo (AdM Cybernetica, 1CP)', description: 'Cohort Cybernetica: Until the start of your next Command phase, ranged weapons equipped by models in your unit have a Ballistic Skill characteristic of 3+ and the [IGNORES COVER] ability.', factionId: 'AdM', detachmentId: '000000823', combatType: 'ranged', isStratagem: true, cpCost: 1, effects: { hitMod: 1 } },
+  { id: 'adm_benevolence', label: 'BENEVOLENCE OF THE OMNISSIAH — FNP 6+ (AdM Cybernetica, 1CP)', description: 'Cohort Cybernetica: Until the start of your next Command phase, models in your unit have the Feel No Pain 6+ ability.', factionId: 'AdM', detachmentId: '000000823', isStratagem: true, cpCost: 1, target: 'defender', effects: { feelNoPainThreshold: 6 } },
+  { id: 'adm_machine_spirit_resurgent', label: 'MACHINE SPIRIT RESURGENT — repetir todos los impactos (AdM Cybernetica, 1CP)', description: 'Cohort Cybernetica: Until the start of your next Command phase, each time a model in your unit makes an attack, you can re-roll the Hit roll. If your unit is Below Half-strength, you can re-roll the Wound roll as well.', factionId: 'AdM', detachmentId: '000000823', isStratagem: true, cpCost: 1, effects: { rerollAllHits: true } },
 ]
