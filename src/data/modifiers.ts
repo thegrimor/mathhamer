@@ -818,6 +818,9 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
 
   // ═══ AM ═══
+  // Voice of Command: órdenes del Oficial a unidades INFANTRY/CAVALRY/VEHICLE dentro de rango
+  { id: 'am_take_aim',      label: 'Orden: ¡Take Aim! — repetir impactos 1, disparo', description: 'Take Aim!: re-roll hit rolls of 1 for one friendly unit this phase (ranged attacks).', factionId: 'AM', combatType: 'ranged', effects: { rerollHitsOf1: true } },
+  { id: 'am_fix_bayonets',  label: 'Orden: ¡Fix Bayonets! — +1 ataque, CàC',          description: 'Fix Bayonets!: add 1 to the Attacks characteristic of models in one friendly INFANTRY unit this phase (melee).', factionId: 'AM', combatType: 'melee', effects: { attacksMod: 1 } },
   {
     id: 'am_born_soldiers',
     label: 'Born Soldiers — Lethal Hits',
@@ -2050,9 +2053,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
 
   // ═══ CD ═══
-  // Dark Pacts — facción HERETIC ASTARTES: liderazgo o D3 heridas mortales; elige Lethal o Sustained
-  { id: 'cd_dark_pacts_lethal',    label: 'Dark Pacts — Lethal Hits',    description: 'Dark Pacts: pass Ld test (or suffer D3 mortal wounds), gain [LETHAL HITS] until end of phase.',    factionId: 'CD',  effects: { lethalHitsBonus: true } },
-  { id: 'cd_dark_pacts_sustained', label: 'Dark Pacts — Sustained Hits 1', description: 'Dark Pacts: pass Ld test (or suffer D3 mortal wounds), gain [SUSTAINED HITS 1] until end of phase.', factionId: 'CD',  effects: { sustainedHitsBonus: 1 } },
+  // CD es LEGIONES DAEMONICA, no HERETIC ASTARTES → no tiene Dark Pacts; sus reglas ofensivas son por destacamento
   {
     id: 'cd_seductive_gambit',
     label: 'Seductive Gambit — repetir impactos, repetir heridas 1',
@@ -2932,8 +2933,10 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
 
   // ═══ DG ═══
-  { id: 'dg_dark_pacts_lethal',    label: 'Dark Pacts — Lethal Hits',    factionId: 'DG', effects: { lethalHitsBonus: true } },
-  { id: 'dg_dark_pacts_sustained', label: 'Dark Pacts — Sustained Hits 1', factionId: 'DG', effects: { sustainedHitsBonus: 1 } },
+  // Dark Pacts: DG es HERETIC ASTARTES; Disgustingly Resilient es su regla de facción icónica (FNP 5+)
+  { id: 'dg_dark_pacts_lethal',    label: 'Dark Pacts — Lethal Hits',    description: 'Dark Pacts (HERETIC ASTARTES): superar prueba de Liderazgo o sufrir D3 heridas mortales, ganar [LETHAL HITS] hasta el final de la fase.', factionId: 'DG', effects: { lethalHitsBonus: true } },
+  { id: 'dg_dark_pacts_sustained', label: 'Dark Pacts — Sustained Hits 1', description: 'Dark Pacts (HERETIC ASTARTES): superar prueba de Liderazgo o sufrir D3 heridas mortales, ganar [SUSTAINED HITS 1] hasta el final de la fase.', factionId: 'DG', effects: { sustainedHitsBonus: 1 } },
+  { id: 'dg_disgustingly_resilient', label: 'Disgustingly Resilient — FNP 5+', description: "Disgustingly Resilient: each time a model in this unit would lose a wound (including mortal wounds), roll one D6: on a 5+, that wound is not lost.", factionId: 'DG', target: 'defender', effects: { feelNoPainThreshold: 5 } },
   {
     id: 'dg_cloud_of_flies',
     label: 'CLOUD OF FLIES — -1 impactar, disparo (1CP)',
@@ -3175,6 +3178,10 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
 
   // ═══ DRU ═══
+  // Power from Pain: bonificaciones acumulativas según ronda de batalla
+  { id: 'dru_power_from_pain_hit',    label: 'Poder del Dolor — +1 impactar (turno 3+)',  description: 'Power from Pain: from Battle Round 3, Drukhari units get +1 to all hit rolls.', factionId: 'DRU', effects: { hitMod: 1 } },
+  { id: 'dru_power_from_pain_wound',  label: 'Poder del Dolor — +1 herir (turno 4+)',     description: 'Power from Pain: from Battle Round 4, Drukhari units additionally get +1 to all wound rolls.', factionId: 'DRU', effects: { woundMod: 1 } },
+  { id: 'dru_power_from_pain_attack', label: 'Poder del Dolor — +1 ataque (turno 5+)',    description: 'Power from Pain: from Battle Round 5, Drukhari units additionally add 1 to the Attacks characteristic.', factionId: 'DRU', effects: { attacksMod: 1 } },
   {
     id: 'dru_callous_competition',
     label: 'Callous Competition — repetir impactos 1, repetir heridas 1',
@@ -3432,6 +3439,9 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
 
   // ═══ EC ═══
+  // EC es HERETIC ASTARTES → tiene Dark Pacts
+  { id: 'ec_dark_pacts_lethal',    label: 'Dark Pacts — Lethal Hits',    description: 'Dark Pacts (HERETIC ASTARTES): superar prueba de Liderazgo o sufrir D3 heridas mortales, ganar [LETHAL HITS] hasta el final de la fase.', factionId: 'EC', effects: { lethalHitsBonus: true } },
+  { id: 'ec_dark_pacts_sustained', label: 'Dark Pacts — Sustained Hits 1', description: 'Dark Pacts (HERETIC ASTARTES): superar prueba de Liderazgo o sufrir D3 heridas mortales, ganar [SUSTAINED HITS 1] hasta el final de la fase.', factionId: 'EC', effects: { sustainedHitsBonus: 1 } },
   {
     id: 'ec_exquisite_swordsmanship',
     label: 'Exquisite Swordsmanship — Lethal Hits, CàC',
@@ -4217,6 +4227,8 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
 
   // ═══ LoV ═══
+  // Prioritised Efficiency / Judgement Tokens: con tally completo las unidades ganan Lethal Hits
+  { id: 'lov_tally_lethal', label: 'Tally completo — Lethal Hits', description: 'Prioritised Efficiency (Judgement Tokens): when a unit has a full Grudge-bearer tally (3 tokens), its attacks gain [LETHAL HITS].', factionId: 'LoV', effects: { lethalHitsBonus: true } },
   {
     id: 'lov_methodical_annihilation',
     label: 'Methodical Annihilation — +1 PA',
@@ -4460,6 +4472,8 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
 
   // ═══ NEC ═══
+  // Reanimation Protocols: modelos destruidos se recuperan en 5+ (aprox. FNP 5+ a efectos del calculador)
+  { id: 'nec_reanimation_protocols', label: 'Protocolos de Reanimación — FNP 5+', description: 'Reanimation Protocols: at the end of the Command phase, roll D6 for each wound lost; on a 5+ that wound is restored. Modelled as FNP 5+ approximation.', factionId: 'NEC', target: 'defender', effects: { feelNoPainThreshold: 5 } },
   {
     id: 'nec_command_protocols',
     label: 'Command Protocols — +1 impactar',
@@ -4934,6 +4948,8 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
 
   // ═══ ORK ═══
+  // WAAAGH!: una vez por partida, el Warboss puede declarar WAAAGH! → +1 impactar a todas las unidades Ork esa ronda
+  { id: 'ork_waaagh', label: 'WAAAGH! — +1 impactar', description: "WAAAGH!: once per battle, during the Command phase, declare WAAAGH!. Until the start of your next Command phase, all Ork units get +1 to all hit rolls.", factionId: 'ORK', effects: { hitMod: 1 } },
   {
     id: 'ork_get_stuck_in',
     label: 'Get Stuck In — Sustained Hits 1, CàC',
@@ -5715,8 +5731,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
 
   // ═══ QT ═══
-  { id: 'qt_dark_pacts_lethal',    label: 'Dark Pacts — Lethal Hits',    factionId: 'QT', effects: { lethalHitsBonus: true } },
-  { id: 'qt_dark_pacts_sustained', label: 'Dark Pacts — Sustained Hits 1', factionId: 'QT', effects: { sustainedHitsBonus: 1 } },
+  // QT es CHAOS KNIGHTS, no HERETIC ASTARTES → no tiene Dark Pacts; Harbingers of Dread es debuff de Liderazgo, no combat modifier
   {
     id: 'qt_dreaded_masters',
     label: 'Dreaded Masters — repetir impactos 1, repetir heridas 1, Lethal Hits, Sustained Hits 1',
@@ -9157,8 +9172,14 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
 
   // ═══ WE ═══
-  { id: 'we_dark_pacts_lethal',    label: 'Dark Pacts — Lethal Hits',    factionId: 'WE', effects: { lethalHitsBonus: true } },
-  { id: 'we_dark_pacts_sustained', label: 'Dark Pacts — Sustained Hits 1', factionId: 'WE', effects: { sustainedHitsBonus: 1 } },
+  // Dark Pacts: WE es HERETIC ASTARTES; Blessings of Khorne: tirar D6 al inicio de cada ronda de batalla
+  { id: 'we_dark_pacts_lethal',    label: 'Dark Pacts — Lethal Hits',    description: 'Dark Pacts (HERETIC ASTARTES): superar prueba de Liderazgo o sufrir D3 heridas mortales, ganar [LETHAL HITS] hasta el final de la fase.', factionId: 'WE', effects: { lethalHitsBonus: true } },
+  { id: 'we_dark_pacts_sustained', label: 'Dark Pacts — Sustained Hits 1', description: 'Dark Pacts (HERETIC ASTARTES): superar prueba de Liderazgo o sufrir D3 heridas mortales, ganar [SUSTAINED HITS 1] hasta el final de la fase.', factionId: 'WE', effects: { sustainedHitsBonus: 1 } },
+  { id: 'we_blessings_reroll_hits1',   label: 'Bendiciones de Khorne — repetir impactos 1',  description: "Blessings of Khorne (resultado 5): Favour of Khorne — re-roll hit rolls of 1.", factionId: 'WE', effects: { rerollHitsOf1: true } },
+  { id: 'we_blessings_reroll_wounds1', label: 'Bendiciones de Khorne — repetir heridas 1',   description: "Blessings of Khorne (resultado 3): Skull-Haul — re-roll wound rolls of 1.", factionId: 'WE', effects: { rerollWoundsOf1: true } },
+  { id: 'we_blessings_strength',       label: 'Bendiciones de Khorne — +1 Fuerza',            description: "Blessings of Khorne (resultado 2): Brazen-Hide — add 1 to Strength characteristic.", factionId: 'WE', effects: { strengthMod: 1 } },
+  { id: 'we_blessings_lethal',         label: 'Bendiciones de Khorne — Lethal Hits',           description: "Blessings of Khorne (resultado 6): Gore-Blessed — [LETHAL HITS].", factionId: 'WE', effects: { lethalHitsBonus: true } },
+  { id: 'we_blessings_attacks',        label: 'Bendiciones de Khorne — +1 ataque',             description: "Blessings of Khorne (resultado 4): Blood Surge — add 1 to the Attacks characteristic (avg of D3 extra attacks).", factionId: 'WE', effects: { attacksMod: 1 } },
   {
     id: 'we_relentless_rage',
     label: 'Relentless Rage — +2 F, CàC',
