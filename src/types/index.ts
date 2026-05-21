@@ -175,6 +175,7 @@ export interface Weapon {
   isDevastatingWounds: boolean
   isLethalHits: boolean
   isHeavy: boolean
+  isTwinLinked: boolean
   sustainedHitsValue: number
 }
 
@@ -209,6 +210,7 @@ export interface ModifierRule {
   detachmentId?: string
   datasheetId?: string        // ability de esta unidad concreta
   leaderDatasheetId?: string  // ability de un líder adjunto a la unidad
+  followerDatasheetIds?: string[] // restricción: solo aparece para estas unidades (si ausente = toda la facción)
   sourceDatasheetId?: string  // aura de una unidad de soporte (no adjunta)
   combatType?: CombatType
   target?: 'attacker' | 'defender'

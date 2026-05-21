@@ -47,9 +47,14 @@ export function usePanelState(gameData: GameData): PanelState {
   const availableCharacters = useMemo(() => {
     if (!selectedUnit) return []
     const factionId = selectedUnit.factionId
+    const unitId = selectedUnit.id
     const leaderIds = new Set(
       MODIFIER_RULES
-        .filter(r => r.leaderDatasheetId && r.factionId === factionId)
+        .filter(r =>
+          r.leaderDatasheetId &&
+          r.factionId === factionId &&
+          (!r.followerDatasheetIds || r.followerDatasheetIds.includes(unitId))
+        )
         .map(r => r.leaderDatasheetId!)
     )
     return [...leaderIds]

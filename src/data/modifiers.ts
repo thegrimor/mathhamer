@@ -23,6 +23,9 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
 
   // ═══ AC ═══
+  // Martial Ka'tah — regla de facción (sin destacamento), se elige postura al activar
+  { id: 'ac_katah_dacatarai', label: "Ka'tah Dacatarai — Sustained Hits 1 (CàC)", description: "Dacatarai Stance: melee weapons equipped by models in this unit have the [SUSTAINED HITS 1] ability.", factionId: 'AC', combatType: 'melee', effects: { sustainedHitsBonus: 1 } },
+  { id: 'ac_katah_rendax',    label: "Ka'tah Rendax — Lethal Hits (CàC)",         description: "Rendax Stance: melee weapons equipped by models in this unit have the [LETHAL HITS] ability.",          factionId: 'AC', combatType: 'melee', effects: { lethalHitsBonus: true } },
   {
     id: 'ac_martial_mastery',
     label: 'Martial Mastery — crítico 5+, +1 PA, CàC',
@@ -1412,22 +1415,43 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'adm_protector_doctrina',
-    label: 'Doctrina Protectora — repetir impactos 1 (disparo)',
-    description: 'Protector Imperative active: each time a model in a Skitarii unit makes a ranged attack, re-roll a Hit roll of 1.',
+    label: 'Doctrina Protectora — +1 impactar (disparo)',
+    description: 'Protector Imperative: Improve the Ballistic Skill characteristic of ranged weapons by 1 (ranged weapons also gain [HEAVY]).',
     factionId: 'AdM',
     combatType: 'ranged',
     effects: {
-    rerollHitsOf1: true,
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'adm_protector_doctrina_def',
+    label: 'Doctrina Protectora — −1 impactar contra unidad (defensor, CàC)',
+    description: 'Protector Imperative: Each time a melee attack targets this BATTLELINE unit (or within 6" of friendly AdM BATTLELINE), subtract 1 from the Hit roll.',
+    factionId: 'AdM',
+    combatType: 'melee',
+    target: 'defender',
+    effects: {
+    hitMod: -1,
   },
   },
   {
     id: 'adm_conqueror_doctrina',
-    label: 'Doctrina Conquistadora — repetir heridas 1 (CàC)',
-    description: 'Conqueror Imperative active: each time a model in a Skitarii unit makes a melee attack, re-roll a Wound roll of 1.',
+    label: 'Doctrina Conquistadora — +1 impactar (CàC)',
+    description: 'Conqueror Imperative: Improve the Weapon Skill characteristic of melee weapons by 1.',
     factionId: 'AdM',
     combatType: 'melee',
     effects: {
-    rerollWoundsOf1: true,
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'adm_conqueror_doctrina_ap',
+    label: 'Doctrina Conquistadora — +1 PA (CàC, Battleline)',
+    description: 'Conqueror Imperative: Each time a BATTLELINE model makes an attack (or within 6" of friendly AdM BATTLELINE), improve the Armour Penetration characteristic by 1.',
+    factionId: 'AdM',
+    combatType: 'melee',
+    effects: {
+    apMod: 1,
   },
   },
   {
@@ -1526,20 +1550,8 @@ export const MODIFIER_RULES: ModifierRule[] = [
     lethalHitsBonus: true,
   },
   },
-  {
-    id: 'adm_unshackled_wrath',
-    label: 'UNSHACKLED WRATH — Lethal Hits, Sustained Hits 1, disparo (1CP)',
-    description: 'Eradication Cohort: Select the [SUSTAINED HITS 1] or [LETHAL HITS] ability. Until the end of the phase, ranged weapons equipped by models in your unit have the selected ability. You can instead select the [SUSTAINED HITS 1] , [LETHAL HITS] and [HAZARDOUS] abilities to a',
-    factionId: 'AdM',
-    detachmentId: '000001143',
-    combatType: 'ranged',
-    isStratagem: true,
-    cpCost: 1,
-    effects: {
-    sustainedHitsBonus: 1,
-    lethalHitsBonus: true,
-  },
-  },
+  { id: 'adm_unshackled_wrath_lethal',    label: 'UNSHACKLED WRATH — Lethal Hits, disparo (1CP)',    description: 'Eradication Cohort: ranged weapons gain [LETHAL HITS].', factionId: 'AdM', detachmentId: '000001143', combatType: 'ranged', isStratagem: true, cpCost: 1, effects: { lethalHitsBonus: true } },
+  { id: 'adm_unshackled_wrath_sustained', label: 'UNSHACKLED WRATH — Sustained Hits 1, disparo (1CP)', description: 'Eradication Cohort: ranged weapons gain [SUSTAINED HITS 1].', factionId: 'AdM', detachmentId: '000001143', combatType: 'ranged', isStratagem: true, cpCost: 1, effects: { sustainedHitsBonus: 1 } },
   {
     id: 'adm_auto_oracular_retrieval',
     label: 'AUTO-ORACULAR RETRIEVAL — +1 herir, disparo (2CP)',
@@ -2038,6 +2050,9 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
 
   // ═══ CD ═══
+  // Dark Pacts — facción HERETIC ASTARTES: liderazgo o D3 heridas mortales; elige Lethal o Sustained
+  { id: 'cd_dark_pacts_lethal',    label: 'Dark Pacts — Lethal Hits',    description: 'Dark Pacts: pass Ld test (or suffer D3 mortal wounds), gain [LETHAL HITS] until end of phase.',    factionId: 'CD',  effects: { lethalHitsBonus: true } },
+  { id: 'cd_dark_pacts_sustained', label: 'Dark Pacts — Sustained Hits 1', description: 'Dark Pacts: pass Ld test (or suffer D3 mortal wounds), gain [SUSTAINED HITS 1] until end of phase.', factionId: 'CD',  effects: { sustainedHitsBonus: 1 } },
   {
     id: 'cd_seductive_gambit',
     label: 'Seductive Gambit — repetir impactos, repetir heridas 1',
@@ -2363,6 +2378,8 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
 
   // ═══ CSM ═══
+  { id: 'csm_dark_pacts_lethal',    label: 'Dark Pacts — Lethal Hits',    factionId: 'CSM', effects: { lethalHitsBonus: true } },
+  { id: 'csm_dark_pacts_sustained', label: 'Dark Pacts — Sustained Hits 1', factionId: 'CSM', effects: { sustainedHitsBonus: 1 } },
   {
     id: 'csm_marks_of_chaos',
     label: 'Marks of Chaos — repetir impactos 1, crítico 5+',
@@ -2915,6 +2932,8 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
 
   // ═══ DG ═══
+  { id: 'dg_dark_pacts_lethal',    label: 'Dark Pacts — Lethal Hits',    factionId: 'DG', effects: { lethalHitsBonus: true } },
+  { id: 'dg_dark_pacts_sustained', label: 'Dark Pacts — Sustained Hits 1', factionId: 'DG', effects: { sustainedHitsBonus: 1 } },
   {
     id: 'dg_cloud_of_flies',
     label: 'CLOUD OF FLIES — -1 impactar, disparo (1CP)',
@@ -5696,6 +5715,8 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
 
   // ═══ QT ═══
+  { id: 'qt_dark_pacts_lethal',    label: 'Dark Pacts — Lethal Hits',    factionId: 'QT', effects: { lethalHitsBonus: true } },
+  { id: 'qt_dark_pacts_sustained', label: 'Dark Pacts — Sustained Hits 1', factionId: 'QT', effects: { sustainedHitsBonus: 1 } },
   {
     id: 'qt_dreaded_masters',
     label: 'Dreaded Masters — repetir impactos 1, repetir heridas 1, Lethal Hits, Sustained Hits 1',
@@ -6354,19 +6375,8 @@ export const MODIFIER_RULES: ModifierRule[] = [
     rerollWoundsOf1: true,
   },
   },
-  {
-    id: 'sm_light_of_vengeance',
-    label: 'LIGHT OF VENGEANCE — Lethal Hits, Sustained Hits 1 (1CP)',
-    description: 'Bastion Task Force: Select the [LETHAL HITS] or [SUSTAINED HITS 1] ability. Until the end of the phase, weapons equipped by models in your unit have that ability while targeting an auspex scanned unit or if the bearer has the Battleline keyword.',
-    factionId: 'SM',
-    detachmentId: '000001130',
-    isStratagem: true,
-    cpCost: 1,
-    effects: {
-    sustainedHitsBonus: 1,
-    lethalHitsBonus: true,
-  },
-  },
+  { id: 'sm_light_of_vengeance_lethal',    label: 'LIGHT OF VENGEANCE — Lethal Hits (1CP)',    description: 'Bastion Task Force: weapons gain [LETHAL HITS].', factionId: 'SM', detachmentId: '000001130', isStratagem: true, cpCost: 1, effects: { lethalHitsBonus: true } },
+  { id: 'sm_light_of_vengeance_sustained', label: 'LIGHT OF VENGEANCE — Sustained Hits 1 (1CP)', description: 'Bastion Task Force: weapons gain [SUSTAINED HITS 1].', factionId: 'SM', detachmentId: '000001130', isStratagem: true, cpCost: 1, effects: { sustainedHitsBonus: 1 } },
   {
     id: 'sm_shock_bombardment',
     label: 'SHOCK BOMBARDMENT — -1 impactar (1CP)',
@@ -8577,6 +8587,8 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
 
   // ═══ TS ═══
+  { id: 'ts_dark_pacts_lethal',    label: 'Dark Pacts — Lethal Hits',    factionId: 'TS', effects: { lethalHitsBonus: true } },
+  { id: 'ts_dark_pacts_sustained', label: 'Dark Pacts — Sustained Hits 1', factionId: 'TS', effects: { sustainedHitsBonus: 1 } },
   {
     id: 'ts_methodical_conquest',
     label: 'Methodical Conquest — crítico 5+',
@@ -9145,6 +9157,8 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
 
   // ═══ WE ═══
+  { id: 'we_dark_pacts_lethal',    label: 'Dark Pacts — Lethal Hits',    factionId: 'WE', effects: { lethalHitsBonus: true } },
+  { id: 'we_dark_pacts_sustained', label: 'Dark Pacts — Sustained Hits 1', factionId: 'WE', effects: { sustainedHitsBonus: 1 } },
   {
     id: 'we_relentless_rage',
     label: 'Relentless Rage — +2 F, CàC',
@@ -9363,14 +9377,15 @@ export const MODIFIER_RULES: ModifierRule[] = [
   { id: 'opb_000000640_lelith', label: '[OPB] Lelith Hesperax — FNP 3+ (Defender), +6 ataques', factionId: 'DRU', leaderDatasheetId: '000000640', effects: { feelNoPainThreshold: 3, attacksMod: 6 } },
   { id: 'opb_000004160_solitaire_dru', label: '[OPB] Solitaire (DRU) — +3 ataques', factionId: 'DRU', leaderDatasheetId: '000004160', effects: { attacksMod: 3 } },
   { id: 'opb_000004078_lord_exultant', label: '[OPB] Lord Exultant — +3 ataques, +1 AP', factionId: 'EC', leaderDatasheetId: '000004078', effects: { attacksMod: 3, apMod: 1 } },
-  { id: 'opb_000001572_biophagus', label: '[OPB] Biophagus — +1 herir', factionId: 'GC', leaderDatasheetId: '000001572', effects: { woundMod: 1 } },
+  { id: 'ldr_000001572_biophagus_lethal', label: 'Biophagus — Lethal Hits (CàC)', description: 'Twisted Science: while this model is leading a unit, melee weapons equipped by models in that unit have the [LETHAL HITS] ability.', factionId: 'GC', leaderDatasheetId: '000001572', combatType: 'melee', followerDatasheetIds: ['000000511','000003716','000000512'], effects: { lethalHitsBonus: true } },
+  { id: 'opb_000001572_biophagus', label: '[OPB] Biophagus — +1 herir vs INFANTRY (CàC)', factionId: 'GC', leaderDatasheetId: '000001572', combatType: 'melee', followerDatasheetIds: ['000000511','000003716','000000512'], effects: { woundMod: 1 } },
   { id: 'opb_000003715_benefictus', label: '[OPB] Benefictus — FNP 4+ (Defender)', factionId: 'GC', leaderDatasheetId: '000003715', target: 'defender', effects: { feelNoPainThreshold: 4 } },
   { id: 'opb_000000375_grand_master', label: '[OPB] Grand Master (GK) — +3 ataques, +3 Fuerza', factionId: 'GK', leaderDatasheetId: '000000375', effects: { attacksMod: 3, strengthMod: 3 } },
   { id: 'opb_000000530_orikan', label: '[OPB] Orikan the Diviner — +4 ataques, +4 Fuerza, crítico 4+', factionId: 'NEC', leaderDatasheetId: '000000530', effects: { attacksMod: 4, strengthMod: 4, critThreshold: 4 } },
   { id: 'opb_000002080_big_mek_kff', label: '[OPB] Big Mek with KFF — FNP 4+ (Defender)', factionId: 'ORK', leaderDatasheetId: '000002080', target: 'defender', effects: { feelNoPainThreshold: 4 } },
   { id: 'opb_000003845_dark_commune_qt', label: '[OPB] Dark Commune (QT) — +1 impactar, +1 herir', factionId: 'QT', leaderDatasheetId: '000003845', effects: { hitMod: 1, woundMod: 1 } },
   { id: 'opb_000000218_azrael', label: '[OPB] Azrael — FNP 4+ (Defender)', factionId: 'SM', leaderDatasheetId: '000000218', target: 'defender', effects: { feelNoPainThreshold: 4 } },
-  { id: 'opb_000001165_bg_ancient', label: '[OPB] Bladeguard Ancient — +1 ataque', factionId: 'SM', leaderDatasheetId: '000001165', effects: { attacksMod: 1 } },
+  { id: 'opb_000001165_bg_ancient', label: '[OPB] Bladeguard Ancient — +1 ataque (CàC)', factionId: 'SM', leaderDatasheetId: '000001165', combatType: 'melee', followerDatasheetIds: ['000000071'], effects: { attacksMod: 1 } },
   { id: 'opb_000003831_ba_captain', label: '[OPB] Blood Angels Captain — +3 ataques, crítico 5+', factionId: 'SM', leaderDatasheetId: '000003831', effects: { attacksMod: 3, critThreshold: 5 } },
   { id: 'opb_000000073_captain', label: '[OPB] Captain — +3 ataques, crítico 5+', factionId: 'SM', leaderDatasheetId: '000000073', effects: { attacksMod: 3, critThreshold: 5 } },
   { id: 'opb_000001611_tigurius', label: '[OPB] Chief Librarian Tigurius — -1 impactar (Defensor)', factionId: 'SM', leaderDatasheetId: '000001611', target: 'defender', effects: { hitMod: -1 } },
@@ -9382,7 +9397,6 @@ export const MODIFIER_RULES: ModifierRule[] = [
   { id: 'opb_000004103_slaughterbound', label: '[OPB] Slaughterbound — +3 ataques, crítico 5+', factionId: 'WE', leaderDatasheetId: '000004103', effects: { attacksMod: 3, critThreshold: 5 } },
 
   // ── Estratagemas de re-roll de daño ─────────────────────────────────────────
-  { id: 'strat_command_reroll_damage', label: 'Command Re-Roll — re-roll dado de daño (1CP)', isStratagem: true, cpCost: 1, effects: { rerollDamageOf1: true } },
 
   // ── AE Armoured Warhost (000000990) — estrat completo ───────────────────────
   { id: 'ae_soulsight_warhost', label: 'SOULSIGHT — repetir 1 impacto/1 herida/1 daño, disparo (AE Warhost, 1CP)', description: 'Armoured Warhost: Until the end of the phase, each time your unit is selected to shoot, you can re-roll one Hit roll, one Wound roll and one Damage roll made for a model in your unit.', factionId: 'AE', detachmentId: '000000990', combatType: 'ranged', isStratagem: true, cpCost: 1, effects: { rerollHitsOf1: true, rerollWoundsOf1: true, rerollDamageOf1: true } },

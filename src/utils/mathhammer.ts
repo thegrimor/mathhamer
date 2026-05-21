@@ -165,7 +165,10 @@ export function calculateDamage(
 ): DamageBreakdown {
   const avgAttacks  = parseDiceAverage(weapon.A) + mods.attacksMod
   const pHit        = weapon.isTorrent ? 1 : hitProbabilityWithMods(weapon.bsWs, mods)
-  const pWound      = woundProbabilityWithMods(weapon.S, defenderModel.T, mods)
+  const effectiveMods = weapon.isTwinLinked
+    ? { ...mods, rerollAllWounds: true }
+    : mods
+  const pWound      = woundProbabilityWithMods(weapon.S, defenderModel.T, effectiveMods)
   // apMod > 0 = attacker improves AP (more penetrating), < 0 = defender reduces AP (AoC).
   // Clamp to 0: AP can't become positive (AoC on AP 0 weapon has no further benefit).
   // saveMod (cover) is applied separately — it directly shifts the save threshold,
@@ -195,7 +198,7 @@ export function calculateDamage(
   }
 
   const expectedFailedSaves = expectedWounds * pFailSave
-  const rawDmg        = parseDiceAverageWithReroll(weapon.D, mods.rerollAllDamage, mods.rerollDamageOf1) + mods.damageMod
+  const rawDmg        = parseDiceAverageWithReroll(weapon.D, effectiveMods.rerollAllDamage, effectiveMods.rerollDamageOf1) + effectiveMods.damageMod
   const avgDmgPerWound = mods.damageReduction > 0
     ? Math.max(rawDmg - mods.damageReduction, 1)
     : rawDmg
