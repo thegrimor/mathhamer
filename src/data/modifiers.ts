@@ -24,11 +24,11 @@ export const MODIFIER_RULES: ModifierRule[] = [
 
   // ═══ AC ═══
   // Martial Ka'tah — regla de facción (sin destacamento), se elige postura al activar
-  { id: 'ac_katah_dacatarai', label: "Ka'tah Dacatarai — Sustained Hits 1 (CàC)", description: "Dacatarai Stance: melee weapons equipped by models in this unit have the [SUSTAINED HITS 1] ability.", factionId: 'AC', combatType: 'melee', effects: { sustainedHitsBonus: 1 } },
-  { id: 'ac_katah_rendax',    label: "Ka'tah Rendax — Lethal Hits (CàC)",         description: "Rendax Stance: melee weapons equipped by models in this unit have the [LETHAL HITS] ability.",          factionId: 'AC', combatType: 'melee', effects: { lethalHitsBonus: true } },
+  { id: 'ac_katah_dacatarai', label: "Ka'tah Dacatarai — Sustained Hits 1 (CaC)", description: "Dacatarai Stance: melee weapons equipped by models in this unit have the [SUSTAINED HITS 1] ability.", factionId: 'AC', combatType: 'melee', effects: { sustainedHitsBonus: 1 } },
+  { id: 'ac_katah_rendax',    label: "Ka'tah Rendax — Lethal Hits (CaC)",         description: "Rendax Stance: melee weapons equipped by models in this unit have the [LETHAL HITS] ability.",          factionId: 'AC', combatType: 'melee', effects: { lethalHitsBonus: true } },
   {
     id: 'ac_martial_mastery',
-    label: 'Martial Mastery — crítico 5+, +1 PA, CàC',
+    label: 'Martial Mastery — crítico 5+, +1 PA, CaC',
     description: 'At the start of the battle round, you can select one of the bullet points below. If you do, until the start of the next battle round, that bullet point’s effects apply. Each time an Adeptus Custodes model from your army with the Martial Ka’tah ability makes a melee attack, a successful unmodified Hi',
     factionId: 'AC',
     detachmentId: '000000765',
@@ -118,7 +118,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ac_earning_of_a_name',
-    label: 'EARNING OF A NAME — repetir impactos, repetir heridas, CàC (1CP)',
+    label: 'EARNING OF A NAME — repetir impactos, repetir heridas, CaC (1CP)',
     description: 'Auric Champions: Until the end of the phase, each time a CHARACTER model in either of your units makes an attack that targets a MONSTER or VEHICLE unit, you can re-roll the Hit roll and you can re-roll the Wound roll.',
     factionId: 'AC',
     detachmentId: '000000863',
@@ -158,7 +158,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ac_blades_of_the_vigilators',
-    label: 'BLADES OF THE VIGILATORS — -1 herir, CàC (1CP)',
+    label: 'BLADES OF THE VIGILATORS — -1 herir, CaC (1CP)',
     description: 'Black Ship Guardians: Until the end of the phase, each time an attack targets your unit, subtract 1 from the Wound roll.',
     factionId: 'AC',
     detachmentId: '000000910',
@@ -172,7 +172,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ac_anathema_blademastery',
-    label: 'ANATHEMA BLADEMASTERY — repetir impactos, repetir heridas, CàC (1CP)',
+    label: 'ANATHEMA BLADEMASTERY — repetir impactos, repetir heridas, CaC (1CP)',
     description: 'Null Maiden Vigil: Until the end of the phase, each time a model in your unit makes a melee attack, you can re-roll the Hit roll If the target of that attack is Battle-shocked or a PSYKER , you can re-roll the Wound roll as well.',
     factionId: 'AC',
     detachmentId: '000000862',
@@ -250,7 +250,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ac_unwavering_sentinels',
-    label: 'UNWAVERING SENTINELS — -1 impactar, CàC (1CP)',
+    label: 'UNWAVERING SENTINELS — -1 impactar, CaC (1CP)',
     description: 'Shield Host: Until the end of the phase, each time a melee attack targets your unit, subtract 1 from the Hit roll.',
     factionId: 'AC',
     detachmentId: '000000765',
@@ -289,7 +289,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ac_emperor_s_executioners',
-    label: 'EMPEROR’S EXECUTIONERS — +1 herir, CàC (2CP)',
+    label: 'EMPEROR’S EXECUTIONERS — +1 herir, CaC (2CP)',
     description: 'Talons Of The Emperor: Until the end of the phase, each time a model in one of your units targets an enemy unit that is below its Starting Strength, add 1 to the Wound roll. RESTRICTIONS: You can only select two units if one (and only one) of them is an Anathema Psykana un',
     factionId: 'AC',
     detachmentId: '000000861',
@@ -408,7 +408,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ae_pirates_due',
-    label: 'PIRATES’ DUE — repetir heridas 1, CàC (1CP)',
+    label: 'PIRATES’ DUE — repetir heridas 1, CaC (1CP)',
     description: 'Corsair Coterie: Until the end of the phase, each time a model in your unit makes an attack, re-roll a Wound roll of 1. If your unit has the Anhrathe keyword, then until the end of the phase, each time a model in your unit makes an attack that targets an enemy unit w',
     factionId: 'AE',
     detachmentId: '000001136',
@@ -434,7 +434,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ae_emissaries_of_ynnead',
-    label: 'EMISSARIES OF YNNEAD — repetir impactos 1, CàC (1CP)',
+    label: 'EMISSARIES OF YNNEAD — repetir impactos 1, CaC (1CP)',
     description: 'Devoted of Ynnead: Until the end of the phase, each time a model in your unit makes an attack, re-roll a Hit roll of 1. If your unit is below its Starting Strength, you can re-roll the Hit roll instead.',
     factionId: 'AE',
     detachmentId: '000001022',
@@ -486,7 +486,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ae_yriel_s_example',
-    label: 'YRIEL’S EXAMPLE — FNP 5+, CàC (1CP)',
+    label: 'YRIEL’S EXAMPLE — FNP 5+, CaC (1CP)',
     description: 'Eldritch Raiders: Until the end of the phase, models in your unit have the Feel No Pain 5+ ability.',
     factionId: 'AE',
     detachmentId: '000001135',
@@ -550,7 +550,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ae_bladefocus',
-    label: 'BLADEFOCUS — repetir impactos, CàC (1CP)',
+    label: 'BLADEFOCUS — repetir impactos, CaC (1CP)',
     description: 'Khaine’s Arrow: Until the end of the phase, each time a model in your unit makes an attack, if it made a Charge move this turn, you can re-roll the Hit roll.',
     factionId: 'AE',
     detachmentId: '000000919',
@@ -602,7 +602,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ae_forewarned',
-    label: 'FOREWARNED — -1 impactar, -1 herir, CàC (1CP)',
+    label: 'FOREWARNED — -1 impactar, -1 herir, CaC (1CP)',
     description: 'Seer Council: Until the end of the phase, each time an attack targets your unit, subtract 1 from the Hit roll and subtract 1 from the Wound roll.',
     factionId: 'AE',
     detachmentId: '000001023',
@@ -643,7 +643,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ae_darting_strikes',
-    label: 'DARTING STRIKES — repetir heridas, CàC (1CP)',
+    label: 'DARTING STRIKES — repetir heridas, CaC (1CP)',
     description: 'Star-dancer Masque: Until the end of the phase, each time a model in your unit makes an attack, you can re-roll the Wound roll.',
     factionId: 'AE',
     detachmentId: '000000922',
@@ -708,7 +708,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ae_guardian_constructs',
-    label: 'GUARDIAN CONSTRUCTS — -1 herir, CàC (1CP)',
+    label: 'GUARDIAN CONSTRUCTS — -1 herir, CaC (1CP)',
     description: 'Wraiths of the Void: Until the end of the phase, each time an attack targets your unit, if the attacking model is wholly on the opposite side of a Hatchway from your unit, subtract 1 from the Wound roll.',
     factionId: 'AE',
     detachmentId: '000000921',
@@ -797,7 +797,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ldr_000003915_storm_of_blades',
-    label: 'Ynnari Succubus — Sustained Hits 1, CàC (Líder)',
+    label: 'Ynnari Succubus — Sustained Hits 1, CaC (Líder)',
     description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
     factionId: 'AE',
     leaderDatasheetId: '000003915',
@@ -821,7 +821,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   // ═══ AM ═══
   // Voice of Command: órdenes del Oficial — solo 1 orden por unidad por fase (activar la que aplique)
   { id: 'am_take_aim',          label: 'Orden: ¡Take Aim! — +1 BS, disparo',                 description: 'Take Aim!: improve the Ballistic Skill characteristic of ranged weapons in this unit by 1.',      factionId: 'AM', combatType: 'ranged', effects: { hitMod: 1 } },
-  { id: 'am_fix_bayonets',      label: 'Orden: ¡Fix Bayonets! — +1 WS, CàC',                 description: 'Fix Bayonets!: improve the Weapon Skill characteristic of melee weapons in this unit by 1.',       factionId: 'AM', combatType: 'melee',  effects: { hitMod: 1 } },
+  { id: 'am_fix_bayonets',      label: 'Orden: ¡Fix Bayonets! — +1 WS, CaC',                 description: 'Fix Bayonets!: improve the Weapon Skill characteristic of melee weapons in this unit by 1.',       factionId: 'AM', combatType: 'melee',  effects: { hitMod: 1 } },
   { id: 'am_first_rank_fire',   label: 'Orden: ¡First Rank, Fire! — +1 ataque Rapid Fire',   description: 'First Rank, Fire! Second Rank, Fire!: improve the Attacks characteristic of Rapid Fire weapons in this unit by 1.', factionId: 'AM', combatType: 'ranged', effects: { attacksMod: 1 } },
   { id: 'am_take_cover',        label: 'Orden: ¡Take Cover! — +1 salvación (defensor)',       description: 'Take Cover!: improve the Save characteristic of models in this unit by 1 (cannot improve better than 3+).', factionId: 'AM', target: 'defender', effects: { saveMod: 1 } },
   {
@@ -1052,7 +1052,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'am_engine_of_wrath',
-    label: 'ENGINE OF WRATH — +2 PA, CàC (1CP)',
+    label: 'ENGINE OF WRATH — +2 PA, CaC (1CP)',
     description: 'Steel Hammer: Select one enemy unit within Engagement Range of your unit. Until the end of the phase, add 6 to the Attacks characteristic of melee weapons equipped by models in your unit, improve the Armour Penetration characteristic of those weapons by 2, and eac',
     factionId: 'AM',
     detachmentId: '000001149',
@@ -1065,7 +1065,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ldr_000000713_cold_steel_and_courage',
-    label: '‘Iron Hand’ Straken — Lethal Hits, CàC (Líder)',
+    label: '‘Iron Hand’ Straken — Lethal Hits, CaC (Líder)',
     description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [LETHAL HITS] ability.',
     factionId: 'AM',
     leaderDatasheetId: '000000713',
@@ -1099,7 +1099,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ldr_000001394_war_hymns',
-    label: 'Ministorum Priest — Sustained Hits 1, CàC (Líder)',
+    label: 'Ministorum Priest — Sustained Hits 1, CaC (Líder)',
     description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
     factionId: 'AM',
     leaderDatasheetId: '000001394',
@@ -1183,7 +1183,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'as_righteous_blows',
-    label: 'RIGHTEOUS BLOWS — Lethal Hits, CàC (1CP)',
+    label: 'RIGHTEOUS BLOWS — Lethal Hits, CaC (1CP)',
     description: 'Bringers of Flame: Until the end of the phase, melee weapons equipped by models in your unit have the [LETHAL HITS] ability. If one or more enemy models are destroyed as the result of attacks made by those weapons this phase, select one of those destroyed models; that',
     factionId: 'AS',
     detachmentId: '000000879',
@@ -1209,7 +1209,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'as_to_the_heart_of_heresy',
-    label: 'TO THE HEART OF HERESY — +1 PA, CàC (1CP)',
+    label: 'TO THE HEART OF HERESY — +1 PA, CaC (1CP)',
     description: 'Champions of Faith: Until the end of the turn, improve the Strength characteristic of melee weapons equipped by models in your unit by 1. If your unit is Righteous, until the end of the phase, improve the Armour Penetration characteristic of melee weapons equipped by mo',
     factionId: 'AS',
     detachmentId: '000001003',
@@ -1222,7 +1222,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'as_bastion_of_faith',
-    label: 'BASTION OF FAITH — -1 impactar, CàC (1CP)',
+    label: 'BASTION OF FAITH — -1 impactar, CaC (1CP)',
     description: 'Champions of Faith: Until the end of the phase, each time an attack targets your unit, subtract 1 from the Hit roll. In addition, if your unit is Righteous, you can select one other CELESTIAN SACRESANTS unit from your army that is not Battle-shocked and is within 6" of',
     factionId: 'AS',
     detachmentId: '000001003',
@@ -1260,7 +1260,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'as_righteous_vengeance',
-    label: 'RIGHTEOUS VENGEANCE — repetir impactos, repetir heridas, CàC (1CP)',
+    label: 'RIGHTEOUS VENGEANCE — repetir impactos, repetir heridas, CaC (1CP)',
     description: 'Hallowed Martyrs: Until the end of the phase, each time a model in your unit makes a melee attack, you can re-roll the Hit roll and, if your unit is Below Half-strength, you can re-roll the Wound roll as well.',
     factionId: 'AS',
     detachmentId: '000000791',
@@ -1287,7 +1287,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'as_passion_of_the_penitent',
-    label: 'PASSION OF THE PENITENT — crítico 5+, CàC (1CP)',
+    label: 'PASSION OF THE PENITENT — crítico 5+, CaC (1CP)',
     description: 'Penitent Host: Until the end of the phase, each time a PENITENT model in your unit makes a melee attack, a successful unmodified Hit roll of 5+ scores a Critical Hit.',
     factionId: 'AS',
     detachmentId: '000000878',
@@ -1401,7 +1401,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'aura_000002063_petals_of_the_bloody_rose_aura',
-    label: 'Triumph Of Saint Katherine — +1 PA, CàC (Aura)',
+    label: 'Triumph Of Saint Katherine — +1 PA, CaC (Aura)',
     description: 'While a friendly ADEPTA SORORITAS unit is within 6" of this model, improve the Armour Penetration characteristic of melee weapons equipped by models in that unit by 1.',
     factionId: 'AS',
     sourceDatasheetId: '000002063',
@@ -1445,7 +1445,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'adm_conqueror_doctrina',
-    label: 'Doctrina Conquistadora — [ASSAULT] +1 impactar, CàC',
+    label: 'Doctrina Conquistadora — [ASSAULT] +1 impactar, CaC',
     description: 'Conqueror Imperative: ranged weapons gain [ASSAULT] and melee weapons get +1 WS (Weapon Skill).',
     factionId: 'AdM',
     combatType: 'melee',
@@ -1455,7 +1455,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'adm_conqueror_doctrina_ap',
-    label: 'Doctrina Conquistadora — +1 PA, CàC (posición Battleline)',
+    label: 'Doctrina Conquistadora — +1 PA, CaC (posición Battleline)',
     description: 'Conqueror Imperative (conditional): if this unit is BATTLELINE or within 6" of friendly AdM BATTLELINE, improve the Armour Penetration of melee attacks by 1.',
     factionId: 'AdM',
     combatType: 'melee',
@@ -1465,7 +1465,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'adm_benedictions_of_the_omnissiah',
-    label: 'Benedictions Of The Omnissiah — +1 PA, CàC',
+    label: 'Benedictions Of The Omnissiah — +1 PA, CaC',
     description: 'At the start of the first battle round, select one of the following Benedictions of the Omnissiah to be active for CULT MECHANICUS units from your army until the end of the battle: Panegyric Procession Each time a CULT MECHANICUS model from your army makes a ranged attack that targets a unit within',
     factionId: 'AdM',
     detachmentId: '000000821',
@@ -1508,7 +1508,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'adm_chant_of_the_remorseless_fist',
-    label: 'CHANT OF THE REMORSELESS FIST — +1 herir, CàC (1CP)',
+    label: 'CHANT OF THE REMORSELESS FIST — +1 herir, CaC (1CP)',
     description: 'Data-Psalm Conclave: Until the end of the phase, each time a CULT MECHANICUS model in your unit makes a melee attack, add 1 to the Wound roll.',
     factionId: 'AdM',
     detachmentId: '000000821',
@@ -1627,7 +1627,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'adm_baleful_halo',
-    label: 'BALEFUL HALO — -1 herir, CàC (2CP)',
+    label: 'BALEFUL HALO — -1 herir, CaC (2CP)',
     description: 'Rad-Zone Corps: Until the end of the turn, each time an attack is made that targets your unit, subtract 1 from the Wound roll.',
     factionId: 'AdM',
     detachmentId: '000000762',
@@ -1881,7 +1881,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'aoi_crackdown',
-    label: 'CRACKDOWN — repetir impactos, repetir heridas, CàC (1CP)',
+    label: 'CRACKDOWN — repetir impactos, repetir heridas, CaC (1CP)',
     description: 'Interdiction Team: Until the end of the phase, each time a model in your unit makes an attack, you can re-roll the Hit roll and you can re-roll the Wound roll.',
     factionId: 'AoI',
     detachmentId: '000000925',
@@ -2016,7 +2016,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ldr_000003812_holy_hatred',
-    label: 'Ministorum Priest — Sustained Hits 1, CàC (Líder)',
+    label: 'Ministorum Priest — Sustained Hits 1, CaC (Líder)',
     description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
     factionId: 'AoI',
     leaderDatasheetId: '000003812',
@@ -2113,7 +2113,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'cd_seductive_whispers',
-    label: 'SEDUCTIVE WHISPERS — -1 impactar, CàC (1CP)',
+    label: 'SEDUCTIVE WHISPERS — -1 impactar, CaC (1CP)',
     description: 'Dread Carnival: Until the end of the phase, each time an attack targets your unit, subtract 1 from the Hit roll.',
     factionId: 'CD',
     detachmentId: '000000956',
@@ -2140,7 +2140,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'cd_archagonists',
-    label: 'ARCHAGONISTS — +1 herir, CàC (2CP)',
+    label: 'ARCHAGONISTS — +1 herir, CaC (2CP)',
     description: 'Legion of Excess: Until the end of the phase, each time a model in one of those units makes an attack, add 1 to the Wound roll.',
     factionId: 'CD',
     detachmentId: '000000997',
@@ -2165,7 +2165,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'cd_seeping_virulence',
-    label: 'SEEPING VIRULENCE — crítico 5+, CàC (1CP)',
+    label: 'SEEPING VIRULENCE — crítico 5+, CaC (1CP)',
     description: 'Plague Legion: Until the end of the phase, each time a model in that unit makes an attack, an unmodified Hit roll of 5+ scores a Critical Hit.',
     factionId: 'CD',
     detachmentId: '000001000',
@@ -2204,7 +2204,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'cd_channelled_wrath',
-    label: 'CHANNELLED WRATH — +1 PA, CàC (1CP)',
+    label: 'CHANNELLED WRATH — +1 PA, CaC (1CP)',
     description: 'Shadow Legion: Until the end of the phase, melee weapons equipped by models in your unit have the [LANCE] ability. If your unit has the Khorne keyword, until the end of the phase, improve the Armour Penetration characteristic of those weapons by 1 as well.',
     factionId: 'CD',
     detachmentId: '000001027',
@@ -2217,7 +2217,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ldr_000001139_lethal_caress',
-    label: 'Herald Of Slaanesh On Steed Of Slaanesh — +1 PA, CàC (Líder)',
+    label: 'Herald Of Slaanesh On Steed Of Slaanesh — +1 PA, CaC (Líder)',
     description: 'While this model is leading a unit, improve the Armour Penetration characteristic of melee weapons equipped by models in that unit by 1.',
     factionId: 'CD',
     leaderDatasheetId: '000001139',
@@ -2249,7 +2249,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ldr_000001463_fateskimmer',
-    label: 'Fateskimmer — Lethal Hits, CàC (Líder)',
+    label: 'Fateskimmer — Lethal Hits, CaC (Líder)',
     description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [LETHAL HITS] ability.',
     factionId: 'CD',
     leaderDatasheetId: '000001463',
@@ -2270,7 +2270,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ldr_000001469_keep_counting',
-    label: 'Spoilpox Scrivener — Sustained Hits 1, CàC (Líder)',
+    label: 'Spoilpox Scrivener — Sustained Hits 1, CaC (Líder)',
     description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
     factionId: 'CD',
     leaderDatasheetId: '000001469',
@@ -2335,7 +2335,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'aura_000001137_daemon_lord_of_slaanesh_aura',
-    label: 'Keeper Of Secrets — +1 PA, CàC (Aura)',
+    label: 'Keeper Of Secrets — +1 PA, CaC (Aura)',
     description: 'While a friendly Slaanesh Legiones Daemonica unit is within 6" of this model, improve the Armour Penetration of melee weapons in that unit by 1.',
     factionId: 'CD',
     sourceDatasheetId: '000001137',
@@ -2346,7 +2346,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'aura_000001141_tormentbringer_aura',
-    label: 'Tormentbringer On Exalted Seeker Chariot — Sustained Hits 1, CàC (Aura)',
+    label: 'Tormentbringer On Exalted Seeker Chariot — Sustained Hits 1, CaC (Aura)',
     description: 'While a friendly Slaanesh Legiones Daemonica unit is within 6" of this model, melee weapons in that unit have the [SUSTAINED HITS 1] ability.',
     factionId: 'CD',
     sourceDatasheetId: '000001141',
@@ -2378,7 +2378,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'aura_000004100_tormentbringer_aura',
-    label: 'Tormentbringer — Sustained Hits 1, CàC (Aura)',
+    label: 'Tormentbringer — Sustained Hits 1, CaC (Aura)',
     description: 'While a friendly Slaanesh Legiones Daemonica unit is within 6" of this model, melee weapons in that unit have the [SUSTAINED HITS 1] ability.',
     factionId: 'CD',
     sourceDatasheetId: '000004100',
@@ -2435,7 +2435,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'csm_debt_to_the_soul_forge',
-    label: 'Debt to the Soul Forge — +1 herir, CàC',
+    label: 'Debt to the Soul Forge — +1 herir, CaC',
     description: 'Each time a HERETIC ASTARTES DAEMON VEHICLE unit from your army makes a Dark Pact, it can invoke its contract. If it does, subtract 1 from the resulting Leadership test when making that Dark Pact, and until the end of the phase: Each time a model in that unit makes a ranged attack, add 1 to the Woun',
     factionId: 'CSM',
     detachmentId: '000000873',
@@ -2528,7 +2528,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'csm_specimens_for_the_spider',
-    label: 'SPECIMENS FOR THE SPIDER — repetir heridas, CàC (2CP)',
+    label: 'SPECIMENS FOR THE SPIDER — repetir heridas, CaC (2CP)',
     description: 'Creations of Bile: Until the end of the phase, each time a model in your unit makes a melee attack that targets a CHARACTER unit, you can re-roll the Wound roll. After your unit has fought, if one or more enemy CHARACTER models were destroyed as a result of those attac',
     factionId: 'CSM',
     detachmentId: '000000991',
@@ -2593,7 +2593,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'csm_depthless_cruelty',
-    label: 'DEPTHLESS CRUELTY — +1 PA, CàC (1CP)',
+    label: 'DEPTHLESS CRUELTY — +1 PA, CaC (1CP)',
     description: 'Dread Talons: Until the end of the phase, each time a model in your unit makes an attack that targets a unit that is Battle-shocked and/or Below Half-strength, improve the Armour Penetration characteristic of that attack by 1.',
     factionId: 'CSM',
     detachmentId: '000000870',
@@ -2606,7 +2606,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'csm_persistent_assailants',
-    label: 'PERSISTENT ASSAILANTS — repetir impactos, repetir heridas, CàC (1CP)',
+    label: 'PERSISTENT ASSAILANTS — repetir impactos, repetir heridas, CaC (1CP)',
     description: 'Fellhammer Siege-host: Until the end of the phase, each time a model in your unit makes an attack, you can re-roll the Hit roll, and if your unit is Below Half-strength you can re-roll the Wound roll as well.',
     factionId: 'CSM',
     detachmentId: '000000871',
@@ -2660,7 +2660,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'csm_inveterate_murderers',
-    label: 'INVETERATE MURDERERS — +1 herir, CàC (1CP)',
+    label: 'INVETERATE MURDERERS — +1 herir, CaC (1CP)',
     description: 'Infernal Reavers: Until the end of the phase, each time a model in your unit makes an attack, if the Strength characteristic of that attack is less than or equal to the Toughness characteristic of the target, add 1 to the Wound roll.',
     factionId: 'CSM',
     detachmentId: '000000946',
@@ -2835,7 +2835,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'csm_armour_of_corruption',
-    label: 'ARMOUR OF CORRUPTION — −1 daño, CàC (2CP)',
+    label: 'ARMOUR OF CORRUPTION — −1 daño, CaC (2CP)',
     description: 'Warpstrike Champions: Until the end of the turn, each time an attack is allocated to a model in your unit, subtract 1 from the Damage characteristic of that attack. RESTRICTIONS: You cannot target the same unit with the Armour of Corruption and Empyric Dislocation Stratag',
     factionId: 'CSM',
     detachmentId: '000001141',
@@ -2945,10 +2945,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
 
   // ═══ DG ═══
-  // Dark Pacts: DG es HERETIC ASTARTES.
   // Nurgle's Gift (Aura) = Contagions of Nurgle: −1T a enemigos + plaga elegida al inicio
-  { id: 'dg_dark_pacts_lethal',    label: 'Dark Pacts — Lethal Hits',    description: 'Dark Pacts (HERETIC ASTARTES): superar prueba de Liderazgo o sufrir D3 heridas mortales, ganar [LETHAL HITS] hasta el final de la fase.', factionId: 'DG', effects: { lethalHitsBonus: true } },
-  { id: 'dg_dark_pacts_sustained', label: 'Dark Pacts — Sustained Hits 1', description: 'Dark Pacts (HERETIC ASTARTES): superar prueba de Liderazgo o sufrir D3 heridas mortales, ganar [SUSTAINED HITS 1] hasta el final de la fase.', factionId: 'DG', effects: { sustainedHitsBonus: 1 } },
   { id: 'dg_contagions_toughness', label: 'Contagions of Nurgle — −1 Resistencia enemiga', description: "Nurgle's Gift (Aura): while an enemy unit is within Contagion Range, subtract 1 from its Toughness characteristic. Modelled as +1 Strength for DG attacker.", factionId: 'DG', effects: { strengthMod: 1 } },
   { id: 'dg_plague_skullsquirm',   label: 'Plaga: Skullsquirm Blight — −1 impactar recibido', description: "Skullsquirm Blight: each time an Afflicted enemy model makes an attack, subtract 1 from the Hit roll. Activate on the DG unit being attacked.", factionId: 'DG', target: 'defender', effects: { hitMod: -1 } },
   { id: 'dg_plague_rattlejoint',   label: 'Plaga: Rattlejoint Ague — −1 salvación enemiga', description: "Rattlejoint Ague: worsen the Save characteristic of Afflicted models by 1. Modelled as +1 AP for DG attacker.", factionId: 'DG', effects: { apMod: 1 } },
@@ -2993,7 +2990,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'dg_grim_reapers',
-    label: 'GRIM REAPERS — repetir impactos, CàC (1CP)',
+    label: 'GRIM REAPERS — repetir impactos, CaC (1CP)',
     description: 'Death Lord’s Chosen: Until the end of the phase, each time a model in your unit makes an attack that targets an enemy unit (excluding MONSTERS and VEHICLES ) you can re-roll the Hit roll.',
     factionId: 'DG',
     detachmentId: '000001054',
@@ -3046,7 +3043,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'dg_clutching_corruption',
-    label: 'CLUTCHING CORRUPTION — repetir impactos, CàC (1CP)',
+    label: 'CLUTCHING CORRUPTION — repetir impactos, CaC (1CP)',
     description: 'Tallyband Summoners: Until the end of the phase, each time a model in your unit makes an attack that targets an enemy unit that is within Engagement Range of one or more Plague Legions units from your army, you can re-roll the Hit roll.',
     factionId: 'DG',
     detachmentId: '000001052',
@@ -3059,7 +3056,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'dg_pox_flare',
-    label: 'POX FLARE — +1 PA, CàC (1CP)',
+    label: 'POX FLARE — +1 PA, CaC (1CP)',
     description: 'Unclean Uprising: Until the end of the phase, improve the Armour Penetration characteristic of melee weapons equipped by models in your unit by 1.',
     factionId: 'DG',
     detachmentId: '000000931',
@@ -3143,7 +3140,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ldr_000001054_vector_of_disease',
-    label: 'Lord of Contagion — Sustained Hits 1, CàC (Líder)',
+    label: 'Lord of Contagion — Sustained Hits 1, CaC (Líder)',
     description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [SUSTAINED HITS 1] and [LANCE] abilities.',
     factionId: 'DG',
     leaderDatasheetId: '000001054',
@@ -3235,7 +3232,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'dru_taken_alive',
-    label: 'TAKEN ALIVE — +1 impactar, CàC (1CP)',
+    label: 'TAKEN ALIVE — +1 impactar, CaC (1CP)',
     description: 'Kabalite Cartel: Until the end of the phase, each time a model in your unit makes an attack, add 1 to the Hit roll. If your Contract unit is destroyed as a result of those attacks, every unit in your opponent’s army must take a Battle-shock test. You cannot gain more',
     factionId: 'DRU',
     detachmentId: '000001115',
@@ -3286,7 +3283,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'dru_elusive_duellists',
-    label: 'ELUSIVE DUELLISTS — -1 impactar, CàC (1CP)',
+    label: 'ELUSIVE DUELLISTS — -1 impactar, CaC (1CP)',
     description: 'Kabalite Corsairs: Until the end of the phase, each time an attack targets your unit, subtract 1 from the Hit roll and, if your unit has the INcUBI keyword, models in your unit have a 4+ invulnerable save.',
     factionId: 'DRU',
     detachmentId: '000000935',
@@ -3300,7 +3297,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'dru_moulded_musculature',
-    label: 'MOULDED MUSCULATURE — +1 PA, CàC (1CP)',
+    label: 'MOULDED MUSCULATURE — +1 PA, CaC (1CP)',
     description: 'Painbringers: Select any number of models in your unit. Until the end of the phase, improve the Strength and Armour Penetration characteristics of melee weapons equipped by the selected models by 1, and each time you select targets for attacks made by those models',
     factionId: 'DRU',
     detachmentId: '000000937',
@@ -3352,7 +3349,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'dru_dark_harvest',
-    label: 'DARK HARVEST — Lethal Hits, CàC (1CP)',
+    label: 'DARK HARVEST — Lethal Hits, CaC (1CP)',
     description: 'Realspace Raiders: Until the end of the phase, melee weapons equipped by models in each of those units have the [LETHAL HITS] ability.',
     factionId: 'DRU',
     detachmentId: '000000804',
@@ -3365,7 +3362,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'dru_murderer_s_circus',
-    label: 'MURDERER’S CIRCUS — -1 impactar, CàC (1CP)',
+    label: 'MURDERER’S CIRCUS — -1 impactar, CaC (1CP)',
     description: 'Reaper’s Wager: Until the end of the phase, each time an attack targets your unit, subtract 1 from the Hit roll.',
     factionId: 'DRU',
     detachmentId: '000000993',
@@ -3419,7 +3416,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'dru_deadly_debut',
-    label: 'DEADLY DEBUT — +1 PA, Lethal Hits, CàC (1CP)',
+    label: 'DEADLY DEBUT — +1 PA, Lethal Hits, CaC (1CP)',
     description: 'Spectacle of Spite: Until the end of the phase, melee weapons equipped by models in your unit have the [LETHAL HITS] ability. If your unit is a Wyches unit, until the end of the phase, improve the Armour Penetration characteristic of melee weapons equipped by models in',
     factionId: 'DRU',
     detachmentId: '000001113',
@@ -3433,7 +3430,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ldr_000000639_storm_of_blades',
-    label: 'Succubus — Sustained Hits 1, CàC (Líder)',
+    label: 'Succubus — Sustained Hits 1, CaC (Líder)',
     description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
     factionId: 'DRU',
     leaderDatasheetId: '000000639',
@@ -3459,7 +3456,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   // Thrill Seekers = movimiento; Pact of Excess = restricción de construcción. Sin regla de facción de daño.
   {
     id: 'ec_exquisite_swordsmanship',
-    label: 'Exquisite Swordsmanship — Lethal Hits, CàC',
+    label: 'Exquisite Swordsmanship — Lethal Hits, CaC',
     description: 'Each time an Emperor’s Children unit from your army is selected to fight, if it made a Charge move this turn, select one of the abilities below. While resolving those attacks, melee weapons equipped by models in that unit have that ability: [LETHAL HITS] [SUSTAINED HITS 1]',
     factionId: 'EC',
     detachmentId: '000001034',
@@ -3489,10 +3486,10 @@ export const MODIFIER_RULES: ModifierRule[] = [
     critThreshold: 5,
   },
   },
-  { id: 'ec_pledges_crit5',          label: 'Pledges — crítico 5+ (CàC)', factionId: 'EC', detachmentId: '000001037', combatType: 'melee', effects: { critThreshold: 5 } },
-  { id: 'ec_pledges_reroll_hits1',   label: 'Pledges — repetir impactos 1 (CàC)', factionId: 'EC', detachmentId: '000001037', combatType: 'melee', effects: { rerollHitsOf1: true } },
-  { id: 'ec_pledges_reroll_wounds1', label: 'Pledges — repetir heridas 1 (CàC)', factionId: 'EC', detachmentId: '000001037', combatType: 'melee', effects: { rerollWoundsOf1: true } },
-  { id: 'ec_pledges_lethal',         label: 'Pledges — Lethal Hits (CàC)', factionId: 'EC', detachmentId: '000001037', combatType: 'melee', effects: { lethalHitsBonus: true } },
+  { id: 'ec_pledges_crit5',          label: 'Pledges — crítico 5+ (CaC)', factionId: 'EC', detachmentId: '000001037', combatType: 'melee', effects: { critThreshold: 5 } },
+  { id: 'ec_pledges_reroll_hits1',   label: 'Pledges — repetir impactos 1 (CaC)', factionId: 'EC', detachmentId: '000001037', combatType: 'melee', effects: { rerollHitsOf1: true } },
+  { id: 'ec_pledges_reroll_wounds1', label: 'Pledges — repetir heridas 1 (CaC)', factionId: 'EC', detachmentId: '000001037', combatType: 'melee', effects: { rerollWoundsOf1: true } },
+  { id: 'ec_pledges_lethal',         label: 'Pledges — Lethal Hits (CaC)', factionId: 'EC', detachmentId: '000001037', combatType: 'melee', effects: { lethalHitsBonus: true } },
   {
     id: 'ec_internal_rivalries',
     label: 'Internal Rivalries — repetir heridas',
@@ -3505,7 +3502,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ec_sensational_performance',
-    label: 'Sensational Performance — +1 PA, CàC',
+    label: 'Sensational Performance — +1 PA, CaC',
     description: 'Emperor’s Children units from your army have the following ability: Sensational Performance: Each time this unit is selected to fight, if this unit made a Charge move this turn, it can use this ability. If it does, until the end of the phase: This unit cannot target a unit it was within Engagement R',
     factionId: 'EC',
     detachmentId: '000001125',
@@ -3530,7 +3527,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ec_martial_perfection',
-    label: 'MARTIAL PERFECTION — repetir impactos, CàC (1CP)',
+    label: 'MARTIAL PERFECTION — repetir impactos, CaC (1CP)',
     description: 'Coterie of the Conceited: Until the end of the phase, each time a model in your unit makes an attack, you can re-roll the Hit roll.',
     factionId: 'EC',
     detachmentId: '000001037',
@@ -3556,7 +3553,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ec_prideful_superiority',
-    label: 'PRIDEFUL SUPERIORITY — repetir impactos, repetir heridas, CàC (2CP)',
+    label: 'PRIDEFUL SUPERIORITY — repetir impactos, repetir heridas, CaC (2CP)',
     description: 'Court of the Phoenician: Until the end of the phase, each time a model in your unit makes an attack that targets a CHARACTER unit, you can re-roll the Hit roll and you can re-roll the Wound roll.',
     factionId: 'EC',
     detachmentId: '000001125',
@@ -3596,7 +3593,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ec_violent_excess',
-    label: 'VIOLENT EXCESS — Sustained Hits 1, CàC (1CP)',
+    label: 'VIOLENT EXCESS — Sustained Hits 1, CaC (1CP)',
     description: 'Mercurial Host: Until the end of the phase, melee weapons equipped by models in your unit have the [SUSTAINED HITS 1] ability.',
     factionId: 'EC',
     detachmentId: '000001033',
@@ -3609,7 +3606,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ec_combat_stimms',
-    label: 'COMBAT STIMMS — -1 herir, CàC (2CP)',
+    label: 'COMBAT STIMMS — -1 herir, CaC (2CP)',
     description: 'Mercurial Host: Until the end of the phase, each time an attack targets your unit, subtract 1 from the Wound roll.',
     factionId: 'EC',
     detachmentId: '000001033',
@@ -3637,7 +3634,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ec_deft_parry',
-    label: 'DEFT PARRY — -1 impactar, CàC (1CP)',
+    label: 'DEFT PARRY — -1 impactar, CaC (1CP)',
     description: 'Peerless Bladesmen: Until the end of the phase, each time an attack targets your unit, subtract 1 from the Hit roll.',
     factionId: 'EC',
     detachmentId: '000001034',
@@ -3651,7 +3648,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ec_cruel_bladesman',
-    label: 'CRUEL BLADESMAN — +1 PA, CàC (1CP)',
+    label: 'CRUEL BLADESMAN — +1 PA, CaC (1CP)',
     description: 'Peerless Bladesmen: Until the end of the phase, improve the Armour Penetration characteristic of melee weapons equipped by models in your unit by 1.',
     factionId: 'EC',
     detachmentId: '000001034',
@@ -3664,7 +3661,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ec_devoted_duellists',
-    label: 'DEVOTED DUELLISTS — Sustained Hits 1, CàC (1CP)',
+    label: 'DEVOTED DUELLISTS — Sustained Hits 1, CaC (1CP)',
     description: 'Slaanesh’s Chosen: Select one enemy unit. Until the end of the phase, melee weapons equipped by models in those CHARACTER units have the [SUSTAINED HITS 1] ability while targeting that enemy unit.',
     factionId: 'EC',
     detachmentId: '000001038',
@@ -3689,7 +3686,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ec_alluring_grotesquerie',
-    label: 'ALLURING GROTESQUERIE — -1 impactar, CàC (1CP)',
+    label: 'ALLURING GROTESQUERIE — -1 impactar, CaC (1CP)',
     description: 'Sublime Strike: Each enemy unit within Engagement Range of your unit must take a Battle-shock test. Until the end of the phase, each time an attack targets your unit, subtract 1 from the Hit roll.',
     factionId: 'EC',
     detachmentId: '000001154',
@@ -3724,7 +3721,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'aura_000004086_excessive_vigour_aura',
-    label: 'Daemon Prince of Slaanesh — +1 PA, CàC (Aura)',
+    label: 'Daemon Prince of Slaanesh — +1 PA, CaC (Aura)',
     description: 'While a friendly Slaanesh unit is within 6" of this model, if that unit made a Charge move this turn, improve the Armour Penetration characteristic of melee weapons equipped by models in that unit by 1.',
     factionId: 'EC',
     sourceDatasheetId: '000004086',
@@ -3735,7 +3732,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'aura_000004097_daemon_lord_of_slaanesh_aura',
-    label: 'Keeper of Secrets — +1 PA, CàC (Aura)',
+    label: 'Keeper of Secrets — +1 PA, CaC (Aura)',
     description: 'While a friendly Legions of Excess unit is within 6" of this model, improve the Armour Penetration characteristic of melee weapons equipped by models in that unit by 1.',
     factionId: 'EC',
     sourceDatasheetId: '000004097',
@@ -3798,7 +3795,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'gc_gene_twisted_muscle',
-    label: 'GENE-TWISTED MUSCLE — +1 herir, CàC (1CP)',
+    label: 'GENE-TWISTED MUSCLE — +1 herir, CaC (1CP)',
     description: 'Biosanctic Broodsurge: Until the end of the phase, each time a model in your unit makes an attack that targets a MONSTER or VEHICLE , add 1 to the Wound roll.',
     factionId: 'GC',
     detachmentId: '000000886',
@@ -3851,7 +3848,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'gc_hyperferocity',
-    label: 'HYPERFEROCITY — repetir heridas 1, CàC (1CP)',
+    label: 'HYPERFEROCITY — repetir heridas 1, CaC (1CP)',
     description: 'Final Day: Until the end of the phase, each time a model in your unit makes an attack that targets an enemy unit, re-roll a Wound roll of 1. If one or more friendly Tyranids units are within 6" of that enemy unit, you can re-roll the Wound roll instead.',
     factionId: 'GC',
     detachmentId: '000001002',
@@ -3971,7 +3968,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ldr_000001572_twisted_science',
-    label: 'Biophagus — Lethal Hits, CàC (Líder)',
+    label: 'Biophagus — Lethal Hits, CaC (Líder)',
     description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [LETHAL HITS] ability.',
     factionId: 'GC',
     leaderDatasheetId: '000001572',
@@ -4023,6 +4020,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
     feelNoPainThreshold: 4,
   },
   },
+  { id: 'gc_synapse', label: 'Sinapse — +1 Fuerza (CaC)', description: "Synapse: while a GENESTEALER CULTS unit is within 6\" of one or more friendly Synapse models, add 1 to the Strength characteristic of each melee attack made by models in that unit.", factionId: 'GC', combatType: 'melee', effects: { strengthMod: 1 } },
 
   // ═══ GK ═══
   {
@@ -4048,7 +4046,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'gk_channelled_force',
-    label: 'Channelled Force — Lethal Hits, CàC',
+    label: 'Channelled Force — Lethal Hits, CaC',
     description: 'Each time a Grey Knights unit from your army is selected to fight, that unit can take a Leadership test. If that test is passed, select one of the following rules. Until the end of the phase, that unit has that rule. Melee weapons equipped by models in this unit with the [psychic] ability also have',
     factionId: 'GK',
     detachmentId: '000001083',
@@ -4162,7 +4160,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'gk_sanctified_slaughter',
-    label: 'SANCTIFIED SLAUGHTER — crítico 5+, Sustained Hits 1, CàC (1CP)',
+    label: 'SANCTIFIED SLAUGHTER — crítico 5+, Sustained Hits 1, CaC (1CP)',
     description: 'Void Purge Force: Until the end of the phase, melee weapons equipped by models in your unit have the [SUSTAINED HITS 1] ability. If such a weapon already has that ability, until the end of the phase, each time an attack is made with that weapon, a successful unmodifie',
     factionId: 'GK',
     detachmentId: '000000943',
@@ -4199,7 +4197,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ldr_000000376_hammerhand_psychic',
-    label: 'Brother-captain — Lethal Hits, CàC (Líder)',
+    label: 'Brother-captain — Lethal Hits, CaC (Líder)',
     description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [LETHAL HITS] ability.',
     factionId: 'GK',
     leaderDatasheetId: '000000376',
@@ -4281,7 +4279,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'lov_cyberstimm_infusion',
-    label: 'CYBERSTIMM INFUSION — repetir heridas 1, CàC (1CP)',
+    label: 'CYBERSTIMM INFUSION — repetir heridas 1, CaC (1CP)',
     description: 'Dêlve Assault Shift: Each time you use this Stratagem, you can spend 2YP. Until the end of the phase, each time a model in your unit makes an attack, re-roll a Wound roll of 1. If you spent YP during this use of this Stratagem, you can re-roll the Wound roll instead.',
     factionId: 'LoV',
     detachmentId: '000001098',
@@ -4321,7 +4319,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'lov_superior_craftsmanship',
-    label: 'SUPERIOR CRAFTSMANSHIP — +1 daño, CàC (2CP)',
+    label: 'SUPERIOR CRAFTSMANSHIP — +1 daño, CaC (2CP)',
     description: 'Hearthband: Until the end of the phase, each time a model in your unit makes an attack that targets a MONSTER or VEHICLE unit, add 1 to the Damage characteristic of that attack.',
     factionId: 'LoV',
     detachmentId: '000001001',
@@ -4347,7 +4345,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'lov_optimal_expenditure',
-    label: 'OPTIMAL EXPENDITURE — repetir impactos 1, repetir heridas 1, CàC (1CP)',
+    label: 'OPTIMAL EXPENDITURE — repetir impactos 1, repetir heridas 1, CaC (1CP)',
     description: 'Mercenary Oathband: Each time you use this Stratagem, you can spend 3YP. Until the end of the phase, each time a model in your unit makes an attack, re-roll a Hit roll of 1 and re-roll a Wound roll of 1. If you spent YP during this usage of this Stratagem, you can re-ro',
     factionId: 'LoV',
     detachmentId: '000001137',
@@ -4388,7 +4386,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'lov_honour_of_the_hold',
-    label: 'HONOUR OF THE HOLD — +2 PA, CàC (1CP)',
+    label: 'HONOUR OF THE HOLD — +2 PA, CaC (1CP)',
     description: 'Needgaârd Oathband: Each time you use this Stratagem, you can spend 3YP. Select one enemy unit within Engagement Range of your unit. Until the end of the phase, each time a model in your unit makes a melee attack that targets that enemy unit, improve the Armour Penetrat',
     factionId: 'LoV',
     detachmentId: '000001096',
@@ -4621,7 +4619,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'nec_protocol_of_the_hungry_void',
-    label: 'PROTOCOL OF THE HUNGRY VOID — +1 PA, +1 F, CàC (1CP)',
+    label: 'PROTOCOL OF THE HUNGRY VOID — +1 PA, +1 F, CaC (1CP)',
     description: 'Awakened Dynasty: Until the end of the phase, add 1 to the Strength characteristic of melee weapons equipped by models in your unit. In addition, If a Necrons Character is leading your unit, until the end of the phase, improve the Armour Penetration characteristic of',
     factionId: 'NEC',
     detachmentId: '000000756',
@@ -4787,7 +4785,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'nec_disruption_fields',
-    label: 'DISRUPTION FIELDS — +1 F, CàC (1CP)',
+    label: 'DISRUPTION FIELDS — +1 F, CaC (1CP)',
     description: 'Tomb Ship Complement: Until the end of the phase, add 1 to the Strength characteristic of melee weapons equipped by models in your unit.',
     factionId: 'NEC',
     detachmentId: '000000959',
@@ -4800,7 +4798,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'nec_unwavering_defence',
-    label: 'UNWAVERING DEFENCE — Sustained Hits 2, CàC (1CP)',
+    label: 'UNWAVERING DEFENCE — Sustained Hits 2, CaC (1CP)',
     description: 'Tomb Ship Complement: Until the end of the phase, melee weapons equipped by models in your unit have the [SUSTAINED HITS 2] ability.',
     factionId: 'NEC',
     detachmentId: '000000959',
@@ -4836,7 +4834,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ldr_000002109_united_in_destruction',
-    label: 'Skorpekh Lord — Lethal Hits, CàC (Líder)',
+    label: 'Skorpekh Lord — Lethal Hits, CaC (Líder)',
     description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [LETHAL HITS] ability.',
     factionId: 'NEC',
     leaderDatasheetId: '000002109',
@@ -4966,11 +4964,11 @@ export const MODIFIER_RULES: ModifierRule[] = [
 
   // ═══ ORK ═══
   // WAAAGH!: una vez por partida, el Warboss puede declarar WAAAGH! → +1 impactar a todas las unidades Ork esa ronda
-  { id: 'ork_waaagh',     label: 'WAAAGH! — +1 Fuerza y +1 Ataque (CàC)',        description: "WAAAGH!: once per battle. Until the start of your next Command phase, add 1 to the Strength and Attacks characteristics of melee weapons equipped by models in this unit.", factionId: 'ORK', combatType: 'melee', effects: { strengthMod: 1, attacksMod: 1 } },
+  { id: 'ork_waaagh',     label: 'WAAAGH! — +1 Fuerza y +1 Ataque (CaC)',        description: "WAAAGH!: once per battle. Until the start of your next Command phase, add 1 to the Strength and Attacks characteristics of melee weapons equipped by models in this unit.", factionId: 'ORK', combatType: 'melee', effects: { strengthMod: 1, attacksMod: 1 } },
   { id: 'ork_waaagh_inv', label: 'WAAAGH! — salvación invulnerable 5+ (defensor)', description: "WAAAGH!: models from your army have a 5+ invulnerable save. Activate on the ORK unit being attacked.", factionId: 'ORK', target: 'defender', effects: { saveMod: 1 } },
   {
     id: 'ork_get_stuck_in',
-    label: 'Get Stuck In — Sustained Hits 1, CàC',
+    label: 'Get Stuck In — Sustained Hits 1, CaC',
     description: 'Melee weapons equipped by ORKS models from your army have the [SUSTAINED HITS 1] ability.',
     factionId: 'ORK',
     detachmentId: '000000852',
@@ -5014,7 +5012,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ork_lissen_ere',
-    label: 'Lissen ’Ere — +1 impactar, CàC',
+    label: 'Lissen ’Ere — +1 impactar, CaC',
     description: 'Once per battle round, in your Command phase or after being set up on the battlefield in your Movement phase, each Boss Snikrot, Mek and Warboss model in your army can issue Taktiks abilities. To do so, select one of the Taktiks abilities below and select one friendly ORKS unit within 6" of that mod',
     factionId: 'ORK',
     detachmentId: '000000995',
@@ -5100,7 +5098,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ork_drag_it_down',
-    label: 'DRAG IT DOWN — crítico 5+, Sustained Hits 1, CàC (1CP)',
+    label: 'DRAG IT DOWN — crítico 5+, Sustained Hits 1, CaC (1CP)',
     description: 'Da Big Hunt: Until the end of the phase, melee weapons equipped by models in your unit have the [SUSTAINED HITS 1] ability. In addition, each time a model in your unit makes a melee attack that targets your Prey, a Critical Hit is scored on an unmodified Hit roll',
     factionId: 'ORK',
     detachmentId: '000000853',
@@ -5155,7 +5153,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ork_klankin_klaws',
-    label: 'KLANKIN’ KLAWS — +1 daño, +2 F, CàC (1CP)',
+    label: 'KLANKIN’ KLAWS — +1 daño, +2 F, CaC (1CP)',
     description: 'Dread Mob: Each time you use this Stratagem, you can choose to push it. Until the end of the phase, add 2 to the Strength characteristic of melee weapons equipped by models in your unit and, if you chose to push it, until the end of the phase, add 1 to the Dama',
     factionId: 'ORK',
     detachmentId: '000000855',
@@ -5169,7 +5167,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ork_bash_and_grab',
-    label: 'BASH AND GRAB — repetir heridas, CàC (1CP)',
+    label: 'BASH AND GRAB — repetir heridas, CaC (1CP)',
     description: 'Freebooter Krew: Until the end of the phase, each time a model in your unit makes an attack that targets an enemy unit within range of the loot objective, you can re-roll the Wound roll.',
     factionId: 'ORK',
     detachmentId: '000001138',
@@ -5182,7 +5180,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ork_competitive_streak',
-    label: 'COMPETITIVE STREAK — repetir heridas 1, CàC (1CP)',
+    label: 'COMPETITIVE STREAK — repetir heridas 1, CaC (1CP)',
     description: 'Green Tide: Until the end of the phase, each time a model in your unit makes an attack, re-roll a Wound roll of 1. If your unit contains 10 or more models, re-roll the Wound roll instead.',
     factionId: 'ORK',
     detachmentId: '000000856',
@@ -5222,7 +5220,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ork_orks_is_still_orks',
-    label: 'ORKS IS STILL ORKS — repetir heridas 1, CàC (1CP)',
+    label: 'ORKS IS STILL ORKS — repetir heridas 1, CaC (1CP)',
     description: 'More Dakka!: Until the end of the phase, each time a model in your unit makes an attack that targets an enemy unit, re-roll a Wound roll of 1. If that enemy unit is within range of an objective marker, you can re-roll the Wound roll instead.',
     factionId: 'ORK',
     detachmentId: '000001030',
@@ -5248,7 +5246,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ork_ded_killy_construction',
-    label: 'DED KILLY CONSTRUCTION — +1 daño, CàC (1CP)',
+    label: 'DED KILLY CONSTRUCTION — +1 daño, CaC (1CP)',
     description: 'Speedwaaagh!: Until the end of the phase, melee weapons equipped by models in your unit have the [LANCE] ability and, if your unit made a Charge move this turn, until the end of the phase, add 1 to the Damage characteristic of those weapons.',
     factionId: 'ORK',
     detachmentId: '000001151',
@@ -5261,7 +5259,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ork_fight_proppa',
-    label: 'FIGHT PROPPA — Lethal Hits, Sustained Hits 1, CàC (1CP)',
+    label: 'FIGHT PROPPA — Lethal Hits, Sustained Hits 1, CaC (1CP)',
     description: 'Taktikal Brigade: Select the [SUSTAINED HITS 1] or [LETHAL HITS] ability. Until the end of the phase, melee weapons equipped by models in your unit have the selected ability.',
     factionId: 'ORK',
     detachmentId: '000000995',
@@ -5288,7 +5286,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ork_unbridled_carnage',
-    label: 'UNBRIDLED CARNAGE — crítico 5+, CàC (1CP)',
+    label: 'UNBRIDLED CARNAGE — crítico 5+, CaC (1CP)',
     description: 'War Horde: Until the end of the phase, each time a model in your unit makes a melee attack, an unmodified hit roll of 5+ scores a Critical Hit.',
     factionId: 'ORK',
     detachmentId: '000000852',
@@ -5512,7 +5510,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'aura_000000008_ghazghkull_s_waaagh_banner_aura',
-    label: 'Ghazghkull Thraka — Lethal Hits, CàC (Aura)',
+    label: 'Ghazghkull Thraka — Lethal Hits, CaC (Aura)',
     description: 'While a friendly ORKS unit is within 12" of Makari, if the Waaagh! is active for your army, melee weapons equipped by models in that unit have the [LETHAL HITS] ability.',
     factionId: 'ORK',
     sourceDatasheetId: '000000008',
@@ -5526,8 +5524,8 @@ export const MODIFIER_RULES: ModifierRule[] = [
   // Doctrina Imperatives: idéntica a AdM según CSV (misma descripción exacta)
   { id: 'qi_protector_doctrina',     label: 'Doctrina Protectora — [HEAVY] +1 impactar, disparo',                        description: 'Protector Imperative: ranged weapons gain [HEAVY] and +1 BS.',                                                                                           factionId: 'QI', combatType: 'ranged',                    effects: { hitMod: 1 } },
   { id: 'qi_protector_doctrina_def', label: 'Doctrina Protectora — −1 impactar melee recibido (posición Battleline)',      description: 'Protector Imperative (conditional): each time a melee attack targets this unit, if BATTLELINE or within 6" of AdM/QI BATTLELINE, subtract 1 from the Hit roll.', factionId: 'QI', combatType: 'melee', target: 'defender', effects: { hitMod: -1 } },
-  { id: 'qi_conqueror_doctrina',     label: 'Doctrina Conquistadora — [ASSAULT] +1 impactar, CàC',                        description: 'Conqueror Imperative: ranged weapons gain [ASSAULT] and melee weapons get +1 WS.',                                                                         factionId: 'QI', combatType: 'melee',                     effects: { hitMod: 1 } },
-  { id: 'qi_conqueror_doctrina_ap',  label: 'Doctrina Conquistadora — +1 PA, CàC (posición Battleline)',                  description: 'Conqueror Imperative (conditional): if BATTLELINE or within 6" of AdM/QI BATTLELINE, improve the AP of melee attacks by 1.',                              factionId: 'QI', combatType: 'melee',                     effects: { apMod: 1 } },
+  { id: 'qi_conqueror_doctrina',     label: 'Doctrina Conquistadora — [ASSAULT] +1 impactar, CaC',                        description: 'Conqueror Imperative: ranged weapons gain [ASSAULT] and melee weapons get +1 WS.',                                                                         factionId: 'QI', combatType: 'melee',                     effects: { hitMod: 1 } },
+  { id: 'qi_conqueror_doctrina_ap',  label: 'Doctrina Conquistadora — +1 PA, CaC (posición Battleline)',                  description: 'Conqueror Imperative (conditional): if BATTLELINE or within 6" of AdM/QI BATTLELINE, improve the AP of melee attacks by 1.',                              factionId: 'QI', combatType: 'melee',                     effects: { apMod: 1 } },
   {
     id: 'qi_cogbound_alliance',
     label: 'Cogbound Alliance — repetir impactos 1, repetir heridas 1',
@@ -5579,7 +5577,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'qi_steadfast_superiority',
-    label: 'STEADFAST SUPERIORITY — repetir impactos, CàC (1CP)',
+    label: 'STEADFAST SUPERIORITY — repetir impactos, CaC (1CP)',
     description: 'Gate Warden Lance: Until the end of the phase, each time a model in your unit makes an attack, you can re-roll the Hit roll.',
     factionId: 'QI',
     detachmentId: '000001107',
@@ -5618,7 +5616,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'qi_lancebreaker',
-    label: 'LANCEBREAKER — -1 herir, CàC (1CP)',
+    label: 'LANCEBREAKER — -1 herir, CaC (1CP)',
     description: 'Gate Warden Lance: Until the end of the phase, each time an attack targets your unit, if the Strength characteristic of that attack is greaterthan the Toughness characteristic of your unit, subtract 1 from the Wound roll',
     factionId: 'QI',
     detachmentId: '000001107',
@@ -5683,7 +5681,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'qi_virtue_of_courage',
-    label: 'VIRTUE OF COURAGE — +1 impactar, CàC (1CP)',
+    label: 'VIRTUE OF COURAGE — +1 impactar, CaC (1CP)',
     description: 'Spearhead-At-Arms: Select one enemy unit. Until the end of the phase, each time one of your ARMIGER models makes an attack that targets that enemy unit, add 1 to the Hit roll.',
     factionId: 'QI',
     detachmentId: '000001109',
@@ -5710,7 +5708,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'qi_thunderstomp',
-    label: 'THUNDERSTOMP — +1 PA, CàC (1CP)',
+    label: 'THUNDERSTOMP — +1 PA, CaC (1CP)',
     description: 'Valourstrike Lance: Until the end of the phase, the Attacks characteristic of any armoured Feet melee weapons equipped by your model is 8, the Attacks characteristic of any titanic Feet melee weapons equipped by your model is 12, and improve the Armour Penetration chara',
     factionId: 'QI',
     detachmentId: '000001106',
@@ -5770,6 +5768,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   // QT es CHAOS KNIGHTS, no HERETIC ASTARTES → no tiene Dark Pacts.
   // Harbingers of Dread: debuffs de Ld/OC + DOOM (si objetivo está Battle-shocked, +1 herir)
   { id: 'qt_dread_doom', label: 'Harbingers of Dread — DOOM: +1 herir vs Battle-shocked', description: "DOOM (Harbingers of Dread): each time this model makes an attack, if the target is Battle-shocked, add 1 to the Wound roll. Activate when the target unit is Battle-shocked.", factionId: 'QT', effects: { woundMod: 1 } },
+  { id: 'qt_dread_darkness', label: 'DOOM: Darkness — -1 impactar (Def)', description: "DOOM: Darkness (Harbingers of Dread): each time an enemy unit makes an attack targeting this unit, subtract 1 from the Hit roll.", factionId: 'QT', target: 'defender', effects: { hitMod: -1 } },
   {
     id: 'qt_dreaded_masters',
     label: 'Dreaded Masters — repetir impactos 1, repetir heridas 1, Lethal Hits, Sustained Hits 1',
@@ -5833,7 +5832,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'qt_hungry_for_combat',
-    label: 'HUNGRY FOR COMBAT — crítico 5+, CàC (1CP)',
+    label: 'HUNGRY FOR COMBAT — crítico 5+, CaC (1CP)',
     description: 'Houndpack Lance: Select one enemy unit within Engagement Range of those WAR DOG units. Until the end of the phase, models in those WAR DOG units can only target that enemy unit, but each time a model in one of those WAR DOG units makes an attack, an unmodified Hit ro',
     factionId: 'QT',
     detachmentId: '000001077',
@@ -5858,7 +5857,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'qt_hellforged_construction',
-    label: 'HELLFORGED CONSTRUCTION — empeora PA atacante, CàC (1CP)',
+    label: 'HELLFORGED CONSTRUCTION — empeora PA atacante, CaC (1CP)',
     description: 'Infernal Lance: Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.',
     factionId: 'QT',
     detachmentId: '000001075',
@@ -5898,7 +5897,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'qt_conquerors_without_mercy',
-    label: 'CONQUERORS WITHOUT MERCY — +1 PA, CàC (1CP)',
+    label: 'CONQUERORS WITHOUT MERCY — +1 PA, CaC (1CP)',
     description: 'Traitoris Lance: Until the end of the phase, improve the Armour Penetration characteristic of melee weapons equipped by your model by 1. After your model has finished making its attacks this phase, if it destroyed one or more enemy units this phase, each enemy unit w',
     factionId: 'QT',
     detachmentId: '000000806',
@@ -5911,7 +5910,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'qt_disdain_for_the_weak',
-    label: 'DISDAIN FOR THE WEAK — FNP 6+, CàC (1CP)',
+    label: 'DISDAIN FOR THE WEAK — FNP 6+, CaC (1CP)',
     description: 'Traitoris Lance: Until the end of the phase, models in your unit have the Feel No Pain 6+ ability, and the Feel No Pain 5+ ability against attacks made by Battle-shocked models.',
     factionId: 'QT',
     detachmentId: '000000806',
@@ -6009,7 +6008,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_red_thirst',
-    label: 'Red Thirst — +2 F, CàC',
+    label: 'Red Thirst — +2 F, CaC',
     description: 'Each time an ADEPTUS ASTARTES unit from your army is selected to fight, if that unit made a Charge move this turn, until the end of the phase, add 1 to the Attacks characteristic and add 2 to the Strength characteristic of melee weapons equipped by models in that unit. RESTRICTIONS Your army can inc',
     factionId: 'SM',
     detachmentId: '000000758',
@@ -6209,7 +6208,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_maddened_ferocity',
-    label: 'Maddened Ferocity — repetir heridas 1, CàC',
+    label: 'Maddened Ferocity — repetir heridas 1, CaC',
     description: 'Each time an ADEPTUS ASTARTES model from your army makes a melee attack, re-roll a Wound roll of 1. Each time an ADEPTUS ASTARTES unit from your army is selected to fight, if that unit made a Charge move this turn, until the end of the phase, add 1 to the Attacks characteristic of melee weapons equi',
     factionId: 'SM',
     detachmentId: '000001123',
@@ -6313,7 +6312,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_focused_fury',
-    label: 'FOCUSED FURY — Lethal Hits, CàC (1CP)',
+    label: 'FOCUSED FURY — Lethal Hits, CaC (1CP)',
     description: 'Angelic Inheritors: Until the end of the phase, melee weapons equipped by models in your unit have the [LETHAL HITS] ability. If your unit is a Character unit, until the end of the phase, those weapons have the [LANCE] ability as well.',
     factionId: 'SM',
     detachmentId: '000001004',
@@ -6485,7 +6484,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_courage_and_honour',
-    label: 'COURAGE AND HONOUR! — +1 PA, CàC (1CP)',
+    label: 'COURAGE AND HONOUR! — +1 PA, CaC (1CP)',
     description: 'Blade of Ultramar: Until the end of the phase, melee weapons equipped by models in your unit have the [LANCE] ability. If your unit is under the effects of the Assault Doctrine, until the end of the phase, improve the Armour Penetration characteristic of such weapons b',
     factionId: 'SM',
     detachmentId: '000001120',
@@ -6625,7 +6624,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_pious_enmity',
-    label: 'PIOUS ENMITY — repetir impactos 1, repetir heridas 1, CàC (1CP)',
+    label: 'PIOUS ENMITY — repetir impactos 1, repetir heridas 1, CaC (1CP)',
     description: 'Companions of Vehemence: Until the end of the phase, each time a model in your unit makes a melee attack that targets an enemy unit, re-roll a Hit roll of 1. If that target is a MONSTER or VEHICLE unit, re-roll a Wound roll of 1 as well.',
     factionId: 'SM',
     detachmentId: '000001091',
@@ -6780,7 +6779,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_honour_the_chapter',
-    label: 'HONOUR THE CHAPTER — +1 PA, CàC (1CP)',
+    label: 'HONOUR THE CHAPTER — +1 PA, CaC (1CP)',
     description: 'Gladius Task Force: Until the end of the phase, melee weapons equipped by models in your unit have the [LANCE] ability. If your unit is under the effects of the Assault Doctrine, until the end of the phase, improve the Armour Penetration characteristic of such weapons b',
     factionId: 'SM',
     detachmentId: '000000750',
@@ -6819,7 +6818,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_condemnatory_info_screed',
-    label: 'CONDEMNATORY INFO-SCREED — repetir heridas 1, CàC (1CP)',
+    label: 'CONDEMNATORY INFO-SCREED — repetir heridas 1, CaC (1CP)',
     description: 'Godhammer Assault Force: Until the end of the phase, each time a model in your unit makes an attack, if it disembarked from a Transport this turn, re-roll a Wound roll of 1. If that TRANSPORT has the Land Raider keyword, you can re-roll the Wound roll instead.',
     factionId: 'SM',
     detachmentId: '000001093',
@@ -6846,7 +6845,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_ruthless_butchery',
-    label: 'RUTHLESS BUTCHERY — +1 impactar, +1 herir, CàC (1CP)',
+    label: 'RUTHLESS BUTCHERY — +1 impactar, +1 herir, CaC (1CP)',
     description: 'Hammer of Avernii: Until the end of the phase, each time a model in your unit makes an attack, add 1 to the Hit roll. If your unit is below Starting Strength, add 1 to the Wound roll as well.',
     factionId: 'SM',
     detachmentId: '000001118',
@@ -6965,7 +6964,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_martial_mastery',
-    label: 'MARTIAL MASTERY — repetir heridas 1, CàC (1CP)',
+    label: 'MARTIAL MASTERY — repetir heridas 1, CaC (1CP)',
     description: 'Inner Circle Task Force: Until the end of the phase, each time a model in your unit makes an attack, re-roll a Wound roll of 1. If your unit is within range of your Vowed objective marker, you can re-roll the Wound roll instead.',
     factionId: 'SM',
     detachmentId: '000000835',
@@ -7004,7 +7003,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_red_rampage',
-    label: 'RED RAMPAGE — Lethal Hits, CàC (1CP)',
+    label: 'RED RAMPAGE — Lethal Hits, CaC (1CP)',
     description: 'Liberator Assault Group: Select either the [LANCE] or [LETHAL HITS] abilities. Until the end of the phase, melee weapons equipped by models in your unit have the selected ability. You can instead choose for your unit to give in to the Red Thirst; if it does, then it becomes',
     factionId: 'SM',
     detachmentId: '000000758',
@@ -7056,7 +7055,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_iron_arm',
-    label: 'IRON ARM — +1 F, CàC (1CP)',
+    label: 'IRON ARM — +1 F, CaC (1CP)',
     description: 'Librarius Conclave: Until the end of the phase, add 1 to the Strength characteristic of melee weapons equipped by models in your unit, or add 2 if the Biomancy Discipline is active for your army.',
     factionId: 'SM',
     detachmentId: '000000994',
@@ -7069,7 +7068,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_fiery_shield',
-    label: 'FIERY SHIELD — -1 impactar, CàC (1CP)',
+    label: 'FIERY SHIELD — -1 impactar, CaC (1CP)',
     description: 'Librarius Conclave: Until the end of the phase, each time an attack targets your unit, subtract 1 from the Hit roll, and if the Pyromancy Discipline is active for your army, weapons that target your unit have the [HAZARDOUS] ability.',
     factionId: 'SM',
     detachmentId: '000000994',
@@ -7083,7 +7082,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_strength_in_unity',
-    label: 'STRENGTH IN UNITY — -1 impactar, -1 herir, CàC (1CP)',
+    label: 'STRENGTH IN UNITY — -1 impactar, -1 herir, CaC (1CP)',
     description: 'Lion’s Blade Task Force: If that enemy unit is within Engagement Range of one or more Ravenwing units from your army, until the end of the phase, each time a model in that enemy unit makes an attack, subtract 1 from the Hit roll. If that enemy unit is within Engagement Range',
     factionId: 'SM',
     detachmentId: '000000981',
@@ -7148,7 +7147,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_knife_work',
-    label: 'KNIFE WORK — +1 PA, CàC (1CP)',
+    label: 'KNIFE WORK — +1 PA, CaC (1CP)',
     description: 'Pilum Strike Team: Until the end of the phase, improve the Strength and Armour Penetration characteristics of melee weapons equipped by models in your unit by 1.',
     factionId: 'SM',
     detachmentId: '000000906',
@@ -7187,7 +7186,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_unbridled_ferocity',
-    label: 'UNBRIDLED FEROCITY — +1 herir, CàC (1CP)',
+    label: 'UNBRIDLED FEROCITY — +1 herir, CaC (1CP)',
     description: 'Saga of the Beastslayer: Until the end of the phase, each time a model in your unit makes an attack, add 1 to the Wound roll.',
     factionId: 'SM',
     detachmentId: '000001070',
@@ -7200,7 +7199,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_inspiring_presence',
-    label: 'INSPIRING PRESENCE — Lethal Hits, CàC (1CP)',
+    label: 'INSPIRING PRESENCE — Lethal Hits, CaC (1CP)',
     description: 'Saga of the Bold: Until the end of the phase, melee weapons equipped by models in your unit have the [LETHAL HITS] ability.',
     factionId: 'SM',
     detachmentId: '000001069',
@@ -7278,7 +7277,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_overwhelming_onslaught',
-    label: 'OVERWHELMING ONSLAUGHT — -1 impactar, CàC (1CP)',
+    label: 'OVERWHELMING ONSLAUGHT — -1 impactar, CaC (1CP)',
     description: 'Saga of the Hunter: Until the end of the phase, each time a model in that enemy unit makes an attack, subtract 1 from the Hit roll.',
     factionId: 'SM',
     detachmentId: '000001068',
@@ -7358,7 +7357,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_spear_thrust_and_sabre_swing',
-    label: 'SPEAR THRUST AND SABRE SWING — Lethal Hits, CàC (1CP)',
+    label: 'SPEAR THRUST AND SABRE SWING — Lethal Hits, CaC (1CP)',
     description: 'Spearpoint Task Force: Select either the [LANCE] or [LETHAL HITS] ability. Until the end of the phase, melee weapons equipped by models in your unit have the selected ability. If it is a MOUNTED unit, until the end of the phase, melee weapons equipped by models in your uni',
     factionId: 'SM',
     detachmentId: '000001119',
@@ -7438,7 +7437,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_martial_exemplars',
-    label: 'MARTIAL EXEMPLARS — Lethal Hits, CàC (1CP)',
+    label: 'MARTIAL EXEMPLARS — Lethal Hits, CaC (1CP)',
     description: 'The Angelic Host: Until the end of the phase, melee weapons equipped by models in your unit have the [LETHAL HITS] and [PRECISION] abilities.',
     factionId: 'SM',
     detachmentId: '000000901',
@@ -7477,7 +7476,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_lost_to_rage',
-    label: 'LOST TO RAGE — +1 PA, CàC (1CP)',
+    label: 'LOST TO RAGE — +1 PA, CaC (1CP)',
     description: 'The Lost Brethren: Until the end of the phase, improve the Attacks, Stength and Armour Penetration characteristics of melee weapons equipped by models in your unit by 1 and, unless your unit is within 12" of one or more friendly Chaplain models, until the end of the ph',
     factionId: 'SM',
     detachmentId: '000000900',
@@ -7542,7 +7541,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_litanies_of_purgation',
-    label: 'LITANIES OF PURGATION — +1 PA, CàC (1CP)',
+    label: 'LITANIES OF PURGATION — +1 PA, CaC (1CP)',
     description: 'Vindication Task Force: Until the end of the phase, each time a model in your unit makes an attack, if that model’s unit is within range of one or more objective markers or the target unit is within range of one or more objective markers, improve the Armour Penetration char',
     factionId: 'SM',
     detachmentId: '000001092',
@@ -7607,7 +7606,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_brute_fervour',
-    label: 'BRUTE FERVOUR — repetir impactos 1, CàC (1CP)',
+    label: 'BRUTE FERVOUR — repetir impactos 1, CaC (1CP)',
     description: 'Wrathful Procession: Until the end of the phase, each time a model in your unit makes an attack, re-roll a Hit roll of 1 and you can ignore any or all modifiers to the following: that attack’s Weapon Skill characteristic; the Hit roll; the Wound roll.',
     factionId: 'SM',
     detachmentId: '000001006',
@@ -7664,7 +7663,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ldr_000000083_angel_s_wrath',
-    label: 'Captain With Jump Pack — +1 F, CàC (Líder)',
+    label: 'Captain With Jump Pack — +1 F, CaC (Líder)',
     description: 'While this model is leading a unit, each time that unit ends a Charge move, until the end of the turn, add 1 to the Strength characteristic of melee weapons equipped by models in that unit.',
     factionId: 'SM',
     leaderDatasheetId: '000000083',
@@ -7751,7 +7750,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ldr_000000158_blood_chalice',
-    label: 'Sanguinary Priest — +1 PA, CàC (Líder)',
+    label: 'Sanguinary Priest — +1 PA, CaC (Líder)',
     description: 'While this model is leading a unit, improve the Armour Penetration characteristic of melee weapons equipped by models in that unit by 1.',
     factionId: 'SM',
     leaderDatasheetId: '000000158',
@@ -7773,7 +7772,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ldr_000000159_blood_chalice',
-    label: 'Sanguinary Priest on Bike — +1 PA, CàC (Líder)',
+    label: 'Sanguinary Priest on Bike — +1 PA, CaC (Líder)',
     description: 'While this model is leading a unit, improve the Armour Penetration characteristic of melee weapons equipped by models in that unit by 1.',
     factionId: 'SM',
     leaderDatasheetId: '000000159',
@@ -7806,7 +7805,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ldr_000000164_fury_unbound',
-    label: 'Lemartes — Lethal Hits, CàC (Líder)',
+    label: 'Lemartes — Lethal Hits, CaC (Líder)',
     description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [LETHAL HITS] ability',
     factionId: 'SM',
     leaderDatasheetId: '000000164',
@@ -7871,7 +7870,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ldr_000000288_born_of_wolves',
-    label: 'Canis Wolfborn — Sustained Hits 1, CàC (Líder)',
+    label: 'Canis Wolfborn — Sustained Hits 1, CaC (Líder)',
     description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
     factionId: 'SM',
     leaderDatasheetId: '000000288',
@@ -7967,7 +7966,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ldr_000001344_might_of_heroes_psychic',
-    label: 'Librarian with Jump Pack — +1 PA, CàC (Líder)',
+    label: 'Librarian with Jump Pack — +1 PA, CaC (Líder)',
     description: 'While this model is leading a unit, improve the Armour Penetration characteristic of melee weapons equipped by models in that unit by 1.',
     factionId: 'SM',
     leaderDatasheetId: '000001344',
@@ -8095,7 +8094,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ldr_000002738_blood_chalice',
-    label: 'Sanguinary Priest With Jump Pack — +1 PA, CàC (Líder)',
+    label: 'Sanguinary Priest With Jump Pack — +1 PA, CaC (Líder)',
     description: 'While this model is leading a unit, improve the Armour Penetration characteristic of melee weapons equipped by models in that unit by 1.',
     factionId: 'SM',
     leaderDatasheetId: '000002738',
@@ -8138,7 +8137,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ldr_000003833_lost_to_fury',
-    label: 'Death Company Captain with Jump Pack — Sustained Hits 1, CàC (Líder)',
+    label: 'Death Company Captain with Jump Pack — Sustained Hits 1, CaC (Líder)',
     description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
     factionId: 'SM',
     leaderDatasheetId: '000003833',
@@ -8446,7 +8445,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'tau_boarding_blades',
-    label: 'BOARDING BLADES — +1 PA, CàC (1CP)',
+    label: 'BOARDING BLADES — +1 PA, CaC (1CP)',
     description: 'Kroot Raiding Party: Until the end of the phase, improve the Armour Penetration characteristic of melee weapons equipped by models in your unit by 1. In addition, each time a model in your unit makes an attack, on a Critical Wound, improve the Armour Penetration characte',
     factionId: 'TAU',
     detachmentId: '000000967',
@@ -8537,7 +8536,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'tau_firing_line',
-    label: 'FIRING LINE — crítico 5+, CàC (1CP)',
+    label: 'FIRING LINE — crítico 5+, CaC (1CP)',
     description: 'Starfire Cadre: Your unit can shoot as if it were your Shooting phase, but when doing so, models in your unit can only target that enemy unit (and only if it is an eligible target) and, each time a model in your unit makes an attack, an unmodified Hit roll of 5+ is',
     factionId: 'TAU',
     detachmentId: '000000966',
@@ -8605,7 +8604,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ldr_000003704_ritual_butchery',
-    label: 'Kroot Flesh Shaper — Sustained Hits 1, CàC (Líder)',
+    label: 'Kroot Flesh Shaper — Sustained Hits 1, CaC (Líder)',
     description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
     factionId: 'TAU',
     leaderDatasheetId: '000003704',
@@ -8869,8 +8868,8 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
 
   // ═══ TYR ═══
-  // Synapse: mientras la unidad esté a 6" de un modelo Synapse, +1 Fuerza en ataques CàC.
-  { id: 'tyr_synapse', label: 'Sinapse — +1 Fuerza (CàC)', description: "Synapse: while a TYRANIDS unit is within 6\" of one or more friendly Synapse models, add 1 to the Strength characteristic of each melee attack made by models in that unit.", factionId: 'TYR', combatType: 'melee', effects: { strengthMod: 1 } },
+  // Synapse: mientras la unidad esté a 6" de un modelo Synapse, +1 Fuerza en ataques CaC.
+  { id: 'tyr_synapse', label: 'Sinapse — +1 Fuerza (CaC)', description: "Synapse: while a TYRANIDS unit is within 6\" of one or more friendly Synapse models, add 1 to the Strength characteristic of each melee attack made by models in that unit.", factionId: 'TYR', combatType: 'melee', effects: { strengthMod: 1 } },
   {
     id: 'tyr_hyper_adaptations',
     label: 'Hyper-adaptations — Lethal Hits, Sustained Hits 1',
@@ -8950,7 +8949,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'tyr_secure_biomass',
-    label: 'SECURE BIOMASS — crítico 5+, Lethal Hits, CàC (1CP)',
+    label: 'SECURE BIOMASS — crítico 5+, Lethal Hits, CaC (1CP)',
     description: 'Assimilation Swarm: Until the end of the phase, melee weapons equipped by models in your unit have the [LETHAL HITS] ability. If your unit is a Harvester unit, each time a model in that unit makes a melee attack, a successful unmodified Hit roll of 5+ scores a Critical',
     factionId: 'TYR',
     detachmentId: '000000771',
@@ -8991,7 +8990,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'tyr_rampaging_monstrosities',
-    label: 'RAMPAGING MONSTROSITIES — repetir impactos, CàC (1CP)',
+    label: 'RAMPAGING MONSTROSITIES — repetir impactos, CaC (1CP)',
     description: 'Crusher Stampede: Until the end of the phase, each time a model in your unit makes an attack, you can re-roll the Hit roll.',
     factionId: 'TYR',
     detachmentId: '000000769',
@@ -9004,7 +9003,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'tyr_savage_roar',
-    label: 'SAVAGE ROAR — -1 impactar, -1 herir, CàC (1CP)',
+    label: 'SAVAGE ROAR — -1 impactar, -1 herir, CaC (1CP)',
     description: 'Crusher Stampede: That enemy unit must take a Battle-shock test and, until the end of the phase, each time a model in that enemy unit makes an attack that targets your unit, subtract 1 from the Hit roll. If that Battle-shock test was failed, subtract 1 from the Wound',
     factionId: 'TYR',
     detachmentId: '000000769',
@@ -9031,7 +9030,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'tyr_adrenal_surge',
-    label: 'ADRENAL SURGE — crítico 5+, CàC (2CP)',
+    label: 'ADRENAL SURGE — crítico 5+, CaC (2CP)',
     description: 'Invasion Fleet: Until the end of the phase, each time a model in any of those selected units makes an attack, an unmodified Hit roll of 5+ scores a Critical Hit.',
     factionId: 'TYR',
     detachmentId: '000000748',
@@ -9070,7 +9069,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'tyr_bio_acid_surge',
-    label: 'BIO-ACID SURGE — Sustained Hits 1, CàC (1CP)',
+    label: 'BIO-ACID SURGE — Sustained Hits 1, CaC (1CP)',
     description: 'Tyranid Attack: Until the end of the phase, melee weapons equipped by models in your unit have the [SUSTAINED HITS 1] ability.',
     factionId: 'TYR',
     detachmentId: '000000973',
@@ -9242,11 +9241,11 @@ export const MODIFIER_RULES: ModifierRule[] = [
   // Dark Pacts: WE es HERETIC ASTARTES; Blessings of Khorne: tirar D6 al inicio de cada ronda de batalla
   { id: 'we_dark_pacts_lethal',    label: 'Dark Pacts — Lethal Hits',    description: 'Dark Pacts (HERETIC ASTARTES): superar prueba de Liderazgo o sufrir D3 heridas mortales, ganar [LETHAL HITS] hasta el final de la fase.', factionId: 'WE', effects: { lethalHitsBonus: true } },
   { id: 'we_dark_pacts_sustained', label: 'Dark Pacts — Sustained Hits 1', description: 'Dark Pacts (HERETIC ASTARTES): superar prueba de Liderazgo o sufrir D3 heridas mortales, ganar [SUSTAINED HITS 1] hasta el final de la fase.', factionId: 'WE', effects: { sustainedHitsBonus: 1 } },
-  { id: 'we_blessings_martial_excellence', label: 'Blessings of Khorne: Martial Excellence — Sustained Hits 1 (CàC)', description: "MARTIAL EXCELLENCE: melee weapons equipped by models in this unit have the [SUSTAINED HITS 1] ability.", factionId: 'WE', combatType: 'melee', effects: { sustainedHitsBonus: 1 } },
-  { id: 'we_blessings_warp_blades',        label: 'Blessings of Khorne: Warp Blades — Lethal Hits (CàC)',           description: "WARP BLADES: melee weapons equipped by models in this unit have the [LETHAL HITS] ability.", factionId: 'WE', combatType: 'melee', effects: { lethalHitsBonus: true } },
+  { id: 'we_blessings_martial_excellence', label: 'Blessings of Khorne: Martial Excellence — Sustained Hits 1 (CaC)', description: "MARTIAL EXCELLENCE: melee weapons equipped by models in this unit have the [SUSTAINED HITS 1] ability.", factionId: 'WE', combatType: 'melee', effects: { sustainedHitsBonus: 1 } },
+  { id: 'we_blessings_warp_blades',        label: 'Blessings of Khorne: Warp Blades — Lethal Hits (CaC)',           description: "WARP BLADES: melee weapons equipped by models in this unit have the [LETHAL HITS] ability.", factionId: 'WE', combatType: 'melee', effects: { lethalHitsBonus: true } },
   {
     id: 'we_relentless_rage',
-    label: 'Relentless Rage — +2 F, CàC',
+    label: 'Relentless Rage — +2 F, CaC',
     description: 'Each time a World Eaters unit from your army makes a Charge move, until the end of the turn, add 1 to the Attacks characteristic and add 2 to the Strength characteristic of melee weapons equipped by models in that unit.',
     factionId: 'WE',
     detachmentId: '000000777',
@@ -9268,7 +9267,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'we_hack_and_slash',
-    label: 'HACK AND SLASH — +1 PA, CàC (1CP)',
+    label: 'HACK AND SLASH — +1 PA, CaC (1CP)',
     description: 'Berzerker Warband: Until the end of the phase, improve the Armour Penetration characteristic of melee weapons equipped by models in your unit by 1.',
     factionId: 'WE',
     detachmentId: '000000777',
@@ -9281,7 +9280,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'we_frenzied_resilience',
-    label: 'FRENZIED RESILIENCE — −1 daño, CàC (2CP)',
+    label: 'FRENZIED RESILIENCE — −1 daño, CaC (2CP)',
     description: 'Berzerker Warband: Until the end of the phase, each time an attack is allocated to a model in your unit, subtract 1 from the Damage characteristic of that attack.',
     factionId: 'WE',
     detachmentId: '000000777',
@@ -9334,7 +9333,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'we_fail_not_the_blood_god',
-    label: 'FAIL NOT THE BLOOD GOD — repetir impactos 1, CàC (1CP)',
+    label: 'FAIL NOT THE BLOOD GOD — repetir impactos 1, CaC (1CP)',
     description: 'Cult of Blood: Until the end of the phase, each time a model in your unit makes an attack, re-roll a Hit roll of 1. If that model’s unit is within 6" of one or more friendly World Eaters Monster units, or within 9" of one or more friendly World Eaters Titanic units',
     factionId: 'WE',
     detachmentId: '000001042',
@@ -9347,7 +9346,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'we_daemonic_strength',
-    label: 'DAEMONIC STRENGTH — +1 daño, CàC (1CP)',
+    label: 'DAEMONIC STRENGTH — +1 daño, CaC (1CP)',
     description: 'Possessed Slaughterband: Until the end of the phase, each time an attack made by a model in your unit is allocated to an enemy model, if your unit has the Eightbound keyword and that enemy model is not a MONSTER or VEHICLE , add 1 to the Damage characteristic of that attack.',
     factionId: 'WE',
     detachmentId: '000001044',
@@ -9373,7 +9372,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'we_aspire_to_infamy',
-    label: 'ASPIRE TO INFAMY — +1 PA, CàC (1CP)',
+    label: 'ASPIRE TO INFAMY — +1 PA, CaC (1CP)',
     description: 'Vessels of Wrath: Until the end of the phase, improve the Strength and Armour Penetration characteristics of melee weapons equipped by non- CHARACTER models in your unit by 1.',
     factionId: 'WE',
     detachmentId: '000001007',
@@ -9386,7 +9385,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'we_overshadowed_by_none',
-    label: 'OVERSHADOWED BY NONE — repetir heridas, CàC (1CP)',
+    label: 'OVERSHADOWED BY NONE — repetir heridas, CaC (1CP)',
     description: 'Vessels of Wrath: Until the end of the phase, each time a model in your unit makes an attack that targets a MONSTER or VEHICLE unit, you can re-roll the Wound roll.',
     factionId: 'WE',
     detachmentId: '000001007',
@@ -9453,36 +9452,36 @@ export const MODIFIER_RULES: ModifierRule[] = [
   { id: 'opb_000002538_solitaire_ae', label: '[OPB] Solitaire — +3 ataques', factionId: 'AE', leaderDatasheetId: '000002538', effects: { attacksMod: 3 } },
   { id: 'opb_000000714_harker', label: '[OPB] Sergeant Harker — +6 ataques, Sustained +3', factionId: 'AM', leaderDatasheetId: '000000714', effects: { attacksMod: 6, sustainedHitsBonus: 3 } },
   { id: 'opb_000000899_canoness', label: '[OPB] Canoness — Inv 2+ (Defensor)', factionId: 'AS', leaderDatasheetId: '000000899', target: 'defender', effects: { feelNoPainThreshold: 2 } },
-  { id: 'opb_000003714_canoness_jp', label: '[OPB] Canoness con Jump Pack — +3 ataques, crítico 5+ CàC', factionId: 'AS', leaderDatasheetId: '000003714', combatType: 'melee', effects: { attacksMod: 3, critThreshold: 5 } },
-  { id: 'opb_000003811_aveline', label: '[OPB] Celestian Sacresant Aveline — +3 ataques, crítico 5+ CàC', factionId: 'AS', leaderDatasheetId: '000003811', combatType: 'melee', effects: { attacksMod: 3, critThreshold: 5 } },
+  { id: 'opb_000003714_canoness_jp', label: '[OPB] Canoness con Jump Pack — +3 ataques, crítico 5+ CaC', factionId: 'AS', leaderDatasheetId: '000003714', combatType: 'melee', effects: { attacksMod: 3, critThreshold: 5 } },
+  { id: 'opb_000003811_aveline', label: '[OPB] Celestian Sacresant Aveline — +3 ataques, crítico 5+ CaC', factionId: 'AS', leaderDatasheetId: '000003811', combatType: 'melee', effects: { attacksMod: 3, critThreshold: 5 } },
   { id: 'opb_000001580_manipulus', label: '[OPB] Tech-priest Manipulus — FNP 4+ (Invuln)', factionId: 'AdM', leaderDatasheetId: '000001580', target: 'defender', effects: { feelNoPainThreshold: 4 } },
-  { id: 'opb_000000872_eversor', label: '[OPB] Eversor Assassin — +3 ataques (CàC)', factionId: 'AoI', leaderDatasheetId: '000000872', combatType: 'melee', effects: { attacksMod: 3 } },
+  { id: 'opb_000000872_eversor', label: '[OPB] Eversor Assassin — +3 ataques (CaC)', factionId: 'AoI', leaderDatasheetId: '000000872', combatType: 'melee', effects: { attacksMod: 3 } },
   { id: 'opb_000000870_vindicare', label: '[OPB] Vindicare Assassin — +1 herir, crítico 5+', factionId: 'AoI', leaderDatasheetId: '000000870', effects: { woundMod: 1, critThreshold: 5 } },
   { id: 'opb_000001149_daemon_prince', label: '[OPB] Daemon Prince of Chaos — FNP 3+ (Defender)', factionId: 'CD', leaderDatasheetId: '000001149', target: 'defender', effects: { feelNoPainThreshold: 3 } },
   { id: 'opb_000002758_daemon_prince_wings', label: '[OPB] Daemon Prince with Wings — +3 ataques', factionId: 'CD', leaderDatasheetId: '000002758', effects: { attacksMod: 3 } },
   { id: 'opb_000004046_dark_commune_cd', label: '[OPB] Dark Commune — +1 impactar, +1 herir', factionId: 'CD', leaderDatasheetId: '000004046', effects: { hitMod: 1, woundMod: 1 } },
   { id: 'opb_000002569_dark_commune_csm', label: '[OPB] Dark Commune — +1 impactar, +1 herir', factionId: 'CSM', leaderDatasheetId: '000002569', effects: { hitMod: 1, woundMod: 1 } },
-  { id: 'opb_000000640_lelith', label: '[OPB] Lelith Hesperax — FNP 3+ (Defender), +6 ataques CàC', factionId: 'DRU', leaderDatasheetId: '000000640', combatType: 'melee', effects: { feelNoPainThreshold: 3, attacksMod: 6 } },
+  { id: 'opb_000000640_lelith', label: '[OPB] Lelith Hesperax — FNP 3+ (Defender), +6 ataques CaC', factionId: 'DRU', leaderDatasheetId: '000000640', combatType: 'melee', effects: { feelNoPainThreshold: 3, attacksMod: 6 } },
   { id: 'opb_000004160_solitaire_dru', label: '[OPB] Solitaire (DRU) — +3 ataques', factionId: 'DRU', leaderDatasheetId: '000004160', effects: { attacksMod: 3 } },
   { id: 'opb_000004078_lord_exultant', label: '[OPB] Lord Exultant — +3 ataques, +1 AP', factionId: 'EC', leaderDatasheetId: '000004078', effects: { attacksMod: 3, apMod: 1 } },
-  { id: 'ldr_000001572_biophagus_lethal', label: 'Biophagus — Lethal Hits (CàC)', description: 'Twisted Science: while this model is leading a unit, melee weapons equipped by models in that unit have the [LETHAL HITS] ability.', factionId: 'GC', leaderDatasheetId: '000001572', combatType: 'melee', followerDatasheetIds: ['000000511','000003716','000000512'], effects: { lethalHitsBonus: true } },
-  { id: 'opb_000001572_biophagus', label: '[OPB] Biophagus — +1 herir vs INFANTRY (CàC)', factionId: 'GC', leaderDatasheetId: '000001572', combatType: 'melee', followerDatasheetIds: ['000000511','000003716','000000512'], effects: { woundMod: 1 } },
+  { id: 'ldr_000001572_biophagus_lethal', label: 'Biophagus — Lethal Hits (CaC)', description: 'Twisted Science: while this model is leading a unit, melee weapons equipped by models in that unit have the [LETHAL HITS] ability.', factionId: 'GC', leaderDatasheetId: '000001572', combatType: 'melee', followerDatasheetIds: ['000000511','000003716','000000512'], effects: { lethalHitsBonus: true } },
+  { id: 'opb_000001572_biophagus', label: '[OPB] Biophagus — +1 herir vs INFANTRY (CaC)', factionId: 'GC', leaderDatasheetId: '000001572', combatType: 'melee', followerDatasheetIds: ['000000511','000003716','000000512'], effects: { woundMod: 1 } },
   { id: 'opb_000003715_benefictus', label: '[OPB] Benefictus — FNP 4+ (Defender)', factionId: 'GC', leaderDatasheetId: '000003715', target: 'defender', effects: { feelNoPainThreshold: 4 } },
-  { id: 'opb_000000375_grand_master', label: '[OPB] Grand Master (GK) — +3 ataques, +3 Fuerza CàC', factionId: 'GK', leaderDatasheetId: '000000375', combatType: 'melee', effects: { attacksMod: 3, strengthMod: 3 } },
+  { id: 'opb_000000375_grand_master', label: '[OPB] Grand Master (GK) — +3 ataques, +3 Fuerza CaC', factionId: 'GK', leaderDatasheetId: '000000375', combatType: 'melee', effects: { attacksMod: 3, strengthMod: 3 } },
   { id: 'opb_000000530_orikan', label: '[OPB] Orikan the Diviner — +4 ataques, +4 Fuerza, crítico 4+', factionId: 'NEC', leaderDatasheetId: '000000530', effects: { attacksMod: 4, strengthMod: 4, critThreshold: 4 } },
   { id: 'opb_000002080_big_mek_kff', label: '[OPB] Big Mek with KFF — FNP 4+ (Defender)', factionId: 'ORK', leaderDatasheetId: '000002080', target: 'defender', effects: { feelNoPainThreshold: 4 } },
   { id: 'opb_000003845_dark_commune_qt', label: '[OPB] Dark Commune (QT) — +1 impactar, +1 herir', factionId: 'QT', leaderDatasheetId: '000003845', effects: { hitMod: 1, woundMod: 1 } },
   { id: 'opb_000000218_azrael', label: '[OPB] Azrael — FNP 4+ (Defender)', factionId: 'SM', leaderDatasheetId: '000000218', target: 'defender', effects: { feelNoPainThreshold: 4 } },
-  { id: 'opb_000001165_bg_ancient', label: '[OPB] Bladeguard Ancient — +1 ataque (CàC)', factionId: 'SM', leaderDatasheetId: '000001165', combatType: 'melee', followerDatasheetIds: ['000000071'], effects: { attacksMod: 1 } },
-  { id: 'opb_000003831_ba_captain', label: '[OPB] Blood Angels Captain — +3 ataques, crítico 5+ CàC', factionId: 'SM', leaderDatasheetId: '000003831', combatType: 'melee', effects: { attacksMod: 3, critThreshold: 5 } },
-  { id: 'opb_000000073_captain', label: '[OPB] Captain — +3 ataques, crítico 5+ CàC', factionId: 'SM', leaderDatasheetId: '000000073', combatType: 'melee', effects: { attacksMod: 3, critThreshold: 5 } },
+  { id: 'opb_000001165_bg_ancient', label: '[OPB] Bladeguard Ancient — +1 ataque (CaC)', factionId: 'SM', leaderDatasheetId: '000001165', combatType: 'melee', followerDatasheetIds: ['000000071'], effects: { attacksMod: 1 } },
+  { id: 'opb_000003831_ba_captain', label: '[OPB] Blood Angels Captain — +3 ataques, crítico 5+ CaC', factionId: 'SM', leaderDatasheetId: '000003831', combatType: 'melee', effects: { attacksMod: 3, critThreshold: 5 } },
+  { id: 'opb_000000073_captain', label: '[OPB] Captain — +3 ataques, crítico 5+ CaC', factionId: 'SM', leaderDatasheetId: '000000073', combatType: 'melee', effects: { attacksMod: 3, critThreshold: 5 } },
   { id: 'opb_000001611_tigurius', label: '[OPB] Chief Librarian Tigurius — -1 impactar (Defensor)', factionId: 'SM', leaderDatasheetId: '000001611', target: 'defender', effects: { hitMod: -1 } },
   { id: 'opb_000002105_lysander', label: '[OPB] Darnath Lysander — FNP 2+ (Defender)', factionId: 'SM', leaderDatasheetId: '000002105', target: 'defender', effects: { feelNoPainThreshold: 2 } },
   { id: 'opb_000002795_ec_champion', label: "[OPB] Emperor's Champion — crítico 5+", factionId: 'SM', leaderDatasheetId: '000002795', effects: { critThreshold: 5 } },
   { id: 'opb_000000283_grimnar', label: '[OPB] Logan Grimnar — repetir todos los impactos', factionId: 'SM', leaderDatasheetId: '000000283', effects: { rerollAllHits: true } },
   { id: 'opb_000002713_pedro_kantor', label: '[OPB] Pedro Kantor — +1 ataque', factionId: 'SM', leaderDatasheetId: '000002713', effects: { attacksMod: 1 } },
   { id: 'opb_000000409_aunva', label: "[OPB] Aun'va — FNP 2+ (Defender)", factionId: 'TAU', leaderDatasheetId: '000000409', target: 'defender', effects: { feelNoPainThreshold: 2 } },
-  { id: 'opb_000004103_slaughterbound', label: '[OPB] Slaughterbound — +3 ataques, crítico 5+ CàC', factionId: 'WE', leaderDatasheetId: '000004103', combatType: 'melee', effects: { attacksMod: 3, critThreshold: 5 } },
+  { id: 'opb_000004103_slaughterbound', label: '[OPB] Slaughterbound — +3 ataques, crítico 5+ CaC', factionId: 'WE', leaderDatasheetId: '000004103', combatType: 'melee', effects: { attacksMod: 3, critThreshold: 5 } },
 
   // ── Estratagemas de re-roll de daño ─────────────────────────────────────────
 
@@ -9573,7 +9572,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000001557_galatus_shield',
-    label: 'Contemptor-galatus Dreadnought — -1 herir CàC',
+    label: 'Contemptor-galatus Dreadnought — -1 herir CaC',
     description: 'Each time a melee attack targets this model, subtract 1 from the Wound roll.',
     factionId: 'AC',
     datasheetId: '000001557',
@@ -9671,7 +9670,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000002522_deft_parry',
-    label: 'Vigilators — -1 impactar CàC',
+    label: 'Vigilators — -1 impactar CaC',
     description: 'Each time a melee attack targets this unit, subtract 1 from the Hit roll.',
     factionId: 'AC',
     datasheetId: '000002522',
@@ -9789,7 +9788,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000000595_mandiblasters',
-    label: 'Striking Scorpions — crit 5+ CàC',
+    label: 'Striking Scorpions — crit 5+ CaC',
     description: 'Each time a model in this unit makes a melee attack, if it made a Charge move this turn, an unmodified Hit roll of 5+ scores a Critical Hit.',
     factionId: 'AE',
     datasheetId: '000000595',
@@ -9952,7 +9951,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000002534_cegorach_s_favour',
-    label: 'Troupe Master — +1 herir, repetir imp.1 CàC',
+    label: 'Troupe Master — +1 herir, repetir imp.1 CaC',
     description: 'Each time this model makes a melee attack, you can re-roll a Hit roll of 1 and add 1 to the Wound roll.',
     factionId: 'AE',
     datasheetId: '000002534',
@@ -9964,7 +9963,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000002536_dance_of_death',
-    label: 'Troupe — -1 impactar, +1 herir, repetir imp.1 CàC',
+    label: 'Troupe — -1 impactar, +1 herir, repetir imp.1 CaC',
     description: 'At the start of the Fight phase, select one of the following abilities for this unit to gain until the end of the phase:Hero’s Prowess: Each time a model in this unit makes an attack, re-roll a Hit roll of 1.Villain’s Doom: Each time a model in this unit makes an attack, add 1 to the Wound roll.Tric',
     factionId: 'AE',
     datasheetId: '000002536',
@@ -10000,7 +9999,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000002542_herald_of_ynnead',
-    label: 'Yvraine — repetir her.1 CàC',
+    label: 'Yvraine — repetir her.1 CaC',
     description: 'At the start of the Fight phase, select one enemy unit within Engagement Range of this model. Until the end of the phase, each time a friendly AELDARI model makes an attack that targets that unit, you can re-roll a Wound roll of 1.',
     factionId: 'AE',
     datasheetId: '000002542',
@@ -10400,7 +10399,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000002614_jungle_fighters',
-    label: 'Catachan Jungle Fighters — +1 herir CàC',
+    label: 'Catachan Jungle Fighters — +1 herir CaC',
     description: 'Each time a model in this unit makes a melee attack, if this unit made a Charge move or was charged this turn, add 1 to the Wound roll.',
     factionId: 'AM',
     datasheetId: '000002614',
@@ -10540,7 +10539,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000000907_overseer_of_redemption',
-    label: 'Repentia Squad — repetir impactos, repetir heridas CàC',
+    label: 'Repentia Squad — repetir impactos, repetir heridas CaC',
     description: 'While this unit contains a Repentia Superior model, each time a Sisters Repentia model in this unit makes a melee attack, you can re-roll the Hit roll and you can re-roll the Wound roll.',
     factionId: 'AS',
     datasheetId: '000000907',
@@ -10566,7 +10565,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000002066_embodied_prophecy',
-    label: 'Zephyrim Squad — Lethal Hits, Sustained 1 CàC',
+    label: 'Zephyrim Squad — Lethal Hits, Sustained 1 CaC',
     description: 'Each time this unit is selected to fight, select one of the following abilities to apply to melee weapons equipped by models in this unit until the end of the phase:[SUSTAINED HITS 1][LETHAL HITS]If this unit made a Charge move this turn, until the end of the phase, select both abilities above to ap',
     factionId: 'AS',
     datasheetId: '000002066',
@@ -10621,7 +10620,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000004075_ministorum_sermon',
-    label: 'Sanctifiers — Sustained 1 CàC',
+    label: 'Sanctifiers — Sustained 1 CaC',
     description: 'While this unit contains a MINISTORUM PRIEST, melee weapons equipped by models in this unit have the [SUSTAINED HITS 1] ability.',
     factionId: 'AS',
     datasheetId: '000004075',
@@ -10897,7 +10896,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000003813_hammerhand_psychic',
-    label: 'Grey Knights Terminator Squad — Lethal Hits CàC',
+    label: 'Grey Knights Terminator Squad — Lethal Hits CaC',
     description: 'Each time a model in this unit makes a Charge move, until the end of the turn, melee weapons equipped by models in this unit have the [LETHAL HITS] ability.',
     factionId: 'AoI',
     datasheetId: '000003813',
@@ -10960,7 +10959,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000004074_ministorum_sermon',
-    label: 'Sanctifiers — +1 herir CàC',
+    label: 'Sanctifiers — +1 herir CaC',
     description: 'While this unit contains a MINISTORUM PRIEST, each time a model in this unit makes a melee attack, add 1 to the Wound roll.',
     factionId: 'AoI',
     datasheetId: '000004074',
@@ -10993,7 +10992,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   // ─── CD generated entries ───────────────────
   {
     id: 'unit_000001104_prey_of_the_blood_god',
-    label: 'Karanak — repetir heridas CàC',
+    label: 'Karanak — repetir heridas CaC',
     description: 'At the start of the first battle round, select one enemy unit to be this model’s prey. Each time a model in this model’s unit makes a melee attack that targets its prey, you can re-roll the Wound roll. Each time this model’s prey is destroyed, select one new enemy unit to be this model’s prey.',
     factionId: 'CD',
     datasheetId: '000001104',
@@ -11004,7 +11003,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'aura_000001105_rage_embodied_aura',
-    label: 'Skarbrand — +1 Ataques CàC (Aura)',
+    label: 'Skarbrand — +1 Ataques CaC (Aura)',
     description: 'While a friendly Khorne Legiones Daemonica unit is within 6" of this model, add 1 to the Attacks characteristic of melee weapons equipped by models in that unit.',
     factionId: 'CD',
     sourceDatasheetId: '000001105',
@@ -11026,7 +11025,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000001111_champion_slayer',
-    label: 'Rendmaster On Blood Throne — repetir heridas CàC',
+    label: 'Rendmaster On Blood Throne — repetir heridas CaC',
     description: 'Each time this model makes a melee attack that targets a CHARACTER or MONSTER unit, you can re-roll the Wound roll. Each time this model destroys an enemy CHARACTER or MONSTER unit, this model regains up to D6 lost wounds.',
     factionId: 'CD',
     datasheetId: '000001111',
@@ -11069,7 +11068,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000001133_mischief_makers',
-    label: 'Nurglings — -1 impactar CàC',
+    label: 'Nurglings — -1 impactar CaC',
     description: 'Each time an enemy unit (excluding TITANIC units) within Engagement Range of one or more units with this ability is selected to fight, until the end of the phase, each time a model in that enemy unit makes a melee attack, subtract 1 from the Hit roll.',
     factionId: 'CD',
     datasheetId: '000001133',
@@ -11091,7 +11090,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000001136_the_eternal_dance',
-    label: 'The Masque Of Slaanesh — -1 herir CàC',
+    label: 'The Masque Of Slaanesh — -1 herir CaC',
     description: 'At the start of the Fight phase, select one enemy unit within 6" of this model. Until the end of the phase: Each time a friendly Slaanesh Legiones Daemonica model makes a melee attack that targets that enemy unit, add 1 to the Wound roll. Each time a model in that enemy unit makes a melee attack, su',
     factionId: 'CD',
     datasheetId: '000001136',
@@ -11155,7 +11154,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000001465_virulent_blessing_psychic',
-    label: 'Rotigus — +1 Daño CàC',
+    label: 'Rotigus — +1 Daño CaC',
     description: 'At the start of the Fight phase, you can select one enemy unit within 24" and visible to this model. Until the end of the phase, each time an attack made by a Nurgle Legiones Daemonica model is allocated to a model in that unit, add 1 to the Damage characteristic of that attack.',
     factionId: 'CD',
     datasheetId: '000001465',
@@ -11207,7 +11206,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000001648_monarch_of_the_hunt',
-    label: 'Shalaxi Helbane — repetir impactos, repetir heridas CàC',
+    label: 'Shalaxi Helbane — repetir impactos, repetir heridas CaC',
     description: 'At the start of the first battle round, select one enemy unit to be this model’s quarry. Each time this model makes a melee attack that targets its quarry, you can re-roll the Hit roll and you can re-roll the Wound roll. Each time this model’s quarry is destroyed, select one new enemy unit to be thi',
     factionId: 'CD',
     datasheetId: '000001648',
@@ -11250,7 +11249,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000004056_mischief_makers_aura',
-    label: 'Mutoid Vermin — -1 impactar CàC',
+    label: 'Mutoid Vermin — -1 impactar CaC',
     description: 'While an enemy unit (excluding MONSTERS and VEHICLES) is within 6" of this unit, each time a model in that unit makes a melee attack, subtract 1 from the Hit roll.',
     factionId: 'CD',
     datasheetId: '000004056',
@@ -11271,7 +11270,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000004064_veterans_of_the_long_war',
-    label: 'Legionaries — repetir her.1 CàC',
+    label: 'Legionaries — repetir her.1 CaC',
     description: 'Each time a model in this unit targets an enemy unit with a melee attack, re-roll a Wound roll of 1. If that enemy unit is within range of an objective marker, you can re-roll the Wound roll instead.',
     factionId: 'CD',
     datasheetId: '000004064',
@@ -11327,7 +11326,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   // ─── CSM generated entries ───────────────────
   {
     id: 'unit_000000928_enhanced_warriors',
-    label: 'Fabius Bile — +1 Fuerza CàC',
+    label: 'Fabius Bile — +1 Fuerza CaC',
     description: 'If this unit is attached to a unit at the start of the battle, until the end of the battle, add 1 to the Strength characteristic of melee weapons equipped by Bodyguard models in that unit and add 1 to the Toughness characteristic of Bodyguard models in that unit.',
     factionId: 'CSM',
     datasheetId: '000000928',
@@ -11390,7 +11389,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000000954_devoted_to_destruction',
-    label: 'Helbrute — +2 Ataques CàC',
+    label: 'Helbrute — +2 Ataques CaC',
     description: 'If this model is equipped with two melee weapons in addition to its close combat weapon, add 2 to the Attacks characteristic of those two weapons.',
     factionId: 'CSM',
     datasheetId: '000000954',
@@ -11432,7 +11431,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'opb_000001297_bloodlust',
-    label: 'Kytan Ravager — Sustained 1 CàC [OPB]',
+    label: 'Kytan Ravager — Sustained 1 CaC [OPB]',
     description: 'Each time this model makes a Charge move, until the end of the turn, its melee weapons have the [SUSTAINED HITS 1] ability. In addition, once per battle, this model is eligible to declare a charge in a turn in which it Advanced.',
     factionId: 'CSM',
     datasheetId: '000001297',
@@ -11496,7 +11495,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000001586_soul_eater',
-    label: 'Venomcrawler — +1 Ataques CàC',
+    label: 'Venomcrawler — +1 Ataques CaC',
     description: 'At the end of the Fight phase, if one or more attacks made by this model this phase destroyed one or more enemy units, until the end of the battle, add 1 to the Attacks characteristic of this model’s weapons.',
     factionId: 'CSM',
     datasheetId: '000001586',
@@ -11517,7 +11516,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000002570_veterans_of_the_long_war',
-    label: 'Legionaries — repetir her.1 CàC',
+    label: 'Legionaries — repetir her.1 CaC',
     description: 'Each time a model in this unit targets an enemy unit with a melee attack, re-roll a Wound roll of 1. If that enemy unit is within range of an objective marker, you can re-roll the Wound roll instead.',
     factionId: 'CSM',
     datasheetId: '000002570',
@@ -11539,7 +11538,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000002591_mischief_makers_aura',
-    label: 'Mutoid Vermin — -1 impactar CàC',
+    label: 'Mutoid Vermin — -1 impactar CaC',
     description: 'While an enemy unit (excluding MONSTERS and VEHICLES) is within 6" of this unit, each time a model in that unit makes a melee attack, subtract 1 from the Hit roll.',
     factionId: 'CSM',
     datasheetId: '000002591',
@@ -11668,7 +11667,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000004192_brutal_raider',
-    label: 'Red Corsairs Reave-Captain — +1 Fuerza, +1 PA CàC',
+    label: 'Red Corsairs Reave-Captain — +1 Fuerza, +1 PA CaC',
     description: 'Each time this model’s unit ends a Charge move, until the end of the turn, add 1 to the Strength characteristic of melee weapons equipped by this model and improve the Armour Penetration characteristics of those weapons by 1.',
     factionId: 'CSM',
     datasheetId: '000004192',
@@ -11722,7 +11721,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000001046_froth_spattered_frenzy',
-    label: 'Helbrute — +2 Ataques CàC',
+    label: 'Helbrute — +2 Ataques CaC',
     description: 'If this model is equipped with two melee weapons in addition to its close combat weapon, add 2 to the Attacks characteristic of those two weapons.',
     factionId: 'DG',
     datasheetId: '000001046',
@@ -11744,7 +11743,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000001369_inflamed_infections',
-    label: 'Plague Surgeon — crit 5+ CàC',
+    label: 'Plague Surgeon — crit 5+ CaC',
     description: 'At the start of the Fight phase, select one enemy unit within Engagement Range of this model. Until the end of the phase, each time this model makes an attack that targets that unit, an unmodified Hit roll of 5+ scores a Critical Hit. If that unit is Below Half-strength, an unmodified Hit roll of 4+',
     factionId: 'DG',
     datasheetId: '000001369',
@@ -11809,7 +11808,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000003596_mischief_makers_aura',
-    label: 'Mutoid Vermin — -1 impactar CàC',
+    label: 'Mutoid Vermin — -1 impactar CaC',
     description: 'While an enemy unit (excluding MONSTERS and VEHICLES) is within 6" of this unit, each time a model in that unit makes a melee attack, subtract 1 from the Hit roll.',
     factionId: 'DG',
     datasheetId: '000003596',
@@ -11906,7 +11905,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000004111_virulent_blessing_psychic',
-    label: 'Rotigus — +1 Daño CàC',
+    label: 'Rotigus — +1 Daño CaC',
     description: 'At the start of the Fight phase, you can select one enemy unit within 24" and visible to this model. Until the end of the phase, each time an attack made by a Plague Legions model is allocated to a model in that unit, add 1 to the Damage characteristic of that attack.',
     factionId: 'DG',
     datasheetId: '000004111',
@@ -11928,7 +11927,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000004116_mischief_makers',
-    label: 'Nurglings — -1 impactar CàC',
+    label: 'Nurglings — -1 impactar CaC',
     description: 'Each time an enemy unit (excluding TITAN units) within Engagement Range of one or more units with this ability is selected to fight, until the end of the phase, each time a model in that enemy unit makes a melee attack, subtract 1 from the Hit roll.',
     factionId: 'DG',
     datasheetId: '000004116',
@@ -11951,7 +11950,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000000642_sculptor_of_torments_pain',
-    label: 'Urien Rakarth — +1 herir CàC',
+    label: 'Urien Rakarth — +1 herir CaC',
     description: 'In your Fight phase, when you select this model’s unit to fight, you can spend 1 of your Pain tokens to Empower this model’s unit. While that unit is Empowered, each time a model in that unit makes a melee attack, add 1 to the Wound roll.',
     factionId: 'DRU',
     datasheetId: '000000642',
@@ -11973,7 +11972,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000000643_master_of_blades_pain',
-    label: 'Drazhar — +1 herir CàC',
+    label: 'Drazhar — +1 herir CaC',
     description: 'In the Fight phase, when you select this model’s unit to fight, you can spend 1 Pain token to Empower that unit. While that unit is Empowered, each time a model in that unit makes a melee attack, add 1 to the Wound roll.',
     factionId: 'DRU',
     datasheetId: '000000643',
@@ -12005,7 +12004,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000000648_tormentors',
-    label: 'Incubi — +1 impactar CàC',
+    label: 'Incubi — +1 impactar CaC',
     description: 'At the start of the Fight phase, each enemy unit within Engagement Range of one or more units with this ability must take a Battle-shock test. Each time a model in this unit makes a melee attack that targets a Battle-shocked unit, add 1 to the Hit roll.',
     factionId: 'DRU',
     datasheetId: '000000648',
@@ -12016,7 +12015,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000000651_macro_steroids_pain',
-    label: 'Grotesques — Lethal Hits CàC',
+    label: 'Grotesques — Lethal Hits CaC',
     description: 'In the Fight phase, when you select this unit to fight, you can spend 1 of your Pain tokens to Empower this unit. While Empowered, melee weapons equipped by models in this unit have a Strength characteristic of 8 and the [LETHAL HITS] ability.',
     factionId: 'DRU',
     datasheetId: '000000651',
@@ -12027,7 +12026,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000000652_goaded_savagery_pain',
-    label: 'Beastmaster — repetir impactos, repetir heridas CàC',
+    label: 'Beastmaster — repetir impactos, repetir heridas CaC',
     description: 'In the Fight phase, when you select this unit to fight, you can spend 1 of your Pain tokens to Empower this unit. While this unit is Empowered, if it contains a BEASTMASTER model, each time a BEAST model in this unit makes a melee attack, you can re-roll the Hit roll and you can re-roll the Wound ro',
     factionId: 'DRU',
     datasheetId: '000000652',
@@ -12201,7 +12200,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000004161_cegorach_s_favour',
-    label: 'Troupe Master — +1 herir, repetir imp.1 CàC',
+    label: 'Troupe Master — +1 herir, repetir imp.1 CaC',
     description: 'Each time this model makes a melee attack, you can re-roll a Hit roll of 1 and add 1 to the Wound roll.',
     factionId: 'DRU',
     datasheetId: '000004161',
@@ -12224,7 +12223,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000004164_dance_of_death',
-    label: 'Troupe — -1 impactar, +1 herir, repetir imp.1 CàC',
+    label: 'Troupe — -1 impactar, +1 herir, repetir imp.1 CaC',
     description: 'At the start of the Fight phase, select one of the following abilities for this unit to gain until the end of the phase:Hero’s Prowess: Each time a model in this unit makes an attack, re-roll a Hit roll of 1.Villain’s Doom: Each time a model in this unit makes an attack, add 1 to the Wound roll.Tric',
     factionId: 'DRU',
     datasheetId: '000004164',
@@ -12271,7 +12270,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   // ─── EC generated entries ───────────────────
   {
     id: 'unit_000004080_excessive_assault',
-    label: 'Infractors — repetir her.1 CàC',
+    label: 'Infractors — repetir her.1 CaC',
     description: 'Each time a model in this unit targets an enemy unit with a melee attack, re-roll a Wound roll of 1. If that enemy unit is within range of an objective marker, you can re-roll the Wound roll instead.',
     factionId: 'EC',
     datasheetId: '000004080',
@@ -12304,7 +12303,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000004094_monarch_of_the_hunt',
-    label: 'Shalaxi Helbane — repetir impactos, repetir heridas CàC',
+    label: 'Shalaxi Helbane — repetir impactos, repetir heridas CaC',
     description: 'At the start of the first battle round, select one enemy unit to be this model’s quarry. Each time this model makes a melee attack that targets its quarry, you can re-roll the Hit roll and you can re-roll the Wound roll. Each time this model’s quarry is destroyed, select one new enemy unit to be thi',
     factionId: 'EC',
     datasheetId: '000004094',
@@ -12438,7 +12437,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000003949_jungle_fighters',
-    label: 'Catachan Jungle Fighters — +1 herir CàC',
+    label: 'Catachan Jungle Fighters — +1 herir CaC',
     description: 'Each time a model in this unit makes a melee attack, if this unit made a Charge move or was charged this turn, add 1 to the Wound roll.',
     factionId: 'GC',
     datasheetId: '000003949',
@@ -12813,7 +12812,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000000379_inspiring_exemplar',
-    label: 'Brotherhood Champion — +1 Ataques CàC',
+    label: 'Brotherhood Champion — +1 Ataques CaC',
     description: 'Each time this model destroys an enemy CHARACTER model in the Fight phase, you gain 1CP and until the end of the battle, add 1 to the Attacks characteristic of its Nemesis force weapon.',
     factionId: 'GK',
     datasheetId: '000000379',
@@ -12844,7 +12843,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000000382_force_edge_psychic',
-    label: 'Brotherhood Terminator Squad — +1 PA CàC',
+    label: 'Brotherhood Terminator Squad — +1 PA CaC',
     description: 'Each time a model in this unit makes a melee attack that targets a unit (excluding MONSTERS and VEHICLES), improve the Armour Penetration characteristic of that attack by 1.',
     factionId: 'GK',
     datasheetId: '000000382',
@@ -12865,7 +12864,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000000384_attuned_onslaught_psychic',
-    label: 'Paladin Squad — +1 Daño CàC',
+    label: 'Paladin Squad — +1 Daño CaC',
     description: 'Each time this unit makes a Charge move, until the end of the turn, add 1 to the Damage characteristic of melee weapons equipped by PALADIN SQUAD models in this unit.',
     factionId: 'GK',
     datasheetId: '000000384',
@@ -12908,7 +12907,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000001360_surge_of_wrath_psychic',
-    label: 'Grand Master In Nemesis Dreadknight — repetir impactos, repetir heridas CàC',
+    label: 'Grand Master In Nemesis Dreadknight — repetir impactos, repetir heridas CaC',
     description: 'Each time this model makes a melee attack that targets a MONSTER or VEHICLE unit, you can re-roll the Hit roll, you can re-roll the Wound roll and you can re-roll the Damage roll.',
     factionId: 'GK',
     datasheetId: '000001360',
@@ -13021,7 +13020,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000004201_break_the_foe',
-    label: 'Berehk Stornbröw — Sustained 1 CàC',
+    label: 'Berehk Stornbröw — Sustained 1 CaC',
     description: 'Melee weapons equipped by models in this model’s unit have the [SUSTAINED HITS 1] ability.',
     factionId: 'LoV',
     datasheetId: '000004201',
@@ -13122,7 +13121,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000002110_whirling_onslaught',
-    label: 'Skorpekh Destroyers — repetir imp.1 CàC',
+    label: 'Skorpekh Destroyers — repetir imp.1 CaC',
     description: 'Each time a model in this unit makes a melee attack, re-roll a Hit roll of 1. If this unit made a Charge move this turn, you can re-roll the Hit roll instead.',
     factionId: 'NEC',
     datasheetId: '000002110',
@@ -13352,7 +13351,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000000043_big_an_stompy',
-    label: 'Gorkanaut — +1 impactar CàC',
+    label: 'Gorkanaut — +1 impactar CaC',
     description: 'Each time this model makes a melee attack, if the Waaagh! is active for your army, add 1 to the Hit roll.',
     factionId: 'ORK',
     datasheetId: '000000043',
@@ -13480,7 +13479,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000002493_da_bigger_dey_iz',
-    label: 'Mozrog Skragbad — +1 Daño CàC',
+    label: 'Mozrog Skragbad — +1 Daño CaC',
     description: 'Each time this model makes a melee attack that targets a MONSTER or VEHICLE unit, add 1 to the Damage characteristic of that attack. Each time this model makes a melee attack that targets a TITANIC unit, add 2 to the Damage characteristic of that attack instead.',
     factionId: 'ORK',
     datasheetId: '000002493',
@@ -13501,7 +13500,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000002497_spirit_of_gork_psychic',
-    label: 'Kill Rig — +1 Fuerza, Lethal Hits CàC',
+    label: 'Kill Rig — +1 Fuerza, Lethal Hits CaC',
     description: 'At the start of the Fight phase, you can select one friendly Orks unit within 12" of this model and roll one D6: on a 1, this model suffers D3 mortal wounds; on a 2-5, until the end of the phase, add 1 to the Strength characteristic of melee weapons equipped by models in that unit; on a 6, until the',
     factionId: 'ORK',
     datasheetId: '000002497',
@@ -13546,7 +13545,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   // ─── QI generated entries ───────────────────
   {
     id: 'unit_000000855_paladin_s_duty_bondsman',
-    label: 'Knight Paladin — Lethal Hits CàC',
+    label: 'Knight Paladin — Lethal Hits CaC',
     description: 'While a model is affected by this ability, weapons equipped by that model have the [LETHAL HITS] ability, and melee weapons equipped by that model have the [LANCE] ability.',
     factionId: 'QI',
     datasheetId: '000000855',
@@ -13590,7 +13589,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000000858_gallant_s_duty_bondsman',
-    label: 'Knight Gallant — repetir impactos CàC',
+    label: 'Knight Gallant — repetir impactos CaC',
     description: 'While a model is affected by this ability, you can re-roll Charge rolls made for that model and each time that model makes a melee attack, you can re-roll the Hit roll.',
     factionId: 'QI',
     datasheetId: '000000858',
@@ -13731,7 +13730,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000004213_thundercharge',
-    label: 'Knight Destrier — +2 Ataques CàC',
+    label: 'Knight Destrier — +2 Ataques CaC',
     description: 'If this model is equipped with a thundershock spear and a bellatus reaper chainsword, add 2 to the Attacks characteristic of melee weapons equipped by this model.',
     factionId: 'QI',
     datasheetId: '000004213',
@@ -13796,7 +13795,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000003855_mischief_makers_aura',
-    label: 'Mutoid Vermin — -1 impactar CàC',
+    label: 'Mutoid Vermin — -1 impactar CaC',
     description: 'While an enemy unit (excluding MONSTERS and VEHICLES) is within 6" of this unit, each time a model in that unit makes a melee attack, subtract 1 from the Hit roll.',
     factionId: 'QT',
     datasheetId: '000003855',
@@ -13841,7 +13840,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000000071_bladeguard',
-    label: 'Bladeguard Veteran Squad — repetir imp.1 CàC',
+    label: 'Bladeguard Veteran Squad — repetir imp.1 CaC',
     description: 'At the start of the Fight phase, you can select one of the following abilities to apply to models in this unit until the end of the phase: Swords of the Chapter: Each time a model in this unit makes a melee attack, re-roll a Hit roll of 1. Shields of the Chapter: Each time an invulnerable saving thr',
     factionId: 'SM',
     datasheetId: '000000071',
@@ -13993,7 +13992,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000000147_vanguard_assault',
-    label: 'Vanguard Veteran Squad With Jump Packs — Lethal Hits CàC',
+    label: 'Vanguard Veteran Squad With Jump Packs — Lethal Hits CaC',
     description: 'Each time this unit ends a Charge move, until the end of the turn, melee weapons equipped by models in this unit have the [LETHAL HITS] ability.',
     factionId: 'SM',
     datasheetId: '000000147',
@@ -14014,7 +14013,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000000153_black_rage',
-    label: 'Tycho The Lost — repetir impactos CàC',
+    label: 'Tycho The Lost — repetir impactos CaC',
     description: 'Each time this model makes a melee attack, you can re-roll the Hit roll. While this model’s unit is not within 6" of one or more friendly Blood Angels Character models, or 12" of one or more friendly Chaplain models, it cannot be selected to Fall Back and its Objective Control characteristic is 0.',
     factionId: 'SM',
     datasheetId: '000000153',
@@ -14035,7 +14034,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000000165_angelic_visage',
-    label: 'Sanguinary Guard — -1 impactar CàC',
+    label: 'Sanguinary Guard — -1 impactar CaC',
     description: 'Each time a melee attack targets this unit, subtract 1 from the Hit roll.',
     factionId: 'SM',
     datasheetId: '000000165',
@@ -14047,7 +14046,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000000165_heirs_of_azkaellon',
-    label: 'Sanguinary Guard — -1 herir CàC',
+    label: 'Sanguinary Guard — -1 herir CaC',
     description: 'While a Character model is leading this unit, each time a melee attack targets this unit, subtract 1 from the Wound roll.',
     factionId: 'SM',
     datasheetId: '000000165',
@@ -14059,7 +14058,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000000166_black_rage',
-    label: 'Death Company Dreadnought — repetir impactos CàC',
+    label: 'Death Company Dreadnought — repetir impactos CaC',
     description: 'Each time this model makes a melee attack, you can re-roll the Hit roll. While this model’s unit is not within 6" of one or more friendly Blood Angels Character models, or 12" of one or more friendly Chaplain models, it cannot be selected to Fall Back and its Objective Control characteristic is 0.',
     factionId: 'SM',
     datasheetId: '000000166',
@@ -14125,7 +14124,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000000306_judgement_of_the_omnissiah',
-    label: 'Iron Priest — repetir heridas CàC',
+    label: 'Iron Priest — repetir heridas CaC',
     description: 'Each time this model makes an attack that targets an enemy unit within Engagement Range of one or more friendly Adeptus Astartes Vehicle units, you can re-roll the Wound roll.',
     factionId: 'SM',
     datasheetId: '000000306',
@@ -14146,7 +14145,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000000317_champion_of_the_kingsguard',
-    label: 'Arjac Rockfist — repetir impactos, repetir heridas CàC',
+    label: 'Arjac Rockfist — repetir impactos, repetir heridas CaC',
     description: 'Each time this model makes a melee attack that targets a CHARACTER unit, you can re-roll the Hit roll and you can re-roll the Wound roll.',
     factionId: 'SM',
     datasheetId: '000000317',
@@ -14169,7 +14168,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000000322_thunderous_charge',
-    label: 'Thunderwolf Cavalry — +1 Daño CàC',
+    label: 'Thunderwolf Cavalry — +1 Daño CaC',
     description: 'Each time a model in this unit makes a melee attack with its Wolf Guard weapon, if it made a Charge move this turn, add 1 to the Damage characteristic of that attack.',
     factionId: 'SM',
     datasheetId: '000000322',
@@ -14180,7 +14179,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000000324_headstrong',
-    label: 'Skyclaws — +1 impactar CàC',
+    label: 'Skyclaws — +1 impactar CaC',
     description: 'You can re-roll Charge rolls made for this unit. Each time this unit makes a Charge move, until the end of the turn, each time a model in this unit makes a melee attack, add 1 to the Hit roll.',
     factionId: 'SM',
     datasheetId: '000000324',
@@ -14213,7 +14212,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000001154_vanguard_assault',
-    label: 'Vanguard Veteran Squad — Lethal Hits CàC',
+    label: 'Vanguard Veteran Squad — Lethal Hits CaC',
     description: 'Each time this unit ends a Charge move, until the end of the turn, melee weapons equipped by models in this unit have the [LETHAL HITS] ability.',
     factionId: 'SM',
     datasheetId: '000001154',
@@ -14255,7 +14254,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000001166_vanguard_assault',
-    label: 'Company Veterans On Bikes — Lethal Hits CàC',
+    label: 'Company Veterans On Bikes — Lethal Hits CaC',
     description: 'Each time this unit ends a Charge move, until the end of the turn, melee weapons equipped by models in this unit have the [LETHAL HITS] ability.',
     factionId: 'SM',
     datasheetId: '000001166',
@@ -14266,7 +14265,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000001167_martial_superiority',
-    label: 'Company Champion On Bike — repetir impactos, repetir heridas CàC',
+    label: 'Company Champion On Bike — repetir impactos, repetir heridas CaC',
     description: 'Each time this model makes a melee attack that targets a CHARACTER unit, you can re-roll the Hit roll and you can re-roll the Wound roll.',
     factionId: 'SM',
     datasheetId: '000001167',
@@ -14340,7 +14339,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000001606_shock_assault',
-    label: 'Assault Intercessor Squad — repetir her.1 CàC',
+    label: 'Assault Intercessor Squad — repetir her.1 CaC',
     description: 'Each time a model in this unit targets an enemy unit with a melee attack, re-roll a Wound roll of 1. If that enemy unit is within range of an objective marker, you can re-roll the Wound roll instead.',
     factionId: 'SM',
     datasheetId: '000001606',
@@ -14393,7 +14392,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000001997_black_rage',
-    label: 'Death Company Marines — repetir impactos CàC',
+    label: 'Death Company Marines — repetir impactos CaC',
     description: 'Each time this model makes a melee attack, you can re-roll the Hit roll. While this model’s unit is not within 6" of one or more friendly Blood Angels Character models, or 12" of one or more friendly Chaplain models, it cannot be selected to Fall Back and its Objective Control characteristic is 0.',
     factionId: 'SM',
     datasheetId: '000001997',
@@ -14425,7 +14424,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000002234_martial_superiority',
-    label: 'Primaris Company Champion — repetir impactos, repetir heridas CàC',
+    label: 'Primaris Company Champion — repetir impactos, repetir heridas CaC',
     description: 'Each time this model makes a melee attack that targets a CHARACTER unit, you can re-roll the Hit roll and you can re-roll the Wound roll.',
     factionId: 'SM',
     datasheetId: '000002234',
@@ -14468,7 +14467,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000002285_black_rage',
-    label: 'Death Company Marines with Bolt Rifles — repetir impactos CàC',
+    label: 'Death Company Marines with Bolt Rifles — repetir impactos CaC',
     description: 'Each time this model makes a melee attack, you can re-roll the Hit roll. While this model’s unit is not within 6" of one or more friendly Blood Angels Character models, or 12" of one or more friendly Chaplain models, it cannot be selected to Fall Back and its Objective Control characteristic is 0.',
     factionId: 'SM',
     datasheetId: '000002285',
@@ -14511,7 +14510,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000002703_annihilator_protocols',
-    label: 'Centurion Assault Squad — Sustained 2 CàC',
+    label: 'Centurion Assault Squad — Sustained 2 CaC',
     description: 'Melee weapons equipped by models in this unit have the [SUSTAINED HITS 2] ability when targeting MONSTER, VEHICLE or FORTIFICATION units.',
     factionId: 'SM',
     datasheetId: '000002703',
@@ -14522,7 +14521,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000002706_siege_breaker_protocols',
-    label: 'Ironclad Dreadnought — +1 impactar, +1 herir CàC',
+    label: 'Ironclad Dreadnought — +1 impactar, +1 herir CaC',
     description: 'Each time this model makes a melee attack that targets a VEHICLE or FORTIFICATION unit, add 1 to the Hit roll and add 1 to the Wound roll.',
     factionId: 'SM',
     datasheetId: '000002706',
@@ -14619,7 +14618,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000002737_black_rage',
-    label: 'Death Company Marines With Jump Packs — repetir impactos CàC',
+    label: 'Death Company Marines With Jump Packs — repetir impactos CaC',
     description: 'Each time this model makes a melee attack, you can re-roll the Hit roll. While this model’s unit is not within 6" of one or more friendly Blood Angels Character models, or 12" of one or more friendly Chaplain models, it cannot be selected to Fall Back and its Objective Control characteristic is 0.',
     factionId: 'SM',
     datasheetId: '000002737',
@@ -14746,7 +14745,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000003832_black_rage',
-    label: 'Death Company Captain — repetir impactos CàC',
+    label: 'Death Company Captain — repetir impactos CaC',
     description: 'Each time this model makes a melee attack, you can re-roll the Hit roll. While this model’s unit is not within 6" of one or more friendly Blood Angels Character models, or 12" of one or more friendly Chaplain models, it cannot be selected to Fall Back and its Objective Control characteristic is 0.',
     factionId: 'SM',
     datasheetId: '000003832',
@@ -14757,7 +14756,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000003835_black_rage',
-    label: 'Death Company Dreadnought with Magna-grapple — repetir impactos CàC',
+    label: 'Death Company Dreadnought with Magna-grapple — repetir impactos CaC',
     description: 'Each time this model makes a melee attack, you can re-roll the Hit roll. While this model’s unit is not within 6" of one or more friendly Blood Angels Character models, or 12" of one or more friendly Chaplain models, it cannot be selected to Fall Back and its Objective Control characteristic is 0.',
     factionId: 'SM',
     datasheetId: '000003835',
@@ -14768,7 +14767,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000003836_black_rage',
-    label: 'Death Company Marines with Boltguns — repetir impactos CàC',
+    label: 'Death Company Marines with Boltguns — repetir impactos CaC',
     description: 'Each time this model makes a melee attack, you can re-roll the Hit roll. While this model’s unit is not within 6" of one or more friendly Blood Angels Character models, or 12" of one or more friendly Chaplain models, it cannot be selected to Fall Back and its Objective Control characteristic is 0.',
     factionId: 'SM',
     datasheetId: '000003836',
@@ -14789,7 +14788,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000003837_black_rage',
-    label: 'Death Company Marines with Boltguns and Jump Packs — repetir impactos CàC',
+    label: 'Death Company Marines with Boltguns and Jump Packs — repetir impactos CaC',
     description: 'Each time this model makes a melee attack, you can re-roll the Hit roll. While this model’s unit is not within 6" of one or more friendly Blood Angels Character models, or 12" of one or more friendly Chaplain models, it cannot be selected to Fall Back and its Objective Control characteristic is 0.',
     factionId: 'SM',
     datasheetId: '000003837',
@@ -14800,7 +14799,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000003874_talonstrike_doctrines',
-    label: 'Talonstrike Kill Team — +1 PA CàC',
+    label: 'Talonstrike Kill Team — +1 PA CaC',
     description: 'Each time this unit is set up on the battlefield, until the end of the turn:Improve the Armour Penetration characteristic of weapons equipped by models in this unit by 1.Melee weapons equipped by models in this unit have the [LANCE] ability.',
     factionId: 'SM',
     datasheetId: '000003874',
@@ -14811,7 +14810,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000004132_hammer_blow',
-    label: 'Wulfen with Storm Shields — -1 impactar CàC',
+    label: 'Wulfen with Storm Shields — -1 impactar CaC',
     description: 'In the Fight phase, after this unit has fought, select one enemy MONSTER or VEHICLE unit hit by one or more of those attacks. Until the end of the next turn, that enemy unit is suppressed. While a unit is suppressed, each time a model in that unit makes an attack, subtract 1 from the Hit roll.',
     factionId: 'SM',
     datasheetId: '000004132',
@@ -15233,7 +15232,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000001021_devoted_to_destruction',
-    label: 'Helbrute — +2 Ataques CàC',
+    label: 'Helbrute — +2 Ataques CaC',
     description: 'If this model is equipped with two melee weapons in addition to its close combat weapon, add 2 to the Attacks characteristic of those two weapons.',
     factionId: 'TS',
     datasheetId: '000001021',
@@ -15430,7 +15429,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   // ─── TYR generated entries ───────────────────
   {
     id: 'unit_000000463_hypnotic_gaze_psychic',
-    label: 'Broodlord — -1 impactar CàC',
+    label: 'Broodlord — -1 impactar CaC',
     description: 'At the start of the Fight phase, select one enemy unit within Engagement Range of this model. Until the end of the phase, each time a model in that unit makes an attack, subtract 1 from the Hit roll.',
     factionId: 'TYR',
     datasheetId: '000000463',
@@ -15506,7 +15505,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000000499_prey_adaptation',
-    label: 'Malanthrope — Lethal Hits, Sustained 1 CàC',
+    label: 'Malanthrope — Lethal Hits, Sustained 1 CaC',
     description: 'Each time this model\'s unit is selected to fight, select one of the following abilities to apply to all melee weapons equipped by models in that unit until the end of the phase:[SUSTAINED HITS 1] [LANCE] [LETHAL HITS]',
     factionId: 'TYR',
     datasheetId: '000000499',
@@ -15559,7 +15558,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000002689_feeding_frenzy',
-    label: 'Psychophage — +1 impactar, +1 herir CàC',
+    label: 'Psychophage — +1 impactar, +1 herir CaC',
     description: 'Each time this model makes a melee attack that targets a unit that is below its Starting Strength, add 1 to the Hit roll. If that target is also Below Half-strength, add 1 to the Wound roll as well.',
     factionId: 'TYR',
     datasheetId: '000002689',
@@ -15571,7 +15570,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000002691_adaptive_instincts',
-    label: 'Tyranid Warriors With Melee Bio-weapons — repetir imp.1 CàC',
+    label: 'Tyranid Warriors With Melee Bio-weapons — repetir imp.1 CaC',
     description: 'At the start of the Fight phase, select one of the following:Aggression Imperative: Until the end of the phase, each time a model in this unit makes an attack, re-roll a Hit roll of 1.Bioregeneration: Until the end of the phase, each time a saving throw is made for a model in this unit, re-roll a sa',
     factionId: 'TYR',
     datasheetId: '000002691',
@@ -15738,7 +15737,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   // ─── WE generated entries ───────────────────
   {
     id: 'unit_000002626_a_worthy_skull',
-    label: 'Master of Executions — repetir impactos, repetir heridas CàC',
+    label: 'Master of Executions — repetir impactos, repetir heridas CaC',
     description: 'Each time this model makes a melee attack that targets a CHARACTER unit, you can re-roll the Hit roll and you can re-roll the Wound roll. Each time this model’s unit destroys a CHARACTER model, you gain 1CP.',
     factionId: 'WE',
     datasheetId: '000002626',
@@ -15761,7 +15760,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000002632_devoted_to_destruction',
-    label: 'Helbrute — +2 Ataques CàC',
+    label: 'Helbrute — +2 Ataques CaC',
     description: 'If this model is equipped with two melee weapons in addition to its close combat weapon, add 2 to the Attacks characteristic of those two weapons.',
     factionId: 'WE',
     datasheetId: '000002632',
@@ -15805,7 +15804,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'unit_000002639_savage_exaltation',
-    label: 'Maulerfiend — +1 impactar, +1 herir CàC',
+    label: 'Maulerfiend — +1 impactar, +1 herir CaC',
     description: 'Each time this model makes a melee attack that targets an enemy unit that is below its Starting Strength, add 1 to the Hit roll and, if that attack targets an enemy unit that is Below Half-strength, add 1 to the Wound roll as well.',
     factionId: 'WE',
     datasheetId: '000002639',
@@ -15837,7 +15836,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'opb_000003590_bloodlust',
-    label: 'Kytan Ravager — Sustained 1 CàC [OPB]',
+    label: 'Kytan Ravager — Sustained 1 CaC [OPB]',
     description: 'Each time this model makes a Charge move, until the end of the turn, its melee weapons have the [SUSTAINED HITS 1] ability. In addition, once per battle, this model is eligible to declare a charge in a turn in which it Advanced.',
     factionId: 'WE',
     datasheetId: '000003590',
@@ -15945,7 +15944,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'aura_000004104_rage_embodied_aura',
-    label: 'Skarbrand — +1 Ataques CàC (Aura)',
+    label: 'Skarbrand — +1 Ataques CaC (Aura)',
     description: 'While a friendly Blood Legions unit is within 6" of this model, add 1 to the Attacks characteristic of melee weapons equipped by models in that unit.',
     factionId: 'WE',
     sourceDatasheetId: '000004104',

@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react'
 import type { GameData, PanelSelection, Datasheet, Detachment, DetachmentAbility, Stratagem } from '@/types'
 import { MODIFIER_RULES } from '@/data/modifiers'
+import { LEADER_FOLLOWERS } from '@/data/leaderFollowers'
 
 export interface PanelState {
   selection: PanelSelection
@@ -53,7 +54,7 @@ export function usePanelState(gameData: GameData): PanelState {
         .filter(r =>
           r.leaderDatasheetId &&
           r.factionId === factionId &&
-          (!r.followerDatasheetIds || r.followerDatasheetIds.includes(unitId))
+          (!LEADER_FOLLOWERS[r.leaderDatasheetId] || LEADER_FOLLOWERS[r.leaderDatasheetId].includes(unitId))
         )
         .map(r => r.leaderDatasheetId!)
     )
