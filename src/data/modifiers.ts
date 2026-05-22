@@ -818,9 +818,11 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
 
   // ═══ AM ═══
-  // Voice of Command: órdenes del Oficial a unidades INFANTRY/CAVALRY/VEHICLE dentro de rango
-  { id: 'am_take_aim',      label: 'Orden: ¡Take Aim! — repetir impactos 1, disparo', description: 'Take Aim!: re-roll hit rolls of 1 for one friendly unit this phase (ranged attacks).', factionId: 'AM', combatType: 'ranged', effects: { rerollHitsOf1: true } },
-  { id: 'am_fix_bayonets',  label: 'Orden: ¡Fix Bayonets! — +1 ataque, CàC',          description: 'Fix Bayonets!: add 1 to the Attacks characteristic of models in one friendly INFANTRY unit this phase (melee).', factionId: 'AM', combatType: 'melee', effects: { attacksMod: 1 } },
+  // Voice of Command: órdenes del Oficial — solo 1 orden por unidad por fase (activar la que aplique)
+  { id: 'am_take_aim',          label: 'Orden: ¡Take Aim! — +1 BS, disparo',                 description: 'Take Aim!: improve the Ballistic Skill characteristic of ranged weapons in this unit by 1.',      factionId: 'AM', combatType: 'ranged', effects: { hitMod: 1 } },
+  { id: 'am_fix_bayonets',      label: 'Orden: ¡Fix Bayonets! — +1 WS, CàC',                 description: 'Fix Bayonets!: improve the Weapon Skill characteristic of melee weapons in this unit by 1.',       factionId: 'AM', combatType: 'melee',  effects: { hitMod: 1 } },
+  { id: 'am_first_rank_fire',   label: 'Orden: ¡First Rank, Fire! — +1 ataque Rapid Fire',   description: 'First Rank, Fire! Second Rank, Fire!: improve the Attacks characteristic of Rapid Fire weapons in this unit by 1.', factionId: 'AM', combatType: 'ranged', effects: { attacksMod: 1 } },
+  { id: 'am_take_cover',        label: 'Orden: ¡Take Cover! — +1 salvación (defensor)',       description: 'Take Cover!: improve the Save characteristic of models in this unit by 1 (cannot improve better than 3+).', factionId: 'AM', target: 'defender', effects: { saveMod: 1 } },
   {
     id: 'am_born_soldiers',
     label: 'Born Soldiers — Lethal Hits',
