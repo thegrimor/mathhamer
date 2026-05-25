@@ -1,6 +1,6 @@
 import type { ModifierRule } from '@/types'
 
-export const MODIFIER_RULES: ModifierRule[] = [
+const RULES_1: ModifierRule[] = [
   // ═══ Universal ═══
   {
     id: 'cover',
@@ -3488,6 +3488,9 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   { id: 'ec_pledges_crit5',          label: 'Pledges — crítico 5+ (CaC)', factionId: 'EC', detachmentId: '000001037', combatType: 'melee', effects: { critThreshold: 5 } },
   { id: 'ec_pledges_reroll_hits1',   label: 'Pledges — repetir impactos 1 (CaC)', factionId: 'EC', detachmentId: '000001037', combatType: 'melee', effects: { rerollHitsOf1: true } },
+]
+
+const RULES_2: ModifierRule[] = [
   { id: 'ec_pledges_reroll_wounds1', label: 'Pledges — repetir heridas 1 (CaC)', factionId: 'EC', detachmentId: '000001037', combatType: 'melee', effects: { rerollWoundsOf1: true } },
   { id: 'ec_pledges_lethal',         label: 'Pledges — Lethal Hits (CaC)', factionId: 'EC', detachmentId: '000001037', combatType: 'melee', effects: { lethalHitsBonus: true } },
   {
@@ -6962,6 +6965,9 @@ export const MODIFIER_RULES: ModifierRule[] = [
     woundMod: -1,
   },
   },
+]
+
+const RULES_3: ModifierRule[] = [
   {
     id: 'sm_martial_mastery',
     label: 'MARTIAL MASTERY — repetir heridas 1, CaC (1CP)',
@@ -9949,6 +9955,9 @@ export const MODIFIER_RULES: ModifierRule[] = [
       lethalHitsBonus: true,
     },
   },
+]
+
+const RULES_4: ModifierRule[] = [
   {
     id: 'unit_000002534_cegorach_s_favour',
     label: 'Troupe Master — +1 herir, repetir imp.1 CaC',
@@ -13205,6 +13214,9 @@ export const MODIFIER_RULES: ModifierRule[] = [
       rerollWoundsOf1: true,
     },
   },
+]
+
+const RULES_5: ModifierRule[] = [
   {
     id: 'unit_000000020_tank_hunters',
     label: 'Tankbustas — +1 impactar, +1 herir disparo',
@@ -15955,4 +15967,12 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
 
 
+]
+
+export const MODIFIER_RULES: ModifierRule[] = [
+  ...RULES_1,
+  ...RULES_2,
+  ...RULES_3,
+  ...RULES_4,
+  ...RULES_5,
 ]
