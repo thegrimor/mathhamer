@@ -1,6 +1,6 @@
 import type { ModifierRule } from '@/types'
 
-export const MODIFIER_RULES: ModifierRule[] = [
+const RULES_1: ModifierRule[] = [
   // ═══ Universal ═══
   {
     id: 'cover',
@@ -23,9 +23,12 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
 
   // ═══ AC ═══
+  // Martial Ka'tah — regla de facción (sin destacamento), se elige postura al activar
+  { id: 'ac_katah_dacatarai', label: "Ka'tah Dacatarai — Sustained Hits 1 (CaC)", description: "Dacatarai Stance: melee weapons equipped by models in this unit have the [SUSTAINED HITS 1] ability.", factionId: 'AC', combatType: 'melee', effects: { sustainedHitsBonus: 1 } },
+  { id: 'ac_katah_rendax',    label: "Ka'tah Rendax — Lethal Hits (CaC)",         description: "Rendax Stance: melee weapons equipped by models in this unit have the [LETHAL HITS] ability.",          factionId: 'AC', combatType: 'melee', effects: { lethalHitsBonus: true } },
   {
     id: 'ac_martial_mastery',
-    label: 'Martial Mastery — crítico 5+, +1 PA, CàC',
+    label: 'Martial Mastery — crítico 5+, +1 PA, CaC',
     description: 'At the start of the battle round, you can select one of the bullet points below. If you do, until the start of the next battle round, that bullet point’s effects apply. Each time an Adeptus Custodes model from your army with the Martial Ka’tah ability makes a melee attack, a successful unmodified Hi',
     factionId: 'AC',
     detachmentId: '000000765',
@@ -115,7 +118,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ac_earning_of_a_name',
-    label: 'EARNING OF A NAME — repetir impactos, repetir heridas, CàC (1CP)',
+    label: 'EARNING OF A NAME — repetir impactos, repetir heridas, CaC (1CP)',
     description: 'Auric Champions: Until the end of the phase, each time a CHARACTER model in either of your units makes an attack that targets a MONSTER or VEHICLE unit, you can re-roll the Hit roll and you can re-roll the Wound roll.',
     factionId: 'AC',
     detachmentId: '000000863',
@@ -155,7 +158,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ac_blades_of_the_vigilators',
-    label: 'BLADES OF THE VIGILATORS — -1 herir, CàC (1CP)',
+    label: 'BLADES OF THE VIGILATORS — -1 herir, CaC (1CP)',
     description: 'Black Ship Guardians: Until the end of the phase, each time an attack targets your unit, subtract 1 from the Wound roll.',
     factionId: 'AC',
     detachmentId: '000000910',
@@ -169,7 +172,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ac_anathema_blademastery',
-    label: 'ANATHEMA BLADEMASTERY — repetir impactos, repetir heridas, CàC (1CP)',
+    label: 'ANATHEMA BLADEMASTERY — repetir impactos, repetir heridas, CaC (1CP)',
     description: 'Null Maiden Vigil: Until the end of the phase, each time a model in your unit makes a melee attack, you can re-roll the Hit roll If the target of that attack is Battle-shocked or a PSYKER , you can re-roll the Wound roll as well.',
     factionId: 'AC',
     detachmentId: '000000862',
@@ -247,7 +250,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ac_unwavering_sentinels',
-    label: 'UNWAVERING SENTINELS — -1 impactar, CàC (1CP)',
+    label: 'UNWAVERING SENTINELS — -1 impactar, CaC (1CP)',
     description: 'Shield Host: Until the end of the phase, each time a melee attack targets your unit, subtract 1 from the Hit roll.',
     factionId: 'AC',
     detachmentId: '000000765',
@@ -286,7 +289,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ac_emperor_s_executioners',
-    label: 'EMPEROR’S EXECUTIONERS — +1 herir, CàC (2CP)',
+    label: 'EMPEROR’S EXECUTIONERS — +1 herir, CaC (2CP)',
     description: 'Talons Of The Emperor: Until the end of the phase, each time a model in one of your units targets an enemy unit that is below its Starting Strength, add 1 to the Wound roll. RESTRICTIONS: You can only select two units if one (and only one) of them is an Anathema Psykana un',
     factionId: 'AC',
     detachmentId: '000000861',
@@ -308,6 +311,29 @@ export const MODIFIER_RULES: ModifierRule[] = [
     cpCost: 1,
     effects: {
     sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000002088_tenacious_spirit',
+    label: 'Aleya — +1 impactar, +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, add 1 to the Hit roll if that unit is below its Starting Strength, and add 1 to the Wound roll as well if that unit is Below Half-strength.',
+    factionId: 'AC',
+    leaderDatasheetId: '000002088',
+    effects: {
+    hitMod: 1,
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000002519_golden_laurels',
+    label: 'Valerian — empeora PA atacante (Líder)',
+    description: 'While this model is leading a unit, each time a melee attack targets that unit, worsen the Armour Penetration characteristic of that attack by 1.',
+    factionId: 'AC',
+    leaderDatasheetId: '000002519',
+    target: 'defender',
+    combatType: 'melee',
+    effects: {
+    apMod: -1,
   },
   },
 
@@ -382,7 +408,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ae_pirates_due',
-    label: 'PIRATES’ DUE — repetir heridas 1, CàC (1CP)',
+    label: 'PIRATES’ DUE — repetir heridas 1, CaC (1CP)',
     description: 'Corsair Coterie: Until the end of the phase, each time a model in your unit makes an attack, re-roll a Wound roll of 1. If your unit has the Anhrathe keyword, then until the end of the phase, each time a model in your unit makes an attack that targets an enemy unit w',
     factionId: 'AE',
     detachmentId: '000001136',
@@ -408,7 +434,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ae_emissaries_of_ynnead',
-    label: 'EMISSARIES OF YNNEAD — repetir impactos 1, CàC (1CP)',
+    label: 'EMISSARIES OF YNNEAD — repetir impactos 1, CaC (1CP)',
     description: 'Devoted of Ynnead: Until the end of the phase, each time a model in your unit makes an attack, re-roll a Hit roll of 1. If your unit is below its Starting Strength, you can re-roll the Hit roll instead.',
     factionId: 'AE',
     detachmentId: '000001022',
@@ -460,7 +486,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ae_yriel_s_example',
-    label: 'YRIEL’S EXAMPLE — FNP 5+, CàC (1CP)',
+    label: 'YRIEL’S EXAMPLE — FNP 5+, CaC (1CP)',
     description: 'Eldritch Raiders: Until the end of the phase, models in your unit have the Feel No Pain 5+ ability.',
     factionId: 'AE',
     detachmentId: '000001135',
@@ -524,7 +550,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ae_bladefocus',
-    label: 'BLADEFOCUS — repetir impactos, CàC (1CP)',
+    label: 'BLADEFOCUS — repetir impactos, CaC (1CP)',
     description: 'Khaine’s Arrow: Until the end of the phase, each time a model in your unit makes an attack, if it made a Charge move this turn, you can re-roll the Hit roll.',
     factionId: 'AE',
     detachmentId: '000000919',
@@ -576,7 +602,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ae_forewarned',
-    label: 'FOREWARNED — -1 impactar, -1 herir, CàC (1CP)',
+    label: 'FOREWARNED — -1 impactar, -1 herir, CaC (1CP)',
     description: 'Seer Council: Until the end of the phase, each time an attack targets your unit, subtract 1 from the Hit roll and subtract 1 from the Wound roll.',
     factionId: 'AE',
     detachmentId: '000001023',
@@ -617,7 +643,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ae_darting_strikes',
-    label: 'DARTING STRIKES — repetir heridas, CàC (1CP)',
+    label: 'DARTING STRIKES — repetir heridas, CaC (1CP)',
     description: 'Star-dancer Masque: Until the end of the phase, each time a model in your unit makes an attack, you can re-roll the Wound roll.',
     factionId: 'AE',
     detachmentId: '000000922',
@@ -682,7 +708,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ae_guardian_constructs',
-    label: 'GUARDIAN CONSTRUCTS — -1 herir, CàC (1CP)',
+    label: 'GUARDIAN CONSTRUCTS — -1 herir, CaC (1CP)',
     description: 'Wraiths of the Void: Until the end of the phase, each time an attack targets your unit, if the attacking model is wholly on the opposite side of a Hatchway from your unit, subtract 1 from the Wound roll.',
     factionId: 'AE',
     detachmentId: '000000921',
@@ -707,8 +733,97 @@ export const MODIFIER_RULES: ModifierRule[] = [
     hitMod: -1,
   },
   },
+  {
+    id: 'ldr_000000570_bringer_of_the_true_death',
+    label: 'Illic Nightspear — repetir heridas (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, you can re-roll the Wound roll.',
+    factionId: 'AE',
+    leaderDatasheetId: '000000570',
+    effects: {
+    rerollAllWounds: true,
+  },
+  },
+  {
+    id: 'ldr_000000573_shadow_hunter',
+    label: 'Karandras — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, add 1 to the Hit roll.',
+    factionId: 'AE',
+    leaderDatasheetId: '000000573',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000630_reaper_of_souls',
+    label: 'Irillyth — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, add 1 to the Hit roll.',
+    factionId: 'AE',
+    leaderDatasheetId: '000000630',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000001400_way_of_the_shaper_psychic',
+    label: 'Bonesinger — FNP 6+ (Líder)',
+    description: 'While this model is leading a unit, Wraith Construct models in that unit have the Feel No Pain 6+ ability.',
+    factionId: 'AE',
+    leaderDatasheetId: '000001400',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 6,
+  },
+  },
+  {
+    id: 'ldr_000002543_yvraine_s_champion',
+    label: 'The Visarch — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, other Character models attached to that unit have the Feel No Pain 4+ ability.',
+    factionId: 'AE',
+    leaderDatasheetId: '000002543',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  {
+    id: 'ldr_000003914_overlord',
+    label: 'Ynnari Archon — repetir heridas 1 (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, re-roll a Wound roll of 1. While that unit is below its Starting Strength, each time a model in that unit makes an attack, you can re-roll the Wound roll instead.',
+    factionId: 'AE',
+    leaderDatasheetId: '000003914',
+    effects: {
+    rerollWoundsOf1: true,
+  },
+  },
+  {
+    id: 'ldr_000003915_storm_of_blades',
+    label: 'Ynnari Succubus — Sustained Hits 1, CaC (Líder)',
+    description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'AE',
+    leaderDatasheetId: '000003915',
+    combatType: 'melee',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000004193_piratical_hero',
+    label: 'Prince Yriel — +1 impactar, Sustained Hits 1 (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, that attack has the [SUSTAINED HITS 1] ability and add 1 to the Hit roll.',
+    factionId: 'AE',
+    leaderDatasheetId: '000004193',
+    effects: {
+    hitMod: 1,
+    sustainedHitsBonus: 1,
+  },
+  },
 
   // ═══ AM ═══
+  // Voice of Command: órdenes del Oficial — solo 1 orden por unidad por fase (activar la que aplique)
+  { id: 'am_take_aim',          label: 'Orden: ¡Take Aim! — +1 BS, disparo',                 description: 'Take Aim!: improve the Ballistic Skill characteristic of ranged weapons in this unit by 1.',      factionId: 'AM', combatType: 'ranged', effects: { hitMod: 1 } },
+  { id: 'am_fix_bayonets',      label: 'Orden: ¡Fix Bayonets! — +1 WS, CaC',                 description: 'Fix Bayonets!: improve the Weapon Skill characteristic of melee weapons in this unit by 1.',       factionId: 'AM', combatType: 'melee',  effects: { hitMod: 1 } },
+  { id: 'am_first_rank_fire',   label: 'Orden: ¡First Rank, Fire! — +1 ataque Rapid Fire',   description: 'First Rank, Fire! Second Rank, Fire!: improve the Attacks characteristic of Rapid Fire weapons in this unit by 1.', factionId: 'AM', combatType: 'ranged', effects: { attacksMod: 1 } },
+  { id: 'am_take_cover',        label: 'Orden: ¡Take Cover! — +1 salvación (defensor)',       description: 'Take Cover!: improve the Save characteristic of models in this unit by 1 (cannot improve better than 3+).', factionId: 'AM', target: 'defender', effects: { saveMod: 1 } },
   {
     id: 'am_born_soldiers',
     label: 'Born Soldiers — Lethal Hits',
@@ -937,7 +1052,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'am_engine_of_wrath',
-    label: 'ENGINE OF WRATH — +2 PA, CàC (1CP)',
+    label: 'ENGINE OF WRATH — +2 PA, CaC (1CP)',
     description: 'Steel Hammer: Select one enemy unit within Engagement Range of your unit. Until the end of the phase, add 6 to the Attacks characteristic of melee weapons equipped by models in your unit, improve the Armour Penetration characteristic of those weapons by 2, and eac',
     factionId: 'AM',
     detachmentId: '000001149',
@@ -946,6 +1061,62 @@ export const MODIFIER_RULES: ModifierRule[] = [
     cpCost: 1,
     effects: {
     apMod: 2,
+  },
+  },
+  {
+    id: 'ldr_000000713_cold_steel_and_courage',
+    label: '‘Iron Hand’ Straken — Lethal Hits, CaC (Líder)',
+    description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'AM',
+    leaderDatasheetId: '000000713',
+    combatType: 'melee',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000000714_harker_s_hellraisers',
+    label: 'Sergeant Harker — -1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a ranged attack targets that unit, if the attacking model is more than 12" away, subtract 1 from the Hit roll.',
+    factionId: 'AM',
+    leaderDatasheetId: '000000714',
+    combatType: 'ranged',
+    target: 'defender',
+    effects: {
+    hitMod: -1,
+  },
+  },
+  {
+    id: 'ldr_000000889_malign_wardings_psychic',
+    label: 'Primaris Psyker — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks.',
+    factionId: 'AM',
+    leaderDatasheetId: '000000889',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  {
+    id: 'ldr_000001394_war_hymns',
+    label: 'Ministorum Priest — Sustained Hits 1, CaC (Líder)',
+    description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'AM',
+    leaderDatasheetId: '000001394',
+    combatType: 'melee',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000002607_senior_officer',
+    label: 'Cadian Castellan — Sustained Hits 1, disparo (Líder)',
+    description: 'While this model is leading a unit, ranged weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'AM',
+    leaderDatasheetId: '000002607',
+    combatType: 'ranged',
+    effects: {
+    sustainedHitsBonus: 1,
   },
   },
 
@@ -1012,7 +1183,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'as_righteous_blows',
-    label: 'RIGHTEOUS BLOWS — Lethal Hits, CàC (1CP)',
+    label: 'RIGHTEOUS BLOWS — Lethal Hits, CaC (1CP)',
     description: 'Bringers of Flame: Until the end of the phase, melee weapons equipped by models in your unit have the [LETHAL HITS] ability. If one or more enemy models are destroyed as the result of attacks made by those weapons this phase, select one of those destroyed models; that',
     factionId: 'AS',
     detachmentId: '000000879',
@@ -1038,7 +1209,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'as_to_the_heart_of_heresy',
-    label: 'TO THE HEART OF HERESY — +1 PA, CàC (1CP)',
+    label: 'TO THE HEART OF HERESY — +1 PA, CaC (1CP)',
     description: 'Champions of Faith: Until the end of the turn, improve the Strength characteristic of melee weapons equipped by models in your unit by 1. If your unit is Righteous, until the end of the phase, improve the Armour Penetration characteristic of melee weapons equipped by mo',
     factionId: 'AS',
     detachmentId: '000001003',
@@ -1051,7 +1222,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'as_bastion_of_faith',
-    label: 'BASTION OF FAITH — -1 impactar, CàC (1CP)',
+    label: 'BASTION OF FAITH — -1 impactar, CaC (1CP)',
     description: 'Champions of Faith: Until the end of the phase, each time an attack targets your unit, subtract 1 from the Hit roll. In addition, if your unit is Righteous, you can select one other CELESTIAN SACRESANTS unit from your army that is not Battle-shocked and is within 6" of',
     factionId: 'AS',
     detachmentId: '000001003',
@@ -1089,7 +1260,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'as_righteous_vengeance',
-    label: 'RIGHTEOUS VENGEANCE — repetir impactos, repetir heridas, CàC (1CP)',
+    label: 'RIGHTEOUS VENGEANCE — repetir impactos, repetir heridas, CaC (1CP)',
     description: 'Hallowed Martyrs: Until the end of the phase, each time a model in your unit makes a melee attack, you can re-roll the Hit roll and, if your unit is Below Half-strength, you can re-roll the Wound roll as well.',
     factionId: 'AS',
     detachmentId: '000000791',
@@ -1116,7 +1287,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'as_passion_of_the_penitent',
-    label: 'PASSION OF THE PENITENT — crítico 5+, CàC (1CP)',
+    label: 'PASSION OF THE PENITENT — crítico 5+, CaC (1CP)',
     description: 'Penitent Host: Until the end of the phase, each time a PENITENT model in your unit makes a melee attack, a successful unmodified Hit roll of 5+ scores a Critical Hit.',
     factionId: 'AS',
     detachmentId: '000000878',
@@ -1153,11 +1324,148 @@ export const MODIFIER_RULES: ModifierRule[] = [
     rerollHitsOf1: true,
   },
   },
+  {
+    id: 'ldr_000000901_medicus_ministorum',
+    label: 'Hospitaller — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability.',
+    factionId: 'AS',
+    leaderDatasheetId: '000000901',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000001553_righteous_smiting',
+    label: 'Ministorum Priest — +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Wound roll.',
+    factionId: 'AS',
+    leaderDatasheetId: '000001553',
+    combatType: 'melee',
+    effects: {
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000002064_the_pulpit_of_saint_holline_s_basilica',
+    label: 'Junith Eruita — -1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time an attack targets that unit, subtract 1 from the Hit roll.',
+    factionId: 'AS',
+    leaderDatasheetId: '000002064',
+    target: 'defender',
+    effects: {
+    hitMod: -1,
+  },
+  },
+  {
+    id: 'ldr_000002472_fury_of_the_righteous',
+    label: 'Palatine — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'AS',
+    leaderDatasheetId: '000002472',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000002479_abbess_sanctorum',
+    label: 'Morvenn Vahl — repetir impactos, repetir heridas (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, you can re-roll the Hit roll and you can re-roll the Wound roll.',
+    factionId: 'AS',
+    leaderDatasheetId: '000002479',
+    effects: {
+    rerollAllHits: true,
+    rerollAllWounds: true,
+  },
+  },
+  {
+    id: 'aura_000002063_simulacrum_of_the_argent_shroud_aura',
+    label: 'Triumph Of Saint Katherine — repetir heridas 1 (Aura)',
+    description: 'While a friendly ADEPTA SORORITAS unit is within 6" of this model, each time a model in that unit makes a ranged attack, re-roll a Wound roll of 1.',
+    factionId: 'AS',
+    sourceDatasheetId: '000002063',
+    effects: {
+    rerollWoundsOf1: true,
+  },
+  },
+  {
+    id: 'aura_000002063_icon_of_the_valorous_heart_aura',
+    label: 'Triumph Of Saint Katherine — FNP 6+ (Aura)',
+    description: 'While a friendly ADEPTA SORORITAS unit is within 6" of this model, models in that unit have the Feel No Pain 6+ ability.',
+    factionId: 'AS',
+    sourceDatasheetId: '000002063',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 6,
+  },
+  },
+  {
+    id: 'aura_000002063_petals_of_the_bloody_rose_aura',
+    label: 'Triumph Of Saint Katherine — +1 PA, CaC (Aura)',
+    description: 'While a friendly ADEPTA SORORITAS unit is within 6" of this model, improve the Armour Penetration characteristic of melee weapons equipped by models in that unit by 1.',
+    factionId: 'AS',
+    sourceDatasheetId: '000002063',
+    combatType: 'melee',
+    effects: {
+    apMod: 1,
+  },
+  },
 
   // ═══ AdM ═══
   {
+    id: 'adm_cawl_machine_vengeance',
+    label: 'Cawl — Venganza Máquina (re-roll impactar)',
+    description: 'Invocation of Machine Vengeance: Each time a model in a friendly ADEPTUS MECHANICUS unit makes an attack that targets your Machine Vengeance target, you can re-roll the Hit roll.',
+    factionId: 'AdM',
+    sourceDatasheetId: '000000838',
+    effects: {
+    rerollAllHits: true,
+  },
+  },
+  {
+    id: 'adm_protector_doctrina',
+    label: 'Doctrina Protectora — [HEAVY] +1 impactar, disparo',
+    description: 'Protector Imperative: ranged weapons gain [HEAVY] and +1 BS (Ballistic Skill).',
+    factionId: 'AdM',
+    combatType: 'ranged',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'adm_protector_doctrina_def',
+    label: 'Doctrina Protectora — −1 impactar melee recibido (posición Battleline)',
+    description: 'Protector Imperative (conditional): Each time a melee attack targets this unit, if this unit is BATTLELINE or within 6" of friendly AdM BATTLELINE, subtract 1 from the Hit roll.',
+    factionId: 'AdM',
+    combatType: 'melee',
+    target: 'defender',
+    effects: {
+    hitMod: -1,
+  },
+  },
+  {
+    id: 'adm_conqueror_doctrina',
+    label: 'Doctrina Conquistadora — [ASSAULT] +1 impactar, CaC',
+    description: 'Conqueror Imperative: ranged weapons gain [ASSAULT] and melee weapons get +1 WS (Weapon Skill).',
+    factionId: 'AdM',
+    combatType: 'melee',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'adm_conqueror_doctrina_ap',
+    label: 'Doctrina Conquistadora — +1 PA, CaC (posición Battleline)',
+    description: 'Conqueror Imperative (conditional): if this unit is BATTLELINE or within 6" of friendly AdM BATTLELINE, improve the Armour Penetration of melee attacks by 1.',
+    factionId: 'AdM',
+    combatType: 'melee',
+    effects: {
+    apMod: 1,
+  },
+  },
+  {
     id: 'adm_benedictions_of_the_omnissiah',
-    label: 'Benedictions Of The Omnissiah — +1 PA, CàC',
+    label: 'Benedictions Of The Omnissiah — +1 PA, CaC',
     description: 'At the start of the first battle round, select one of the following Benedictions of the Omnissiah to be active for CULT MECHANICUS units from your army until the end of the battle: Panegyric Procession Each time a CULT MECHANICUS model from your army makes a ranged attack that targets a unit within',
     factionId: 'AdM',
     detachmentId: '000000821',
@@ -1200,7 +1508,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'adm_chant_of_the_remorseless_fist',
-    label: 'CHANT OF THE REMORSELESS FIST — +1 herir, CàC (1CP)',
+    label: 'CHANT OF THE REMORSELESS FIST — +1 herir, CaC (1CP)',
     description: 'Data-Psalm Conclave: Until the end of the phase, each time a CULT MECHANICUS model in your unit makes a melee attack, add 1 to the Wound roll.',
     factionId: 'AdM',
     detachmentId: '000000821',
@@ -1251,20 +1559,8 @@ export const MODIFIER_RULES: ModifierRule[] = [
     lethalHitsBonus: true,
   },
   },
-  {
-    id: 'adm_unshackled_wrath',
-    label: 'UNSHACKLED WRATH — Lethal Hits, Sustained Hits 1, disparo (1CP)',
-    description: 'Eradication Cohort: Select the [SUSTAINED HITS 1] or [LETHAL HITS] ability. Until the end of the phase, ranged weapons equipped by models in your unit have the selected ability. You can instead select the [SUSTAINED HITS 1] , [LETHAL HITS] and [HAZARDOUS] abilities to a',
-    factionId: 'AdM',
-    detachmentId: '000001143',
-    combatType: 'ranged',
-    isStratagem: true,
-    cpCost: 1,
-    effects: {
-    sustainedHitsBonus: 1,
-    lethalHitsBonus: true,
-  },
-  },
+  { id: 'adm_unshackled_wrath_lethal',    label: 'UNSHACKLED WRATH — Lethal Hits, disparo (1CP)',    description: 'Eradication Cohort: ranged weapons gain [LETHAL HITS].', factionId: 'AdM', detachmentId: '000001143', combatType: 'ranged', isStratagem: true, cpCost: 1, effects: { lethalHitsBonus: true } },
+  { id: 'adm_unshackled_wrath_sustained', label: 'UNSHACKLED WRATH — Sustained Hits 1, disparo (1CP)', description: 'Eradication Cohort: ranged weapons gain [SUSTAINED HITS 1].', factionId: 'AdM', detachmentId: '000001143', combatType: 'ranged', isStratagem: true, cpCost: 1, effects: { sustainedHitsBonus: 1 } },
   {
     id: 'adm_auto_oracular_retrieval',
     label: 'AUTO-ORACULAR RETRIEVAL — +1 herir, disparo (2CP)',
@@ -1331,7 +1627,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'adm_baleful_halo',
-    label: 'BALEFUL HALO — -1 herir, CàC (2CP)',
+    label: 'BALEFUL HALO — -1 herir, CaC (2CP)',
     description: 'Rad-Zone Corps: Until the end of the turn, each time an attack is made that targets your unit, subtract 1 from the Wound roll.',
     factionId: 'AdM',
     detachmentId: '000000762',
@@ -1404,6 +1700,48 @@ export const MODIFIER_RULES: ModifierRule[] = [
     cpCost: 1,
     effects: {
     woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000839_lord_of_the_machine_cult',
+    label: 'Tech-priest Dominus — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability. If that unit has the Electro-Priests keyword, models in that unit have the Feel No Pain 4+ ability instead.',
+    factionId: 'AdM',
+    leaderDatasheetId: '000000839',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000001580_galvanic_field',
+    label: 'Tech-priest Manipulus — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'AdM',
+    leaderDatasheetId: '000001580',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000002478_control_edict',
+    label: 'Skitarii Marshal — repetir impactos (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, you can re-roll the Hit roll.',
+    factionId: 'AdM',
+    leaderDatasheetId: '000002478',
+    effects: {
+    rerollAllHits: true,
+  },
+  },
+  {
+    id: 'aura_000000840_omnissiah_s_blessing',
+    label: 'Tech-priest Enginseer — FNP 5+ (Aura)',
+    description: 'In your Command phase, select one friendly ADEPTUS MECHANICUS model within 3" of this model. That model regains up to D3 lost wounds and, if it is a VEHICLE model, until the start of your next Command phase, that model has the Feel No Pain 5+ ability. Each model can only be selected for this ability',
+    factionId: 'AdM',
+    sourceDatasheetId: '000000840',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
   },
   },
 
@@ -1543,7 +1881,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'aoi_crackdown',
-    label: 'CRACKDOWN — repetir impactos, repetir heridas, CàC (1CP)',
+    label: 'CRACKDOWN — repetir impactos, repetir heridas, CaC (1CP)',
     description: 'Interdiction Team: Until the end of the phase, each time a model in your unit makes an attack, you can re-roll the Hit roll and you can re-roll the Wound roll.',
     factionId: 'AoI',
     detachmentId: '000000925',
@@ -1656,8 +1994,73 @@ export const MODIFIER_RULES: ModifierRule[] = [
     apMod: 1,
   },
   },
+  {
+    id: 'ldr_000000874_no_mercy',
+    label: 'Inquisitor Greyfax — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack that targets a unit that is Below Half-strength, add 1 to the Hit roll.',
+    factionId: 'AoI',
+    leaderDatasheetId: '000000874',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000002090_xenos_hunter',
+    label: 'Inquisitor Draxus — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack that targets an enemy unit that does not have the IMPERIUM or CHAOS keywords, add 1 to the Hit roll.',
+    factionId: 'AoI',
+    leaderDatasheetId: '000002090',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000003812_holy_hatred',
+    label: 'Ministorum Priest — Sustained Hits 1, CaC (Líder)',
+    description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'AoI',
+    leaderDatasheetId: '000003812',
+    combatType: 'melee',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000003814_tactical_instinct',
+    label: 'Watch Captain Artemis — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'AoI',
+    leaderDatasheetId: '000003814',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000003829_inconceivable_augmentation',
+    label: 'Jokaero Weaponsmith — Lethal Hits, disparo (Líder)',
+    description: 'While this model is leading a unit, ranged weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'AoI',
+    leaderDatasheetId: '000003829',
+    combatType: 'ranged',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000004173_ward_against_the_malefic_arts',
+    label: 'Inquisitor Ostromandeus — -1 impactar, -1 herir (Líder)',
+    description: 'While this unit is leading a unit, each time a Psychic Attack targets that unit, subtract 1 from the Hit roll and subtract 1 from the Wound roll.',
+    factionId: 'AoI',
+    leaderDatasheetId: '000004173',
+    target: 'defender',
+    effects: {
+    hitMod: -1,
+    woundMod: -1,
+  },
+  },
 
   // ═══ CD ═══
+  // CD es LEGIONES DAEMONICA, no HERETIC ASTARTES → no tiene Dark Pacts; sus reglas ofensivas son por destacamento
   {
     id: 'cd_seductive_gambit',
     label: 'Seductive Gambit — repetir impactos, repetir heridas 1',
@@ -1710,7 +2113,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'cd_seductive_whispers',
-    label: 'SEDUCTIVE WHISPERS — -1 impactar, CàC (1CP)',
+    label: 'SEDUCTIVE WHISPERS — -1 impactar, CaC (1CP)',
     description: 'Dread Carnival: Until the end of the phase, each time an attack targets your unit, subtract 1 from the Hit roll.',
     factionId: 'CD',
     detachmentId: '000000956',
@@ -1737,7 +2140,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'cd_archagonists',
-    label: 'ARCHAGONISTS — +1 herir, CàC (2CP)',
+    label: 'ARCHAGONISTS — +1 herir, CaC (2CP)',
     description: 'Legion of Excess: Until the end of the phase, each time a model in one of those units makes an attack, add 1 to the Wound roll.',
     factionId: 'CD',
     detachmentId: '000000997',
@@ -1762,7 +2165,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'cd_seeping_virulence',
-    label: 'SEEPING VIRULENCE — crítico 5+, CàC (1CP)',
+    label: 'SEEPING VIRULENCE — crítico 5+, CaC (1CP)',
     description: 'Plague Legion: Until the end of the phase, each time a model in that unit makes an attack, an unmodified Hit roll of 5+ scores a Critical Hit.',
     factionId: 'CD',
     detachmentId: '000001000',
@@ -1801,7 +2204,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'cd_channelled_wrath',
-    label: 'CHANNELLED WRATH — +1 PA, CàC (1CP)',
+    label: 'CHANNELLED WRATH — +1 PA, CaC (1CP)',
     description: 'Shadow Legion: Until the end of the phase, melee weapons equipped by models in your unit have the [LANCE] ability. If your unit has the Khorne keyword, until the end of the phase, improve the Armour Penetration characteristic of those weapons by 1 as well.',
     factionId: 'CD',
     detachmentId: '000001027',
@@ -1812,8 +2215,182 @@ export const MODIFIER_RULES: ModifierRule[] = [
     apMod: 1,
   },
   },
+  {
+    id: 'ldr_000001139_lethal_caress',
+    label: 'Herald Of Slaanesh On Steed Of Slaanesh — +1 PA, CaC (Líder)',
+    description: 'While this model is leading a unit, improve the Armour Penetration characteristic of melee weapons equipped by models in that unit by 1.',
+    factionId: 'CD',
+    leaderDatasheetId: '000001139',
+    combatType: 'melee',
+    effects: {
+    apMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000001455_bloodmaster',
+    label: 'Bloodmaster — +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, add 1 to the Wound roll.',
+    factionId: 'CD',
+    leaderDatasheetId: '000001455',
+    effects: {
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000001462_changecaster',
+    label: 'Changecaster — Sustained Hits 1, disparo (Líder)',
+    description: 'While this model is leading a unit, ranged weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'CD',
+    leaderDatasheetId: '000001462',
+    combatType: 'ranged',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000001463_fateskimmer',
+    label: 'Fateskimmer — Lethal Hits, CaC (Líder)',
+    description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'CD',
+    leaderDatasheetId: '000001463',
+    combatType: 'melee',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000001467_poxbringer',
+    label: 'Poxbringer — crítico 5+ (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, a successful unmodified Hit roll of 5+ scores a Critical Hit.',
+    factionId: 'CD',
+    leaderDatasheetId: '000001467',
+    effects: {
+    critThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000001469_keep_counting',
+    label: 'Spoilpox Scrivener — Sustained Hits 1, CaC (Líder)',
+    description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'CD',
+    leaderDatasheetId: '000001469',
+    combatType: 'melee',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000004049_cursed_wardings_psychic',
+    label: 'Rogue Psyker — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks.',
+    factionId: 'CD',
+    leaderDatasheetId: '000004049',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  {
+    id: 'ldr_000004062_dark_zealotry',
+    label: 'Dark Apostle — +1 herir (Líder)',
+    description: 'While this unit is leading a unit and contains a DARK APOSTLE model, each time a model in that unit makes a melee attack, add 1 to the Wound roll.',
+    factionId: 'CD',
+    leaderDatasheetId: '000004062',
+    combatType: 'melee',
+    effects: {
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000004068_prescience_psychic',
+    label: 'Sorcerer — -1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time an attack targets that unit, subtract 1 from the Hit roll.',
+    factionId: 'CD',
+    leaderDatasheetId: '000004068',
+    target: 'defender',
+    effects: {
+    hitMod: -1,
+  },
+  },
+  {
+    id: 'ldr_000004070_gift_of_poxes_psychic',
+    label: 'Sorcerer On Palanquin Of Nurgle — Sustained Hits 1 (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'CD',
+    leaderDatasheetId: '000004070',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'aura_000001120_daemon_lord_of_tzeentch_aura',
+    label: 'Lord of Change — +1 F (Aura)',
+    description: 'While a friendly Tzeentch Legiones Daemonica unit is within 6" of this model, each time a model in that unit makes a ranged attack, add 1 to the Strength characteristic of that attack.',
+    factionId: 'CD',
+    sourceDatasheetId: '000001120',
+    combatType: 'ranged',
+    effects: {
+    strengthMod: 1,
+  },
+  },
+  {
+    id: 'aura_000001137_daemon_lord_of_slaanesh_aura',
+    label: 'Keeper Of Secrets — +1 PA, CaC (Aura)',
+    description: 'While a friendly Slaanesh Legiones Daemonica unit is within 6" of this model, improve the Armour Penetration of melee weapons in that unit by 1.',
+    factionId: 'CD',
+    sourceDatasheetId: '000001137',
+    combatType: 'melee',
+    effects: {
+    apMod: 1,
+  },
+  },
+  {
+    id: 'aura_000001141_tormentbringer_aura',
+    label: 'Tormentbringer On Exalted Seeker Chariot — Sustained Hits 1, CaC (Aura)',
+    description: 'While a friendly Slaanesh Legiones Daemonica unit is within 6" of this model, melee weapons in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'CD',
+    sourceDatasheetId: '000001141',
+    combatType: 'melee',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'aura_000001148_shadow_lord_aura_psychic',
+    label: 'Be’lakor — repetir impactos 1 (Aura)',
+    description: 'While a friendly Legiones Daemonica or Shadow Legion unit is within 6" of this model, each time a model in that unit makes an attack, re-roll a Hit roll of 1.',
+    factionId: 'CD',
+    sourceDatasheetId: '000001148',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'aura_000002582_daemon_lord_of_khorne_aura',
+    label: 'Bloodthirster — +1 impactar (Aura)',
+    description: 'While a friendly Khorne Legiones Daemonica unit is within 6" of this model, each time a model in that unit makes a melee attack, add 1 to the Hit roll.',
+    factionId: 'CD',
+    sourceDatasheetId: '000002582',
+    combatType: 'melee',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'aura_000004100_tormentbringer_aura',
+    label: 'Tormentbringer — Sustained Hits 1, CaC (Aura)',
+    description: 'While a friendly Slaanesh Legiones Daemonica unit is within 6" of this model, melee weapons in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'CD',
+    sourceDatasheetId: '000004100',
+    combatType: 'melee',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
 
   // ═══ CSM ═══
+  { id: 'csm_dark_pacts_lethal',    label: 'Dark Pacts — Lethal Hits',    factionId: 'CSM', effects: { lethalHitsBonus: true } },
+  { id: 'csm_dark_pacts_sustained', label: 'Dark Pacts — Sustained Hits 1', factionId: 'CSM', effects: { sustainedHitsBonus: 1 } },
   {
     id: 'csm_marks_of_chaos',
     label: 'Marks of Chaos — repetir impactos 1, crítico 5+',
@@ -1858,7 +2435,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'csm_debt_to_the_soul_forge',
-    label: 'Debt to the Soul Forge — +1 herir, CàC',
+    label: 'Debt to the Soul Forge — +1 herir, CaC',
     description: 'Each time a HERETIC ASTARTES DAEMON VEHICLE unit from your army makes a Dark Pact, it can invoke its contract. If it does, subtract 1 from the resulting Leadership test when making that Dark Pact, and until the end of the phase: Each time a model in that unit makes a ranged attack, add 1 to the Woun',
     factionId: 'CSM',
     detachmentId: '000000873',
@@ -1951,7 +2528,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'csm_specimens_for_the_spider',
-    label: 'SPECIMENS FOR THE SPIDER — repetir heridas, CàC (2CP)',
+    label: 'SPECIMENS FOR THE SPIDER — repetir heridas, CaC (2CP)',
     description: 'Creations of Bile: Until the end of the phase, each time a model in your unit makes a melee attack that targets a CHARACTER unit, you can re-roll the Wound roll. After your unit has fought, if one or more enemy CHARACTER models were destroyed as a result of those attac',
     factionId: 'CSM',
     detachmentId: '000000991',
@@ -2016,7 +2593,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'csm_depthless_cruelty',
-    label: 'DEPTHLESS CRUELTY — +1 PA, CàC (1CP)',
+    label: 'DEPTHLESS CRUELTY — +1 PA, CaC (1CP)',
     description: 'Dread Talons: Until the end of the phase, each time a model in your unit makes an attack that targets a unit that is Battle-shocked and/or Below Half-strength, improve the Armour Penetration characteristic of that attack by 1.',
     factionId: 'CSM',
     detachmentId: '000000870',
@@ -2029,7 +2606,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'csm_persistent_assailants',
-    label: 'PERSISTENT ASSAILANTS — repetir impactos, repetir heridas, CàC (1CP)',
+    label: 'PERSISTENT ASSAILANTS — repetir impactos, repetir heridas, CaC (1CP)',
     description: 'Fellhammer Siege-host: Until the end of the phase, each time a model in your unit makes an attack, you can re-roll the Hit roll, and if your unit is Below Half-strength you can re-roll the Wound roll as well.',
     factionId: 'CSM',
     detachmentId: '000000871',
@@ -2083,7 +2660,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'csm_inveterate_murderers',
-    label: 'INVETERATE MURDERERS — +1 herir, CàC (1CP)',
+    label: 'INVETERATE MURDERERS — +1 herir, CaC (1CP)',
     description: 'Infernal Reavers: Until the end of the phase, each time a model in your unit makes an attack, if the Strength characteristic of that attack is less than or equal to the Toughness characteristic of the target, add 1 to the Wound roll.',
     factionId: 'CSM',
     detachmentId: '000000946',
@@ -2258,7 +2835,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'csm_armour_of_corruption',
-    label: 'ARMOUR OF CORRUPTION — −1 daño, CàC (2CP)',
+    label: 'ARMOUR OF CORRUPTION — −1 daño, CaC (2CP)',
     description: 'Warpstrike Champions: Until the end of the turn, each time an attack is allocated to a model in your unit, subtract 1 from the Damage characteristic of that attack. RESTRICTIONS: You cannot target the same unit with the Armour of Corruption and Empyric Dislocation Stratag',
     factionId: 'CSM',
     detachmentId: '000001141',
@@ -2270,8 +2847,108 @@ export const MODIFIER_RULES: ModifierRule[] = [
     damageReduction: 1,
   },
   },
+  {
+    id: 'ldr_000000936_dark_zealotry',
+    label: 'Dark Apostle — +1 herir (Líder)',
+    description: 'While this unit is leading a unit and contains a DARK APOSTLE model, each time a model in that unit makes a melee attack, add 1 to the Wound roll.',
+    factionId: 'CSM',
+    leaderDatasheetId: '000000936',
+    combatType: 'melee',
+    effects: {
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000938_prescience_psychic',
+    label: 'Sorcerer — -1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time an attack targets that unit, subtract 1 from the Hit roll.',
+    factionId: 'CSM',
+    leaderDatasheetId: '000000938',
+    target: 'defender',
+    effects: {
+    hitMod: -1,
+  },
+  },
+  {
+    id: 'ldr_000000940_prescience_psychic',
+    label: 'Sorcerer On Bike — -1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time an attack targets that unit, subtract 1 from the Hit roll.',
+    factionId: 'CSM',
+    leaderDatasheetId: '000000940',
+    target: 'defender',
+    effects: {
+    hitMod: -1,
+  },
+  },
+  {
+    id: 'ldr_000000942_gift_of_poxes_psychic',
+    label: 'Sorcerer On Palanquin Of Nurgle — Sustained Hits 1 (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'CSM',
+    leaderDatasheetId: '000000942',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000001355_dark_champion',
+    label: 'Exalted Champion — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, add 1 to the Hit roll.',
+    factionId: 'CSM',
+    leaderDatasheetId: '000001355',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000001584_warp_sighted_butcher',
+    label: 'Master Of Executions — repetir impactos, repetir heridas (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack that targets a unit that is below its Starting Strength, you can re-roll the Hit roll. If that unit is Below Half-strength, you can re-roll the Wound roll as well.',
+    factionId: 'CSM',
+    leaderDatasheetId: '000001584',
+    combatType: 'melee',
+    effects: {
+    rerollAllHits: true,
+    rerollAllWounds: true,
+  },
+  },
+  {
+    id: 'ldr_000001600_cursed_wardings_psychic',
+    label: 'Rogue Psyker — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks.',
+    factionId: 'CSM',
+    leaderDatasheetId: '000001600',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  {
+    id: 'aura_000000924_paragon_of_hatred_aura',
+    label: 'Abaddon The Despoiler — repetir impactos (Aura)',
+    description: 'While a friendly HERETIC ASTARTES unit is within 6" (excluding DAMNED units) of this model, each time a model in that unit makes an attack, you can re-roll the Hit roll.',
+    factionId: 'CSM',
+    sourceDatasheetId: '000000924',
+    effects: {
+    rerollAllHits: true,
+  },
+  },
+  {
+    id: 'aura_000002679_unholy_mechanisms_aura',
+    label: 'Vashtorr The Arkifane — +2 F (Aura)',
+    description: 'While a friendly Daemon Vehicle unit is within 6" of this model, add 2 to the Strength characteristic of weapons equipped by models in that unit.',
+    factionId: 'CSM',
+    sourceDatasheetId: '000002679',
+    effects: {
+    strengthMod: 2,
+  },
+  },
 
   // ═══ DG ═══
+  // Nurgle's Gift (Aura) = Contagions of Nurgle: −1T a enemigos + plaga elegida al inicio
+  { id: 'dg_contagions_toughness', label: 'Contagions of Nurgle — −1 Resistencia enemiga', description: "Nurgle's Gift (Aura): while an enemy unit is within Contagion Range, subtract 1 from its Toughness characteristic. Modelled as +1 Strength for DG attacker.", factionId: 'DG', effects: { strengthMod: 1 } },
+  { id: 'dg_plague_skullsquirm',   label: 'Plaga: Skullsquirm Blight — −1 impactar recibido', description: "Skullsquirm Blight: each time an Afflicted enemy model makes an attack, subtract 1 from the Hit roll. Activate on the DG unit being attacked.", factionId: 'DG', target: 'defender', effects: { hitMod: -1 } },
+  { id: 'dg_plague_rattlejoint',   label: 'Plaga: Rattlejoint Ague — −1 salvación enemiga', description: "Rattlejoint Ague: worsen the Save characteristic of Afflicted models by 1. Modelled as +1 AP for DG attacker.", factionId: 'DG', effects: { apMod: 1 } },
   {
     id: 'dg_cloud_of_flies',
     label: 'CLOUD OF FLIES — -1 impactar, disparo (1CP)',
@@ -2313,7 +2990,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'dg_grim_reapers',
-    label: 'GRIM REAPERS — repetir impactos, CàC (1CP)',
+    label: 'GRIM REAPERS — repetir impactos, CaC (1CP)',
     description: 'Death Lord’s Chosen: Until the end of the phase, each time a model in your unit makes an attack that targets an enemy unit (excluding MONSTERS and VEHICLES ) you can re-roll the Hit roll.',
     factionId: 'DG',
     detachmentId: '000001054',
@@ -2366,7 +3043,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'dg_clutching_corruption',
-    label: 'CLUTCHING CORRUPTION — repetir impactos, CàC (1CP)',
+    label: 'CLUTCHING CORRUPTION — repetir impactos, CaC (1CP)',
     description: 'Tallyband Summoners: Until the end of the phase, each time a model in your unit makes an attack that targets an enemy unit that is within Engagement Range of one or more Plague Legions units from your army, you can re-roll the Hit roll.',
     factionId: 'DG',
     detachmentId: '000001052',
@@ -2379,7 +3056,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'dg_pox_flare',
-    label: 'POX FLARE — +1 PA, CàC (1CP)',
+    label: 'POX FLARE — +1 PA, CaC (1CP)',
     description: 'Unclean Uprising: Until the end of the phase, improve the Armour Penetration characteristic of melee weapons equipped by models in your unit by 1.',
     factionId: 'DG',
     detachmentId: '000000931',
@@ -2429,8 +3106,95 @@ export const MODIFIER_RULES: ModifierRule[] = [
     rerollAllWounds: true,
   },
   },
+  {
+    id: 'ldr_000001037_chaos_lord',
+    label: 'Death Guard Chaos Lord — repetir impactos 1 (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, re-roll a Hit roll of 1.',
+    factionId: 'DG',
+    leaderDatasheetId: '000001037',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'ldr_000001038_chaos_lord',
+    label: 'Death Guard Chaos Lord In Terminator Armour — repetir impactos 1 (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, re-roll a Hit roll of 1.',
+    factionId: 'DG',
+    leaderDatasheetId: '000001038',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'ldr_000001053_the_destroyer_hive',
+    label: 'Typhus — -1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a melee attack targets that unit, subtract 1 from the Hit roll.',
+    factionId: 'DG',
+    leaderDatasheetId: '000001053',
+    combatType: 'melee',
+    target: 'defender',
+    effects: {
+    hitMod: -1,
+  },
+  },
+  {
+    id: 'ldr_000001054_vector_of_disease',
+    label: 'Lord of Contagion — Sustained Hits 1, CaC (Líder)',
+    description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [SUSTAINED HITS 1] and [LANCE] abilities.',
+    factionId: 'DG',
+    leaderDatasheetId: '000001054',
+    combatType: 'melee',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000001055_gift_of_contagion_psychic',
+    label: 'Malignant Plaguecaster — Sustained Hits 1 (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack that targets a unit that is Afflicted, that attack has the [SUSTAINED HITS 1] ability.',
+    factionId: 'DG',
+    leaderDatasheetId: '000001055',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000001368_foul_infusion',
+    label: 'Biologus Putrifier — crítico 5+, Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability. In addition, each time a model in that unit makes an attack, a Critical Hit is scored on an unmodified Hit roll of 5+, instead of only a 6.',
+    factionId: 'DG',
+    leaderDatasheetId: '000001368',
+    effects: {
+    critThreshold: 5,
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000002460_virulent_aura',
+    label: 'Lord of Virulence — repetir heridas (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a ranged attack, you can re-roll the Wound roll.',
+    factionId: 'DG',
+    leaderDatasheetId: '000002460',
+    combatType: 'ranged',
+    effects: {
+    rerollAllWounds: true,
+  },
+  },
+  {
+    id: 'ldr_000003600_gift_of_poxes_psychic',
+    label: 'Sorcerer On Palanquin Of Nurgle — Sustained Hits 1 (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'DG',
+    leaderDatasheetId: '000003600',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
 
   // ═══ DRU ═══
+  // Power from Pain: sistema de tokens gastados por unidad para activar su Pain ability individual (por datasheet).
+  // No es escalado por turnos ni faction-wide. Sin toggle a nivel facción.
   {
     id: 'dru_callous_competition',
     label: 'Callous Competition — repetir impactos 1, repetir heridas 1',
@@ -2468,7 +3232,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'dru_taken_alive',
-    label: 'TAKEN ALIVE — +1 impactar, CàC (1CP)',
+    label: 'TAKEN ALIVE — +1 impactar, CaC (1CP)',
     description: 'Kabalite Cartel: Until the end of the phase, each time a model in your unit makes an attack, add 1 to the Hit roll. If your Contract unit is destroyed as a result of those attacks, every unit in your opponent’s army must take a Battle-shock test. You cannot gain more',
     factionId: 'DRU',
     detachmentId: '000001115',
@@ -2519,7 +3283,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'dru_elusive_duellists',
-    label: 'ELUSIVE DUELLISTS — -1 impactar, CàC (1CP)',
+    label: 'ELUSIVE DUELLISTS — -1 impactar, CaC (1CP)',
     description: 'Kabalite Corsairs: Until the end of the phase, each time an attack targets your unit, subtract 1 from the Hit roll and, if your unit has the INcUBI keyword, models in your unit have a 4+ invulnerable save.',
     factionId: 'DRU',
     detachmentId: '000000935',
@@ -2533,7 +3297,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'dru_moulded_musculature',
-    label: 'MOULDED MUSCULATURE — +1 PA, CàC (1CP)',
+    label: 'MOULDED MUSCULATURE — +1 PA, CaC (1CP)',
     description: 'Painbringers: Select any number of models in your unit. Until the end of the phase, improve the Strength and Armour Penetration characteristics of melee weapons equipped by the selected models by 1, and each time you select targets for attacks made by those models',
     factionId: 'DRU',
     detachmentId: '000000937',
@@ -2585,7 +3349,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'dru_dark_harvest',
-    label: 'DARK HARVEST — Lethal Hits, CàC (1CP)',
+    label: 'DARK HARVEST — Lethal Hits, CaC (1CP)',
     description: 'Realspace Raiders: Until the end of the phase, melee weapons equipped by models in each of those units have the [LETHAL HITS] ability.',
     factionId: 'DRU',
     detachmentId: '000000804',
@@ -2598,7 +3362,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'dru_murderer_s_circus',
-    label: 'MURDERER’S CIRCUS — -1 impactar, CàC (1CP)',
+    label: 'MURDERER’S CIRCUS — -1 impactar, CaC (1CP)',
     description: 'Reaper’s Wager: Until the end of the phase, each time an attack targets your unit, subtract 1 from the Hit roll.',
     factionId: 'DRU',
     detachmentId: '000000993',
@@ -2652,7 +3416,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'dru_deadly_debut',
-    label: 'DEADLY DEBUT — +1 PA, Lethal Hits, CàC (1CP)',
+    label: 'DEADLY DEBUT — +1 PA, Lethal Hits, CaC (1CP)',
     description: 'Spectacle of Spite: Until the end of the phase, melee weapons equipped by models in your unit have the [LETHAL HITS] ability. If your unit is a Wyches unit, until the end of the phase, improve the Armour Penetration characteristic of melee weapons equipped by models in',
     factionId: 'DRU',
     detachmentId: '000001113',
@@ -2664,11 +3428,35 @@ export const MODIFIER_RULES: ModifierRule[] = [
     lethalHitsBonus: true,
   },
   },
+  {
+    id: 'ldr_000000639_storm_of_blades',
+    label: 'Succubus — Sustained Hits 1, CaC (Líder)',
+    description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'DRU',
+    leaderDatasheetId: '000000639',
+    combatType: 'melee',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000004198_piratical_hero',
+    label: 'Prince Yriel — +1 impactar, Sustained Hits 1 (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, that attack has the [SUSTAINED HITS 1] ability and add 1 to the Hit roll.',
+    factionId: 'DRU',
+    leaderDatasheetId: '000004198',
+    effects: {
+    hitMod: 1,
+    sustainedHitsBonus: 1,
+  },
+  },
 
   // ═══ EC ═══
+  // EC no es HERETIC ASTARTES en 10th (keywords: EMPEROR'S CHILDREN / LEGIONS OF EXCESS).
+  // Thrill Seekers = movimiento; Pact of Excess = restricción de construcción. Sin regla de facción de daño.
   {
     id: 'ec_exquisite_swordsmanship',
-    label: 'Exquisite Swordsmanship — Lethal Hits, CàC',
+    label: 'Exquisite Swordsmanship — Lethal Hits, CaC',
     description: 'Each time an Emperor’s Children unit from your army is selected to fight, if it made a Charge move this turn, select one of the abilities below. While resolving those attacks, melee weapons equipped by models in that unit have that ability: [LETHAL HITS] [SUSTAINED HITS 1]',
     factionId: 'EC',
     detachmentId: '000001034',
@@ -2698,20 +3486,13 @@ export const MODIFIER_RULES: ModifierRule[] = [
     critThreshold: 5,
   },
   },
-  {
-    id: 'ec_pledges_to_the_dark_prince',
-    label: 'Pledges to the Dark Prince — repetir impactos 1, crítico 5+, repetir heridas 1, Lethal Hits, CàC',
-    description: 'At the start of the battle round, if your WARLORD is on the battlefield, you must pledge a number to Slaanesh representing how many enemy units will be destroyed this battle round. At the end of the battle round, if the number of enemy units destroyed this battle round is greater than or equal to yo',
-    factionId: 'EC',
-    detachmentId: '000001037',
-    combatType: 'melee',
-    effects: {
-    critThreshold: 5,
-    rerollHitsOf1: true,
-    rerollWoundsOf1: true,
-    lethalHitsBonus: true,
-  },
-  },
+  { id: 'ec_pledges_crit5',          label: 'Pledges — crítico 5+ (CaC)', factionId: 'EC', detachmentId: '000001037', combatType: 'melee', effects: { critThreshold: 5 } },
+  { id: 'ec_pledges_reroll_hits1',   label: 'Pledges — repetir impactos 1 (CaC)', factionId: 'EC', detachmentId: '000001037', combatType: 'melee', effects: { rerollHitsOf1: true } },
+]
+
+const RULES_2: ModifierRule[] = [
+  { id: 'ec_pledges_reroll_wounds1', label: 'Pledges — repetir heridas 1 (CaC)', factionId: 'EC', detachmentId: '000001037', combatType: 'melee', effects: { rerollWoundsOf1: true } },
+  { id: 'ec_pledges_lethal',         label: 'Pledges — Lethal Hits (CaC)', factionId: 'EC', detachmentId: '000001037', combatType: 'melee', effects: { lethalHitsBonus: true } },
   {
     id: 'ec_internal_rivalries',
     label: 'Internal Rivalries — repetir heridas',
@@ -2724,7 +3505,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ec_sensational_performance',
-    label: 'Sensational Performance — +1 PA, CàC',
+    label: 'Sensational Performance — +1 PA, CaC',
     description: 'Emperor’s Children units from your army have the following ability: Sensational Performance: Each time this unit is selected to fight, if this unit made a Charge move this turn, it can use this ability. If it does, until the end of the phase: This unit cannot target a unit it was within Engagement R',
     factionId: 'EC',
     detachmentId: '000001125',
@@ -2749,7 +3530,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ec_martial_perfection',
-    label: 'MARTIAL PERFECTION — repetir impactos, CàC (1CP)',
+    label: 'MARTIAL PERFECTION — repetir impactos, CaC (1CP)',
     description: 'Coterie of the Conceited: Until the end of the phase, each time a model in your unit makes an attack, you can re-roll the Hit roll.',
     factionId: 'EC',
     detachmentId: '000001037',
@@ -2775,7 +3556,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ec_prideful_superiority',
-    label: 'PRIDEFUL SUPERIORITY — repetir impactos, repetir heridas, CàC (2CP)',
+    label: 'PRIDEFUL SUPERIORITY — repetir impactos, repetir heridas, CaC (2CP)',
     description: 'Court of the Phoenician: Until the end of the phase, each time a model in your unit makes an attack that targets a CHARACTER unit, you can re-roll the Hit roll and you can re-roll the Wound roll.',
     factionId: 'EC',
     detachmentId: '000001125',
@@ -2815,7 +3596,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ec_violent_excess',
-    label: 'VIOLENT EXCESS — Sustained Hits 1, CàC (1CP)',
+    label: 'VIOLENT EXCESS — Sustained Hits 1, CaC (1CP)',
     description: 'Mercurial Host: Until the end of the phase, melee weapons equipped by models in your unit have the [SUSTAINED HITS 1] ability.',
     factionId: 'EC',
     detachmentId: '000001033',
@@ -2828,7 +3609,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ec_combat_stimms',
-    label: 'COMBAT STIMMS — -1 herir, CàC (2CP)',
+    label: 'COMBAT STIMMS — -1 herir, CaC (2CP)',
     description: 'Mercurial Host: Until the end of the phase, each time an attack targets your unit, subtract 1 from the Wound roll.',
     factionId: 'EC',
     detachmentId: '000001033',
@@ -2856,7 +3637,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ec_deft_parry',
-    label: 'DEFT PARRY — -1 impactar, CàC (1CP)',
+    label: 'DEFT PARRY — -1 impactar, CaC (1CP)',
     description: 'Peerless Bladesmen: Until the end of the phase, each time an attack targets your unit, subtract 1 from the Hit roll.',
     factionId: 'EC',
     detachmentId: '000001034',
@@ -2870,7 +3651,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ec_cruel_bladesman',
-    label: 'CRUEL BLADESMAN — +1 PA, CàC (1CP)',
+    label: 'CRUEL BLADESMAN — +1 PA, CaC (1CP)',
     description: 'Peerless Bladesmen: Until the end of the phase, improve the Armour Penetration characteristic of melee weapons equipped by models in your unit by 1.',
     factionId: 'EC',
     detachmentId: '000001034',
@@ -2883,7 +3664,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ec_devoted_duellists',
-    label: 'DEVOTED DUELLISTS — Sustained Hits 1, CàC (1CP)',
+    label: 'DEVOTED DUELLISTS — Sustained Hits 1, CaC (1CP)',
     description: 'Slaanesh’s Chosen: Select one enemy unit. Until the end of the phase, melee weapons equipped by models in those CHARACTER units have the [SUSTAINED HITS 1] ability while targeting that enemy unit.',
     factionId: 'EC',
     detachmentId: '000001038',
@@ -2908,7 +3689,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ec_alluring_grotesquerie',
-    label: 'ALLURING GROTESQUERIE — -1 impactar, CàC (1CP)',
+    label: 'ALLURING GROTESQUERIE — -1 impactar, CaC (1CP)',
     description: 'Sublime Strike: Each enemy unit within Engagement Range of your unit must take a Battle-shock test. Until the end of the phase, each time an attack targets your unit, subtract 1 from the Hit roll.',
     factionId: 'EC',
     detachmentId: '000001154',
@@ -2918,6 +3699,49 @@ export const MODIFIER_RULES: ModifierRule[] = [
     cpCost: 1,
     effects: {
     hitMod: -1,
+  },
+  },
+  {
+    id: 'ldr_000004078_perfectionists',
+    label: 'Lord Exultant — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'EC',
+    leaderDatasheetId: '000004078',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000004084_obsessive_annunciation',
+    label: 'Lord Kakophonist — Sustained Hits 1, disparo (Líder)',
+    description: 'While this model is leading a unit, ranged weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'EC',
+    leaderDatasheetId: '000004084',
+    combatType: 'ranged',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'aura_000004086_excessive_vigour_aura',
+    label: 'Daemon Prince of Slaanesh — +1 PA, CaC (Aura)',
+    description: 'While a friendly Slaanesh unit is within 6" of this model, if that unit made a Charge move this turn, improve the Armour Penetration characteristic of melee weapons equipped by models in that unit by 1.',
+    factionId: 'EC',
+    sourceDatasheetId: '000004086',
+    combatType: 'melee',
+    effects: {
+    apMod: 1,
+  },
+  },
+  {
+    id: 'aura_000004097_daemon_lord_of_slaanesh_aura',
+    label: 'Keeper of Secrets — +1 PA, CaC (Aura)',
+    description: 'While a friendly Legions of Excess unit is within 6" of this model, improve the Armour Penetration characteristic of melee weapons equipped by models in that unit by 1.',
+    factionId: 'EC',
+    sourceDatasheetId: '000004097',
+    combatType: 'melee',
+    effects: {
+    apMod: 1,
   },
   },
 
@@ -2974,7 +3798,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'gc_gene_twisted_muscle',
-    label: 'GENE-TWISTED MUSCLE — +1 herir, CàC (1CP)',
+    label: 'GENE-TWISTED MUSCLE — +1 herir, CaC (1CP)',
     description: 'Biosanctic Broodsurge: Until the end of the phase, each time a model in your unit makes an attack that targets a MONSTER or VEHICLE , add 1 to the Wound roll.',
     factionId: 'GC',
     detachmentId: '000000886',
@@ -3027,7 +3851,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'gc_hyperferocity',
-    label: 'HYPERFEROCITY — repetir heridas 1, CàC (1CP)',
+    label: 'HYPERFEROCITY — repetir heridas 1, CaC (1CP)',
     description: 'Final Day: Until the end of the phase, each time a model in your unit makes an attack that targets an enemy unit, re-roll a Wound roll of 1. If one or more friendly Tyranids units are within 6" of that enemy unit, you can re-roll the Wound roll instead.',
     factionId: 'GC',
     detachmentId: '000001002',
@@ -3113,6 +3937,93 @@ export const MODIFIER_RULES: ModifierRule[] = [
     rerollHitsOf1: true,
   },
   },
+  {
+    id: 'ldr_000000509_cult_demagogue',
+    label: 'Primus — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, you can add 1 to the Hit roll.',
+    factionId: 'GC',
+    leaderDatasheetId: '000000509',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000510_nexus_of_devotion',
+    label: 'Acolyte Iconward — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability. If that unit has the Hybrid Metamorphs keyword, models in that unit have the Feel No Pain 4+ ability instead.',
+    factionId: 'GC',
+    leaderDatasheetId: '000000510',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000001568_bodyguard',
+    label: 'Locus — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, other Character models attached to that unit have the Feel No Pain 4+ ability.',
+    factionId: 'GC',
+    leaderDatasheetId: '000001568',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  {
+    id: 'ldr_000001572_twisted_science',
+    label: 'Biophagus — Lethal Hits, CaC (Líder)',
+    description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'GC',
+    leaderDatasheetId: '000001572',
+    combatType: 'melee',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000003715_bio_horror_disruption_psychic',
+    label: 'Benefictus — Lethal Hits, disparo (Líder)',
+    description: 'While this model is leading a unit, ranged weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'GC',
+    leaderDatasheetId: '000003715',
+    combatType: 'ranged',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000003880_alpha_warrior',
+    label: 'Winged Tyranid Prime — Sustained Hits 1 (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'GC',
+    leaderDatasheetId: '000003880',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000003938_senior_officer',
+    label: 'Cadian Castellan — Sustained Hits 1, disparo (Líder)',
+    description: 'While this model is leading a unit, ranged weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'GC',
+    leaderDatasheetId: '000003938',
+    combatType: 'ranged',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000003943_malign_wardings_psychic',
+    label: 'Primaris Psyker — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks.',
+    factionId: 'GC',
+    leaderDatasheetId: '000003943',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  { id: 'gc_synapse', label: 'Sinapse — +1 Fuerza (CaC)', description: "Synapse: while a GENESTEALER CULTS unit is within 6\" of one or more friendly Synapse models, add 1 to the Strength characteristic of each melee attack made by models in that unit.", factionId: 'GC', combatType: 'melee', effects: { strengthMod: 1 } },
 
   // ═══ GK ═══
   {
@@ -3138,7 +4049,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'gk_channelled_force',
-    label: 'Channelled Force — Lethal Hits, CàC',
+    label: 'Channelled Force — Lethal Hits, CaC',
     description: 'Each time a Grey Knights unit from your army is selected to fight, that unit can take a Leadership test. If that test is passed, select one of the following rules. Until the end of the phase, that unit has that rule. Melee weapons equipped by models in this unit with the [psychic] ability also have',
     factionId: 'GK',
     detachmentId: '000001083',
@@ -3252,7 +4163,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'gk_sanctified_slaughter',
-    label: 'SANCTIFIED SLAUGHTER — crítico 5+, Sustained Hits 1, CàC (1CP)',
+    label: 'SANCTIFIED SLAUGHTER — crítico 5+, Sustained Hits 1, CaC (1CP)',
     description: 'Void Purge Force: Until the end of the phase, melee weapons equipped by models in your unit have the [SUSTAINED HITS 1] ability. If such a weapon already has that ability, until the end of the phase, each time an attack is made with that weapon, a successful unmodifie',
     factionId: 'GK',
     detachmentId: '000000943',
@@ -3276,8 +4187,66 @@ export const MODIFIER_RULES: ModifierRule[] = [
     rerollWoundsOf1: true,
   },
   },
+  {
+    id: 'ldr_000000374_sanctuary_psychic',
+    label: 'Grand Master Voldus — -1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time an attack targets that unit, subtract 1 from the Hit roll.',
+    factionId: 'GK',
+    leaderDatasheetId: '000000374',
+    target: 'defender',
+    effects: {
+    hitMod: -1,
+  },
+  },
+  {
+    id: 'ldr_000000376_hammerhand_psychic',
+    label: 'Brother-captain — Lethal Hits, CaC (Líder)',
+    description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'GK',
+    leaderDatasheetId: '000000376',
+    combatType: 'melee',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000001361_sanctic_hood',
+    label: 'Brotherhood Librarian — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks.',
+    factionId: 'GK',
+    leaderDatasheetId: '000001361',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  {
+    id: 'aura_000000390_wisdom_of_the_ancients_aura',
+    label: 'Grey Knights Dreadnought — repetir impactos 1, repetir heridas 1 (Aura)',
+    description: 'While a friendly Grey Knights Infantry unit is within 6" of this model, each time a model in that unit makes an attack, re-roll a Hit roll of 1 and re-roll a Wound roll of 1.',
+    factionId: 'GK',
+    sourceDatasheetId: '000000390',
+    effects: {
+    rerollHitsOf1: true,
+    rerollWoundsOf1: true,
+  },
+  },
+  {
+    id: 'aura_000000399_blessing_of_the_omnissiah',
+    label: 'Brotherhood Techmarine — +1 impactar (Aura)',
+    description: 'In your Command phase, you can select one friendly Grey Knights Vehicle model within 3" of this model. That model regains up to D3 lost wounds and, until the start of your next Command phase, each time that VEHICLE model makes an attack, add 1 to the Hit roll. Each model can only be selected for thi',
+    factionId: 'GK',
+    sourceDatasheetId: '000000399',
+    effects: {
+    hitMod: 1,
+  },
+  },
 
   // ═══ LoV ═══
+  // Prioritised Efficiency: sistema YP con dos modos — ambos dan +1 impactar cerca de objetivos.
+  // Fortify Takeover añade −1 herir recibido cuando S atacante > T de la unidad LoV.
+  { id: 'lov_prioritised_hit',  label: 'Prioritised Efficiency — +1 impactar (objetivo)', description: 'Hostile Acquisition / Fortify Takeover: add 1 to the Hit roll when targeting an enemy near an objective marker (or attacking from a controlled objective).', factionId: 'LoV', effects: { hitMod: 1 } },
+  { id: 'lov_fortify_defense',  label: 'Fortify Takeover — −1 herir recibido (S>T)',      description: 'Fortify Takeover: subtract 1 from the Wound roll of attacks that target this unit when the attacking weapon Strength is greater than this unit Toughness (not VEHICLE).', factionId: 'LoV', target: 'defender', effects: { woundMod: -1 } },
   {
     id: 'lov_methodical_annihilation',
     label: 'Methodical Annihilation — +1 PA',
@@ -3313,7 +4282,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'lov_cyberstimm_infusion',
-    label: 'CYBERSTIMM INFUSION — repetir heridas 1, CàC (1CP)',
+    label: 'CYBERSTIMM INFUSION — repetir heridas 1, CaC (1CP)',
     description: 'Dêlve Assault Shift: Each time you use this Stratagem, you can spend 2YP. Until the end of the phase, each time a model in your unit makes an attack, re-roll a Wound roll of 1. If you spent YP during this use of this Stratagem, you can re-roll the Wound roll instead.',
     factionId: 'LoV',
     detachmentId: '000001098',
@@ -3353,7 +4322,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'lov_superior_craftsmanship',
-    label: 'SUPERIOR CRAFTSMANSHIP — +1 daño, CàC (2CP)',
+    label: 'SUPERIOR CRAFTSMANSHIP — +1 daño, CaC (2CP)',
     description: 'Hearthband: Until the end of the phase, each time a model in your unit makes an attack that targets a MONSTER or VEHICLE unit, add 1 to the Damage characteristic of that attack.',
     factionId: 'LoV',
     detachmentId: '000001001',
@@ -3379,7 +4348,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'lov_optimal_expenditure',
-    label: 'OPTIMAL EXPENDITURE — repetir impactos 1, repetir heridas 1, CàC (1CP)',
+    label: 'OPTIMAL EXPENDITURE — repetir impactos 1, repetir heridas 1, CaC (1CP)',
     description: 'Mercenary Oathband: Each time you use this Stratagem, you can spend 3YP. Until the end of the phase, each time a model in your unit makes an attack, re-roll a Hit roll of 1 and re-roll a Wound roll of 1. If you spent YP during this usage of this Stratagem, you can re-ro',
     factionId: 'LoV',
     detachmentId: '000001137',
@@ -3420,7 +4389,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'lov_honour_of_the_hold',
-    label: 'HONOUR OF THE HOLD — +2 PA, CàC (1CP)',
+    label: 'HONOUR OF THE HOLD — +2 PA, CaC (1CP)',
     description: 'Needgaârd Oathband: Each time you use this Stratagem, you can spend 3YP. Select one enemy unit within Engagement Range of your unit. Until the end of the phase, each time a model in your unit makes a melee attack that targets that enemy unit, improve the Armour Penetrat',
     factionId: 'LoV',
     detachmentId: '000001096',
@@ -3498,8 +4467,31 @@ export const MODIFIER_RULES: ModifierRule[] = [
     rerollAllWounds: true,
   },
   },
+  {
+    id: 'ldr_000002594_kindred_hero',
+    label: 'Kâhl — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'LoV',
+    leaderDatasheetId: '000002594',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000002596_fortify_psychic',
+    label: 'Grimnyr — FNP 5+ (Líder)',
+    description: 'While this unit is leading a unit, models in that unit have the Feel No Pain 5+ ability.',
+    factionId: 'LoV',
+    leaderDatasheetId: '000002596',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
 
   // ═══ NEC ═══
+  // Reanimation Protocols: modelos destruidos se recuperan en 5+ (aprox. FNP 5+ a efectos del calculador)
+  // Reanimation Protocols: cura D3 heridas al final de la fase de mando — no es FNP per-attack, no modelable como toggle.
   {
     id: 'nec_command_protocols',
     label: 'Command Protocols — +1 impactar',
@@ -3630,7 +4622,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'nec_protocol_of_the_hungry_void',
-    label: 'PROTOCOL OF THE HUNGRY VOID — +1 PA, +1 F, CàC (1CP)',
+    label: 'PROTOCOL OF THE HUNGRY VOID — +1 PA, +1 F, CaC (1CP)',
     description: 'Awakened Dynasty: Until the end of the phase, add 1 to the Strength characteristic of melee weapons equipped by models in your unit. In addition, If a Necrons Character is leading your unit, until the end of the phase, improve the Armour Penetration characteristic of',
     factionId: 'NEC',
     detachmentId: '000000756',
@@ -3796,7 +4788,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'nec_disruption_fields',
-    label: 'DISRUPTION FIELDS — +1 F, CàC (1CP)',
+    label: 'DISRUPTION FIELDS — +1 F, CaC (1CP)',
     description: 'Tomb Ship Complement: Until the end of the phase, add 1 to the Strength characteristic of melee weapons equipped by models in your unit.',
     factionId: 'NEC',
     detachmentId: '000000959',
@@ -3809,7 +4801,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'nec_unwavering_defence',
-    label: 'UNWAVERING DEFENCE — Sustained Hits 2, CàC (1CP)',
+    label: 'UNWAVERING DEFENCE — Sustained Hits 2, CaC (1CP)',
     description: 'Tomb Ship Complement: Until the end of the phase, melee weapons equipped by models in your unit have the [SUSTAINED HITS 2] ability.',
     factionId: 'NEC',
     detachmentId: '000000959',
@@ -3833,11 +4825,153 @@ export const MODIFIER_RULES: ModifierRule[] = [
     rerollAllHits: true,
   },
   },
+  {
+    id: 'ldr_000000531_lord_of_the_pyrrhian_eternals',
+    label: 'Anrakyr The Traveller — +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, add 1 to the Wound roll.',
+    factionId: 'NEC',
+    leaderDatasheetId: '000000531',
+    effects: {
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000002109_united_in_destruction',
+    label: 'Skorpekh Lord — Lethal Hits, CaC (Líder)',
+    description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'NEC',
+    leaderDatasheetId: '000002109',
+    combatType: 'melee',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000002352_rites_of_reanimation',
+    label: 'Technomancer — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability.',
+    factionId: 'NEC',
+    leaderDatasheetId: '000002352',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000002354_timesplinter_mantle',
+    label: 'Chronomancer — -1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time an attack targets that unit, subtract 1 from the Hit roll.',
+    factionId: 'NEC',
+    leaderDatasheetId: '000002354',
+    target: 'defender',
+    effects: {
+    hitMod: -1,
+  },
+  },
+  {
+    id: 'aura_000000551_fabricator_claw_array_aura',
+    label: 'Canoptek Spyders — FNP 6+ (Aura)',
+    description: 'While a friendly Necrons Vehicle unit is within 6" of the bearer, that unit has the Feel No Pain 6+ ability.',
+    factionId: 'NEC',
+    sourceDatasheetId: '000000551',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 6,
+  },
+  },
+  {
+    id: 'aura_000000558_gloom_prism_aura',
+    label: 'Canoptek Tomb Stalker — FNP 4+ (Aura)',
+    description: 'While a friendly NECRONS unit is within 6" of the bearer, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks.',
+    factionId: 'NEC',
+    sourceDatasheetId: '000000558',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  {
+    id: 'aura_000000560_gloom_prism_aura',
+    label: 'Canoptek Tomb Sentinel — FNP 4+ (Aura)',
+    description: 'While a friendly NECRONS unit is within 6" of the bearer, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks.',
+    factionId: 'NEC',
+    sourceDatasheetId: '000000560',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  {
+    id: 'aura_000002092_mechanical_augmentation_aura',
+    label: 'Illuminor Szeras — empeora PA atacante (Aura)',
+    description: 'While a friendly Necrons Battleline unit is within 3" of this model, each time a model in that unit makes an attack, improve the Armour Penetration characteristic of that attack by 1, and each time an attack targets that unit, worsen the Armour Penetration characteristic of that attack by 1.',
+    factionId: 'NEC',
+    sourceDatasheetId: '000002092',
+    target: 'defender',
+    effects: {
+    apMod: -1,
+  },
+  },
+  {
+    id: 'aura_000002360_phaeron_of_the_stars_aura',
+    label: 'The Silent King — repetir impactos 1, repetir heridas 1 (Aura)',
+    description: 'While a friendly NECRONS unit (excluding Monster units) is within 6" of this unit’s Szarekh model, each time a model in that unit makes an attack, re-roll a Hit roll of 1 and re-roll a Wound roll of 1.',
+    factionId: 'NEC',
+    sourceDatasheetId: '000002360',
+    effects: {
+    rerollHitsOf1: true,
+    rerollWoundsOf1: true,
+  },
+  },
+  {
+    id: 'aura_000002360_phaeron_of_the_blades_aura',
+    label: 'The Silent King — +1 F (Aura)',
+    description: 'While a friendly NECRONS unit (excluding Monster units) is within 6" of this unit’s Szarekh model, you can re-roll Charge rolls made for that unit and each time a model in that unit makes a melee attack, add 1 to the Strength characteristic of that attack.',
+    factionId: 'NEC',
+    sourceDatasheetId: '000002360',
+    effects: {
+    strengthMod: 1,
+  },
+  },
+  {
+    id: 'aura_000002361_reanimation_nodes_aura',
+    label: 'Convergence Of Dominion — FNP 6+ (Aura)',
+    description: 'While a friendly Necrons Infantry unit is within 6" of this Fortification, models in that unit have Feel No Pain 6+ ability.',
+    factionId: 'NEC',
+    sourceDatasheetId: '000002361',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 6,
+  },
+  },
+  {
+    id: 'aura_000004186_infectious_murder_madness_aura',
+    label: 'Nekrosor Ammentar — Sustained Hits 1 (Aura)',
+    description: 'While a friendly NECRONS unit (excluding Monster and Titanic units) is within 6" of this model, each time a model in that unit makes an attack, if that model has the Destroyer Cult keyword or that enemy unit is the closest eligible target, that attack has the [SUSTAINED HITS 1] ability.',
+    factionId: 'NEC',
+    sourceDatasheetId: '000004186',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'aura_000004186_prophet_of_destruction',
+    label: 'Nekrosor Ammentar — repetir heridas 1 (Aura)',
+    description: 'Each time this model destroys an enemy unit, select one other friendly Destroyer Cult unit within 9" of it. Until the end of the phase, each time a model in that unit makes an attack, re-roll a Wound roll of 1.',
+    factionId: 'NEC',
+    sourceDatasheetId: '000004186',
+    effects: {
+    rerollWoundsOf1: true,
+  },
+  },
 
   // ═══ ORK ═══
+  // WAAAGH!: una vez por partida, el Warboss puede declarar WAAAGH! → +1 impactar a todas las unidades Ork esa ronda
+  { id: 'ork_waaagh',     label: 'WAAAGH! — +1 Fuerza y +1 Ataque (CaC)',        description: "WAAAGH!: once per battle. Until the start of your next Command phase, add 1 to the Strength and Attacks characteristics of melee weapons equipped by models in this unit.", factionId: 'ORK', combatType: 'melee', effects: { strengthMod: 1, attacksMod: 1 } },
+  { id: 'ork_waaagh_inv', label: 'WAAAGH! — salvación invulnerable 5+ (defensor)', description: "WAAAGH!: models from your army have a 5+ invulnerable save. Activate on the ORK unit being attacked.", factionId: 'ORK', target: 'defender', effects: { saveMod: 1 } },
   {
     id: 'ork_get_stuck_in',
-    label: 'Get Stuck In — Sustained Hits 1, CàC',
+    label: 'Get Stuck In — Sustained Hits 1, CaC',
     description: 'Melee weapons equipped by ORKS models from your army have the [SUSTAINED HITS 1] ability.',
     factionId: 'ORK',
     detachmentId: '000000852',
@@ -3881,7 +5015,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ork_lissen_ere',
-    label: 'Lissen ’Ere — +1 impactar, CàC',
+    label: 'Lissen ’Ere — +1 impactar, CaC',
     description: 'Once per battle round, in your Command phase or after being set up on the battlefield in your Movement phase, each Boss Snikrot, Mek and Warboss model in your army can issue Taktiks abilities. To do so, select one of the Taktiks abilities below and select one friendly ORKS unit within 6" of that mod',
     factionId: 'ORK',
     detachmentId: '000000995',
@@ -3967,7 +5101,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ork_drag_it_down',
-    label: 'DRAG IT DOWN — crítico 5+, Sustained Hits 1, CàC (1CP)',
+    label: 'DRAG IT DOWN — crítico 5+, Sustained Hits 1, CaC (1CP)',
     description: 'Da Big Hunt: Until the end of the phase, melee weapons equipped by models in your unit have the [SUSTAINED HITS 1] ability. In addition, each time a model in your unit makes a melee attack that targets your Prey, a Critical Hit is scored on an unmodified Hit roll',
     factionId: 'ORK',
     detachmentId: '000000853',
@@ -4022,7 +5156,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ork_klankin_klaws',
-    label: 'KLANKIN’ KLAWS — +1 daño, +2 F, CàC (1CP)',
+    label: 'KLANKIN’ KLAWS — +1 daño, +2 F, CaC (1CP)',
     description: 'Dread Mob: Each time you use this Stratagem, you can choose to push it. Until the end of the phase, add 2 to the Strength characteristic of melee weapons equipped by models in your unit and, if you chose to push it, until the end of the phase, add 1 to the Dama',
     factionId: 'ORK',
     detachmentId: '000000855',
@@ -4036,7 +5170,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ork_bash_and_grab',
-    label: 'BASH AND GRAB — repetir heridas, CàC (1CP)',
+    label: 'BASH AND GRAB — repetir heridas, CaC (1CP)',
     description: 'Freebooter Krew: Until the end of the phase, each time a model in your unit makes an attack that targets an enemy unit within range of the loot objective, you can re-roll the Wound roll.',
     factionId: 'ORK',
     detachmentId: '000001138',
@@ -4049,7 +5183,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ork_competitive_streak',
-    label: 'COMPETITIVE STREAK — repetir heridas 1, CàC (1CP)',
+    label: 'COMPETITIVE STREAK — repetir heridas 1, CaC (1CP)',
     description: 'Green Tide: Until the end of the phase, each time a model in your unit makes an attack, re-roll a Wound roll of 1. If your unit contains 10 or more models, re-roll the Wound roll instead.',
     factionId: 'ORK',
     detachmentId: '000000856',
@@ -4089,7 +5223,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ork_orks_is_still_orks',
-    label: 'ORKS IS STILL ORKS — repetir heridas 1, CàC (1CP)',
+    label: 'ORKS IS STILL ORKS — repetir heridas 1, CaC (1CP)',
     description: 'More Dakka!: Until the end of the phase, each time a model in your unit makes an attack that targets an enemy unit, re-roll a Wound roll of 1. If that enemy unit is within range of an objective marker, you can re-roll the Wound roll instead.',
     factionId: 'ORK',
     detachmentId: '000001030',
@@ -4115,7 +5249,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ork_ded_killy_construction',
-    label: 'DED KILLY CONSTRUCTION — +1 daño, CàC (1CP)',
+    label: 'DED KILLY CONSTRUCTION — +1 daño, CaC (1CP)',
     description: 'Speedwaaagh!: Until the end of the phase, melee weapons equipped by models in your unit have the [LANCE] ability and, if your unit made a Charge move this turn, until the end of the phase, add 1 to the Damage characteristic of those weapons.',
     factionId: 'ORK',
     detachmentId: '000001151',
@@ -4128,7 +5262,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ork_fight_proppa',
-    label: 'FIGHT PROPPA — Lethal Hits, Sustained Hits 1, CàC (1CP)',
+    label: 'FIGHT PROPPA — Lethal Hits, Sustained Hits 1, CaC (1CP)',
     description: 'Taktikal Brigade: Select the [SUSTAINED HITS 1] or [LETHAL HITS] ability. Until the end of the phase, melee weapons equipped by models in your unit have the selected ability.',
     factionId: 'ORK',
     detachmentId: '000000995',
@@ -4155,7 +5289,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'ork_unbridled_carnage',
-    label: 'UNBRIDLED CARNAGE — crítico 5+, CàC (1CP)',
+    label: 'UNBRIDLED CARNAGE — crítico 5+, CaC (1CP)',
     description: 'War Horde: Until the end of the phase, each time a model in your unit makes a melee attack, an unmodified hit roll of 5+ scores a Critical Hit.',
     factionId: 'ORK',
     detachmentId: '000000852',
@@ -4166,8 +5300,235 @@ export const MODIFIER_RULES: ModifierRule[] = [
     critThreshold: 5,
   },
   },
+  {
+    id: 'ldr_000000001_might_is_right',
+    label: 'Warboss — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Hit roll.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000000001',
+    combatType: 'melee',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000002_might_is_right',
+    label: 'Warboss In Mega Armour — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Hit roll.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000000002',
+    combatType: 'melee',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000003_speedboss',
+    label: 'Warboss On Warbike — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Hit roll.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000000003',
+    combatType: 'melee',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000006_more_dakka',
+    label: 'Big Mek In Mega Armour — repetir impactos 1 (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a ranged attack, re-roll a Hit roll of 1.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000000006',
+    combatType: 'ranged',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'ldr_000000007_more_dakka',
+    label: 'Big Mek On Warbike — repetir impactos 1 (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a ranged attack, re-roll a Hit roll of 1.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000000007',
+    combatType: 'ranged',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'ldr_000000008_prophet_of_da_great_waaagh',
+    label: 'Ghazghkull Thraka — +1 impactar, crítico 5+, +1 herir (Líder)',
+    description: 'While this unit is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Hit roll and add 1 to the Wound roll and if the Waaagh! is active for your army, a Critical Hit is scored on a successful unmodified Hit roll of 5+.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000000008',
+    combatType: 'melee',
+    effects: {
+    hitMod: 1,
+    woundMod: 1,
+    critThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000000009_flashiest_gitz',
+    label: 'Kaptin Badrukk — repetir impactos (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a ranged attack, you can re-roll the Hit roll.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000000009',
+    combatType: 'ranged',
+    effects: {
+    rerollAllHits: true,
+  },
+  },
+  {
+    id: 'ldr_000000010_drill_boss',
+    label: 'Boss Zagstruk — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Hit roll.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000000010',
+    combatType: 'melee',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000013_dok_s_toolz',
+    label: 'Painboy — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000000013',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000000014_dok_s_toolz',
+    label: 'Painboy On Warbike — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000000014',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000000015_mad_dok',
+    label: 'Mad Dok Grotsnik — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000000015',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000001536_more_dakka',
+    label: 'Big Mek With Shokk Attack Gun — repetir impactos 1 (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a ranged attack, re-roll a Hit roll of 1.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000001536',
+    combatType: 'ranged',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'ldr_000001537_speedboss',
+    label: 'Deffkilla Wartrike — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Hit roll.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000001537',
+    combatType: 'melee',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000001993_da_revolushun',
+    label: 'Da Red Gobbo — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, add 1 to the Hit roll.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000001993',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000002080_more_dakka',
+    label: 'Big Mek With Kustom Force Field — repetir impactos 1 (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a ranged attack, re-roll a Hit roll of 1.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000002080',
+    combatType: 'ranged',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'ldr_000002488_super_runts',
+    label: 'Zodgrod Wortsnagga — +1 impactar, +1 herir (Líder)',
+    description: 'While this model is leading a unit: Models in that unit have the Scouts 9" ability. Each time a model in that unit makes an attack, add 1 to the Hit roll and add 1 to the Wound roll. Each time an attack targets that unit, subtract 1 from the Wound roll.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000002488',
+    target: 'defender',
+    effects: {
+    hitMod: 1,
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000002489_beastboss',
+    label: 'Beastboss — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Hit roll.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000002489',
+    combatType: 'melee',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000002491_dok_s_toolz',
+    label: 'Painboss — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000002491',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000003707_more_dakka',
+    label: 'Big Mek — repetir impactos 1 (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a ranged attack, re-roll a Hit roll of 1.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000003707',
+    combatType: 'ranged',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'aura_000000008_ghazghkull_s_waaagh_banner_aura',
+    label: 'Ghazghkull Thraka — Lethal Hits, CaC (Aura)',
+    description: 'While a friendly ORKS unit is within 12" of Makari, if the Waaagh! is active for your army, melee weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'ORK',
+    sourceDatasheetId: '000000008',
+    combatType: 'melee',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
 
   // ═══ QI ═══
+  // Doctrina Imperatives: idéntica a AdM según CSV (misma descripción exacta)
+  { id: 'qi_protector_doctrina',     label: 'Doctrina Protectora — [HEAVY] +1 impactar, disparo',                        description: 'Protector Imperative: ranged weapons gain [HEAVY] and +1 BS.',                                                                                           factionId: 'QI', combatType: 'ranged',                    effects: { hitMod: 1 } },
+  { id: 'qi_protector_doctrina_def', label: 'Doctrina Protectora — −1 impactar melee recibido (posición Battleline)',      description: 'Protector Imperative (conditional): each time a melee attack targets this unit, if BATTLELINE or within 6" of AdM/QI BATTLELINE, subtract 1 from the Hit roll.', factionId: 'QI', combatType: 'melee', target: 'defender', effects: { hitMod: -1 } },
+  { id: 'qi_conqueror_doctrina',     label: 'Doctrina Conquistadora — [ASSAULT] +1 impactar, CaC',                        description: 'Conqueror Imperative: ranged weapons gain [ASSAULT] and melee weapons get +1 WS.',                                                                         factionId: 'QI', combatType: 'melee',                     effects: { hitMod: 1 } },
+  { id: 'qi_conqueror_doctrina_ap',  label: 'Doctrina Conquistadora — +1 PA, CaC (posición Battleline)',                  description: 'Conqueror Imperative (conditional): if BATTLELINE or within 6" of AdM/QI BATTLELINE, improve the AP of melee attacks by 1.',                              factionId: 'QI', combatType: 'melee',                     effects: { apMod: 1 } },
   {
     id: 'qi_cogbound_alliance',
     label: 'Cogbound Alliance — repetir impactos 1, repetir heridas 1',
@@ -4219,7 +5580,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'qi_steadfast_superiority',
-    label: 'STEADFAST SUPERIORITY — repetir impactos, CàC (1CP)',
+    label: 'STEADFAST SUPERIORITY — repetir impactos, CaC (1CP)',
     description: 'Gate Warden Lance: Until the end of the phase, each time a model in your unit makes an attack, you can re-roll the Hit roll.',
     factionId: 'QI',
     detachmentId: '000001107',
@@ -4258,7 +5619,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'qi_lancebreaker',
-    label: 'LANCEBREAKER — -1 herir, CàC (1CP)',
+    label: 'LANCEBREAKER — -1 herir, CaC (1CP)',
     description: 'Gate Warden Lance: Until the end of the phase, each time an attack targets your unit, if the Strength characteristic of that attack is greaterthan the Toughness characteristic of your unit, subtract 1 from the Wound roll',
     factionId: 'QI',
     detachmentId: '000001107',
@@ -4323,7 +5684,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'qi_virtue_of_courage',
-    label: 'VIRTUE OF COURAGE — +1 impactar, CàC (1CP)',
+    label: 'VIRTUE OF COURAGE — +1 impactar, CaC (1CP)',
     description: 'Spearhead-At-Arms: Select one enemy unit. Until the end of the phase, each time one of your ARMIGER models makes an attack that targets that enemy unit, add 1 to the Hit roll.',
     factionId: 'QI',
     detachmentId: '000001109',
@@ -4350,7 +5711,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'qi_thunderstomp',
-    label: 'THUNDERSTOMP — +1 PA, CàC (1CP)',
+    label: 'THUNDERSTOMP — +1 PA, CaC (1CP)',
     description: 'Valourstrike Lance: Until the end of the phase, the Attacks characteristic of any armoured Feet melee weapons equipped by your model is 8, the Attacks characteristic of any titanic Feet melee weapons equipped by your model is 12, and improve the Armour Penetration chara',
     factionId: 'QI',
     detachmentId: '000001106',
@@ -4374,8 +5735,43 @@ export const MODIFIER_RULES: ModifierRule[] = [
     lethalHitsBonus: true,
   },
   },
+  {
+    id: 'ldr_000003839_lord_of_the_machine_cult',
+    label: 'Tech-priest Dominus — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability. If that unit has the Electro-Priests keyword, models in that unit have the Feel No Pain 4+ ability instead.',
+    factionId: 'QI',
+    leaderDatasheetId: '000003839',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000003840_galvanic_field',
+    label: 'Tech-priest Manipulus — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'QI',
+    leaderDatasheetId: '000003840',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000003841_control_edict',
+    label: 'Skitarii Marshal — repetir impactos (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, you can re-roll the Hit roll.',
+    factionId: 'QI',
+    leaderDatasheetId: '000003841',
+    effects: {
+    rerollAllHits: true,
+  },
+  },
 
   // ═══ QT ═══
+  // QT es CHAOS KNIGHTS, no HERETIC ASTARTES → no tiene Dark Pacts.
+  // Harbingers of Dread: debuffs de Ld/OC + DOOM (si objetivo está Battle-shocked, +1 herir)
+  { id: 'qt_dread_doom', label: 'Harbingers of Dread — DOOM: +1 herir vs Battle-shocked', description: "DOOM (Harbingers of Dread): each time this model makes an attack, if the target is Battle-shocked, add 1 to the Wound roll. Activate when the target unit is Battle-shocked.", factionId: 'QT', effects: { woundMod: 1 } },
+  { id: 'qt_dread_darkness', label: 'DOOM: Darkness — -1 impactar (Def)', description: "DOOM: Darkness (Harbingers of Dread): each time an enemy unit makes an attack targeting this unit, subtract 1 from the Hit roll.", factionId: 'QT', target: 'defender', effects: { hitMod: -1 } },
   {
     id: 'qt_dreaded_masters',
     label: 'Dreaded Masters — repetir impactos 1, repetir heridas 1, Lethal Hits, Sustained Hits 1',
@@ -4439,7 +5835,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'qt_hungry_for_combat',
-    label: 'HUNGRY FOR COMBAT — crítico 5+, CàC (1CP)',
+    label: 'HUNGRY FOR COMBAT — crítico 5+, CaC (1CP)',
     description: 'Houndpack Lance: Select one enemy unit within Engagement Range of those WAR DOG units. Until the end of the phase, models in those WAR DOG units can only target that enemy unit, but each time a model in one of those WAR DOG units makes an attack, an unmodified Hit ro',
     factionId: 'QT',
     detachmentId: '000001077',
@@ -4464,7 +5860,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'qt_hellforged_construction',
-    label: 'HELLFORGED CONSTRUCTION — empeora PA atacante, CàC (1CP)',
+    label: 'HELLFORGED CONSTRUCTION — empeora PA atacante, CaC (1CP)',
     description: 'Infernal Lance: Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.',
     factionId: 'QT',
     detachmentId: '000001075',
@@ -4504,7 +5900,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'qt_conquerors_without_mercy',
-    label: 'CONQUERORS WITHOUT MERCY — +1 PA, CàC (1CP)',
+    label: 'CONQUERORS WITHOUT MERCY — +1 PA, CaC (1CP)',
     description: 'Traitoris Lance: Until the end of the phase, improve the Armour Penetration characteristic of melee weapons equipped by your model by 1. After your model has finished making its attacks this phase, if it destroyed one or more enemy units this phase, each enemy unit w',
     factionId: 'QT',
     detachmentId: '000000806',
@@ -4517,7 +5913,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'qt_disdain_for_the_weak',
-    label: 'DISDAIN FOR THE WEAK — FNP 6+, CàC (1CP)',
+    label: 'DISDAIN FOR THE WEAK — FNP 6+, CaC (1CP)',
     description: 'Traitoris Lance: Until the end of the phase, models in your unit have the Feel No Pain 6+ ability, and the Feel No Pain 5+ ability against attacks made by Battle-shocked models.',
     factionId: 'QT',
     detachmentId: '000000806',
@@ -4529,11 +5925,93 @@ export const MODIFIER_RULES: ModifierRule[] = [
     feelNoPainThreshold: 6,
   },
   },
+  {
+    id: 'ldr_000003848_cursed_wardings_psychic',
+    label: 'Rogue Psyker — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks.',
+    factionId: 'QT',
+    leaderDatasheetId: '000003848',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  {
+    id: 'aura_000001096_offerings_for_the_dark_gods_aura',
+    label: 'Chaos Cerastus Knight Castigator — Sustained Hits 1, disparo (Aura)',
+    description: 'While a friendly War Dog model is within 6" of this model, ranged weapons equipped by that WAR DOG model have the [SUSTAINED HITS 1] ability.',
+    factionId: 'QT',
+    sourceDatasheetId: '000001096',
+    combatType: 'ranged',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'aura_000001097_consumed_with_hunger_aura',
+    label: 'Chaos Cerastus Knight Atrapos — repetir impactos (Aura)',
+    description: 'While a friendly War Dog model is within 6" of this model, each time that WAR DOG model makes an attack that targets a TITANIC or TOWERING unit, you can re-roll the Hit roll.',
+    factionId: 'QT',
+    sourceDatasheetId: '000001097',
+    effects: {
+    rerollAllHits: true,
+  },
+  },
+  {
+    id: 'aura_000001660_taskmaster_aura',
+    label: 'Knight Desecrator — repetir impactos 1 (Aura)',
+    description: 'While a friendly War Dog model is within 9" of this model, each time that WAR DOG model makes a ranged attack, re-roll a Hit roll of 1.',
+    factionId: 'QT',
+    sourceDatasheetId: '000001660',
+    combatType: 'ranged',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'aura_000001661_frenzied_rampage_aura',
+    label: 'Knight Rampager — repetir impactos 1 (Aura)',
+    description: 'While a friendly War Dog model is within 9" of this model, each time that WAR DOG model makes a melee attack, re-roll a Hit roll of 1.',
+    factionId: 'QT',
+    sourceDatasheetId: '000001661',
+    combatType: 'melee',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'aura_000004134_close_range_killers_aura',
+    label: 'Knight Ruinator — +1 PA (Aura)',
+    description: 'While a friendly War Dog model is within 9" of this model, each time that WAR DOG model makes an attack that targets the closest enemy unit, improve the Armour Penetration characteristic of that attack by 1.',
+    factionId: 'QT',
+    sourceDatasheetId: '000004134',
+    effects: {
+    apMod: 1,
+  },
+  },
 
   // ═══ SM ═══
   {
+    id: 'sm_oath_of_moment',
+    label: 'Juramento del Momento — re-roll impactar',
+    description: 'Army rule: at the start of your Command phase, select one enemy unit as your Oath of Moment target. Each time a model with this ability makes an attack that targets that unit, you can re-roll the Hit roll.',
+    factionId: 'SM',
+    effects: {
+    rerollAllHits: true,
+  },
+  },
+  {
+    id: 'sm_oath_of_moment_wound',
+    label: 'Juramento del Momento — +1 herir (Codex, sin capítulos especiales)',
+    description: 'Army rule: if using a Codex SM Detachment without Black Templars, Blood Angels, Dark Angels, Deathwatch or Space Wolves, also add 1 to the Wound roll against your Oath of Moment target.',
+    factionId: 'SM',
+    effects: {
+    woundMod: 1,
+  },
+  },
+  {
     id: 'sm_red_thirst',
-    label: 'Red Thirst — +2 F, CàC',
+    label: 'Red Thirst — +2 F, CaC',
     description: 'Each time an ADEPTUS ASTARTES unit from your army is selected to fight, if that unit made a Charge move this turn, until the end of the phase, add 1 to the Attacks characteristic and add 2 to the Strength characteristic of melee weapons equipped by models in that unit. RESTRICTIONS Your army can inc',
     factionId: 'SM',
     detachmentId: '000000758',
@@ -4733,7 +6211,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_maddened_ferocity',
-    label: 'Maddened Ferocity — repetir heridas 1, CàC',
+    label: 'Maddened Ferocity — repetir heridas 1, CaC',
     description: 'Each time an ADEPTUS ASTARTES model from your army makes a melee attack, re-roll a Wound roll of 1. Each time an ADEPTUS ASTARTES unit from your army is selected to fight, if that unit made a Charge move this turn, until the end of the phase, add 1 to the Attacks characteristic of melee weapons equi',
     factionId: 'SM',
     detachmentId: '000001123',
@@ -4837,7 +6315,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_focused_fury',
-    label: 'FOCUSED FURY — Lethal Hits, CàC (1CP)',
+    label: 'FOCUSED FURY — Lethal Hits, CaC (1CP)',
     description: 'Angelic Inheritors: Until the end of the phase, melee weapons equipped by models in your unit have the [LETHAL HITS] ability. If your unit is a Character unit, until the end of the phase, those weapons have the [LANCE] ability as well.',
     factionId: 'SM',
     detachmentId: '000001004',
@@ -4954,19 +6432,8 @@ export const MODIFIER_RULES: ModifierRule[] = [
     rerollWoundsOf1: true,
   },
   },
-  {
-    id: 'sm_light_of_vengeance',
-    label: 'LIGHT OF VENGEANCE — Lethal Hits, Sustained Hits 1 (1CP)',
-    description: 'Bastion Task Force: Select the [LETHAL HITS] or [SUSTAINED HITS 1] ability. Until the end of the phase, weapons equipped by models in your unit have that ability while targeting an auspex scanned unit or if the bearer has the Battleline keyword.',
-    factionId: 'SM',
-    detachmentId: '000001130',
-    isStratagem: true,
-    cpCost: 1,
-    effects: {
-    sustainedHitsBonus: 1,
-    lethalHitsBonus: true,
-  },
-  },
+  { id: 'sm_light_of_vengeance_lethal',    label: 'LIGHT OF VENGEANCE — Lethal Hits (1CP)',    description: 'Bastion Task Force: weapons gain [LETHAL HITS].', factionId: 'SM', detachmentId: '000001130', isStratagem: true, cpCost: 1, effects: { lethalHitsBonus: true } },
+  { id: 'sm_light_of_vengeance_sustained', label: 'LIGHT OF VENGEANCE — Sustained Hits 1 (1CP)', description: 'Bastion Task Force: weapons gain [SUSTAINED HITS 1].', factionId: 'SM', detachmentId: '000001130', isStratagem: true, cpCost: 1, effects: { sustainedHitsBonus: 1 } },
   {
     id: 'sm_shock_bombardment',
     label: 'SHOCK BOMBARDMENT — -1 impactar (1CP)',
@@ -5020,7 +6487,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_courage_and_honour',
-    label: 'COURAGE AND HONOUR! — +1 PA, CàC (1CP)',
+    label: 'COURAGE AND HONOUR! — +1 PA, CaC (1CP)',
     description: 'Blade of Ultramar: Until the end of the phase, melee weapons equipped by models in your unit have the [LANCE] ability. If your unit is under the effects of the Assault Doctrine, until the end of the phase, improve the Armour Penetration characteristic of such weapons b',
     factionId: 'SM',
     detachmentId: '000001120',
@@ -5160,7 +6627,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_pious_enmity',
-    label: 'PIOUS ENMITY — repetir impactos 1, repetir heridas 1, CàC (1CP)',
+    label: 'PIOUS ENMITY — repetir impactos 1, repetir heridas 1, CaC (1CP)',
     description: 'Companions of Vehemence: Until the end of the phase, each time a model in your unit makes a melee attack that targets an enemy unit, re-roll a Hit roll of 1. If that target is a MONSTER or VEHICLE unit, re-roll a Wound roll of 1 as well.',
     factionId: 'SM',
     detachmentId: '000001091',
@@ -5315,7 +6782,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_honour_the_chapter',
-    label: 'HONOUR THE CHAPTER — +1 PA, CàC (1CP)',
+    label: 'HONOUR THE CHAPTER — +1 PA, CaC (1CP)',
     description: 'Gladius Task Force: Until the end of the phase, melee weapons equipped by models in your unit have the [LANCE] ability. If your unit is under the effects of the Assault Doctrine, until the end of the phase, improve the Armour Penetration characteristic of such weapons b',
     factionId: 'SM',
     detachmentId: '000000750',
@@ -5354,7 +6821,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_condemnatory_info_screed',
-    label: 'CONDEMNATORY INFO-SCREED — repetir heridas 1, CàC (1CP)',
+    label: 'CONDEMNATORY INFO-SCREED — repetir heridas 1, CaC (1CP)',
     description: 'Godhammer Assault Force: Until the end of the phase, each time a model in your unit makes an attack, if it disembarked from a Transport this turn, re-roll a Wound roll of 1. If that TRANSPORT has the Land Raider keyword, you can re-roll the Wound roll instead.',
     factionId: 'SM',
     detachmentId: '000001093',
@@ -5381,7 +6848,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_ruthless_butchery',
-    label: 'RUTHLESS BUTCHERY — +1 impactar, +1 herir, CàC (1CP)',
+    label: 'RUTHLESS BUTCHERY — +1 impactar, +1 herir, CaC (1CP)',
     description: 'Hammer of Avernii: Until the end of the phase, each time a model in your unit makes an attack, add 1 to the Hit roll. If your unit is below Starting Strength, add 1 to the Wound roll as well.',
     factionId: 'SM',
     detachmentId: '000001118',
@@ -5498,9 +6965,12 @@ export const MODIFIER_RULES: ModifierRule[] = [
     woundMod: -1,
   },
   },
+]
+
+const RULES_3: ModifierRule[] = [
   {
     id: 'sm_martial_mastery',
-    label: 'MARTIAL MASTERY — repetir heridas 1, CàC (1CP)',
+    label: 'MARTIAL MASTERY — repetir heridas 1, CaC (1CP)',
     description: 'Inner Circle Task Force: Until the end of the phase, each time a model in your unit makes an attack, re-roll a Wound roll of 1. If your unit is within range of your Vowed objective marker, you can re-roll the Wound roll instead.',
     factionId: 'SM',
     detachmentId: '000000835',
@@ -5539,7 +7009,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_red_rampage',
-    label: 'RED RAMPAGE — Lethal Hits, CàC (1CP)',
+    label: 'RED RAMPAGE — Lethal Hits, CaC (1CP)',
     description: 'Liberator Assault Group: Select either the [LANCE] or [LETHAL HITS] abilities. Until the end of the phase, melee weapons equipped by models in your unit have the selected ability. You can instead choose for your unit to give in to the Red Thirst; if it does, then it becomes',
     factionId: 'SM',
     detachmentId: '000000758',
@@ -5591,7 +7061,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_iron_arm',
-    label: 'IRON ARM — +1 F, CàC (1CP)',
+    label: 'IRON ARM — +1 F, CaC (1CP)',
     description: 'Librarius Conclave: Until the end of the phase, add 1 to the Strength characteristic of melee weapons equipped by models in your unit, or add 2 if the Biomancy Discipline is active for your army.',
     factionId: 'SM',
     detachmentId: '000000994',
@@ -5604,7 +7074,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_fiery_shield',
-    label: 'FIERY SHIELD — -1 impactar, CàC (1CP)',
+    label: 'FIERY SHIELD — -1 impactar, CaC (1CP)',
     description: 'Librarius Conclave: Until the end of the phase, each time an attack targets your unit, subtract 1 from the Hit roll, and if the Pyromancy Discipline is active for your army, weapons that target your unit have the [HAZARDOUS] ability.',
     factionId: 'SM',
     detachmentId: '000000994',
@@ -5618,7 +7088,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_strength_in_unity',
-    label: 'STRENGTH IN UNITY — -1 impactar, -1 herir, CàC (1CP)',
+    label: 'STRENGTH IN UNITY — -1 impactar, -1 herir, CaC (1CP)',
     description: 'Lion’s Blade Task Force: If that enemy unit is within Engagement Range of one or more Ravenwing units from your army, until the end of the phase, each time a model in that enemy unit makes an attack, subtract 1 from the Hit roll. If that enemy unit is within Engagement Range',
     factionId: 'SM',
     detachmentId: '000000981',
@@ -5683,7 +7153,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_knife_work',
-    label: 'KNIFE WORK — +1 PA, CàC (1CP)',
+    label: 'KNIFE WORK — +1 PA, CaC (1CP)',
     description: 'Pilum Strike Team: Until the end of the phase, improve the Strength and Armour Penetration characteristics of melee weapons equipped by models in your unit by 1.',
     factionId: 'SM',
     detachmentId: '000000906',
@@ -5722,7 +7192,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_unbridled_ferocity',
-    label: 'UNBRIDLED FEROCITY — +1 herir, CàC (1CP)',
+    label: 'UNBRIDLED FEROCITY — +1 herir, CaC (1CP)',
     description: 'Saga of the Beastslayer: Until the end of the phase, each time a model in your unit makes an attack, add 1 to the Wound roll.',
     factionId: 'SM',
     detachmentId: '000001070',
@@ -5735,7 +7205,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_inspiring_presence',
-    label: 'INSPIRING PRESENCE — Lethal Hits, CàC (1CP)',
+    label: 'INSPIRING PRESENCE — Lethal Hits, CaC (1CP)',
     description: 'Saga of the Bold: Until the end of the phase, melee weapons equipped by models in your unit have the [LETHAL HITS] ability.',
     factionId: 'SM',
     detachmentId: '000001069',
@@ -5813,7 +7283,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_overwhelming_onslaught',
-    label: 'OVERWHELMING ONSLAUGHT — -1 impactar, CàC (1CP)',
+    label: 'OVERWHELMING ONSLAUGHT — -1 impactar, CaC (1CP)',
     description: 'Saga of the Hunter: Until the end of the phase, each time a model in that enemy unit makes an attack, subtract 1 from the Hit roll.',
     factionId: 'SM',
     detachmentId: '000001068',
@@ -5893,7 +7363,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_spear_thrust_and_sabre_swing',
-    label: 'SPEAR THRUST AND SABRE SWING — Lethal Hits, CàC (1CP)',
+    label: 'SPEAR THRUST AND SABRE SWING — Lethal Hits, CaC (1CP)',
     description: 'Spearpoint Task Force: Select either the [LANCE] or [LETHAL HITS] ability. Until the end of the phase, melee weapons equipped by models in your unit have the selected ability. If it is a MOUNTED unit, until the end of the phase, melee weapons equipped by models in your uni',
     factionId: 'SM',
     detachmentId: '000001119',
@@ -5973,7 +7443,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_martial_exemplars',
-    label: 'MARTIAL EXEMPLARS — Lethal Hits, CàC (1CP)',
+    label: 'MARTIAL EXEMPLARS — Lethal Hits, CaC (1CP)',
     description: 'The Angelic Host: Until the end of the phase, melee weapons equipped by models in your unit have the [LETHAL HITS] and [PRECISION] abilities.',
     factionId: 'SM',
     detachmentId: '000000901',
@@ -6012,7 +7482,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_lost_to_rage',
-    label: 'LOST TO RAGE — +1 PA, CàC (1CP)',
+    label: 'LOST TO RAGE — +1 PA, CaC (1CP)',
     description: 'The Lost Brethren: Until the end of the phase, improve the Attacks, Stength and Armour Penetration characteristics of melee weapons equipped by models in your unit by 1 and, unless your unit is within 12" of one or more friendly Chaplain models, until the end of the ph',
     factionId: 'SM',
     detachmentId: '000000900',
@@ -6077,7 +7547,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_litanies_of_purgation',
-    label: 'LITANIES OF PURGATION — +1 PA, CàC (1CP)',
+    label: 'LITANIES OF PURGATION — +1 PA, CaC (1CP)',
     description: 'Vindication Task Force: Until the end of the phase, each time a model in your unit makes an attack, if that model’s unit is within range of one or more objective markers or the target unit is within range of one or more objective markers, improve the Armour Penetration char',
     factionId: 'SM',
     detachmentId: '000001092',
@@ -6142,7 +7612,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'sm_brute_fervour',
-    label: 'BRUTE FERVOUR — repetir impactos 1, CàC (1CP)',
+    label: 'BRUTE FERVOUR — repetir impactos 1, CaC (1CP)',
     description: 'Wrathful Procession: Until the end of the phase, each time a model in your unit makes an attack, re-roll a Hit roll of 1 and you can ignore any or all modifiers to the following: that attack’s Weapon Skill characteristic; the Hit roll; the Wound roll.',
     factionId: 'SM',
     detachmentId: '000001006',
@@ -6166,8 +7636,640 @@ export const MODIFIER_RULES: ModifierRule[] = [
     apMod: -1,
   },
   },
+  {
+    id: 'ldr_000000060_surgical_precision',
+    label: 'Apothecary Biologis — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000060',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000000079_psychic_hood',
+    label: 'Librarian In Terminator Armour — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000079',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  {
+    id: 'ldr_000000079_veil_of_time_psychic',
+    label: 'Librarian In Terminator Armour — Sustained Hits 1 (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000079',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000000083_angel_s_wrath',
+    label: 'Captain With Jump Pack — +1 F, CaC (Líder)',
+    description: 'While this model is leading a unit, each time that unit ends a Charge move, until the end of the turn, add 1 to the Strength characteristic of melee weapons equipped by models in that unit.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000083',
+    combatType: 'melee',
+    effects: {
+    strengthMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000094_litany_of_hate',
+    label: 'Chaplain On Bike — +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Wound roll.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000094',
+    combatType: 'melee',
+    effects: {
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000112_litany_of_hate',
+    label: 'Chaplain With Jump Pack — +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Wound roll.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000112',
+    combatType: 'melee',
+    effects: {
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000115_litany_of_hate',
+    label: 'Chaplain In Terminator Armour — +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Wound roll.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000115',
+    combatType: 'melee',
+    effects: {
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000119_psychic_hood',
+    label: 'Librarian In Phobos Armour — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000119',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  {
+    id: 'ldr_000000127_rites_of_tempering',
+    label: 'Iron Father Feirros — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000127',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000000151_warden_of_the_imperium_nihilus',
+    label: 'Commander Dante — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, add 1 to Advance and Charge rolls made for that unit and each time a model in that unit makes an attack, add 1 to the Hit roll.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000151',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000158_sanguinary_priest',
+    label: 'Sanguinary Priest — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000158',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000000158_blood_chalice',
+    label: 'Sanguinary Priest — +1 PA, CaC (Líder)',
+    description: 'While this model is leading a unit, improve the Armour Penetration characteristic of melee weapons equipped by models in that unit by 1.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000158',
+    combatType: 'melee',
+    effects: {
+    apMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000159_sanguinary_priest',
+    label: 'Sanguinary Priest on Bike — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000159',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000000159_blood_chalice',
+    label: 'Sanguinary Priest on Bike — +1 PA, CaC (Líder)',
+    description: 'While this model is leading a unit, improve the Armour Penetration characteristic of melee weapons equipped by models in that unit by 1.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000159',
+    combatType: 'melee',
+    effects: {
+    apMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000160_sanguinary_priest',
+    label: 'Brother Corbulo — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000160',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000000164_guardian_of_the_lost',
+    label: 'Lemartes — −1 daño (Líder)',
+    description: 'While this model is leading a unit, each time an attack is allocated to a model in that unit, subtract 1 from the Damage characteristic of that attack.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000164',
+    target: 'defender',
+    effects: {
+    damageReduction: 1,
+  },
+  },
+  {
+    id: 'ldr_000000164_fury_unbound',
+    label: 'Lemartes — Lethal Hits, CaC (Líder)',
+    description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [LETHAL HITS] ability',
+    factionId: 'SM',
+    leaderDatasheetId: '000000164',
+    combatType: 'melee',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000000218_supreme_grand_master',
+    label: 'Azrael — Sustained Hits 1 (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000218',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000000225_exemplar_of_hate',
+    label: 'Asmodai — repetir impactos (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, you can re-roll the Hit roll.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000225',
+    combatType: 'melee',
+    effects: {
+    rerollAllHits: true,
+  },
+  },
+  {
+    id: 'ldr_000000226_psychic_hood',
+    label: 'Ezekiel — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000226',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  {
+    id: 'ldr_000000285_war_howl',
+    label: 'Ragnar Blackmane — repetir heridas (Líder)',
+    description: 'While this model is leading a Blood Claws unit, each time a model in that unit makes a melee attack, you can re-roll the Wound roll. While this model is leading a Wolf Guard Headtakers unit, that unit is eligible to declare a charge in a turn in which it Advanced.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000285',
+    combatType: 'melee',
+    effects: {
+    rerollAllWounds: true,
+  },
+  },
+  {
+    id: 'ldr_000000286_refuse_to_accept_defeat',
+    label: 'Krom Dragongaze — +1 impactar, +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, add 1 to the Hit roll if that unit is below its Starting Strength, and add 1 to the Wound roll as well if that unit is Below Half-strength.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000286',
+    effects: {
+    hitMod: 1,
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000288_born_of_wolves',
+    label: 'Canis Wolfborn — Sustained Hits 1, CaC (Líder)',
+    description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000288',
+    combatType: 'melee',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000000297_oathbound',
+    label: 'Ulrik The Slayer — +1 impactar, +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Hit roll. If that attack targets a unit that has this model’s Slayer’s Oath keyword (see above), add 1 to the Wound roll as well.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000297',
+    combatType: 'melee',
+    effects: {
+    hitMod: 1,
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000300_tactical_precision',
+    label: 'Wolf Guard Battle Leader In Terminator Armour — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit with have the [LETHAL HITS] ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000300',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000000301_tactical_precision',
+    label: 'Wolf Guard Battle Leader On Thunderwolf — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000301',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000000304_pelt_of_the_doppegangrel',
+    label: 'Lukas The Trickster — -1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time an attack targets that unit, subtract 1 from the Hit roll.',
+    factionId: 'SM',
+    leaderDatasheetId: '000000304',
+    target: 'defender',
+    effects: {
+    hitMod: -1,
+  },
+  },
+  {
+    id: 'ldr_000001162_voice_of_experience',
+    label: 'Sergeant Telion — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, improve the Objective Control characteristic of models in that unit by 1 and each time a model in that unit makes an attack, add 1 to the Hit roll.',
+    factionId: 'SM',
+    leaderDatasheetId: '000001162',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000001162_guiding_hand',
+    label: 'Sergeant Telion — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, each time that unit is selected to shoot or fight, select one of the following abilities to apply to weapons equipped by models in that unit until the end of the phase: [LETHAL HITS] [PRECISION] [SUSTAINED HITS 1]',
+    factionId: 'SM',
+    leaderDatasheetId: '000001162',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000001174_litany_of_hate',
+    label: 'Chaplain — +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Wound roll.',
+    factionId: 'SM',
+    leaderDatasheetId: '000001174',
+    combatType: 'melee',
+    effects: {
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000001344_psychic_hood',
+    label: 'Librarian with Jump Pack — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks.',
+    factionId: 'SM',
+    leaderDatasheetId: '000001344',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  {
+    id: 'ldr_000001344_might_of_heroes_psychic',
+    label: 'Librarian with Jump Pack — +1 PA, CaC (Líder)',
+    description: 'While this model is leading a unit, improve the Armour Penetration characteristic of melee weapons equipped by models in that unit by 1.',
+    factionId: 'SM',
+    leaderDatasheetId: '000001344',
+    combatType: 'melee',
+    effects: {
+    apMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000001345_tactical_precision',
+    label: 'Lieutenant In Reiver Armour — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000001345',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000001346_tactical_precision',
+    label: 'Lieutenant — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000001346',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000001348_psychic_hood',
+    label: 'Librarian on Bike — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks.',
+    factionId: 'SM',
+    leaderDatasheetId: '000001348',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  {
+    id: 'ldr_000001611_master_of_prescience_psychic',
+    label: 'Chief Librarian Tigurius — -1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time an attack targets that unit, subtract 1 from the Hit roll. In addition, once per battle round, you can target that unit with one of the following Stratagems for OCP: Counter-offensive; Fire Overwatch; Go to Ground; Heroic Intervention',
+    factionId: 'SM',
+    leaderDatasheetId: '000001611',
+    target: 'defender',
+    effects: {
+    hitMod: -1,
+  },
+  },
+  {
+    id: 'ldr_000002100_unto_the_anvil',
+    label: 'Adrax Agatone — repetir heridas (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, you can re-roll the Wound roll.',
+    factionId: 'SM',
+    leaderDatasheetId: '000002100',
+    combatType: 'melee',
+    effects: {
+    rerollAllWounds: true,
+  },
+  },
+  {
+    id: 'ldr_000002266_psychic_hood',
+    label: 'Librarian — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks.',
+    factionId: 'SM',
+    leaderDatasheetId: '000002266',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 4,
+  },
+  },
+  {
+    id: 'ldr_000002468_tactical_precision',
+    label: 'Deathwing Strikemaster — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000002468',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000002530_tactical_precision',
+    label: 'Lieutenant In Phobos Armour — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000002530',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000002677_keep_the_banner_high',
+    label: 'Ancient In Terminator Armour — +1 impactar, +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, add 1 to the Hit roll if that unit is below its Starting Strength, and add 1 to the Wound roll as well if that unit is Below Half-strength.',
+    factionId: 'SM',
+    leaderDatasheetId: '000002677',
+    effects: {
+    hitMod: 1,
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000002713_to_the_last',
+    label: 'Pedro Kantor — +1 impactar, +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, add 1 to the Hit roll if that unit is below its Starting Strength, and add 1 to the Wound roll as well if that unit is Below Half-strength.',
+    factionId: 'SM',
+    leaderDatasheetId: '000002713',
+    effects: {
+    hitMod: 1,
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000002738_sanguinary_priest',
+    label: 'Sanguinary Priest With Jump Pack — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000002738',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000002738_blood_chalice',
+    label: 'Sanguinary Priest With Jump Pack — +1 PA, CaC (Líder)',
+    description: 'While this model is leading a unit, improve the Armour Penetration characteristic of melee weapons equipped by models in that unit by 1.',
+    factionId: 'SM',
+    leaderDatasheetId: '000002738',
+    combatType: 'melee',
+    effects: {
+    apMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000002792_litanies_of_the_devout',
+    label: 'Chaplain Grimaldus — repetir impactos (Líder)',
+    description: 'While this unit is leading a unit and contains a Chaplain Grimaldus model, each time a model in that unit makes a melee attack, you can re-roll the Hit roll.',
+    factionId: 'SM',
+    leaderDatasheetId: '000002792',
+    combatType: 'melee',
+    effects: {
+    rerollAllHits: true,
+  },
+  },
+  {
+    id: 'ldr_000002793_vehement_aggression',
+    label: 'Castellan — repetir impactos 1 (Líder)',
+    description: 'While this model is leading a unit, each time that unit is selected to fight, take a Leadership test for that unit: if passed, until the end of the phase, each time a model in that unit makes an attack, you can re-roll the Hit roll; if failed, until the end of the phase, each time a model in that un',
+    factionId: 'SM',
+    leaderDatasheetId: '000002793',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'ldr_000002796_inspirational_exemplar',
+    label: 'Marshal — crítico 5+ (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, an unmodified Hit roll of 5+ scores a Critical Hit.',
+    factionId: 'SM',
+    leaderDatasheetId: '000002796',
+    combatType: 'melee',
+    effects: {
+    critThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000003833_lost_to_fury',
+    label: 'Death Company Captain with Jump Pack — Sustained Hits 1, CaC (Líder)',
+    description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000003833',
+    combatType: 'melee',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000003872_tactical_instinct',
+    label: 'Watch Captain Artemis — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'SM',
+    leaderDatasheetId: '000003872',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000004129_litany_of_hate',
+    label: 'Wolf Priest — +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Wound roll.',
+    factionId: 'SM',
+    leaderDatasheetId: '000004129',
+    combatType: 'melee',
+    effects: {
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000004130_tempered_ferocity',
+    label: 'Wolf Guard Battle Leader — repetir impactos 1, Sustained Hits 1 (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability and, each time a model in that unit makes an attack that targets an enemy unit within 6", re-roll a Hit roll of 1.',
+    factionId: 'SM',
+    leaderDatasheetId: '000004130',
+    effects: {
+    sustainedHitsBonus: 1,
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'ldr_000004180_litany_of_hate',
+    label: 'Chaplain Kastiel — +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, add 1 to the Wound roll.',
+    factionId: 'SM',
+    leaderDatasheetId: '000004180',
+    combatType: 'melee',
+    effects: {
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'aura_000000117_wisdom_of_the_ancients_aura',
+    label: 'Dreadnought — repetir impactos 1 (Aura)',
+    description: 'While a friendly Adeptus Astartes Infantry unit is within 6" of this model, each time a model in that unit makes an attack, re-roll a Hit roll of 1.',
+    factionId: 'SM',
+    sourceDatasheetId: '000000117',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'aura_000000120_wisdom_of_the_ancients_aura',
+    label: 'Venerable Dreadnought (Legendary) — repetir impactos 1 (Aura)',
+    description: 'While a friendly Adeptus Astartes Infantry unit is within 6" of this model, each time a model in that unit makes an attack, re-roll a Hit roll of 1.',
+    factionId: 'SM',
+    sourceDatasheetId: '000000120',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'aura_000000127_master_of_the_forge',
+    label: 'Iron Father Feirros — +1 impactar (Aura)',
+    description: 'In your Command phase, select one friendly ADEPTUS ASTARTES VEHICLE model within 3" of this model. That model regains up to 3 lost wounds and, until the start of your next Command phase, each time that VEHICLE model makes an attack, add 1 to the Hit roll. You cannot select a unit for this ability th',
+    factionId: 'SM',
+    sourceDatasheetId: '000000127',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'aura_000000140_blessing_of_the_omnissiah',
+    label: 'Techmarine — +1 impactar (Aura)',
+    description: 'In your Command phase, you can select one friendly Adeptus Astartes Vehicle model within 3" of this model. That model regains up to D3 lost wounds and, until the start of your next Command phase, each time that Vehicle model makes an attack, add 1 to the Hit roll. Each model can only be selected for',
+    factionId: 'SM',
+    sourceDatasheetId: '000000140',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'aura_000000308_blessing_of_the_omnissiah',
+    label: 'Iron Priest On Thunderwolf — +1 impactar (Aura)',
+    description: 'In your Command phase, you can select one friendly Adeptus Astartes Vehicle model within 3" of this model. That model regains up to D3 lost wounds and, until the start of your next Command phase, each time that VEHICLE model makes an attack, add 1 to the Hit roll. Each model can only be selected for',
+    factionId: 'SM',
+    sourceDatasheetId: '000000308',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'aura_000001527_blessing_of_the_omnissiah',
+    label: 'Techmarine on Bike — +1 impactar (Aura)',
+    description: 'In your Command phase, you can select one friendly Adeptus Astartes Vehicle model within 3" of this model. That model regains up to D3 lost wounds and, until the start of your next Command phase, each time that VEHICLE model makes an attack, add 1 to the Hit roll. Each model can only be selected for',
+    factionId: 'SM',
+    sourceDatasheetId: '000001527',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'aura_000002682_martial_exemplar_aura',
+    label: 'Lion El’jonson — repetir impactos 1, repetir heridas 1 (Aura)',
+    description: 'While a friendly ADEPTUS ASTARTES unit is within 6" of this model, each time a model in that unit makes a melee attack, re-roll a Hit roll of 1 and re-roll a Wound roll of 1.',
+    factionId: 'SM',
+    sourceDatasheetId: '000002682',
+    effects: {
+    rerollHitsOf1: true,
+    rerollWoundsOf1: true,
+  },
+  },
 
   // ═══ TAU ═══
+  // For the Greater Good: unidad observadora marca objetivo; las unidades guiadas atacando ese objetivo ganan +1 BS.
+  { id: 'tau_for_the_greater_good', label: 'For the Greater Good — +1 BS, disparo (guiado)', description: "For the Greater Good: while a unit is Guided (targeting a Spotted unit marked by an Observer unit), improve the Ballistic Skill of that attack by 1.", factionId: 'TAU', combatType: 'ranged', effects: { hitMod: 1 } },
   {
     id: 'tau_patient_hunter',
     label: 'Patient Hunter — Sustained Hits 1, disparo',
@@ -6349,7 +8451,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'tau_boarding_blades',
-    label: 'BOARDING BLADES — +1 PA, CàC (1CP)',
+    label: 'BOARDING BLADES — +1 PA, CaC (1CP)',
     description: 'Kroot Raiding Party: Until the end of the phase, improve the Armour Penetration characteristic of melee weapons equipped by models in your unit by 1. In addition, each time a model in your unit makes an attack, on a Critical Wound, improve the Armour Penetration characte',
     factionId: 'TAU',
     detachmentId: '000000967',
@@ -6440,7 +8542,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'tau_firing_line',
-    label: 'FIRING LINE — crítico 5+, CàC (1CP)',
+    label: 'FIRING LINE — crítico 5+, CaC (1CP)',
     description: 'Starfire Cadre: Your unit can shoot as if it were your Shooting phase, but when doing so, models in your unit can only target that enemy unit (and only if it is an eligible target) and, each time a model in your unit makes an attack, an unmodified Hit roll of 5+ is',
     factionId: 'TAU',
     detachmentId: '000000966',
@@ -6451,8 +8553,126 @@ export const MODIFIER_RULES: ModifierRule[] = [
     critThreshold: 5,
   },
   },
+  {
+    id: 'ldr_000000404_failure_is_not_an_option',
+    label: 'Ethereal — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability.',
+    factionId: 'TAU',
+    leaderDatasheetId: '000000404',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 5,
+  },
+  },
+  {
+    id: 'ldr_000000406_way_of_the_short_blade',
+    label: 'Commander Farsight — +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack that targets an enemy unit within 9", add 1 to the Wound roll.',
+    factionId: 'TAU',
+    leaderDatasheetId: '000000406',
+    effects: {
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000000410_structural_analyser',
+    label: 'Darkstrider — +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a ranged attack, add 1 to the Wound roll.',
+    factionId: 'TAU',
+    leaderDatasheetId: '000000410',
+    combatType: 'ranged',
+    effects: {
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000001477_crisis_commander',
+    label: 'Commander In Crisis Battlesuit — repetir impactos 1 (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a ranged attack, re-roll a Hit roll of 1.',
+    factionId: 'TAU',
+    leaderDatasheetId: '000001477',
+    combatType: 'ranged',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'ldr_000001478_enforcer_commander',
+    label: 'Commander In Enforcer Battlesuit — empeora PA atacante (Líder)',
+    description: 'While this model is leading a unit, each time a ranged attack targets that unit, worsen the Armour Penetration characteristic of that attack by 1.',
+    factionId: 'TAU',
+    leaderDatasheetId: '000001478',
+    target: 'defender',
+    combatType: 'ranged',
+    effects: {
+    apMod: -1,
+  },
+  },
+  {
+    id: 'ldr_000003704_ritual_butchery',
+    label: 'Kroot Flesh Shaper — Sustained Hits 1, CaC (Líder)',
+    description: 'While this model is leading a unit, melee weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'TAU',
+    leaderDatasheetId: '000003704',
+    combatType: 'melee',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'ldr_000003704_rites_of_feasting',
+    label: 'Kroot Flesh Shaper — FNP 6+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 6+ ability. If that unit destroys one or more enemy units in the Fight phase, until the end of the battle, models in that unit have the Feel No Pain 5+ ability instead.',
+    factionId: 'TAU',
+    leaderDatasheetId: '000003704',
+    target: 'defender',
+    effects: {
+    feelNoPainThreshold: 6,
+  },
+  },
+  {
+    id: 'aura_000000407_hero_of_the_empire_aura',
+    label: 'Commander Shadowsun — repetir impactos 1 (Aura)',
+    description: 'While a friendly T’AU EMPIRE unit is within 6" of this model, each time a model in that unit makes a ranged attack, re-roll a Hit roll of 1.',
+    factionId: 'TAU',
+    sourceDatasheetId: '000000407',
+    combatType: 'ranged',
+    effects: {
+    rerollHitsOf1: true,
+  },
+  },
+  {
+    id: 'aura_000000431_xv02_pilot_battlesuit',
+    label: 'Longstrike — Lethal Hits, disparo (Aura)',
+    description: 'In your Command phase, you can select one friendly Hammerhead Gunship unit within 12". Until the start of your next Command phase, ranged weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'TAU',
+    sourceDatasheetId: '000000431',
+    combatType: 'ranged',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'aura_000001392_baggage_harness_aura',
+    label: 'Great Knarloc — Sustained Hits 1, disparo (Aura)',
+    description: 'While a friendly Kroot unit is within 3" of the bearer, ranged weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'TAU',
+    sourceDatasheetId: '000001392',
+    combatType: 'ranged',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
 
   // ═══ TS ═══
+  // Dark Pacts: TS es HERETIC ASTARTES.
+  // Cabal of Sorcerers: rituales psíquicos — solo Destiny's Ruin y Twist of Fate afectan al daño.
+  { id: 'ts_dark_pacts_lethal',    label: 'Dark Pacts — Lethal Hits',    description: 'Dark Pacts (HERETIC ASTARTES): superar prueba de Liderazgo o sufrir D3 heridas mortales, ganar [LETHAL HITS] hasta el final de la fase.', factionId: 'TS', effects: { lethalHitsBonus: true } },
+  { id: 'ts_dark_pacts_sustained', label: 'Dark Pacts — Sustained Hits 1', description: 'Dark Pacts (HERETIC ASTARTES): superar prueba de Liderazgo o sufrir D3 heridas mortales, ganar [SUSTAINED HITS 1] hasta el final de la fase.', factionId: 'TS', effects: { sustainedHitsBonus: 1 } },
+  { id: 'ts_cabal_destinys_ruin',       label: "Cabal: Destiny's Ruin — repetir impactos 1",      description: "Destiny's Ruin (Warp Charge 5): re-roll a Hit roll of 1 each time a TS model makes an attack targeting the selected enemy unit.", factionId: 'TS', effects: { rerollHitsOf1: true } },
+  { id: 'ts_cabal_destinys_ruin_full',  label: "Cabal: Destiny's Ruin (10+) — repetir impactos",  description: "Destiny's Ruin (Warp Charge 5, result 10+): re-roll the Hit roll each time a TS model makes an attack targeting the selected enemy unit.", factionId: 'TS', effects: { rerollAllHits: true } },
+  { id: 'ts_cabal_twist_of_fate',       label: 'Cabal: Twist of Fate — +1 PA',                    description: "Twist of Fate (Warp Charge 9): improve the Armour Penetration characteristic of each attack that targets the selected enemy unit by 1.", factionId: 'TS', effects: { apMod: 1 } },
+  { id: 'ts_cabal_twist_of_fate_full',  label: 'Cabal: Twist of Fate (12+) — +2 PA',              description: "Twist of Fate (Warp Charge 9, result 12+): improve the Armour Penetration characteristic of each attack that targets the selected enemy unit by 2.", factionId: 'TS', effects: { apMod: 2 } },
   {
     id: 'ts_methodical_conquest',
     label: 'Methodical Conquest — crítico 5+',
@@ -6601,8 +8821,61 @@ export const MODIFIER_RULES: ModifierRule[] = [
     woundMod: 1,
   },
   },
+  {
+    id: 'ldr_000001016_empyric_guidance_psychic',
+    label: 'Sorcerer — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'TS',
+    leaderDatasheetId: '000001016',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000001017_empyric_guidance_psychic',
+    label: 'Sorcerer In Terminator Armour — Lethal Hits (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'TS',
+    leaderDatasheetId: '000001017',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'ldr_000001472_bestial_prophet',
+    label: 'Tzaangor Shaman — +1 impactar (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, add 1 to the Hit roll.',
+    factionId: 'TS',
+    leaderDatasheetId: '000001472',
+    effects: {
+    hitMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000002500_malefic_maelstrom_psychic',
+    label: 'Infernal Master — Sustained Hits 1 (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'TS',
+    leaderDatasheetId: '000002500',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'aura_000004124_daemon_lord_of_tzeentch_aura',
+    label: 'Lord of Change — +1 F (Aura)',
+    description: 'While a friendly Scintillating Legions unit is within 6" of this model, each time a model in that unit makes a ranged attack, add 1 to the Strength characteristic of that attack.',
+    factionId: 'TS',
+    sourceDatasheetId: '000004124',
+    combatType: 'ranged',
+    effects: {
+    strengthMod: 1,
+  },
+  },
 
   // ═══ TYR ═══
+  // Synapse: mientras la unidad esté a 6" de un modelo Synapse, +1 Fuerza en ataques CaC.
+  { id: 'tyr_synapse', label: 'Sinapse — +1 Fuerza (CaC)', description: "Synapse: while a TYRANIDS unit is within 6\" of one or more friendly Synapse models, add 1 to the Strength characteristic of each melee attack made by models in that unit.", factionId: 'TYR', combatType: 'melee', effects: { strengthMod: 1 } },
   {
     id: 'tyr_hyper_adaptations',
     label: 'Hyper-adaptations — Lethal Hits, Sustained Hits 1',
@@ -6682,7 +8955,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'tyr_secure_biomass',
-    label: 'SECURE BIOMASS — crítico 5+, Lethal Hits, CàC (1CP)',
+    label: 'SECURE BIOMASS — crítico 5+, Lethal Hits, CaC (1CP)',
     description: 'Assimilation Swarm: Until the end of the phase, melee weapons equipped by models in your unit have the [LETHAL HITS] ability. If your unit is a Harvester unit, each time a model in that unit makes a melee attack, a successful unmodified Hit roll of 5+ scores a Critical',
     factionId: 'TYR',
     detachmentId: '000000771',
@@ -6723,7 +8996,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'tyr_rampaging_monstrosities',
-    label: 'RAMPAGING MONSTROSITIES — repetir impactos, CàC (1CP)',
+    label: 'RAMPAGING MONSTROSITIES — repetir impactos, CaC (1CP)',
     description: 'Crusher Stampede: Until the end of the phase, each time a model in your unit makes an attack, you can re-roll the Hit roll.',
     factionId: 'TYR',
     detachmentId: '000000769',
@@ -6736,7 +9009,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'tyr_savage_roar',
-    label: 'SAVAGE ROAR — -1 impactar, -1 herir, CàC (1CP)',
+    label: 'SAVAGE ROAR — -1 impactar, -1 herir, CaC (1CP)',
     description: 'Crusher Stampede: That enemy unit must take a Battle-shock test and, until the end of the phase, each time a model in that enemy unit makes an attack that targets your unit, subtract 1 from the Hit roll. If that Battle-shock test was failed, subtract 1 from the Wound',
     factionId: 'TYR',
     detachmentId: '000000769',
@@ -6763,7 +9036,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'tyr_adrenal_surge',
-    label: 'ADRENAL SURGE — crítico 5+, CàC (2CP)',
+    label: 'ADRENAL SURGE — crítico 5+, CaC (2CP)',
     description: 'Invasion Fleet: Until the end of the phase, each time a model in any of those selected units makes an attack, an unmodified Hit roll of 5+ scores a Critical Hit.',
     factionId: 'TYR',
     detachmentId: '000000748',
@@ -6802,7 +9075,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'tyr_bio_acid_surge',
-    label: 'BIO-ACID SURGE — Sustained Hits 1, CàC (1CP)',
+    label: 'BIO-ACID SURGE — Sustained Hits 1, CaC (1CP)',
     description: 'Tyranid Attack: Until the end of the phase, melee weapons equipped by models in your unit have the [SUSTAINED HITS 1] ability.',
     factionId: 'TYR',
     detachmentId: '000000973',
@@ -6904,11 +9177,81 @@ export const MODIFIER_RULES: ModifierRule[] = [
     strengthMod: 2,
   },
   },
+  {
+    id: 'ldr_000000462_alpha_leader',
+    label: 'Old One Eye — repetir impactos (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, you can re-roll the Hit roll.',
+    factionId: 'TYR',
+    leaderDatasheetId: '000000462',
+    effects: {
+    rerollAllHits: true,
+  },
+  },
+  {
+    id: 'ldr_000002688_node_lash_psychic',
+    label: 'Neurotyrant — +1 impactar, +1 herir (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes an attack, add 1 to the Hit roll. If the target is Battle-shocked, add 1 to the Wound roll as well.',
+    factionId: 'TYR',
+    leaderDatasheetId: '000002688',
+    effects: {
+    hitMod: 1,
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'ldr_000002694_alpha_warrior',
+    label: 'Winged Tyranid Prime — Sustained Hits 1 (Líder)',
+    description: 'While this model is leading a unit, weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'TYR',
+    leaderDatasheetId: '000002694',
+    effects: {
+    sustainedHitsBonus: 1,
+  },
+  },
+  {
+    id: 'aura_000000460_onslaught_aura_psychic',
+    label: 'Hive Tyrant — Lethal Hits, disparo (Aura)',
+    description: 'While a friendly TYRANIDS unit is within 6" of this model, ranged weapons equipped by models in that unit have the [ASSAULT] and [LETHAL HITS] abilities.',
+    factionId: 'TYR',
+    sourceDatasheetId: '000000460',
+    combatType: 'ranged',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+  {
+    id: 'aura_000000465_brood_progenitor_aura_psychic',
+    label: 'Tervigon — Lethal Hits, disparo (Aura)',
+    description: 'While a friendly Termagants unit is within 6" of this model, ranged weapons equipped by models in that unit have the [LETHAL HITS] ability.',
+    factionId: 'TYR',
+    sourceDatasheetId: '000000465',
+    combatType: 'ranged',
+    effects: {
+    lethalHitsBonus: true,
+  },
+  },
+
+  // ═══ UN ═══
+  {
+    id: 'aura_000002363_drone_commander_aura',
+    label: 'Guardian Drone — +1 impactar (Aura)',
+    description: 'While a friendly Spindle Drones unit is within 6" of this model, each time a model in that unit makes an attack, add 1 to the Hit roll.',
+    factionId: 'UN',
+    sourceDatasheetId: '000002363',
+    effects: {
+    hitMod: 1,
+  },
+  },
 
   // ═══ WE ═══
+  // Dark Pacts: WE es HERETIC ASTARTES; Blessings of Khorne: tirar D6 al inicio de cada ronda de batalla
+  { id: 'we_dark_pacts_lethal',    label: 'Dark Pacts — Lethal Hits',    description: 'Dark Pacts (HERETIC ASTARTES): superar prueba de Liderazgo o sufrir D3 heridas mortales, ganar [LETHAL HITS] hasta el final de la fase.', factionId: 'WE', effects: { lethalHitsBonus: true } },
+  { id: 'we_dark_pacts_sustained', label: 'Dark Pacts — Sustained Hits 1', description: 'Dark Pacts (HERETIC ASTARTES): superar prueba de Liderazgo o sufrir D3 heridas mortales, ganar [SUSTAINED HITS 1] hasta el final de la fase.', factionId: 'WE', effects: { sustainedHitsBonus: 1 } },
+  { id: 'we_blessings_martial_excellence', label: 'Blessings of Khorne: Martial Excellence — Sustained Hits 1 (CaC)', description: "MARTIAL EXCELLENCE: melee weapons equipped by models in this unit have the [SUSTAINED HITS 1] ability.", factionId: 'WE', combatType: 'melee', effects: { sustainedHitsBonus: 1 } },
+  { id: 'we_blessings_warp_blades',        label: 'Blessings of Khorne: Warp Blades — Lethal Hits (CaC)',           description: "WARP BLADES: melee weapons equipped by models in this unit have the [LETHAL HITS] ability.", factionId: 'WE', combatType: 'melee', effects: { lethalHitsBonus: true } },
   {
     id: 'we_relentless_rage',
-    label: 'Relentless Rage — +2 F, CàC',
+    label: 'Relentless Rage — +2 F, CaC',
     description: 'Each time a World Eaters unit from your army makes a Charge move, until the end of the turn, add 1 to the Attacks characteristic and add 2 to the Strength characteristic of melee weapons equipped by models in that unit.',
     factionId: 'WE',
     detachmentId: '000000777',
@@ -6930,7 +9273,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'we_hack_and_slash',
-    label: 'HACK AND SLASH — +1 PA, CàC (1CP)',
+    label: 'HACK AND SLASH — +1 PA, CaC (1CP)',
     description: 'Berzerker Warband: Until the end of the phase, improve the Armour Penetration characteristic of melee weapons equipped by models in your unit by 1.',
     factionId: 'WE',
     detachmentId: '000000777',
@@ -6943,7 +9286,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'we_frenzied_resilience',
-    label: 'FRENZIED RESILIENCE — −1 daño, CàC (2CP)',
+    label: 'FRENZIED RESILIENCE — −1 daño, CaC (2CP)',
     description: 'Berzerker Warband: Until the end of the phase, each time an attack is allocated to a model in your unit, subtract 1 from the Damage characteristic of that attack.',
     factionId: 'WE',
     detachmentId: '000000777',
@@ -6996,7 +9339,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'we_fail_not_the_blood_god',
-    label: 'FAIL NOT THE BLOOD GOD — repetir impactos 1, CàC (1CP)',
+    label: 'FAIL NOT THE BLOOD GOD — repetir impactos 1, CaC (1CP)',
     description: 'Cult of Blood: Until the end of the phase, each time a model in your unit makes an attack, re-roll a Hit roll of 1. If that model’s unit is within 6" of one or more friendly World Eaters Monster units, or within 9" of one or more friendly World Eaters Titanic units',
     factionId: 'WE',
     detachmentId: '000001042',
@@ -7009,7 +9352,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'we_daemonic_strength',
-    label: 'DAEMONIC STRENGTH — +1 daño, CàC (1CP)',
+    label: 'DAEMONIC STRENGTH — +1 daño, CaC (1CP)',
     description: 'Possessed Slaughterband: Until the end of the phase, each time an attack made by a model in your unit is allocated to an enemy model, if your unit has the Eightbound keyword and that enemy model is not a MONSTER or VEHICLE , add 1 to the Damage characteristic of that attack.',
     factionId: 'WE',
     detachmentId: '000001044',
@@ -7035,7 +9378,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'we_aspire_to_infamy',
-    label: 'ASPIRE TO INFAMY — +1 PA, CàC (1CP)',
+    label: 'ASPIRE TO INFAMY — +1 PA, CaC (1CP)',
     description: 'Vessels of Wrath: Until the end of the phase, improve the Strength and Armour Penetration characteristics of melee weapons equipped by non- CHARACTER models in your unit by 1.',
     factionId: 'WE',
     detachmentId: '000001007',
@@ -7048,7 +9391,7 @@ export const MODIFIER_RULES: ModifierRule[] = [
   },
   {
     id: 'we_overshadowed_by_none',
-    label: 'OVERSHADOWED BY NONE — repetir heridas, CàC (1CP)',
+    label: 'OVERSHADOWED BY NONE — repetir heridas, CaC (1CP)',
     description: 'Vessels of Wrath: Until the end of the phase, each time a model in your unit makes an attack that targets a MONSTER or VEHICLE unit, you can re-roll the Wound roll.',
     factionId: 'WE',
     detachmentId: '000001007',
@@ -7073,4 +9416,6563 @@ export const MODIFIER_RULES: ModifierRule[] = [
     woundMod: -1,
   },
   },
+  {
+    id: 'ldr_000002622_legendary_killer',
+    label: 'Khârn The Betrayer — repetir impactos 1, repetir heridas 1 (Líder)',
+    description: 'While this model is leading a unit, each time a model in that unit makes a melee attack, re-roll a Hit roll of 1 and re-roll a Wound roll of 1.',
+    factionId: 'WE',
+    leaderDatasheetId: '000002622',
+    combatType: 'melee',
+    effects: {
+    rerollHitsOf1: true,
+    rerollWoundsOf1: true,
+  },
+  },
+  {
+    id: 'aura_000002630_beacons_of_rage_aura',
+    label: 'Eightbound — +1 impactar, +1 herir (Aura)',
+    description: 'While a friendly WORLD EATERS unit is within 6" of this unit, each time a model in that unit makes a melee attack that targets a unit (excluding MONSTERS and VEHICLES ), add 1 to the Hit roll. If that attack targets a unit (excluding MONSTERS and VEHICLES ) that is Below Half-strength, add 1 to the',
+    factionId: 'WE',
+    sourceDatasheetId: '000002630',
+    combatType: 'melee',
+    effects: {
+    hitMod: 1,
+    woundMod: 1,
+  },
+  },
+  {
+    id: 'aura_000004105_daemon_lord_of_khorne_aura',
+    label: 'Bloodthirster — +1 impactar (Aura)',
+    description: 'While a friendly Blood Legions unit is within 6" of this model, each time a model in that unit makes a melee attack, add 1 to the Hit roll.',
+    factionId: 'WE',
+    sourceDatasheetId: '000004105',
+    combatType: 'melee',
+    effects: {
+    hitMod: 1,
+  },
+  },
+
+  // ── Habilidades "Una vez por partida" de personajes ──────────────────────────
+  { id: 'opb_000001446_trajann', label: '[OPB] Trajann Valoris — +12 ataques', factionId: 'AC', leaderDatasheetId: '000001446', effects: { attacksMod: 12 } },
+  { id: 'opb_000000571_asurmen', label: '[OPB] Asurmen — crítico 4+ (Devastating Wounds)', factionId: 'AE', leaderDatasheetId: '000000571', effects: { critThreshold: 4 } },
+  { id: 'opb_000002538_solitaire_ae', label: '[OPB] Solitaire — +3 ataques', factionId: 'AE', leaderDatasheetId: '000002538', effects: { attacksMod: 3 } },
+  { id: 'opb_000000714_harker', label: '[OPB] Sergeant Harker — +6 ataques, Sustained +3', factionId: 'AM', leaderDatasheetId: '000000714', effects: { attacksMod: 6, sustainedHitsBonus: 3 } },
+  { id: 'opb_000000899_canoness', label: '[OPB] Canoness — Inv 2+ (Defensor)', factionId: 'AS', leaderDatasheetId: '000000899', target: 'defender', effects: { feelNoPainThreshold: 2 } },
+  { id: 'opb_000003714_canoness_jp', label: '[OPB] Canoness con Jump Pack — +3 ataques, crítico 5+ CaC', factionId: 'AS', leaderDatasheetId: '000003714', combatType: 'melee', effects: { attacksMod: 3, critThreshold: 5 } },
+  { id: 'opb_000003811_aveline', label: '[OPB] Celestian Sacresant Aveline — +3 ataques, crítico 5+ CaC', factionId: 'AS', leaderDatasheetId: '000003811', combatType: 'melee', effects: { attacksMod: 3, critThreshold: 5 } },
+  { id: 'opb_000001580_manipulus', label: '[OPB] Tech-priest Manipulus — FNP 4+ (Invuln)', factionId: 'AdM', leaderDatasheetId: '000001580', target: 'defender', effects: { feelNoPainThreshold: 4 } },
+  { id: 'opb_000000872_eversor', label: '[OPB] Eversor Assassin — +3 ataques (CaC)', factionId: 'AoI', leaderDatasheetId: '000000872', combatType: 'melee', effects: { attacksMod: 3 } },
+  { id: 'opb_000000870_vindicare', label: '[OPB] Vindicare Assassin — +1 herir, crítico 5+', factionId: 'AoI', leaderDatasheetId: '000000870', effects: { woundMod: 1, critThreshold: 5 } },
+  { id: 'opb_000001149_daemon_prince', label: '[OPB] Daemon Prince of Chaos — FNP 3+ (Defender)', factionId: 'CD', leaderDatasheetId: '000001149', target: 'defender', effects: { feelNoPainThreshold: 3 } },
+  { id: 'opb_000002758_daemon_prince_wings', label: '[OPB] Daemon Prince with Wings — +3 ataques', factionId: 'CD', leaderDatasheetId: '000002758', effects: { attacksMod: 3 } },
+  { id: 'opb_000004046_dark_commune_cd', label: '[OPB] Dark Commune — +1 impactar, +1 herir', factionId: 'CD', leaderDatasheetId: '000004046', effects: { hitMod: 1, woundMod: 1 } },
+  { id: 'opb_000002569_dark_commune_csm', label: '[OPB] Dark Commune — +1 impactar, +1 herir', factionId: 'CSM', leaderDatasheetId: '000002569', effects: { hitMod: 1, woundMod: 1 } },
+  { id: 'opb_000000640_lelith', label: '[OPB] Lelith Hesperax — FNP 3+ (Defender), +6 ataques CaC', factionId: 'DRU', leaderDatasheetId: '000000640', combatType: 'melee', effects: { feelNoPainThreshold: 3, attacksMod: 6 } },
+  { id: 'opb_000004160_solitaire_dru', label: '[OPB] Solitaire (DRU) — +3 ataques', factionId: 'DRU', leaderDatasheetId: '000004160', effects: { attacksMod: 3 } },
+  { id: 'opb_000004078_lord_exultant', label: '[OPB] Lord Exultant — +3 ataques, +1 AP', factionId: 'EC', leaderDatasheetId: '000004078', effects: { attacksMod: 3, apMod: 1 } },
+  { id: 'ldr_000001572_biophagus_lethal', label: 'Biophagus — Lethal Hits (CaC)', description: 'Twisted Science: while this model is leading a unit, melee weapons equipped by models in that unit have the [LETHAL HITS] ability.', factionId: 'GC', leaderDatasheetId: '000001572', combatType: 'melee', followerDatasheetIds: ['000000511','000003716','000000512'], effects: { lethalHitsBonus: true } },
+  { id: 'opb_000001572_biophagus', label: '[OPB] Biophagus — +1 herir vs INFANTRY (CaC)', factionId: 'GC', leaderDatasheetId: '000001572', combatType: 'melee', followerDatasheetIds: ['000000511','000003716','000000512'], effects: { woundMod: 1 } },
+  { id: 'opb_000003715_benefictus', label: '[OPB] Benefictus — FNP 4+ (Defender)', factionId: 'GC', leaderDatasheetId: '000003715', target: 'defender', effects: { feelNoPainThreshold: 4 } },
+  { id: 'opb_000000375_grand_master', label: '[OPB] Grand Master (GK) — +3 ataques, +3 Fuerza CaC', factionId: 'GK', leaderDatasheetId: '000000375', combatType: 'melee', effects: { attacksMod: 3, strengthMod: 3 } },
+  { id: 'opb_000000530_orikan', label: '[OPB] Orikan the Diviner — +4 ataques, +4 Fuerza, crítico 4+', factionId: 'NEC', leaderDatasheetId: '000000530', effects: { attacksMod: 4, strengthMod: 4, critThreshold: 4 } },
+  { id: 'opb_000002080_big_mek_kff', label: '[OPB] Big Mek with KFF — FNP 4+ (Defender)', factionId: 'ORK', leaderDatasheetId: '000002080', target: 'defender', effects: { feelNoPainThreshold: 4 } },
+  { id: 'opb_000003845_dark_commune_qt', label: '[OPB] Dark Commune (QT) — +1 impactar, +1 herir', factionId: 'QT', leaderDatasheetId: '000003845', effects: { hitMod: 1, woundMod: 1 } },
+  { id: 'opb_000000218_azrael', label: '[OPB] Azrael — FNP 4+ (Defender)', factionId: 'SM', leaderDatasheetId: '000000218', target: 'defender', effects: { feelNoPainThreshold: 4 } },
+  { id: 'opb_000001165_bg_ancient', label: '[OPB] Bladeguard Ancient — +1 ataque (CaC)', factionId: 'SM', leaderDatasheetId: '000001165', combatType: 'melee', followerDatasheetIds: ['000000071'], effects: { attacksMod: 1 } },
+  { id: 'opb_000003831_ba_captain', label: '[OPB] Blood Angels Captain — +3 ataques, crítico 5+ CaC', factionId: 'SM', leaderDatasheetId: '000003831', combatType: 'melee', effects: { attacksMod: 3, critThreshold: 5 } },
+  { id: 'opb_000000073_captain', label: '[OPB] Captain — +3 ataques, crítico 5+ CaC', factionId: 'SM', leaderDatasheetId: '000000073', combatType: 'melee', effects: { attacksMod: 3, critThreshold: 5 } },
+  { id: 'opb_000001611_tigurius', label: '[OPB] Chief Librarian Tigurius — -1 impactar (Defensor)', factionId: 'SM', leaderDatasheetId: '000001611', target: 'defender', effects: { hitMod: -1 } },
+  { id: 'opb_000002105_lysander', label: '[OPB] Darnath Lysander — FNP 2+ (Defender)', factionId: 'SM', leaderDatasheetId: '000002105', target: 'defender', effects: { feelNoPainThreshold: 2 } },
+  { id: 'opb_000002795_ec_champion', label: "[OPB] Emperor's Champion — crítico 5+", factionId: 'SM', leaderDatasheetId: '000002795', effects: { critThreshold: 5 } },
+  { id: 'opb_000000283_grimnar', label: '[OPB] Logan Grimnar — repetir todos los impactos', factionId: 'SM', leaderDatasheetId: '000000283', effects: { rerollAllHits: true } },
+  { id: 'opb_000002713_pedro_kantor', label: '[OPB] Pedro Kantor — +1 ataque', factionId: 'SM', leaderDatasheetId: '000002713', effects: { attacksMod: 1 } },
+  { id: 'opb_000000409_aunva', label: "[OPB] Aun'va — FNP 2+ (Defender)", factionId: 'TAU', leaderDatasheetId: '000000409', target: 'defender', effects: { feelNoPainThreshold: 2 } },
+  { id: 'opb_000004103_slaughterbound', label: '[OPB] Slaughterbound — +3 ataques, crítico 5+ CaC', factionId: 'WE', leaderDatasheetId: '000004103', combatType: 'melee', effects: { attacksMod: 3, critThreshold: 5 } },
+
+  // ── Estratagemas de re-roll de daño ─────────────────────────────────────────
+
+  // ── AE Armoured Warhost (000000990) — estrat completo ───────────────────────
+  { id: 'ae_soulsight_warhost', label: 'SOULSIGHT — repetir 1 impacto/1 herida/1 daño, disparo (AE Warhost, 1CP)', description: 'Armoured Warhost: Until the end of the phase, each time your unit is selected to shoot, you can re-roll one Hit roll, one Wound roll and one Damage roll made for a model in your unit.', factionId: 'AE', detachmentId: '000000990', combatType: 'ranged', isStratagem: true, cpCost: 1, effects: { rerollHitsOf1: true, rerollWoundsOf1: true, rerollDamageOf1: true } },
+  { id: 'ae_layered_wards', label: 'LAYERED WARDS — FNP 5+ vs heridas mortales (AE Warhost, 1CP)', description: 'Armoured Warhost: Until the end of the phase, models in your unit have the Feel No Pain 5+ ability against mortal wounds.', factionId: 'AE', detachmentId: '000000990', isStratagem: true, cpCost: 1, target: 'defender', effects: { feelNoPainThreshold: 5 } },
+
+  // ── AdM Cohort Cybernetica (000000823) ──────────────────────────────────────
+  { id: 'adm_auto_divinatory', label: 'AUTO-DIVINATORY TARGETING — BS 3+ e ignora cobertura, disparo (AdM Cybernetica, 1CP)', description: 'Cohort Cybernetica: Until the start of your next Command phase, ranged weapons equipped by models in your unit have a Ballistic Skill characteristic of 3+ and the [IGNORES COVER] ability.', factionId: 'AdM', detachmentId: '000000823', combatType: 'ranged', isStratagem: true, cpCost: 1, effects: { hitMod: 1 } },
+  { id: 'adm_benevolence', label: 'BENEVOLENCE OF THE OMNISSIAH — FNP 6+ (AdM Cybernetica, 1CP)', description: 'Cohort Cybernetica: Until the start of your next Command phase, models in your unit have the Feel No Pain 6+ ability.', factionId: 'AdM', detachmentId: '000000823', isStratagem: true, cpCost: 1, target: 'defender', effects: { feelNoPainThreshold: 6 } },
+  { id: 'adm_machine_spirit_resurgent', label: 'MACHINE SPIRIT RESURGENT — repetir todos los impactos (AdM Cybernetica, 1CP)', description: 'Cohort Cybernetica: Until the start of your next Command phase, each time a model in your unit makes an attack, you can re-roll the Hit roll. If your unit is Below Half-strength, you can re-roll the Wound roll as well.', factionId: 'AdM', detachmentId: '000000823', isStratagem: true, cpCost: 1, effects: { rerollAllHits: true } },
+
+
+  // ── Unidades y líderes generados desde CSV ────────────────────────────────
+  // ─── AC generated entries ───────────────────
+  {
+    id: 'unit_000000882_stand_vigil',
+    label: 'Custodian Guard — repetir her.1',
+    description: 'Each time a model in this unit makes an attack, re-roll a Wound roll of 1. While this unit is within range of an objective marker you control, you can re-roll the Wound roll instead.',
+    factionId: 'AC',
+    datasheetId: '000000882',
+    effects: {
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000001450_resolute_will',
+    label: 'Custodian Wardens — -1 herir',
+    description: 'While a CHARACTER is leading this unit, each time an attack targets this unit, if the Strength characteristic of that attack is greater than the Toughness characteristic of this unit, subtract 1 from the Wound roll.',
+    factionId: 'AC',
+    datasheetId: '000001450',
+    target: 'defender',
+    effects: {
+      woundMod: -1,
+    },
+  },
+  {
+    id: 'opb_000001450_living_fortress',
+    label: 'Custodian Wardens — FNP 4+ [OPB]',
+    description: 'Once per battle, at the start of any phase, this unit can use this ability. If it does, until the end of the phase, models in this unit have the Feel No Pain 4+ ability.',
+    factionId: 'AC',
+    datasheetId: '000001450',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000001453_slayers_of_tyrants',
+    label: 'Allarus Custodians — repetir heridas',
+    description: 'Each time a model in this unit makes an attack that targets a CHARACTER, MONSTER or VEHICLE unit, you can re-roll the Wound roll.',
+    factionId: 'AC',
+    datasheetId: '000001453',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000001460_advanced_firepower',
+    label: 'Caladius Grav-tank — Lethal Hits',
+    description: 'Each time this model makes an attack with its twin iliastus accelerator cannon that targets an enemy unit (excluding MONSTERS and VEHICLES), that attack has the [LETHAL HITS] ability. Each time this model makes an attack with its twin arachnus heavy blaze cannon that targets an enemy MONSTER or VEHI',
+    factionId: 'AC',
+    datasheetId: '000001460',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+  {
+    id: 'unit_000001461_fire_support',
+    label: 'Coronus Grav-carrier — repetir heridas disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit hit by one or more of those attacks. Until the end of the phase, each time a friendly model that disembarked from this TRANSPORT this turn makes an attack that targets that enemy unit, you can re-roll the Wound roll.',
+    factionId: 'AC',
+    datasheetId: '000001461',
+    combatType: 'ranged',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000001479_devoted_to_destruction',
+    label: 'Telemon Heavy Dreadnought — +2 Ataques',
+    description: 'If this model is equipped with 2 Telemon caestus weapons in addition to its armoured feet weapon, add 2 to the Attacks characteristic of those Telemon caestus weapons.',
+    factionId: 'AC',
+    datasheetId: '000001479',
+    effects: {
+      attacksMod: 2,
+    },
+  },
+  {
+    id: 'unit_000001557_galatus_shield',
+    label: 'Contemptor-galatus Dreadnought — -1 herir CaC',
+    description: 'Each time a melee attack targets this model, subtract 1 from the Wound roll.',
+    factionId: 'AC',
+    datasheetId: '000001557',
+    combatType: 'melee',
+    target: 'defender',
+    effects: {
+      woundMod: -1,
+    },
+  },
+  {
+    id: 'unit_000001558_heavy_assault_infantry',
+    label: 'Aquilon Custodians — repetir her.1 disparo',
+    description: 'Each time a model in this unit makes a ranged attack that targets the closest eligible target, re-roll a Wound roll of 1.',
+    factionId: 'AC',
+    datasheetId: '000001558',
+    combatType: 'ranged',
+    effects: {
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000001559_stand_vigil',
+    label: 'Custodian Guard With Adrasite And Pyrithite Spears — repetir her.1',
+    description: 'Each time a model in this unit makes an attack, re-roll a Wound roll of 1. While this unit is within range of an objective marker you control, you can re-roll the Wound roll instead.',
+    factionId: 'AC',
+    datasheetId: '000001559',
+    effects: {
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'opb_000001559_no_foe_shall_stand',
+    label: 'Custodian Guard With Adrasite And Pyrithite Spears — Lethal Hits disparo [OPB]',
+    description: 'Once per battle, at the start of your Shooting phase, this unit can use this ability. If it does, until the end of the phase, ranged weapons equipped by models in this unit have the [LETHAL HITS] and [IGNORES COVER] abilities.',
+    factionId: 'AC',
+    datasheetId: '000001559',
+    combatType: 'ranged',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+  {
+    id: 'unit_000001562_merciless_hunter',
+    label: 'Pallas Grav-attack — +1 herir disparo',
+    description: 'In your Shooting phase, each time this model makes an attack that targets an enemy unit that is Below Half-strength, add 1 to the Wound roll.',
+    factionId: 'AC',
+    datasheetId: '000001562',
+    combatType: 'ranged',
+    effects: {
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000001563_saturation_volleys',
+    label: 'Sagittarum Custodians — -1 impactar disparo',
+    description: 'In your Shooting phase, after this unit has shot, select one enemy unit (excluding MONSTERS and VEHICLES) hit by one or more of those attacks. Until the start of your next turn, while this unit is on the battlefield, that enemy unit is suppressed. While a unit is suppressed, each time a model in tha',
+    factionId: 'AC',
+    datasheetId: '000001563',
+    combatType: 'ranged',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000002520_daughter_of_the_abyss',
+    label: 'Knight-centura — FNP 3+',
+    description: 'This model has the Feel No Pain 3+ ability against Psychic Attacks and mortal wounds.',
+    factionId: 'AC',
+    datasheetId: '000002520',
+    effects: {
+      feelNoPainThreshold: 3,
+    },
+  },
+  {
+    id: 'unit_000002521_daughters_of_the_abyss',
+    label: 'Prosecutors — FNP 3+',
+    description: 'Models in this unit have the Feel No Pain 3+ ability against Psychic Attacks and mortal wounds.',
+    factionId: 'AC',
+    datasheetId: '000002521',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 3,
+    },
+  },
+  {
+    id: 'unit_000002522_daughters_of_the_abyss',
+    label: 'Vigilators — FNP 3+',
+    description: 'Models in this unit have the Feel No Pain 3+ ability against Psychic Attacks and mortal wounds.',
+    factionId: 'AC',
+    datasheetId: '000002522',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 3,
+    },
+  },
+  {
+    id: 'unit_000002522_deft_parry',
+    label: 'Vigilators — -1 impactar CaC',
+    description: 'Each time a melee attack targets this unit, subtract 1 from the Hit roll.',
+    factionId: 'AC',
+    datasheetId: '000002522',
+    combatType: 'melee',
+    target: 'defender',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000002523_daughters_of_the_abyss',
+    label: 'Witchseekers — FNP 3+',
+    description: 'Models in this unit have the Feel No Pain 3+ ability against Psychic Attacks and mortal wounds.',
+    factionId: 'AC',
+    datasheetId: '000002523',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 3,
+    },
+  },
+  {
+    id: 'unit_000002524_daughters_of_the_abyss',
+    label: 'Anathema Psykana Rhino — FNP 3+',
+    description: 'This model has the Feel No Pain 3+ ability against Psychic Attacks and mortal wounds.',
+    factionId: 'AC',
+    datasheetId: '000002524',
+    effects: {
+      feelNoPainThreshold: 3,
+    },
+  },
+
+  // ─── AE generated entries ───────────────────
+  {
+    id: 'unit_000000568_doom_psychic',
+    label: 'Eldrad Ulthran — +1 herir',
+    description: 'At the end of your Movement phase, select one enemy unit within 18" of and visible to this model. Until the start of your next Command phase, each time a friendly AELDARI model makes an attack that targets that enemy unit, add 1 to the Wound roll.',
+    factionId: 'AE',
+    datasheetId: '000000568',
+    effects: {
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000572_storm_of_silence',
+    label: 'Jain Zar — repetir heridas',
+    description: 'Each time this model makes an attack that targets a CHARACTER unit, you can re-roll the Wound roll.',
+    factionId: 'AE',
+    datasheetId: '000000572',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000000582_guide_psychic',
+    label: 'Farseer — +1 impactar',
+    description: 'At the end of your Movement phase, select one enemy unit within 18" of and visible to this model. Until the start of your next Command phase, each time a friendly AELDARI model makes an attack that targets that enemy unit, add 1 to the Hit roll. Each unit can only be selected for this ability once p',
+    factionId: 'AE',
+    datasheetId: '000000582',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000583_misfortune_psychic',
+    label: 'Farseer Skyrunner — -1 herir',
+    description: 'At the end of your Movement phase, select one enemy unit within 18" of and visible to this model. Until the start of your next Command phase, each time a model in that unit makes an attack, subtract 1 from the Wound roll. Each unit can only be selected for this ability once per turn.',
+    factionId: 'AE',
+    datasheetId: '000000583',
+    effects: {
+      woundMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000584_protect_psychic',
+    label: 'Warlock Conclave — -1 herir',
+    description: 'While a Farseer model is leading this unit, each time an attack targets this unit, subtract 1 from the Wound roll.',
+    factionId: 'AE',
+    datasheetId: '000000584',
+    target: 'defender',
+    effects: {
+      woundMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000588_spirit_mark_psychic',
+    label: 'Spiritseer — Sustained 1',
+    description: 'Once per turn, in your Movement phase, when this model starts or ends a move, select one friendly Wraith Construct unit within 6" of this model (excluding TITANIC units) and one enemy unit visible to this model. Until the start of your next Movement phase, weapons equipped by models in that friendly',
+    factionId: 'AE',
+    datasheetId: '000000588',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'unit_000000591_swift_demise',
+    label: 'Windriders — repetir imp.1 disparo',
+    description: 'Each time a model in this unit makes a ranged attack, re-roll a Hit roll of 1. If the target of that attack is the closest eligible target, you can re-roll the Hit roll instead.',
+    factionId: 'AE',
+    datasheetId: '000000591',
+    combatType: 'ranged',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000000593_bladestorm',
+    label: 'Dire Avengers — Sustained 1 disparo',
+    description: 'Ranged weapons equipped by models in this unit have the [SUSTAINED HITS 1] ability while targeting an enemy unit within half range.',
+    factionId: 'AE',
+    datasheetId: '000000593',
+    combatType: 'ranged',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'unit_000000595_mandiblasters',
+    label: 'Striking Scorpions — crit 5+ CaC',
+    description: 'Each time a model in this unit makes a melee attack, if it made a Charge move this turn, an unmodified Hit roll of 5+ scores a Critical Hit.',
+    factionId: 'AE',
+    datasheetId: '000000595',
+    combatType: 'melee',
+    effects: {
+      critThreshold: 5,
+    },
+  },
+  {
+    id: 'unit_000000596_assured_destruction',
+    label: 'Fire Dragons — repetir impactos, repetir heridas disparo',
+    description: 'In your Shooting phase, each time a model in this unit makes a ranged attack that targets a MONSTER or VEHICLE unit, you can re-roll the Hit roll, you can re-roll the Wound roll and you can re-roll the Damage roll.',
+    factionId: 'AE',
+    datasheetId: '000000596',
+    combatType: 'ranged',
+    effects: {
+      rerollAllHits: true,
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000000597_psychic_guidance',
+    label: 'Wraithguard — +1 impactar',
+    description: 'While this unit is within 12" of one or more friendly Aeldari Psyker models, models in this unit have a Leadership characteristic of 6+ and each time a model in this unit makes an attack, add 1 to the Hit roll.',
+    factionId: 'AE',
+    datasheetId: '000000597',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000598_psychic_guidance',
+    label: 'Wraithblades — +1 impactar',
+    description: 'While this unit is within 12" of one or more friendly Aeldari Psyker models, models in this unit have a Leadership characteristic of 6+ and each time a model in this unit makes an attack, add 1 to the Hit roll.',
+    factionId: 'AE',
+    datasheetId: '000000598',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000599_wave_serpent_shield',
+    label: 'Wave Serpent — -1 herir disparo',
+    description: 'Each time a ranged attack targets this model, if the Strength characteristic of that attack is greater than the Toughness characteristic of this model, subtract 1 from the Wound roll.',
+    factionId: 'AE',
+    datasheetId: '000000599',
+    combatType: 'ranged',
+    target: 'defender',
+    effects: {
+      woundMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000603_skyhunter',
+    label: 'Crimson Hunter — +1 impactar, +1 herir disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that can FLY, add 1 to the Hit roll and add 1 to the Wound roll.',
+    factionId: 'AE',
+    datasheetId: '000000603',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000605_harassment_fire',
+    label: 'Vypers — -1 impactar disparo',
+    description: 'In your Shooting phase, after this unit has shot, select one enemy unit hit by one or more of those attacks. Until the start of your next turn, that enemy unit is suppressed. While a unit is suppressed, each time a model in that unit makes an attack, subtract 1 from the Hit roll.',
+    factionId: 'AE',
+    datasheetId: '000000605',
+    combatType: 'ranged',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000609_fire_support',
+    label: 'Falcon — repetir heridas disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit hit by one or more of those attacks. Until the end of the turn, each time a friendly model that disembarked from this TRANSPORT this turn makes an attack that targets that enemy unit, you can re-roll the Wound roll.',
+    factionId: 'AE',
+    datasheetId: '000000609',
+    combatType: 'ranged',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000000612_crystalline_targeting',
+    label: 'War Walkers — +1 PA disparo',
+    description: 'In your Shooting phase, after this unit has shot, select one enemy unit hit by one or more of those attacks. Until the end of the phase, each time a friendly AELDARI unit makes an attack that targets that enemy unit, improve the Armour Penetration characteristic of that attack by 1. Each unit can on',
+    factionId: 'AE',
+    datasheetId: '000000612',
+    combatType: 'ranged',
+    effects: {
+      apMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000613_fated_hero',
+    label: 'Wraithlord — repetir imp.1, repetir her.1',
+    description: 'At the start of the battle, select one of the following keywords: INFANTRY; MONSTER; MOUNTED; VEHICLE. Each time this model makes an attack that targets a unit with the selected keyword, re-roll a Hit roll of 1 and re-roll a Wound roll of 1.',
+    factionId: 'AE',
+    datasheetId: '000000613',
+    effects: {
+      rerollHitsOf1: true,
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000000623_interceptor',
+    label: 'Nightwing — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that can FLY, add 1 to the Hit roll.',
+    factionId: 'AE',
+    datasheetId: '000000623',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000624_strafing_run',
+    label: 'Phoenix — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that cannot FLY, add 1 to the Hit roll.',
+    factionId: 'AE',
+    datasheetId: '000000624',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002459_fortification',
+    label: 'Webway Gate — -1 impactar',
+    description: 'While an enemy unit is only within Engagement Range of one or more Fortifications from your army: That unit can still be selected as the target of ranged attacks, but each time such an attack is made, unless it is made with a Pistol, subtract 1 from the Hit roll. Models in that unit do not need to t',
+    factionId: 'AE',
+    datasheetId: '000002459',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000002531_reavers_of_the_void',
+    label: 'Corsair Voidreavers — repetir imp.1',
+    description: 'Each time a model in this unit makes an attack, re-roll a Hit roll of 1. If the target of that attack is within range of an objective marker, you can re-roll the Hit roll instead.',
+    factionId: 'AE',
+    datasheetId: '000002531',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000002532_piratical_raiders',
+    label: 'Corsair Voidscarred — Lethal Hits',
+    description: 'At the start of the battle, select one unit from your opponent’s army. Weapons equipped by models in this unit have the [LETHAL HITS] and [PRECISION] abilities while targeting that unit.',
+    factionId: 'AE',
+    datasheetId: '000002532',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+]
+
+const RULES_4: ModifierRule[] = [
+  {
+    id: 'unit_000002534_cegorach_s_favour',
+    label: 'Troupe Master — +1 herir, repetir imp.1 CaC',
+    description: 'Each time this model makes a melee attack, you can re-roll a Hit roll of 1 and add 1 to the Wound roll.',
+    factionId: 'AE',
+    datasheetId: '000002534',
+    combatType: 'melee',
+    effects: {
+      rerollHitsOf1: true,
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002536_dance_of_death',
+    label: 'Troupe — -1 impactar, +1 herir, repetir imp.1 CaC',
+    description: 'At the start of the Fight phase, select one of the following abilities for this unit to gain until the end of the phase:Hero’s Prowess: Each time a model in this unit makes an attack, re-roll a Hit roll of 1.Villain’s Doom: Each time a model in this unit makes an attack, add 1 to the Wound roll.Tric',
+    factionId: 'AE',
+    datasheetId: '000002536',
+    combatType: 'melee',
+    target: 'defender',
+    effects: {
+      hitMod: -1,
+      rerollHitsOf1: true,
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002537_cruel_amusement',
+    label: 'Death Jester — Sustained 3 disparo',
+    description: 'In your Shooting phase, each time this model is selected to shoot, select one of the abilities below. Until the end of the phase, this model’s shrieker cannon has that ability.[IGNORES COVER][PRECISION][SUSTAINED HITS 3]',
+    factionId: 'AE',
+    datasheetId: '000002537',
+    combatType: 'ranged',
+    effects: {
+      sustainedHitsBonus: 3,
+    },
+  },
+  {
+    id: 'unit_000002539_acrobatic_grace',
+    label: 'Skyweavers — -1 impactar',
+    description: 'Each time an attack targets this unit, subtract 1 from the Hit roll.',
+    factionId: 'AE',
+    datasheetId: '000002539',
+    target: 'defender',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000002542_herald_of_ynnead',
+    label: 'Yvraine — repetir her.1 CaC',
+    description: 'At the start of the Fight phase, select one enemy unit within Engagement Range of this model. Until the end of the phase, each time a friendly AELDARI model makes an attack that targets that unit, you can re-roll a Wound roll of 1.',
+    factionId: 'AE',
+    datasheetId: '000002542',
+    combatType: 'melee',
+    effects: {
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000003909_whispering_web',
+    label: 'Lhykhis — crit 5+ disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit hit by one or more of those attacks. Until the end of the turn, each time a friendly Aeldari model makes an attack that targets that unit, an unmodified Hit roll of 5+ scores a Critical Hit.',
+    factionId: 'AE',
+    datasheetId: '000003909',
+    combatType: 'ranged',
+    effects: {
+      critThreshold: 5,
+    },
+  },
+  {
+    id: 'unit_000004194_fury_of_the_void_psychic',
+    label: 'Kharseth — +1 Fuerza disparo',
+    description: 'In your Shooting phase, after this model’s unit has shot, select one enemy unit hit by one or more attacks made with this model’s Dread of the Deep Void. Until the end of the turn, that unit is riven. Each time an AELDARI model from your army makes an attack that targets a riven unit, add 1 to the S',
+    factionId: 'AE',
+    datasheetId: '000004194',
+    combatType: 'ranged',
+    effects: {
+      strengthMod: 1,
+    },
+  },
+
+  // ─── AM generated entries ───────────────────
+  {
+    id: 'unit_000000690_daring_recon',
+    label: 'Scout Sentinels — repetir imp.1 disparo',
+    description: 'At the start of your Shooting phase, select one enemy unit within 18" of and visible to this unit. Until the end of the phase, each time a friendly ASTRA MILITARUM model makes an attack that targets that unit, re-roll a Hit roll of 1.',
+    factionId: 'AM',
+    datasheetId: '000000690',
+    combatType: 'ranged',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000000691_mobile_hunter_killers',
+    label: 'Armoured Sentinels — repetir heridas',
+    description: 'Each time a model in this unit makes an attack that targets a MONSTER or VEHICLE unit, you can re-roll the Wound roll.',
+    factionId: 'AM',
+    datasheetId: '000000691',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000000696_flak_battery',
+    label: 'Hydra — repetir impactos',
+    description: 'Each time this model makes an attack that targets a unit that can FLY, you can re-roll the Hit roll.',
+    factionId: 'AM',
+    datasheetId: '000000696',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000000697_suppression_bombardment',
+    label: 'Wyvern — -1 impactar disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit (excluding MONSTERS and VEHICLES) that was hit by one or more of those attacks made with this model’s Wyvern quad stormshard mortar. Until the start of your next Shooting phase, that enemy unit is suppressed. While a unit is su',
+    factionId: 'AM',
+    datasheetId: '000000697',
+    combatType: 'ranged',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000700_armoured_spearhead',
+    label: 'Leman Russ Battle Tank — repetir imp.1',
+    description: 'Each time this model makes an attack that targets an enemy unit, re-roll a Hit roll of 1 and, if that unit is within range of an objective marker you do not control, you can re-roll the Hit roll instead.',
+    factionId: 'AM',
+    datasheetId: '000000700',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000000719_tempestor_prime',
+    label: 'Militarum Tempestus Command Squad — Sustained 1 disparo',
+    description: 'While this unit contains a Tempestor Prime, ranged weapons equipped by models in this unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'AM',
+    datasheetId: '000000719',
+    combatType: 'ranged',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'unit_000000721_transport_support',
+    label: 'Taurox Prime — repetir impactos disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit that was hit by one or more of those attacks. Until the end of the phase, each time a model that disembarked from this TRANSPORT this turn makes an attack that targets that enemy unit, you can re-roll the Hit roll.',
+    factionId: 'AM',
+    datasheetId: '000000721',
+    combatType: 'ranged',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000000722_point_blank_barrage',
+    label: 'Ogryn Squad — +1 PA disparo',
+    description: 'Each time a model in this unit makes a ranged attack that targets the closest eligible target, improve the Armour Penetration characteristic of that attack by 1.',
+    factionId: 'AM',
+    datasheetId: '000000722',
+    combatType: 'ranged',
+    effects: {
+      apMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000725_ogryn_bodyguard',
+    label: 'Nork Deddog — FNP 4+',
+    description: 'While one or more Officer models are in the same unit as this model, those OFFICER models have the Feel No Pain 4+ ability.',
+    factionId: 'AM',
+    datasheetId: '000000725',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000000733_support_vehicle',
+    label: 'Trojan Support Vehicle — repetir imp.1',
+    description: 'In your Command phase, select one friendly Astra Militarum Vehicle model within 3" of this model. That VEHICLE model regains up to D3 lost wounds and, until the start of your next Command phase, each time that VEHICLE model makes an attack, re-roll a Hit roll of 1. The same VEHICLE model cannot be s',
+    factionId: 'AM',
+    datasheetId: '000000733',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000000737_mobile_hunter_killer',
+    label: 'Tauros Venator — repetir heridas',
+    description: 'Each time this model makes an attack that targets a MONSTER or VEHICLE unit, you can re-roll the Wound roll.',
+    factionId: 'AM',
+    datasheetId: '000000737',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000000744_suppression_bombardment',
+    label: 'Griffon Mortar Carrier — -1 impactar disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit (excluding MONSTER and VEHICLE units) hit by one or more of those attacks made with this model’s Griffon heavy mortar. Until the start of your next turn, that enemy unit is suppressed. While a unit is suppressed, each time a mo',
+    factionId: 'AM',
+    datasheetId: '000000744',
+    combatType: 'ranged',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000745_rearm_reload_fire',
+    label: 'Heavy Mortar Team — Sustained 1 disparo',
+    description: 'While this model is being affected by an Order, provided it Remained Stationary this turn, ranged weapons equipped by this model have the [SUSTAINED HITS 1] ability.',
+    factionId: 'AM',
+    datasheetId: '000000745',
+    combatType: 'ranged',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'unit_000000746_suppression_bombardment',
+    label: 'Heavy Quad Launcher Team — -1 impactar disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit (excluding MONSTER and VEHICLE units) hit by one or more of those attacks. Unit the start of your next turn, that enemy unit is suppressed. While a unit is suppressed, each time a model in that unit makes an attack, subtract 1 ',
+    factionId: 'AM',
+    datasheetId: '000000746',
+    combatType: 'ranged',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000747_flak_battery',
+    label: 'Hydra Platform — repetir impactos',
+    description: 'Each time this model makes an attack that targets a unit that can FLY, you can re-roll the Hit roll.',
+    factionId: 'AM',
+    datasheetId: '000000747',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000000753_rugged_reliability',
+    label: 'Malcador — -1 PA disparo',
+    description: 'Each time a ranged attack targets this model, worsen the Armour Penetration characteristic of that attack by 1.',
+    factionId: 'AM',
+    datasheetId: '000000753',
+    combatType: 'ranged',
+    target: 'defender',
+    effects: {
+      apMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000755_furious_barrage',
+    label: 'Manticore Platform — repetir impactos',
+    description: 'Each time this model makes an attack with its storm eagle rockets that targets an enemy unit that contains five or more models, you can re-roll the Hit roll.',
+    factionId: 'AM',
+    datasheetId: '000000755',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000000757_powerful_volley',
+    label: 'Rapier Laser Destroyer Battery — Lethal Hits',
+    description: 'While this unit is being affected by an Order, provided it Remained Stationary this turn, Heavy weapons equipped by models in this unit have the [LETHAL HITS] ability.',
+    factionId: 'AM',
+    datasheetId: '000000757',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+  {
+    id: 'unit_000000760_tank_hunter',
+    label: 'Stygies Destroyer Tank Hunter — +1 herir disparo',
+    description: 'Each time this model makes a ranged attack that targets a VEHICLE unit, add 1 to the Wound roll.',
+    factionId: 'AM',
+    datasheetId: '000000760',
+    combatType: 'ranged',
+    effects: {
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000763_close_range_devastation',
+    label: 'Stormblade — repetir impactos disparo',
+    description: 'Each time this model makes a ranged attack with its Stormblade plasma blastgun that targets a unit within half range, you can re-roll the Hit roll.',
+    factionId: 'AM',
+    datasheetId: '000000763',
+    combatType: 'ranged',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000000766_fire_support',
+    label: 'Crassus — repetir heridas disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit that was hit by one or more of those attacks. Until the end of the phase, each time a friendly model that disembarked from this TRANSPORT this turn makes an attack that targets that enemy unit, you can re-roll the Wound roll.',
+    factionId: 'AM',
+    datasheetId: '000000766',
+    combatType: 'ranged',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000000769_battlefield_control',
+    label: 'Macharius — repetir imp.1 disparo',
+    description: 'Each time this model makes a ranged attack, if it is within range of an objective marker you control, re-roll a Hit roll of 1.',
+    factionId: 'AM',
+    datasheetId: '000000769',
+    combatType: 'ranged',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000000770_overwhelming_short_range_firepower',
+    label: 'Macharius Omega — repetir imp.1',
+    description: 'Each time this model makes an attack that targets the closest eligible enemy unit, re-roll a Hit roll of 1 and re-roll a Wound roll or 1.',
+    factionId: 'AM',
+    datasheetId: '000000770',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000000771_tank_hunter',
+    label: 'Macharius Vanquisher — repetir impactos disparo',
+    description: 'Each time this model makes a ranged attack with its Macharius twin vanquisher cannon that targets a MONSTER or VEHICLE unit, you can re-roll the Hit roll.',
+    factionId: 'AM',
+    datasheetId: '000000771',
+    combatType: 'ranged',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000000781_agile_dogfighter',
+    label: 'Voss-pattern Lightning — -1 impactar',
+    description: 'Each time an attack targets this model, subtract 1 from the Hit roll.',
+    factionId: 'AM',
+    datasheetId: '000000781',
+    target: 'defender',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000001237_fire_support',
+    label: 'Valkyrie Sky Talon — repetir heridas disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit it scored one or more hits against this phase. Until the end of the phase, each time a friendly model that disembarked from this TRANSPORT this turn makes an attack that targets that enemy unit, you can re-roll the Wound roll.',
+    factionId: 'AM',
+    datasheetId: '000001237',
+    combatType: 'ranged',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000001396_omnissiah_s_blessing',
+    label: 'Tech-Priest Enginseer — FNP 4+',
+    description: 'In your Command phase, select one friendly Astra Militarum Vehicle model within 3" of this model. That VEHICLE model regains up to D3 lost wounds and, until the start of your next Command phase, that VEHICLE model has a 4+ invulnerable save. Each model can only be selected for this ability once per ',
+    factionId: 'AM',
+    datasheetId: '000001396',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000001398_ogryn_bodyguard',
+    label: 'Ogryn Bodyguard — FNP 4+',
+    description: 'While one or more Officer models are in the same unit as this model, those OFFICER models have the Feel No Pain 4+ ability.',
+    factionId: 'AM',
+    datasheetId: '000001398',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000001596_the_ratling_twins',
+    label: 'Rein And Raus — repetir impactos, repetir heridas disparo',
+    description: 'While this unit contains 2 models, each time a model in this unit makes a ranged attack, you can re-roll the Hit roll and you can re-roll the Wound roll.',
+    factionId: 'AM',
+    datasheetId: '000001596',
+    combatType: 'ranged',
+    effects: {
+      rerollAllHits: true,
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000001994_ancient_conquest',
+    label: 'Carnodon — repetir imp.1, repetir her.1',
+    description: 'Each time this model makes an attack that targets an enemy unit that is within your opponent’s deployment zone, re-roll a Hit roll of 1 and re-roll a Wound roll of 1.',
+    factionId: 'AM',
+    datasheetId: '000001994',
+    effects: {
+      rerollHitsOf1: true,
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000002375_medicae_medi_packs',
+    label: 'Quartermaster Cadre Squad — FNP 5+',
+    description: 'Whilst this unit contains one or more Medicae Servitors, models in this unit have the Feel No Pain 5+ ability.',
+    factionId: 'AM',
+    datasheetId: '000002375',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 5,
+    },
+  },
+  {
+    id: 'unit_000002610_artillery_commander',
+    label: 'Regimental Attachés — Sustained 1 disparo',
+    description: 'At the start of your Shooting phase, select one enemy unit within 30" of and visible to this unit’s Master of Ordnance model that has not already been selected for this ability this phase. Until the end of the phase, Blast weapons equipped by friendly Astra Militarum Artillery models have the [SUSTA',
+    factionId: 'AM',
+    datasheetId: '000002610',
+    combatType: 'ranged',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'unit_000002610_aeronautica_commander',
+    label: 'Regimental Attachés — +1 impactar disparo',
+    description: 'At the start of your Shooting phase, select one enemy unit within 30" of and visible to this unit’s Officer of the Fleet model. Until the end of the phase, each time a friendly Astra Militarum Aircraft model makes a ranged attack that targets that unit, add 1 to the Hit roll.',
+    factionId: 'AM',
+    datasheetId: '000002610',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002613_grim_demeanour',
+    label: 'Death Korps Of Krieg — +1 impactar, +1 herir',
+    description: 'Each time a model in this unit makes an attack, add 1 to the Hit roll if this unit is below its Starting Strength, and add 1 to the Wound roll as well if this unit is Below Half-strength.',
+    factionId: 'AM',
+    datasheetId: '000002613',
+    effects: {
+      hitMod: 1,
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002614_jungle_fighters',
+    label: 'Catachan Jungle Fighters — +1 herir CaC',
+    description: 'Each time a model in this unit makes a melee attack, if this unit made a Charge move or was charged this turn, add 1 to the Wound roll.',
+    factionId: 'AM',
+    datasheetId: '000002614',
+    combatType: 'melee',
+    effects: {
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002619_defence_line',
+    label: 'Aegis Defence Line — FNP 4+',
+    description: 'While an ASTRA MILITARUM INFANTRY model has the Benefit of Cover as a result of this terrain feature (see above), that model has a 4+ invulnerable save.',
+    factionId: 'AM',
+    datasheetId: '000002619',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000002619_fortification',
+    label: 'Aegis Defence Line — -1 impactar',
+    description: 'While an enemy unit is only within Engagement Range of one or more FORTIFICATIONS from your army: That unit can still be selected as the target of ranged attacks, but each time such an attack is made, unless it is made with a Pistol, subtract 1 from the Hit roll. Models in that unit do not need to t',
+    factionId: 'AM',
+    datasheetId: '000002619',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000002742_gung_ho_executioners',
+    label: 'Leman Russ Executioner — +1 impactar',
+    description: 'Each time this model makes an attack with its executioner plasma cannon that targets a unit that is Below Half-strength, add 1 to the Hit roll.',
+    factionId: 'AM',
+    datasheetId: '000002742',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002743_withering_hail',
+    label: 'Leman Russ Exterminator — +1 PA disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit hit by one or more of those attacks made with its exterminator autocannon. Until the end of the phase, each time a friendly ASTRA MILITARUM unit makes an attack that targets that enemy unit, improve the Armour Penetration chara',
+    factionId: 'AM',
+    datasheetId: '000002743',
+    combatType: 'ranged',
+    effects: {
+      apMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002745_tank_killer',
+    label: 'Leman Russ Vanquisher — repetir heridas disparo',
+    description: 'Each time this model makes a ranged attack with its vanquisher battle cannon that targets a MONSTER or VEHICLE unit, you can re-roll the Wound roll.',
+    factionId: 'AM',
+    datasheetId: '000002745',
+    combatType: 'ranged',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000002746_storm_troopers',
+    label: 'Tempestus Scions — repetir her.1',
+    description: 'Each time a model in this unit makes an attack, re-roll a Wound roll of 1. If the target of that attack is an enemy unit within range of an objective marker, you can re-roll the Wound roll instead.',
+    factionId: 'AM',
+    datasheetId: '000002746',
+    effects: {
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000003894_bring_it_down',
+    label: 'Catachan Heavy Weapons Squad — repetir imp.1, repetir her.1 disparo',
+    description: 'Each time a model in this unit makes a ranged attack that targets a MONSTER of VEHICLE unit, re-roll a Hit roll of 1 and re-roll a Wound roll of 1.',
+    factionId: 'AM',
+    datasheetId: '000003894',
+    combatType: 'ranged',
+    effects: {
+      rerollHitsOf1: true,
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000003897_rearm_reload_fire',
+    label: 'Field Ordnance Battery — Sustained 1',
+    description: 'While this unit is being affected by an Order, provided it Remained Stationary this turn, all Heavy weapons equipped by models in this unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'AM',
+    datasheetId: '000003897',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'unit_000003922_heroic_example',
+    label: 'Hell’s Last — repetir impactos',
+    description: 'While this unit’s Minka Lesk model is on the battlefield, each time a model in this unit makes an attack, you can re-roll the Hit roll.',
+    factionId: 'AM',
+    datasheetId: '000003922',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+
+  // ─── AS generated entries ───────────────────
+  {
+    id: 'unit_000000894_spiritual_fortitude',
+    label: 'Crusaders — FNP 4+',
+    description: 'Models in this unit have the Feel No Pain 4+ ability against Psychic Attacks and mortal wounds.',
+    factionId: 'AS',
+    datasheetId: '000000894',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000000898_lifewards',
+    label: 'Saint Celestine — FNP 4+',
+    description: 'While this unit contains one or more Geminae Superia models, Celestine has the Feel No Pain 4+ ability.',
+    factionId: 'AS',
+    datasheetId: '000000898',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'ldr_000000900_stanchion_of_holy_martyrs',
+    label: 'Imagifier — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have a Save characteristic of 2+ and a 4+ invulnerable save.',
+    factionId: 'AS',
+    leaderDatasheetId: '000000900',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000000907_overseer_of_redemption',
+    label: 'Repentia Squad — repetir impactos, repetir heridas CaC',
+    description: 'While this unit contains a Repentia Superior model, each time a Sisters Repentia model in this unit makes a melee attack, you can re-roll the Hit roll and you can re-roll the Wound roll.',
+    factionId: 'AS',
+    datasheetId: '000000907',
+    combatType: 'melee',
+    effects: {
+      rerollAllHits: true,
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000000908_storm_of_retribution',
+    label: 'Retributor Squad — +1 impactar, +1 herir, repetir imp.1, repetir her.1 disparo',
+    description: 'Each time a model in this unit makes a ranged attack, re-roll a Hit roll of 1 and re-roll a Wound roll of 1. If such an attack targets an enemy unit that has destroyed one or more Adepta Sororitas units from your army during the battle, add 1 to the Hit roll and add 1 to the Wound roll as well.',
+    factionId: 'AS',
+    datasheetId: '000000908',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+      rerollHitsOf1: true,
+      woundMod: 1,
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000002066_embodied_prophecy',
+    label: 'Zephyrim Squad — Lethal Hits, Sustained 1 CaC',
+    description: 'Each time this unit is selected to fight, select one of the following abilities to apply to melee weapons equipped by models in this unit until the end of the phase:[SUSTAINED HITS 1][LETHAL HITS]If this unit made a Charge move this turn, until the end of the phase, select both abilities above to ap',
+    factionId: 'AS',
+    datasheetId: '000002066',
+    combatType: 'melee',
+    effects: {
+      lethalHitsBonus: true,
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'unit_000002481_sworn_protectors',
+    label: 'Celestian Sacresants — -1 herir',
+    description: 'While an ADEPTA SORORITAS CHARACTER is leading this unit, each time an attack targets this unit, subtract 1 from the Wound roll.',
+    factionId: 'AS',
+    datasheetId: '000002481',
+    target: 'defender',
+    effects: {
+      woundMod: -1,
+    },
+  },
+  {
+    id: 'unit_000002483_righteous_paragons',
+    label: 'Paragon Warsuits — +1 impactar, +1 herir',
+    description: 'Each time a model in this unit makes an attack that targets a MONSTER or VEHICLE unit, add 1 to the Hit roll and add 1 to the Wound roll.',
+    factionId: 'AS',
+    datasheetId: '000002483',
+    effects: {
+      hitMod: 1,
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002484_rites_of_castigation',
+    label: 'Castigator — +1 PA disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit hit by one or more of those attacks. Until the end of the turn, each time a friendly ADEPTA SORORITAS unit makes a ranged attack that targets that enemy unit, improve the Armour Penetration characteristic of that attack by 1. T',
+    factionId: 'AS',
+    datasheetId: '000002484',
+    combatType: 'ranged',
+    effects: {
+      apMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002507_impetuous_fervour',
+    label: 'Sisters Novitiate Squad — repetir imp.1',
+    description: 'Each time a model in this unit makes an attack, re-roll a Hit roll of 1. If the target of that attack is an enemy unit within range of an objective marker, you can re-roll the Hit roll instead.',
+    factionId: 'AS',
+    datasheetId: '000002507',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000004075_ministorum_sermon',
+    label: 'Sanctifiers — Sustained 1 CaC',
+    description: 'While this unit contains a MINISTORUM PRIEST, melee weapons equipped by models in this unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'AS',
+    datasheetId: '000004075',
+    combatType: 'melee',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'unit_000004189_rituale_nullificatus',
+    label: 'Celestian Insidiants — FNP 4+',
+    description: 'Models in this unit have the Feel No Pain 4+ ability against Psychic Attacks and mortal wounds.',
+    factionId: 'AS',
+    datasheetId: '000004189',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000004189_virtue_of_intolerance',
+    label: 'Celestian Insidiants — repetir impactos',
+    description: 'At the start of the battle, select one unit from your opponent’s army to be this unit’s quarry. Each time a model in this unit makes an attack that targets its quarry, that attack has the [PRECISION] ability and you can re-roll the Hit roll. This ability can be used even if this unit is embarked wit',
+    factionId: 'AS',
+    datasheetId: '000004189',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000004215_judged_for_execution',
+    label: 'Intranzia Fraye — Lethal Hits',
+    description: 'At the end of your Movement phase, you can select one enemy unit within 18" of and visible to this model. Until the start of your next Command phase, each time a friendly ADEPTA SORORITAS model makes an attack that targets that enemy unit, that attack has the [LETHAL HITS] ability.',
+    factionId: 'AS',
+    datasheetId: '000004215',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+
+  // ─── AdM generated entries ───────────────────
+  {
+    id: 'unit_000000841_breaching_command',
+    label: 'Kataphron Breachers — repetir imp.1',
+    description: 'Each time a model in this unit makes an attack, re-roll a Hit roll of 1. While this unit is within 6" of one or more friendly Adeptus Mechanicus Battleline units, you can re-roll the Hit roll instead.',
+    factionId: 'AdM',
+    datasheetId: '000000841',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000000843_electro_infusion',
+    label: 'Fulgurite Electro-priests — -1 herir',
+    description: 'While a CHARACTER model is leading this unit, each time an attack targets this unit, subtract 1 from the Wound roll.',
+    factionId: 'AdM',
+    datasheetId: '000000843',
+    target: 'defender',
+    effects: {
+      woundMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000845_robotic_bodyguard',
+    label: 'Kastelan Robots — FNP 4+',
+    description: 'While a Cybernetica Datasmith model is leading this unit, that model has the Feel No Pain 4+ ability.',
+    factionId: 'AdM',
+    datasheetId: '000000845',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000000846_battle_protocols',
+    label: 'Cybernetica Datasmith — +2 Ataques',
+    description: 'At the start of the battle, if this model is leading a KASTELAN ROBOTS unit, that unit enters Aegis Protocols (see below). In your Command phase, if this model is leading a KASTELAN ROBOTS unit, you can select one protocol from those listed below for that unit to enter. Once a unit enters a protocol',
+    factionId: 'AdM',
+    datasheetId: '000000846',
+    effects: {
+      attacksMod: 2,
+    },
+  },
+  {
+    id: 'aura_000000854_emanatus_force_field_aura',
+    label: 'Onager Dunecrawler — FNP 4+ disparo (Aura)',
+    description: 'While a friendly ADEPTUS MECHANICUS BATTLELINE model is wholly within 6" of this model, that BATTLELINE model has a 4+ invulnerable save against ranged attacks.',
+    factionId: 'AdM',
+    sourceDatasheetId: '000000854',
+    combatType: 'ranged',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000001526_blind_barrage',
+    label: 'Secutarii Peltasts — -1 impactar disparo',
+    description: 'In your Shooting phase, after this unit has shot, select one enemy INFANTRY unit hit by one or more of those attacks. Until the start of your next turn, while this unit is on the battlefield, that enemy unit is blinded. While a unit is blinded, each time a model in that unit makes an attack, subtrac',
+    factionId: 'AdM',
+    datasheetId: '000001526',
+    combatType: 'ranged',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000001650_fire_support',
+    label: 'Skorpius Dunerider — repetir heridas disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit it scored one or more hits against this phase. Until the end of the phase, each time a friendly model that disembarked from this Transport this turn makes an attack that targets that enemy unit, you can re-roll the Wound roll.',
+    factionId: 'AdM',
+    datasheetId: '000001650',
+    combatType: 'ranged',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000001651_blistering_salvoes',
+    label: 'Skorpius Disintegrator — +1 impactar',
+    description: 'Each time this model makes an attack with a belleros energy cannon that targets an INFANTRY unit, add 1 to the Hit roll. Each time this model makes an attack with a ferrumite cannon that targets a MONSTER or VEHICLE unit, add 1 to the Hit roll.',
+    factionId: 'AdM',
+    datasheetId: '000001651',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000001822_bound_creation',
+    label: 'X-101 — FNP 5+',
+    description: 'While a Tech-Priest model is leading this model’s unit, that TECH-PRIEST model has the Feel No Pain 5+ ability.',
+    factionId: 'AdM',
+    datasheetId: '000001822',
+    effects: {
+      feelNoPainThreshold: 5,
+    },
+  },
+  {
+    id: 'unit_000002083_searing_conflagration',
+    label: 'Pteraxii Sterylizors — repetir her.1',
+    description: 'Each time a model in this unit makes an attack with a phosphor torch that targets an enemy unit within range of an objective marker, re-roll a Wound roll of 1. If this unit is also within 6" of one or more friendly ADEPTUS MECHANICUS BATTLELINE units, each time such an attack targets such a unit, yo',
+    factionId: 'AdM',
+    datasheetId: '000002083',
+    effects: {
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000002086_strafing_run',
+    label: 'Archaeopter Stratoraptor — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets an enemy unit (excluding units that can FLY), add 1 to the Hit roll.',
+    factionId: 'AdM',
+    datasheetId: '000002086',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000003694_focused_hunters',
+    label: 'Sydonian Dragoons With Radium Jezzails — repetir impactos',
+    description: 'At the start of the battle, select one unit from your opponent’s army. Until the end of the battle, each time a model in this unit makes an attack that targets that unit, you can re-roll the Hit roll.',
+    factionId: 'AdM',
+    datasheetId: '000003694',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000003695_achillan_eye',
+    label: 'Sydonian Skatros — repetir heridas',
+    description: 'Each time this model makes an attack with a radium jezzail that targets an INFANTRY unit, you can re-roll the Wound roll. Each time this model makes an attack with a Skatros transuranic arquebus that targets a MONSTER or VEHICLE unit, you can re-roll the Wound roll.',
+    factionId: 'AdM',
+    datasheetId: '000003695',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000004211_broad_spectrum_targeting_augurs',
+    label: 'Hastarii Exterminators — Sustained 1',
+    description: 'Each time a model in this unit makes an attack with an eradication caster that targets a unit (excluding MONSTER and VEHICLE units), that attack has the [SUSTAINED HITS 1] ability.',
+    factionId: 'AdM',
+    datasheetId: '000004211',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+
+  // ─── AoI generated entries ───────────────────
+  {
+    id: 'unit_000000873_abomination',
+    label: 'Culexus Assassin — FNP 2+',
+    description: 'This model has the Feel No Pain 2+ ability against Psychic Attacks.',
+    factionId: 'AoI',
+    datasheetId: '000000873',
+    effects: {
+      feelNoPainThreshold: 2,
+    },
+  },
+  {
+    id: 'ldr_000000876_malefic_wardings_psychic',
+    label: 'Inquisitor Coteaz — FNP 6+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have a 6+ invulnerable save, and a 4+ invulnerable save against Psychic Attacks and attacks made by DAEMON models.',
+    factionId: 'AoI',
+    leaderDatasheetId: '000000876',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 6,
+    },
+  },
+  {
+    id: 'unit_000001579_dominate_will_psychic',
+    label: 'Inquisitor Eisenhorn — -1 impactar disparo',
+    description: 'At the start of your opponent’s Shooting phase, select one enemy INFANTRY unit that is within 12" of and visible to this model and roll one D6: on a 1, this model suffers D3 mortal wounds; on a 2-5, until the end of the phase, each time a model in that unit makes an attack, subtract 1 from the Hit r',
+    factionId: 'AoI',
+    datasheetId: '000001579',
+    combatType: 'ranged',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000002509_masters_of_close_confines',
+    label: 'Voidsmen-at-arms — Lethal Hits disparo',
+    description: 'Each time a model in this unit makes a ranged attack that targets the closest eligible target, that attack has the [LETHAL HITS] ability.',
+    factionId: 'AoI',
+    datasheetId: '000002509',
+    combatType: 'ranged',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+  {
+    id: 'unit_000002587_breaching_team',
+    label: 'Imperial Navy Breachers — repetir her.1',
+    description: 'Each time a model in this unit makes an attack, re-roll a Wound roll of 1. If the target is within range of an objective marker, you can re-roll the Wound roll instead.',
+    factionId: 'AoI',
+    datasheetId: '000002587',
+    effects: {
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000002683_merciless_judgement',
+    label: 'Vigilant Squad — +1 herir disparo',
+    description: 'Each time a model in this unit makes a ranged attack that targets a unit that is Below Half-strength, add 1 to the Wound roll.',
+    factionId: 'AoI',
+    datasheetId: '000002683',
+    combatType: 'ranged',
+    effects: {
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002685_imperial_law',
+    label: 'Exaction Squad — Lethal Hits',
+    description: 'At the start of the battle, select one unit from your opponent’s army. Each time a model in this unit makes an attack that targets that unit, that attack has the [LETHAL HITS] and [PRECISION] abilities.',
+    factionId: 'AoI',
+    datasheetId: '000002685',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+  {
+    id: 'unit_000002767_loyal_henchmen',
+    label: 'Inquisitorial Agents — -1 herir',
+    description: 'While an Inquisitor model is leading this unit, each time an attack is made against this unit, subtract 1 from the Wound roll.',
+    factionId: 'AoI',
+    datasheetId: '000002767',
+    effects: {
+      woundMod: -1,
+    },
+  },
+  {
+    id: 'unit_000003813_hammerhand_psychic',
+    label: 'Grey Knights Terminator Squad — Lethal Hits CaC',
+    description: 'Each time a model in this unit makes a Charge move, until the end of the turn, melee weapons equipped by models in this unit have the [LETHAL HITS] ability.',
+    factionId: 'AoI',
+    datasheetId: '000003813',
+    combatType: 'melee',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+  {
+    id: 'unit_000003816_death_to_the_alien',
+    label: 'Deathwatch Kill Team — repetir imp.1',
+    description: 'Each time a model in this unit makes an attack, re-roll a Hit roll of 1. If the target of that attack does not have the IMPERIUM or CHAOS keywords, you can re-roll the Hit roll instead.',
+    factionId: 'AoI',
+    datasheetId: '000003816',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000003824_proteus_doctrines',
+    label: 'Proteus Kill Team — +1 impactar',
+    description: 'Each time a model in this unit makes an attack that targets a unit that is not Below Half-strength, add 1 to the Hit roll.',
+    factionId: 'AoI',
+    datasheetId: '000003824',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000003825_fortis_doctrines',
+    label: 'Fortis Kill Team — +1 impactar',
+    description: 'Each time a model in this unit makes an attack that targets a unit that is Below Half-strength, add 1 to the Hit roll.',
+    factionId: 'AoI',
+    datasheetId: '000003825',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000003826_indomitor_doctrines',
+    label: 'Indomitor Kill Team — +1 impactar, +1 herir',
+    description: 'Each time a model in this unit makes an attack, add 1 to the Hit roll if this unit is below its Starting Strength, and add 1 to the Wound roll as well if this unit is Below Half-strength.',
+    factionId: 'AoI',
+    datasheetId: '000003826',
+    effects: {
+      hitMod: 1,
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000003828_malefic_warding',
+    label: 'Daemonhost — FNP 5+',
+    description: 'While an Inquisitor model is leading a unit that includes one or more DAEMONHOST models, models in that unit have a 5+ invulnerable save.',
+    factionId: 'AoI',
+    datasheetId: '000003828',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 5,
+    },
+  },
+  {
+    id: 'unit_000004074_ministorum_sermon',
+    label: 'Sanctifiers — +1 herir CaC',
+    description: 'While this unit contains a MINISTORUM PRIEST, each time a model in this unit makes a melee attack, add 1 to the Wound roll.',
+    factionId: 'AoI',
+    datasheetId: '000004074',
+    combatType: 'melee',
+    effects: {
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000004174_death_to_the_alien',
+    label: 'Aquila Kill Team — repetir imp.1',
+    description: 'Each time a model in this unit makes an attack, re-roll a Hit roll of 1. If the target of that attack does not have the IMPERIUM or CHAOS keywords, you can re-roll the Hit roll instead.',
+    factionId: 'AoI',
+    datasheetId: '000004174',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000004214_on_my_signal_fire',
+    label: 'Inquisitor Kroyle — repetir impactos',
+    description: 'After this unit has shot, you can select one enemy unit hit by those attacks. Until the end of the phase, each time an Agents of the Imperium or Imperium Infantry Battleline model from your army makes an attack that targets that enemy unit, you can re-roll the Hit roll.',
+    factionId: 'AoI',
+    datasheetId: '000004214',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+
+  // ─── CD generated entries ───────────────────
+  {
+    id: 'unit_000001104_prey_of_the_blood_god',
+    label: 'Karanak — repetir heridas CaC',
+    description: 'At the start of the first battle round, select one enemy unit to be this model’s prey. Each time a model in this model’s unit makes a melee attack that targets its prey, you can re-roll the Wound roll. Each time this model’s prey is destroyed, select one new enemy unit to be this model’s prey.',
+    factionId: 'CD',
+    datasheetId: '000001104',
+    combatType: 'melee',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'aura_000001105_rage_embodied_aura',
+    label: 'Skarbrand — +1 Ataques CaC (Aura)',
+    description: 'While a friendly Khorne Legiones Daemonica unit is within 6" of this model, add 1 to the Attacks characteristic of melee weapons equipped by models in that unit.',
+    factionId: 'CD',
+    sourceDatasheetId: '000001105',
+    combatType: 'melee',
+    effects: {
+      attacksMod: 1,
+    },
+  },
+  {
+    id: 'unit_000001106_skulls_for_khorne',
+    label: 'Skulltaker — repetir impactos, repetir heridas',
+    description: 'Each time this model makes an attack that targets a Character unit, you can re-roll the Hit roll and you can re-roll the Wound roll. Each time this model destroys an enemy Character unit, you gain 1CP.',
+    factionId: 'CD',
+    datasheetId: '000001106',
+    effects: {
+      rerollAllHits: true,
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000001111_champion_slayer',
+    label: 'Rendmaster On Blood Throne — repetir heridas CaC',
+    description: 'Each time this model makes a melee attack that targets a CHARACTER or MONSTER unit, you can re-roll the Wound roll. Each time this model destroys an enemy CHARACTER or MONSTER unit, this model regains up to D6 lost wounds.',
+    factionId: 'CD',
+    datasheetId: '000001111',
+    combatType: 'melee',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000001118_mischief_and_confusion',
+    label: 'The Changeling — -1 impactar disparo',
+    description: 'At the start of your opponent’s Shooting phase, select one enemy unit within 12" of and visible to this model and roll one D6: on a 2-5, until the end of the phase, each time a model in that enemy unit makes an attack, subtract 1 from the Hit roll; on a 6, that enemy unit is not eligible to shoot th',
+    factionId: 'CD',
+    datasheetId: '000001118',
+    combatType: 'ranged',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000001119_p_tarix_s_sorcerous_syphon_aura',
+    label: 'The Blue Scribes — -1 herir',
+    description: 'While an enemy unit is within 12" of this model, each time a model in that unit makes a Psychic Attack, subtract 1 from the Wound roll.',
+    factionId: 'CD',
+    datasheetId: '000001119',
+    effects: {
+      woundMod: -1,
+    },
+  },
+  {
+    id: 'ldr_000001129_blessed_by_the_plague_god',
+    label: 'Epidemius — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have a 4+ invulnerable save.',
+    factionId: 'CD',
+    leaderDatasheetId: '000001129',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000001133_mischief_makers',
+    label: 'Nurglings — -1 impactar CaC',
+    description: 'Each time an enemy unit (excluding TITANIC units) within Engagement Range of one or more units with this ability is selected to fight, until the end of the phase, each time a model in that enemy unit makes a melee attack, subtract 1 from the Hit roll.',
+    factionId: 'CD',
+    datasheetId: '000001133',
+    combatType: 'melee',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000001135_death_s_heads',
+    label: 'Plague Drones — repetir heridas disparo',
+    description: 'In your Shooting phase, after this unit has shot, select one enemy unit hit by one or more of those attacks. Until the end of the turn, each time a friendly Nurgle Legiones Daemonica unit makes an attack that targets that unit, you can re-roll the Wound roll.',
+    factionId: 'CD',
+    datasheetId: '000001135',
+    combatType: 'ranged',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000001136_the_eternal_dance',
+    label: 'The Masque Of Slaanesh — -1 herir CaC',
+    description: 'At the start of the Fight phase, select one enemy unit within 6" of this model. Until the end of the phase: Each time a friendly Slaanesh Legiones Daemonica model makes a melee attack that targets that enemy unit, add 1 to the Wound roll. Each time a model in that enemy unit makes a melee attack, su',
+    factionId: 'CD',
+    datasheetId: '000001136',
+    combatType: 'melee',
+    effects: {
+      woundMod: -1,
+    },
+  },
+  {
+    id: 'unit_000001138_tranceweaver',
+    label: 'Tranceweaver — repetir imp.1',
+    description: 'Each time a model in this unit makes an attack, re-roll a Hit roll of 1. If the target of that attack is within range of an objective marker, you can re-roll the Hit roll instead.',
+    factionId: 'CD',
+    datasheetId: '000001138',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000001138_symphony_of_pain_psychic',
+    label: 'Tranceweaver — repetir impactos, repetir heridas',
+    description: 'At the end of your Movement phase, you can select one enemy unit that is Battle-shocked and within 12" of this model. Until the end of the turn, each time a Slaanesh Legiones Daemonica model from your army makes an attack that targets that enemy unit, you can re-roll the Hit roll and you can re-roll',
+    factionId: 'CD',
+    datasheetId: '000001138',
+    effects: {
+      rerollAllHits: true,
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000001150_prey_on_the_weak',
+    label: 'Furies — +1 herir',
+    description: 'Each time this model makes an attack that targets an enemy unit that is Battle-shocked, add 1 to the Wound roll.',
+    factionId: 'CD',
+    datasheetId: '000001150',
+    effects: {
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000001332_mesmerising_form',
+    label: 'Zarakynel — -1 impactar',
+    description: 'Each time an attack targets this model, subtract 1 from the Hit roll.',
+    factionId: 'CD',
+    datasheetId: '000001332',
+    target: 'defender',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000001333_master_of_magicks_psychic',
+    label: 'Aetaos’rau’keres — Lethal Hits disparo',
+    description: 'In your Shooting phase, select one of the following abilities: [IGNORES COVER]; [LETHAL HITS]; [sustainded hits D3]. Until the end of the phase, this model’s ranged weapon has that ability.',
+    factionId: 'CD',
+    datasheetId: '000001333',
+    combatType: 'ranged',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+  {
+    id: 'unit_000001465_virulent_blessing_psychic',
+    label: 'Rotigus — +1 Daño CaC',
+    description: 'At the start of the Fight phase, you can select one enemy unit within 24" and visible to this model. Until the end of the phase, each time an attack made by a Nurgle Legiones Daemonica model is allocated to a model in that unit, add 1 to the Damage characteristic of that attack.',
+    factionId: 'CD',
+    datasheetId: '000001465',
+    combatType: 'melee',
+    effects: {
+      damageMod: 1,
+    },
+  },
+  {
+    id: 'unit_000001470_fortification',
+    label: 'Feculent Gnarlmaw — -1 impactar',
+    description: 'While an enemy unit is only within Engagement Range of one or more Fortifications from your army: That unit can still be selected as the target of ranged attacks, but each time such an attack is made, unless it is made with a Pistol, subtract 1 from the Hit roll. Models in that unit do not need to t',
+    factionId: 'CD',
+    datasheetId: '000001470',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000001588_fortification',
+    label: 'Skull Altar — -1 impactar',
+    description: 'While an enemy unit is only within Engagement Range of one or more Fortifications from your army: That unit can still be selected as the target of ranged attacks, but each time such an attack is made, unless it is made with a Pistol, subtract 1 from the Hit roll. Models in that unit do not need to t',
+    factionId: 'CD',
+    datasheetId: '000001588',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'ldr_000001647_swallow_energy_psychic',
+    label: 'Contorted Epitome — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 4+ ability against mortal wounds and Psychic Attacks.',
+    factionId: 'CD',
+    leaderDatasheetId: '000001647',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000001647_horrible_fascinationpsychic',
+    label: 'Contorted Epitome — -1 impactar disparo',
+    description: 'At the start of your opponent’s Shooting phase, one Psyker model from your army with this ability can use it. If it does, select one enemy unit within 12" of and visible to that PSYKER model and roll one D6: on a 1, that PSYKER model suffers D3 mortal wounds; on a 2-5, until the end of the phase, ea',
+    factionId: 'CD',
+    datasheetId: '000001647',
+    combatType: 'ranged',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000001648_monarch_of_the_hunt',
+    label: 'Shalaxi Helbane — repetir impactos, repetir heridas CaC',
+    description: 'At the start of the first battle round, select one enemy unit to be this model’s quarry. Each time this model makes a melee attack that targets its quarry, you can re-roll the Hit roll and you can re-roll the Wound roll. Each time this model’s quarry is destroyed, select one new enemy unit to be thi',
+    factionId: 'CD',
+    datasheetId: '000001648',
+    combatType: 'melee',
+    effects: {
+      rerollAllHits: true,
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'ldr_000004039_lord_of_fate',
+    label: 'Chaos Lord On Disc Of Tzeentch — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability against mortal wounds.',
+    factionId: 'CD',
+    leaderDatasheetId: '000004039',
+    effects: {
+      feelNoPainThreshold: 5,
+    },
+  },
+  {
+    id: 'unit_000004043_despoilers',
+    label: 'Chaos Terminator Squad — repetir impactos',
+    description: 'Each time this unit makes a Dark Pact, until the end of the phase, each time a model in this unit makes an attack, you can re-roll the Hit roll.',
+    factionId: 'CD',
+    datasheetId: '000004043',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000004047_mutated_bodyguard',
+    label: 'Traitor Enforcer — FNP 4+',
+    description: 'While this unit contains a Traitor Ogryn model, CHARACTER models in this unit have the Feel No Pain 4+ ability.',
+    factionId: 'CD',
+    datasheetId: '000004047',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000004056_mischief_makers_aura',
+    label: 'Mutoid Vermin — -1 impactar CaC',
+    description: 'While an enemy unit (excluding MONSTERS and VEHICLES) is within 6" of this unit, each time a model in that unit makes a melee attack, subtract 1 from the Hit roll.',
+    factionId: 'CD',
+    datasheetId: '000004056',
+    combatType: 'melee',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000004059_beastmaster',
+    label: 'Renegade Ogryn Beast Handler — repetir imp.1',
+    description: 'While this unit contains an Ogryn Pack Master model, you can re-roll Charge rolls made for this unit, and each time a Chaos Mauler Hound model in this unit makes an attack, re-roll a Hit roll of 1.',
+    factionId: 'CD',
+    datasheetId: '000004059',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000004064_veterans_of_the_long_war',
+    label: 'Legionaries — repetir her.1 CaC',
+    description: 'Each time a model in this unit targets an enemy unit with a melee attack, re-roll a Wound roll of 1. If that enemy unit is within range of an objective marker, you can re-roll the Wound roll instead.',
+    factionId: 'CD',
+    datasheetId: '000004064',
+    combatType: 'melee',
+    effects: {
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000004065_sacrificial_dagger',
+    label: 'Master Of Possession — +1 impactar, +1 herir',
+    description: 'Once per phase, when this model is selected to shoot or fight, it can use this ability. If it does, this model’s unit suffers 1 mortal wound and, until the end of the phase, each time this model makes a Psychic Attack, add 1 to the Hit roll and add 1 to the Wound roll.',
+    factionId: 'CD',
+    datasheetId: '000004065',
+    effects: {
+      hitMod: 1,
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'ldr_000004071_dark_favour_psychic',
+    label: 'Sorcerer On Steed Of Slaanesh — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have a 4+ invulnerable save.',
+    factionId: 'CD',
+    leaderDatasheetId: '000004071',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000004072_death_hex_psychic',
+    label: 'Sorcerer In Terminator Armour — +1 PA disparo',
+    description: 'At the start of your Shooting phase, one Psyker with this ability can use it. If it does, select one enemy unit within 12" of and visible to that PSYKER and roll one D6: on a 1, that PSYKER’s unit suffers D3 mortal wounds; on a 2+, until the start of your next Movement phase, each time an attack tar',
+    factionId: 'CD',
+    datasheetId: '000004072',
+    combatType: 'ranged',
+    effects: {
+      apMod: 1,
+    },
+  },
+  {
+    id: 'unit_000004102_prey_of_the_blood_god',
+    label: 'Karanak — Lethal Hits',
+    description: 'At the start of the first battle round, select one enemy unit to be this model’s prey. Weapons equipped by models in this model’s unit have the [LETHAL HITS] ability when targeting this model’s prey. Each time this model’s prey is destroyed, select one new enemy unit to be this model’s prey.',
+    factionId: 'CD',
+    datasheetId: '000004102',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+
+  // ─── CSM generated entries ───────────────────
+  {
+    id: 'unit_000000928_enhanced_warriors',
+    label: 'Fabius Bile — +1 Fuerza CaC',
+    description: 'If this unit is attached to a unit at the start of the battle, until the end of the battle, add 1 to the Strength characteristic of melee weapons equipped by Bodyguard models in that unit and add 1 to the Toughness characteristic of Bodyguard models in that unit.',
+    factionId: 'CSM',
+    datasheetId: '000000928',
+    combatType: 'melee',
+    effects: {
+      strengthMod: 1,
+    },
+  },
+  {
+    id: 'ldr_000000933_lord_of_fate',
+    label: 'Chaos Lord On Disc Of Tzeentch — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability against mortal wounds.',
+    factionId: 'CSM',
+    leaderDatasheetId: '000000933',
+    effects: {
+      feelNoPainThreshold: 5,
+    },
+  },
+  {
+    id: 'unit_000000939_death_hex_psychic',
+    label: 'Sorcerer In Terminator Armour — +1 PA disparo',
+    description: 'At the start of your Shooting phase, one Psyker with this ability can use it. If it does, select one enemy unit within 12" of and visible to that PSYKER and roll one D6: on a 1, that PSYKER’s unit suffers D3 mortal wounds; on a 2+, until the start of your next Movement phase, each time an attack tar',
+    factionId: 'CSM',
+    datasheetId: '000000939',
+    combatType: 'ranged',
+    effects: {
+      apMod: 1,
+    },
+  },
+  {
+    id: 'ldr_000000943_dark_favour_psychic',
+    label: 'Sorcerer On Steed Of Slaanesh — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have a 4+ invulnerable save.',
+    factionId: 'CSM',
+    leaderDatasheetId: '000000943',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000000944_master_of_mechanisms',
+    label: 'Warpsmith — +1 impactar',
+    description: 'In your Command phase, select one friendly Heretic Astartes Vehicle model within 3" of this model. That VEHICLE model regains up to D3 lost wounds and, until the start of your next Command phase, each time that VEHICLE makes an attack, add 1 to the Hit roll. Each model can only be selected for this ',
+    factionId: 'CSM',
+    datasheetId: '000000944',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000947_despoilers',
+    label: 'Chaos Terminator Squad — repetir impactos',
+    description: 'Each time this unit makes a Dark Pact, until the end of the phase, each time a model in this unit makes an attack, you can re-roll the Hit roll.',
+    factionId: 'CSM',
+    datasheetId: '000000947',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000000954_devoted_to_destruction',
+    label: 'Helbrute — +2 Ataques CaC',
+    description: 'If this model is equipped with two melee weapons in addition to its close combat weapon, add 2 to the Attacks characteristic of those two weapons.',
+    factionId: 'CSM',
+    datasheetId: '000000954',
+    combatType: 'melee',
+    effects: {
+      attacksMod: 2,
+    },
+  },
+  {
+    id: 'unit_000000961_airborne_predator',
+    label: 'Heldrake — +1 impactar',
+    description: 'Each time this model makes an attack that targets a unit that can FLY, add 1 to the Hit roll.',
+    factionId: 'CSM',
+    datasheetId: '000000961',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000963_destructor',
+    label: 'Chaos Predator Destructor — +1 PA disparo',
+    description: 'Each time a ranged attack made by this model targets an enemy INFANTRY unit, improve the Armour Penetration characteristic of that attack by 1.',
+    factionId: 'CSM',
+    datasheetId: '000000963',
+    combatType: 'ranged',
+    effects: {
+      apMod: 1,
+    },
+  },
+  {
+    id: 'opb_000000969_daemonforge',
+    label: 'Defiler — repetir her.1 [OPB]',
+    description: 'Each time this unit makes a Dark Pact, until the end of the phase, each time this model makes an attack, re-roll a Wound roll of 1. In addition, once per battle, when this unit makes a Dark Pact, before making the resulting Leadership test, you can declare it will overcharge its daemonforge. If it d',
+    factionId: 'CSM',
+    datasheetId: '000000969',
+    effects: {
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'opb_000001297_bloodlust',
+    label: 'Kytan Ravager — Sustained 1 CaC [OPB]',
+    description: 'Each time this model makes a Charge move, until the end of the turn, its melee weapons have the [SUSTAINED HITS 1] ability. In addition, once per battle, this model is eligible to declare a charge in a turn in which it Advanced.',
+    factionId: 'CSM',
+    datasheetId: '000001297',
+    combatType: 'melee',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'unit_000001298_runes_of_the_blood_god',
+    label: 'Greater Brass Scorpion — FNP 4+',
+    description: 'This model has the Feel No Pain 4+ ability against mortal wounds and Psychic Attacks.',
+    factionId: 'CSM',
+    datasheetId: '000001298',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000001302_armoured_spearhead',
+    label: 'Chaos Deimos Predator — repetir imp.1',
+    description: 'Each time this model makes an attack that targets an enemy unit, re-roll a Hit roll of 1 and, if that unit is within range of an objective marker you do not control, you can re-roll the Hit roll instead.',
+    factionId: 'CSM',
+    datasheetId: '000001302',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000001317_interceptor',
+    label: 'Hell Blade — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that can FLY, add 1 to the Hit roll.',
+    factionId: 'CSM',
+    datasheetId: '000001317',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000001581_sacrificial_dagger',
+    label: 'Master Of Possession — +1 impactar, +1 herir',
+    description: 'Once per phase, when this model is selected to shoot or fight, it can use this ability. If it does, this model’s unit suffers 1 mortal wound and, until the end of the phase, each time this model makes a Psychic Attack, add 1 to the Hit roll and add 1 to the Wound roll.',
+    factionId: 'CSM',
+    datasheetId: '000001581',
+    effects: {
+      hitMod: 1,
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000001583_spirit_thief',
+    label: 'Lord Discordant On Helstalker — repetir her.1 disparo',
+    description: 'At the start of your Shooting phase, select one visible enemy VEHICLE unit. Until the end of the phase, each time a friendly HERETIC ASTARTES model makes an attack that targets that unit, re-roll a Wound roll of 1.',
+    factionId: 'CSM',
+    datasheetId: '000001583',
+    combatType: 'ranged',
+    effects: {
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000001586_soul_eater',
+    label: 'Venomcrawler — +1 Ataques CaC',
+    description: 'At the end of the Fight phase, if one or more attacks made by this model this phase destroyed one or more enemy units, until the end of the battle, add 1 to the Attacks characteristic of this model’s weapons.',
+    factionId: 'CSM',
+    datasheetId: '000001586',
+    combatType: 'melee',
+    effects: {
+      attacksMod: 1,
+    },
+  },
+  {
+    id: 'unit_000001587_fortification',
+    label: 'Noctilith Crown — -1 impactar',
+    description: 'While an enemy unit is only within Engagement Range of one or more FORTIFICATIONS from your army:That unit can still be selected as the target of ranged attacks, but each time such an attack is made, unless it is made with a Pistol weapon, subtract 1 from the Hit roll. Models in that unit do not nee',
+    factionId: 'CSM',
+    datasheetId: '000001587',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000002570_veterans_of_the_long_war',
+    label: 'Legionaries — repetir her.1 CaC',
+    description: 'Each time a model in this unit targets an enemy unit with a melee attack, re-roll a Wound roll of 1. If that enemy unit is within range of an objective marker, you can re-roll the Wound roll instead.',
+    factionId: 'CSM',
+    datasheetId: '000002570',
+    combatType: 'melee',
+    effects: {
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000002589_mutated_bodyguard',
+    label: 'Traitor Enforcer — FNP 4+',
+    description: 'While this unit contains a Traitor Ogryn model, CHARACTER models in this unit have the Feel No Pain 4+ ability.',
+    factionId: 'CSM',
+    datasheetId: '000002589',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000002591_mischief_makers_aura',
+    label: 'Mutoid Vermin — -1 impactar CaC',
+    description: 'While an enemy unit (excluding MONSTERS and VEHICLES) is within 6" of this unit, each time a model in that unit makes a melee attack, subtract 1 from the Hit roll.',
+    factionId: 'CSM',
+    datasheetId: '000002591',
+    combatType: 'melee',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000002733_beastmaster',
+    label: 'Renegade Ogryn Beast Handler — repetir imp.1',
+    description: 'While this unit contains an Ogryn Pack Master model, you can re-roll Charge rolls made for this unit, and each time a Chaos Mauler Hound model in this unit makes an attack, re-roll a Hit roll of 1.',
+    factionId: 'CSM',
+    datasheetId: '000002733',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000003583_bringers_of_change',
+    label: 'Rubric Marines — repetir her.1 disparo',
+    description: 'Each time a model in this unit makes a ranged attack, re-roll a Wound roll of 1. If that attack targets a unit within range of an objective marker you do not control, you can re-roll the Wound roll instead.',
+    factionId: 'CSM',
+    datasheetId: '000003583',
+    combatType: 'ranged',
+    effects: {
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000003618_strafing_run',
+    label: 'Fire Raptor Gunship — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that cannot Fly, add 1 to the Hit roll.',
+    factionId: 'CSM',
+    datasheetId: '000003618',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000003626_deredeo_strike',
+    label: 'Deredeo Dreadnought — repetir impactos disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that is not Below Half-strength, you can re-roll the Hit roll.',
+    factionId: 'CSM',
+    datasheetId: '000003626',
+    combatType: 'ranged',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000003630_atomantic_arc_reactor',
+    label: 'Cerberus — Lethal Hits disparo',
+    description: 'Each time this unit shoots its Cerberus neutron pulse array in your Shooting phase, provided it Remained Stationary this turn, that weapon has the [LETHAL HITS] ability.',
+    factionId: 'CSM',
+    datasheetId: '000003630',
+    combatType: 'ranged',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+  {
+    id: 'unit_000003642_armoured_spearhead',
+    label: 'Sicaran Battle Tank — repetir imp.1',
+    description: 'Each time this model makes an attack that targets an enemy unit, re-roll a Hit roll of 1 and, if that unit is within range of an objective marker you do not control, you can re-roll the Hit roll instead.',
+    factionId: 'CSM',
+    datasheetId: '000003642',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000003666_interceptor',
+    label: 'Xiphon Interceptor — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that can Fly, add 1 to the Hit roll.',
+    factionId: 'CSM',
+    datasheetId: '000003666',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000003670_powerful_volley',
+    label: 'Rapier Carrier — Lethal Hits disparo',
+    description: 'Each time this model shoots in your Shooting phase, provided it Remained Stationary this turn, all [HEAVY] weapons equipped by models in this unit have the [LETHAL HITS] ability.',
+    factionId: 'CSM',
+    datasheetId: '000003670',
+    combatType: 'ranged',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+  {
+    id: 'unit_000003678_ferocious_assault',
+    label: 'Sicaran Venator — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets the closest eligible MONSTER or VEHICLE unit, add 1 to the Hit roll.',
+    factionId: 'CSM',
+    datasheetId: '000003678',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000003686_rotating_death',
+    label: 'Sicaran Punisher — Sustained 1',
+    description: 'This model’s Punisher rotary cannon has the [SUSTAINED HITS 1] ability when targeting INFANTRY units.',
+    factionId: 'CSM',
+    datasheetId: '000003686',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'unit_000003876_visions_of_suffering_psychic',
+    label: 'Nemesis Claw — +1 impactar, +1 herir',
+    description: 'Each time a model in this unit makes an attack that targets an enemy unit that is below its Starting Strength, add 1 to the Hit roll. If that enemy unit is Below Half-strength, add 1 to the Wound roll as well.',
+    factionId: 'CSM',
+    datasheetId: '000003876',
+    effects: {
+      hitMod: 1,
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000004192_brutal_raider',
+    label: 'Red Corsairs Reave-Captain — +1 Fuerza, +1 PA CaC',
+    description: 'Each time this model’s unit ends a Charge move, until the end of the turn, add 1 to the Strength characteristic of melee weapons equipped by this model and improve the Armour Penetration characteristics of those weapons by 1.',
+    factionId: 'CSM',
+    datasheetId: '000004192',
+    combatType: 'melee',
+    effects: {
+      strengthMod: 1,
+      apMod: 1,
+    },
+  },
+  {
+    id: 'unit_000004205_headlong_destruction',
+    label: 'Kravek Morne — +1 PA',
+    description: 'Each time a model in this unit makes an attack that targets the closest eligible enemy unit, improve the Armour Penetration characteristic of that attack by 1.',
+    factionId: 'CSM',
+    datasheetId: '000004205',
+    effects: {
+      apMod: 1,
+    },
+  },
+  {
+    id: 'unit_000004205_architect_of_ruin',
+    label: 'Kravek Morne — repetir heridas',
+    description: 'At the start of the battle, select one unit in your opponent’s army to be this model’s hated foe. Each time this model makes an attack that targets its hated foe, you can re-roll the Wound roll. Each time this model’s hated foe is destroyed, you can select a new unit from your opponent’s army to be ',
+    factionId: 'CSM',
+    datasheetId: '000004205',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+
+  // ─── DG generated entries ───────────────────
+  {
+    id: 'unit_000001045_infectious_bloodshed',
+    label: 'Death Guard Possessed — Sustained 1',
+    description: 'Each time this unit makes a Charge move, until the end of the turn, weapons equipped by models in this unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'DG',
+    datasheetId: '000001045',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'unit_000001046_diseased_malice',
+    label: 'Helbrute — +1 herir',
+    description: 'Each time this model makes an attack that targets an Afflicted unit, add 1 to the Wound roll.',
+    factionId: 'DG',
+    datasheetId: '000001046',
+    effects: {
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000001046_froth_spattered_frenzy',
+    label: 'Helbrute — +2 Ataques CaC',
+    description: 'If this model is equipped with two melee weapons in addition to its close combat weapon, add 2 to the Attacks characteristic of those two weapons.',
+    factionId: 'DG',
+    datasheetId: '000001046',
+    combatType: 'melee',
+    effects: {
+      attacksMod: 2,
+    },
+  },
+  {
+    id: 'unit_000001047_fire_support',
+    label: 'Chaos Rhino — repetir heridas disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit hit by one or more of those attacks. Until the end of the phase, each time a friendly model that disembarked from this TRANSPORT this turn makes an attack that targets that enemy unit, you can re-roll the Wound roll.',
+    factionId: 'DG',
+    datasheetId: '000001047',
+    combatType: 'ranged',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000001369_inflamed_infections',
+    label: 'Plague Surgeon — crit 5+ CaC',
+    description: 'At the start of the Fight phase, select one enemy unit within Engagement Range of this model. Until the end of the phase, each time this model makes an attack that targets that unit, an unmodified Hit roll of 5+ scores a Critical Hit. If that unit is Below Half-strength, an unmodified Hit roll of 4+',
+    factionId: 'DG',
+    datasheetId: '000001369',
+    combatType: 'melee',
+    effects: {
+      critThreshold: 5,
+    },
+  },
+  {
+    id: 'unit_000001371_silent_bodyguard',
+    label: 'Deathshroud Terminators — FNP 4+',
+    description: 'While a Character model is leading this unit, that CHARACTER model has the Feel No Pain 4+ ability.',
+    factionId: 'DG',
+    datasheetId: '000001371',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000001374_tank_hunters',
+    label: 'Myphitic Blight-hauler — +1 impactar, +1 herir disparo',
+    description: 'In your Shooting phase, each time a model in this unit makes an attack that targets a MONSTER or VEHICLE unit, add 1 to the Hit roll and add 1 to the Wound roll.',
+    factionId: 'DG',
+    datasheetId: '000001374',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002461_hail_of_corrosive_disease',
+    label: 'Chaos Predator Destructor — +1 PA disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit (excluding MONSTERS and VEHICLES) hit by one or more of those attacks. Until the end of the phase, each time a friendly Death Guard unit makes a ranged attack that targets that enemy unit, improve the Armour Penetration charact',
+    factionId: 'DG',
+    datasheetId: '000002461',
+    combatType: 'ranged',
+    effects: {
+      apMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002462_fortification',
+    label: 'Miasmic Malignifier — -1 impactar',
+    description: 'While an enemy unit is only within Engagement Range of one or more FORTIFICATIONS from your army:That unit can still be selected as the target of ranged attacks, but each time such an attack is made, unless it is made with a Pistol, subtract 1 from the Hit roll.Models in that unit do not need to tak',
+    factionId: 'DG',
+    datasheetId: '000002462',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000003594_interceptor',
+    label: 'Hell Blade — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that can FLY, add 1 to the Hit roll.',
+    factionId: 'DG',
+    datasheetId: '000003594',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000003596_mischief_makers_aura',
+    label: 'Mutoid Vermin — -1 impactar CaC',
+    description: 'While an enemy unit (excluding MONSTERS and VEHICLES) is within 6" of this unit, each time a model in that unit makes a melee attack, subtract 1 from the Hit roll.',
+    factionId: 'DG',
+    datasheetId: '000003596',
+    combatType: 'melee',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000003616_strafing_run',
+    label: 'Fire Raptor Gunship — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that cannot Fly, add 1 to the Hit roll.',
+    factionId: 'DG',
+    datasheetId: '000003616',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000003624_deredeo_strike',
+    label: 'Deredeo Dreadnought — repetir impactos disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that is not Below Half-strength, you can re-roll the Hit roll.',
+    factionId: 'DG',
+    datasheetId: '000003624',
+    combatType: 'ranged',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000003628_atomantic_arc_reactor',
+    label: 'Cerberus — Lethal Hits disparo',
+    description: 'Each time this unit shoots its Cerberus neutron pulse array in your Shooting phase, provided it Remained Stationary this turn, that weapon has the [LETHAL HITS] ability.',
+    factionId: 'DG',
+    datasheetId: '000003628',
+    combatType: 'ranged',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+  {
+    id: 'unit_000003640_armoured_spearhead',
+    label: 'Sicaran Battle Tank — repetir imp.1',
+    description: 'Each time this model makes an attack that targets an enemy unit, re-roll a Hit roll of 1 and, if that unit is within range of an objective marker you do not control, you can re-roll the Hit roll instead.',
+    factionId: 'DG',
+    datasheetId: '000003640',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000003664_interceptor',
+    label: 'Xiphon Interceptor — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that can Fly, add 1 to the Hit roll.',
+    factionId: 'DG',
+    datasheetId: '000003664',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000003668_powerful_volley',
+    label: 'Rapier Carrier — Lethal Hits disparo',
+    description: 'Each time this model shoots in your Shooting phase, provided it Remained Stationary this turn, all [HEAVY] weapons equipped by models in this unit have the [LETHAL HITS] ability.',
+    factionId: 'DG',
+    datasheetId: '000003668',
+    combatType: 'ranged',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+  {
+    id: 'unit_000003676_ferocious_assault',
+    label: 'Sicaran Venator — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets the closest eligible MONSTER or VEHICLE unit, add 1 to the Hit roll.',
+    factionId: 'DG',
+    datasheetId: '000003676',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000003684_rotating_death',
+    label: 'Sicaran Punisher — Sustained 1',
+    description: 'This model’s Punisher rotary cannon has the [SUSTAINED HITS 1] ability when targeting INFANTRY units.',
+    factionId: 'DG',
+    datasheetId: '000003684',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'unit_000004111_virulent_blessing_psychic',
+    label: 'Rotigus — +1 Daño CaC',
+    description: 'At the start of the Fight phase, you can select one enemy unit within 24" and visible to this model. Until the end of the phase, each time an attack made by a Plague Legions model is allocated to a model in that unit, add 1 to the Damage characteristic of that attack.',
+    factionId: 'DG',
+    datasheetId: '000004111',
+    combatType: 'melee',
+    effects: {
+      damageMod: 1,
+    },
+  },
+  {
+    id: 'unit_000004114_death_s_heads',
+    label: 'Plague Drones — repetir heridas disparo',
+    description: 'In your Shooting phase, after this unit has shot, select one enemy unit hit by one or more of those attacks. Until the end of the turn, each time a friendly Plague Legions unit makes an attack that targets that unit, you can re-roll the Wound roll.',
+    factionId: 'DG',
+    datasheetId: '000004114',
+    combatType: 'ranged',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000004116_mischief_makers',
+    label: 'Nurglings — -1 impactar CaC',
+    description: 'Each time an enemy unit (excluding TITAN units) within Engagement Range of one or more units with this ability is selected to fight, until the end of the phase, each time a model in that enemy unit makes a melee attack, subtract 1 from the Hit roll.',
+    factionId: 'DG',
+    datasheetId: '000004116',
+    combatType: 'melee',
+    effects: {
+      hitMod: -1,
+    },
+  },
+
+  // ─── DRU generated entries ───────────────────
+  {
+    id: 'unit_000000634_hatred_eternal_pain',
+    label: 'Archon — repetir impactos',
+    description: 'In your Shooting phase or the Fight phase, when you select this model’s unit to shoot or fight, you can spend 1 Pain token to Empower that unit. While that unit is Empowered, each time a model in that unit makes an attack, you can re-roll the Hit roll.',
+    factionId: 'DRU',
+    datasheetId: '000000634',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000000642_sculptor_of_torments_pain',
+    label: 'Urien Rakarth — +1 herir CaC',
+    description: 'In your Fight phase, when you select this model’s unit to fight, you can spend 1 of your Pain tokens to Empower this model’s unit. While that unit is Empowered, each time a model in that unit makes a melee attack, add 1 to the Wound roll.',
+    factionId: 'DRU',
+    datasheetId: '000000642',
+    combatType: 'melee',
+    effects: {
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000642_father_of_pain',
+    label: 'Urien Rakarth — FNP 4+',
+    description: 'Each time an attack with a Damage characteristic of 1 is allocated to a model in this model’s unit, that model has the Feel No Pain 4+ ability against that attack.',
+    factionId: 'DRU',
+    datasheetId: '000000642',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000000643_master_of_blades_pain',
+    label: 'Drazhar — +1 herir CaC',
+    description: 'In the Fight phase, when you select this model’s unit to fight, you can spend 1 Pain token to Empower that unit. While that unit is Empowered, each time a model in that unit makes a melee attack, add 1 to the Wound roll.',
+    factionId: 'DRU',
+    datasheetId: '000000643',
+    combatType: 'melee',
+    effects: {
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000643_silent_executioner',
+    label: 'Drazhar — repetir impactos, repetir heridas',
+    description: 'Each time this model makes an attack that targets a unit that is below its Starting Strength, you can re-roll the Hit roll. If that target is Below Half-strength, you can re-roll the Wound roll as well.',
+    factionId: 'DRU',
+    datasheetId: '000000643',
+    effects: {
+      rerollAllHits: true,
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000000644_sadistic_raiders_pain',
+    label: 'Kabalite Warriors — repetir her.1',
+    description: 'In your Shooting phase or the Fight phase, when you select this unit to shoot or fight, you can spend 1 Pain token to Empower this unit. While Empowered, each time a model in this unit makes an attack, re-roll a Wound roll of 1. If the target is within range of an objective marker, you can re-roll t',
+    factionId: 'DRU',
+    datasheetId: '000000644',
+    effects: {
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000000648_tormentors',
+    label: 'Incubi — +1 impactar CaC',
+    description: 'At the start of the Fight phase, each enemy unit within Engagement Range of one or more units with this ability must take a Battle-shock test. Each time a model in this unit makes a melee attack that targets a Battle-shocked unit, add 1 to the Hit roll.',
+    factionId: 'DRU',
+    datasheetId: '000000648',
+    combatType: 'melee',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000651_macro_steroids_pain',
+    label: 'Grotesques — Lethal Hits CaC',
+    description: 'In the Fight phase, when you select this unit to fight, you can spend 1 of your Pain tokens to Empower this unit. While Empowered, melee weapons equipped by models in this unit have a Strength characteristic of 8 and the [LETHAL HITS] ability.',
+    factionId: 'DRU',
+    datasheetId: '000000651',
+    combatType: 'melee',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+  {
+    id: 'unit_000000652_goaded_savagery_pain',
+    label: 'Beastmaster — repetir impactos, repetir heridas CaC',
+    description: 'In the Fight phase, when you select this unit to fight, you can spend 1 of your Pain tokens to Empower this unit. While this unit is Empowered, if it contains a BEASTMASTER model, each time a BEAST model in this unit makes a melee attack, you can re-roll the Hit roll and you can re-roll the Wound ro',
+    factionId: 'DRU',
+    datasheetId: '000000652',
+    combatType: 'melee',
+    effects: {
+      rerollAllHits: true,
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000000656_splinter_racks_pain',
+    label: 'Raider — repetir impactos disparo',
+    description: 'In your Shooting phase, when you select this model to shoot, you can spend 1 Pain token to Empower this model. While Empowered, if one or more units are embarked within this model, each time this model makes an attack with a ranged weapon that has the [ANTI] ability, you can re-roll the Hit roll.',
+    factionId: 'DRU',
+    datasheetId: '000000656',
+    combatType: 'ranged',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000000660_ground_attack_craft',
+    label: 'Razorwing Jetfighter — +1 impactar disparo',
+    description: 'Each time a model in this unit makes a ranged attack that targets an enemy unit (excluding units that can FLY), add 1 to the Hit roll.',
+    factionId: 'DRU',
+    datasheetId: '000000660',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000662_winged_strike_pain',
+    label: 'Scourges with Heavy Weapons — repetir impactos disparo',
+    description: 'In your Shooting phase, when you select this unit to shoot, you can spend 1 Pain token to Empower this unit. While Empowered, each time a model in this unit makes a ranged attack, you can re-roll the Hit roll.',
+    factionId: 'DRU',
+    datasheetId: '000000662',
+    combatType: 'ranged',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000000665_agonising_suppression_pain',
+    label: 'Ravager — -1 impactar disparo',
+    description: 'In your Shooting phase, when you select this model to shoot, you can spend 1 Pain token to Empower this model. While Empowered, after this model has shot, select one enemy unit hit by one or more of those attacks. Until the start of your next turn, that enemy unit is suppressed. While a unit is supp',
+    factionId: 'DRU',
+    datasheetId: '000000665',
+    combatType: 'ranged',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000665_eradicate_the_foe',
+    label: 'Ravager — repetir impactos',
+    description: 'Each time this model makes an attack that targets an enemy unit that is at its Starting Strength, you can re-roll the Hit roll.',
+    factionId: 'DRU',
+    datasheetId: '000000665',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000000666_electromagentic_cascade_pain',
+    label: 'Reaper — Sustained 2 disparo',
+    description: 'In your Shooting phase, when you select this model to shoot, you can spend 1 Pain token to Empower this model. While Empowered:Each time this model makes a ranged attack that targets a VEHICLE unit, that attack has the [SUSTAINED HITS 2] ability.Each time this model makes a ranged attack that target',
+    factionId: 'DRU',
+    datasheetId: '000000666',
+    combatType: 'ranged',
+    effects: {
+      sustainedHitsBonus: 2,
+    },
+  },
+  {
+    id: 'unit_000000666_eradicate_the_foe',
+    label: 'Reaper — repetir imp.1',
+    description: 'Each time this model makes an attack that targets an enemy unit that is at its Starting Strength, re-roll a Hit roll of 1. If the target unit has a Starting Strength of 1, this ability only applies if that unit has its starting number of wounds.',
+    factionId: 'DRU',
+    datasheetId: '000000666',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000001390_ground_attack_craft',
+    label: 'Raven Strike Fighter — +1 impactar disparo',
+    description: 'Each time a model in this unit makes a ranged attack that targets an enemy unit (excluding units that can FLY), add 1 to the Hit roll.',
+    factionId: 'DRU',
+    datasheetId: '000001390',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002471_deadly_retinue_pain',
+    label: 'Court of the Archon — -1 herir, Lethal Hits',
+    description: 'At the start of your Shooting phase or at the start of the Fight phase, you can spend 1 Pain token to Empower this unit. While this unit is Empowered:If it contains one or more Lhamaean models, melee weapons equipped by models in this unit have the [LETHAL HITS] ability.If it contains one or more Me',
+    factionId: 'DRU',
+    datasheetId: '000002471',
+    target: 'defender',
+    effects: {
+      lethalHitsBonus: true,
+      woundMod: -1,
+    },
+  },
+  {
+    id: 'unit_000002471_court_of_the_archon',
+    label: 'Court of the Archon — FNP 4+',
+    description: 'While a CHARACTER model is leading a unit that contains one or more Lhamaean, Medusae, Sslyth and/or Ur-ghul models, that CHARACTER model has the Feel No Pain 4+ ability.',
+    factionId: 'DRU',
+    datasheetId: '000002471',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000004155_archon_of_the_poisoned_tongue_pain',
+    label: 'Lady Malys — Lethal Hits, Sustained 1',
+    description: 'In your Shooting phase or the Fight phase, when you select this model’sunit to shoot or fight, you can spend 1 Pain token to Empower that unit. If you do, select one of the following abilities: [SUSTAINED HITS 1]; [LETHAL HITS]. Until the end of the phase, while that unit is Empowered, weapons equip',
+    factionId: 'DRU',
+    datasheetId: '000004155',
+    effects: {
+      lethalHitsBonus: true,
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'unit_000004156_assassins_poisons_pain',
+    label: 'Hand of the Archon — Lethal Hits',
+    description: 'In your Shooting phase or the Fight phase, when you select this unit to shoot or fight, you can spend 1 Pain token to Empower this unit. While Empowered, weapons equipped by models in this unit (excluding blast pistols, blasters and dark lances) have the [LETHAL HITS] and [PRECISION] abilities.',
+    factionId: 'DRU',
+    datasheetId: '000004156',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+  {
+    id: 'unit_000004156_archon_s_will',
+    label: 'Hand of the Archon — FNP 5+',
+    description: 'At the start of the first battle round, select one objective marker on the battlefield. Until the end of the battle, while this unit is within range of that objective marker, unless this unit is Battle-shocked, models in this unit have a 5+ invulnerable save and an Objective Control characteristic o',
+    factionId: 'DRU',
+    datasheetId: '000004156',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 5,
+    },
+  },
+  {
+    id: 'unit_000004157_murderous_crossfire',
+    label: 'Scourges with Shardcarbines — +1 PA disparo',
+    description: 'After this unit has shot, select one enemy unit hit by one or more of those attacks. Until the end of the phase, each time a friendly Drukhari unit makes a ranged attack that targets that enemy unit, improve the Armour Penetration characteristic of that attack by 1. The same enemy unit can only be a',
+    factionId: 'DRU',
+    datasheetId: '000004157',
+    combatType: 'ranged',
+    effects: {
+      apMod: 1,
+    },
+  },
+  {
+    id: 'unit_000004158_cruel_amusement',
+    label: 'Death Jester — Sustained 3 disparo',
+    description: 'In your Shooting phase, each time this model is selected to shoot, select one of the abilities below. Until the end of the phase, this model’s shrieker cannon has that ability.[IGNORES COVER][PRECISION][SUSTAINED HITS 3]',
+    factionId: 'DRU',
+    datasheetId: '000004158',
+    combatType: 'ranged',
+    effects: {
+      sustainedHitsBonus: 3,
+    },
+  },
+  {
+    id: 'unit_000004161_cegorach_s_favour',
+    label: 'Troupe Master — +1 herir, repetir imp.1 CaC',
+    description: 'Each time this model makes a melee attack, you can re-roll a Hit roll of 1 and add 1 to the Wound roll.',
+    factionId: 'DRU',
+    datasheetId: '000004161',
+    combatType: 'melee',
+    effects: {
+      rerollHitsOf1: true,
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000004163_acrobatic_grace',
+    label: 'Skyweavers — -1 impactar',
+    description: 'Each time an attack targets this unit, subtract 1 from the Hit roll.',
+    factionId: 'DRU',
+    datasheetId: '000004163',
+    target: 'defender',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000004164_dance_of_death',
+    label: 'Troupe — -1 impactar, +1 herir, repetir imp.1 CaC',
+    description: 'At the start of the Fight phase, select one of the following abilities for this unit to gain until the end of the phase:Hero’s Prowess: Each time a model in this unit makes an attack, re-roll a Hit roll of 1.Villain’s Doom: Each time a model in this unit makes an attack, add 1 to the Wound roll.Tric',
+    factionId: 'DRU',
+    datasheetId: '000004164',
+    combatType: 'melee',
+    target: 'defender',
+    effects: {
+      hitMod: -1,
+      rerollHitsOf1: true,
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000004168_reavers_of_the_void',
+    label: 'Corsair Voidreavers — repetir imp.1',
+    description: 'Each time a model in this unit makes an attack, re-roll a Hit roll of 1. If the target of that attack is within range of an objective marker, you can re-roll the Hit roll instead.',
+    factionId: 'DRU',
+    datasheetId: '000004168',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000004169_piratical_raiders',
+    label: 'Corsair Voidscarred — Lethal Hits',
+    description: 'At the start of the battle, select one unit from your opponent’s army. Weapons equipped by models in this unit have the [LETHAL HITS] and [PRECISION] abilities while targeting that unit.',
+    factionId: 'DRU',
+    datasheetId: '000004169',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+  {
+    id: 'unit_000004197_fury_of_the_void_psychic',
+    label: 'Kharseth — +1 Fuerza disparo',
+    description: 'In your Shooting phase, after this model’s unit has shot, select one enemy unit hit by one or more attacks made with this model’s Dread of the Deep Void. Until the end of the turn, that unit is riven. Each time an AELDARI model from your army makes an attack that targets a riven unit, add 1 to the S',
+    factionId: 'DRU',
+    datasheetId: '000004197',
+    combatType: 'ranged',
+    effects: {
+      strengthMod: 1,
+    },
+  },
+
+  // ─── EC generated entries ───────────────────
+  {
+    id: 'unit_000004080_excessive_assault',
+    label: 'Infractors — repetir her.1 CaC',
+    description: 'Each time a model in this unit targets an enemy unit with a melee attack, re-roll a Wound roll of 1. If that enemy unit is within range of an objective marker, you can re-roll the Wound roll instead.',
+    factionId: 'EC',
+    datasheetId: '000004080',
+    combatType: 'melee',
+    effects: {
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000004083_a_challenge_worthy_of_skill',
+    label: 'Lucius the Eternal — repetir impactos, repetir heridas',
+    description: 'Each time this model makes an attack that targets a CHARACTER, MONSTER or WALKER unit, you can re-roll the Hit roll and you can re-roll the Wound roll.',
+    factionId: 'EC',
+    datasheetId: '000004083',
+    effects: {
+      rerollAllHits: true,
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000004091_glutton_for_punishment',
+    label: 'Maulerfiend — +1 impactar, +1 herir',
+    description: 'Each time this model makes an attack, if it is below its Starting Strength, add 1 to the Hit roll. If this model is also Below Half-strength, add 1 to the Wound roll as well.',
+    factionId: 'EC',
+    datasheetId: '000004091',
+    effects: {
+      hitMod: 1,
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000004094_monarch_of_the_hunt',
+    label: 'Shalaxi Helbane — repetir impactos, repetir heridas CaC',
+    description: 'At the start of the first battle round, select one enemy unit to be this model’s quarry. Each time this model makes a melee attack that targets its quarry, you can re-roll the Hit roll and you can re-roll the Wound roll. Each time this model’s quarry is destroyed, select one new enemy unit to be thi',
+    factionId: 'EC',
+    datasheetId: '000004094',
+    combatType: 'melee',
+    effects: {
+      rerollAllHits: true,
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000004208_revel_in_desecration',
+    label: 'Defiler — +1 impactar',
+    description: 'Each time this model makes an attack that targets an enemy unit that is not below Half-strength, add 1 to the Hit roll.',
+    factionId: 'EC',
+    datasheetId: '000004208',
+    effects: {
+      hitMod: 1,
+    },
+  },
+
+  // ─── GC generated entries ───────────────────
+  {
+    id: 'unit_000000508_mind_control_psychic',
+    label: 'Magus — -1 impactar, -1 herir disparo',
+    description: 'At the start of your opponent’s Shooting phase, one Psyker model from your army with this ability can use it. If used, select one enemy unit within 18" of that PSYKER model and roll one D6: on a 1, that PSYKER model suffers D3 mortal wounds; on a 2-5, until the end of the phase, each time a model in',
+    factionId: 'GC',
+    datasheetId: '000000508',
+    combatType: 'ranged',
+    effects: {
+      hitMod: -1,
+      woundMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000514_hulking_bodyguards',
+    label: 'Aberrants — -1 herir',
+    description: 'While a Character is leading this unit, each time an attack targets this unit, if the Strength characteristic of that attack is greater than the Toughness characteristic of this unit, subtract 1 from the Wound roll.',
+    factionId: 'GC',
+    datasheetId: '000000514',
+    target: 'defender',
+    effects: {
+      woundMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000516_fire_support',
+    label: 'Goliath Truck — repetir heridas disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit it scored one or more hits against this phase. Until the end of the phase, each time a friendly model that disembarked from this TRANSPORT this turn makes an attack that targets that enemy unit, you can re-roll the Wound roll.',
+    factionId: 'GC',
+    datasheetId: '000000516',
+    combatType: 'ranged',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000001565_priority_target',
+    label: 'Jackal Alphus — repetir imp.1 disparo',
+    description: 'In your Shooting phase, after this model’s unit has shot, select one enemy unit hit by one or more of those attacks made with a cult sniper rifle. Until the end of the phase, each time a friendly GENESTEALER CULTS model makes an attack that targets that enemy unit, re-roll a Hit roll of 1.',
+    factionId: 'GC',
+    datasheetId: '000001565',
+    combatType: 'ranged',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000001569_psychic_spoor',
+    label: 'Sanctus — repetir impactos, repetir heridas',
+    description: 'At the start of the first battle round, select one enemy unit to be this model’s prey. Each time this model makes an attack that targets its prey, you can re-roll the Hit roll and you can re-roll the Wound roll.',
+    factionId: 'GC',
+    datasheetId: '000001569',
+    effects: {
+      rerollAllHits: true,
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000001573_crossfire',
+    label: 'Achilles Ridgerunners — +1 PA disparo',
+    description: 'In your Shooting phase, after this unit has shot, select one enemy unit hit by one or more of those attacks. Until the end of the turn, each time a friendly GENESTEALER CULTS unit makes an attack that targets that enemy unit, improve the Armour Penetration characteristic of that attack by 1. The sam',
+    factionId: 'GC',
+    datasheetId: '000001573',
+    combatType: 'ranged',
+    effects: {
+      apMod: 1,
+    },
+  },
+  {
+    id: 'unit_000003716_industrialised_destruction',
+    label: 'Acolyte Hybrids With Hand Flamers — repetir her.1',
+    description: 'Each time a model in this unit makes an attack, re-roll a Wound roll of 1. If the target of that attack is an enemy unit within range of an objective marker, you can re-roll the Wound roll.',
+    factionId: 'GC',
+    datasheetId: '000003716',
+    effects: {
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000003885_psychological_saboteur_aura',
+    label: 'Neurolictor — -1 impactar, +1 herir',
+    description: 'While an enemy unit is within 12" of this model, if that unit is Battle-shocked:Each time a model in that unit makes an attack, subtract 1 from the Hit roll.Each time a friendly TYRANIDS model makes an attack that targets that unit, add 1 to the Wound roll.',
+    factionId: 'GC',
+    datasheetId: '000003885',
+    target: 'defender',
+    effects: {
+      hitMod: -1,
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000003946_medicae_medi_packs',
+    label: 'Quartermaster Cadre Squad — FNP 5+',
+    description: 'Whilst this unit contains one or more Medicae Servitors, models in this unit have the Feel No Pain 5+ ability.',
+    factionId: 'GC',
+    datasheetId: '000003946',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 5,
+    },
+  },
+  {
+    id: 'unit_000003947_heroic_example',
+    label: 'Hell’s Last — repetir impactos',
+    description: 'While this unit’s Minka Lesk model is on the battlefield, each time a model in this unit makes an attack, you can re-roll the Hit roll.',
+    factionId: 'GC',
+    datasheetId: '000003947',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000003949_jungle_fighters',
+    label: 'Catachan Jungle Fighters — +1 herir CaC',
+    description: 'Each time a model in this unit makes a melee attack, if this unit made a Charge move or was charged this turn, add 1 to the Wound roll.',
+    factionId: 'GC',
+    datasheetId: '000003949',
+    combatType: 'melee',
+    effects: {
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000003950_grim_demeanour',
+    label: 'Death Korps Of Krieg — +1 impactar, +1 herir',
+    description: 'Each time a model in this unit makes an attack, add 1 to the Hit roll if this unit is below its Starting Strength, and add 1 to the Wound roll as well if this unit is Below Half-strength.',
+    factionId: 'GC',
+    datasheetId: '000003950',
+    effects: {
+      hitMod: 1,
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000003953_transport_support',
+    label: 'Taurox Prime — repetir impactos disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit that was hit by one or more of those attacks. Until the end of the phase, each time a model that disembarked from this TRANSPORT this turn makes an attack that targets that enemy unit, you can re-roll the Hit roll.',
+    factionId: 'GC',
+    datasheetId: '000003953',
+    combatType: 'ranged',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000003955_defence_line',
+    label: 'Aegis Defence Line — FNP 4+',
+    description: 'While an ASTRA MILITARUM INFANTRY model has the Benefit of Cover as a result of this terrain feature (see above), that model has a 4+ invulnerable save.',
+    factionId: 'GC',
+    datasheetId: '000003955',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000003955_fortification',
+    label: 'Aegis Defence Line — -1 impactar',
+    description: 'While an enemy unit is only within Engagement Range of one or more FORTIFICATIONS from your army: That unit can still be selected as the target of ranged attacks, but each time such an attack is made, unless it is made with a Pistol, subtract 1 from the Hit roll. Models in that unit do not need to t',
+    factionId: 'GC',
+    datasheetId: '000003955',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000003957_flak_battery',
+    label: 'Hydra Platform — repetir impactos',
+    description: 'Each time this model makes an attack that targets a unit that can FLY, you can re-roll the Hit roll.',
+    factionId: 'GC',
+    datasheetId: '000003957',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000003958_furious_barrage',
+    label: 'Manticore Platform — repetir impactos',
+    description: 'Each time this model makes an attack with its storm eagle rockets that targets an enemy unit that contains five or more models, you can re-roll the Hit roll.',
+    factionId: 'GC',
+    datasheetId: '000003958',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000003960_mobile_hunter_killers',
+    label: 'Armoured Sentinels — repetir heridas',
+    description: 'Each time a model in this unit makes an attack that targets a MONSTER or VEHICLE unit, you can re-roll the Wound roll.',
+    factionId: 'GC',
+    datasheetId: '000003960',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000003968_bring_it_down',
+    label: 'Catachan Heavy Weapons Squad — repetir imp.1, repetir her.1 disparo',
+    description: 'Each time a model in this unit makes a ranged attack that targets a MONSTER of VEHICLE unit, re-roll a Hit roll of 1 and re-roll a Wound roll of 1.',
+    factionId: 'GC',
+    datasheetId: '000003968',
+    combatType: 'ranged',
+    effects: {
+      rerollHitsOf1: true,
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000003972_rearm_reload_fire',
+    label: 'Field Ordnance Battery — Sustained 1',
+    description: 'While this unit is being affected by an Order, provided it Remained Stationary this turn, all Heavy weapons equipped by models in this unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'GC',
+    datasheetId: '000003972',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'unit_000003975_flak_battery',
+    label: 'Hydra — repetir impactos',
+    description: 'Each time this model makes an attack that targets a unit that can FLY, you can re-roll the Hit roll.',
+    factionId: 'GC',
+    datasheetId: '000003975',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000003979_armoured_spearhead',
+    label: 'Leman Russ Battle Tank — repetir imp.1',
+    description: 'Each time this model makes an attack that targets an enemy unit, re-roll a Hit roll of 1 and, if that unit is within range of an objective marker you do not control, you can re-roll the Hit roll instead.',
+    factionId: 'GC',
+    datasheetId: '000003979',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000003982_gung_ho_executioners',
+    label: 'Leman Russ Executioner — +1 impactar',
+    description: 'Each time this model makes an attack with its executioner plasma cannon that targets a unit that is Below Half-strength, add 1 to the Hit roll.',
+    factionId: 'GC',
+    datasheetId: '000003982',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000003983_withering_hail',
+    label: 'Leman Russ Exterminator — +1 PA disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit hit by one or more of those attacks made with its exterminator autocannon. Until the end of the phase, each time a friendly ASTRA MILITARUM unit makes an attack that targets that enemy unit, improve the Armour Penetration chara',
+    factionId: 'GC',
+    datasheetId: '000003983',
+    combatType: 'ranged',
+    effects: {
+      apMod: 1,
+    },
+  },
+  {
+    id: 'unit_000003985_tank_killer',
+    label: 'Leman Russ Vanquisher — repetir heridas disparo',
+    description: 'Each time this model makes a ranged attack with its vanquisher battle cannon that targets a MONSTER or VEHICLE unit, you can re-roll the Wound roll.',
+    factionId: 'GC',
+    datasheetId: '000003985',
+    combatType: 'ranged',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000003988_daring_recon',
+    label: 'Scout Sentinels — repetir imp.1 disparo',
+    description: 'At the start of your Shooting phase, select one enemy unit within 18" of and visible to this unit. Until the end of the phase, each time a friendly ASTRA MILITARUM model makes an attack that targets that unit, re-roll a Hit roll of 1.',
+    factionId: 'GC',
+    datasheetId: '000003988',
+    combatType: 'ranged',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000003992_suppression_bombardment',
+    label: 'Wyvern — -1 impactar disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit (excluding MONSTERS and VEHICLES) that was hit by one or more of those attacks made with this model’s Wyvern quad stormshard mortar. Until the start of your next Shooting phase, that enemy unit is suppressed. While a unit is su',
+    factionId: 'GC',
+    datasheetId: '000003992',
+    combatType: 'ranged',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000003997_ancient_conquest',
+    label: 'Carnodon — repetir imp.1, repetir her.1',
+    description: 'Each time this model makes an attack that targets an enemy unit that is within your opponent’s deployment zone, re-roll a Hit roll of 1 and re-roll a Wound roll of 1.',
+    factionId: 'GC',
+    datasheetId: '000003997',
+    effects: {
+      rerollHitsOf1: true,
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000004000_fire_support',
+    label: 'Crassus — repetir heridas disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit that was hit by one or more of those attacks. Until the end of the phase, each time a friendly model that disembarked from this TRANSPORT this turn makes an attack that targets that enemy unit, you can re-roll the Wound roll.',
+    factionId: 'GC',
+    datasheetId: '000004000',
+    combatType: 'ranged',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000004007_suppression_bombardment',
+    label: 'Griffon Mortar Carrier — -1 impactar disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit (excluding MONSTER and VEHICLE units) hit by one or more of those attacks made with this model’s Griffon heavy mortar. Until the start of your next turn, that enemy unit is suppressed. While a unit is suppressed, each time a mo',
+    factionId: 'GC',
+    datasheetId: '000004007',
+    combatType: 'ranged',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000004009_rearm_reload_fire',
+    label: 'Heavy Mortar Team — Sustained 1 disparo',
+    description: 'While this model is being affected by an Order, provided it Remained Stationary this turn, ranged weapons equipped by this model have the [SUSTAINED HITS 1] ability.',
+    factionId: 'GC',
+    datasheetId: '000004009',
+    combatType: 'ranged',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'unit_000004010_suppression_bombardment',
+    label: 'Heavy Quad Launcher Team — -1 impactar disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit (excluding MONSTER and VEHICLE units) hit by one or more of those attacks. Unit the start of your next turn, that enemy unit is suppressed. While a unit is suppressed, each time a model in that unit makes an attack, subtract 1 ',
+    factionId: 'GC',
+    datasheetId: '000004010',
+    combatType: 'ranged',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000004011_battlefield_control',
+    label: 'Macharius — repetir imp.1 disparo',
+    description: 'Each time this model makes a ranged attack, if it is within range of an objective marker you control, re-roll a Hit roll of 1.',
+    factionId: 'GC',
+    datasheetId: '000004011',
+    combatType: 'ranged',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000004012_overwhelming_short_range_firepower',
+    label: 'Macharius Omega — repetir imp.1',
+    description: 'Each time this model makes an attack that targets the closest eligible enemy unit, re-roll a Hit roll of 1 and re-roll a Wound roll or 1.',
+    factionId: 'GC',
+    datasheetId: '000004012',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000004013_tank_hunter',
+    label: 'Macharius Vanquisher — repetir impactos disparo',
+    description: 'Each time this model makes a ranged attack with its Macharius twin vanquisher cannon that targets a MONSTER or VEHICLE unit, you can re-roll the Hit roll.',
+    factionId: 'GC',
+    datasheetId: '000004013',
+    combatType: 'ranged',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000004015_rugged_reliability',
+    label: 'Malcador — -1 PA disparo',
+    description: 'Each time a ranged attack targets this model, worsen the Armour Penetration characteristic of that attack by 1.',
+    factionId: 'GC',
+    datasheetId: '000004015',
+    combatType: 'ranged',
+    target: 'defender',
+    effects: {
+      apMod: -1,
+    },
+  },
+  {
+    id: 'unit_000004024_powerful_volley',
+    label: 'Rapier Laser Destroyer Battery — Lethal Hits',
+    description: 'While this unit is being affected by an Order, provided it Remained Stationary this turn, Heavy weapons equipped by models in this unit have the [LETHAL HITS] ability.',
+    factionId: 'GC',
+    datasheetId: '000004024',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+  {
+    id: 'unit_000004025_artillery_commander',
+    label: 'Regimental Attachés — Sustained 1 disparo',
+    description: 'At the start of your Shooting phase, select one enemy unit within 30" of and visible to this unit’s Master of Ordnance model that has not already been selected for this ability this phase. Until the end of the phase, Blast weapons equipped by friendly Astra Militarum Artillery models have the [SUSTA',
+    factionId: 'GC',
+    datasheetId: '000004025',
+    combatType: 'ranged',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'unit_000004025_aeronautica_commander',
+    label: 'Regimental Attachés — +1 impactar disparo',
+    description: 'At the start of your Shooting phase, select one enemy unit within 30" of and visible to this unit’s Officer of the Fleet model. Until the end of the phase, each time a friendly Astra Militarum Aircraft model makes a ranged attack that targets that unit, add 1 to the Hit roll.',
+    factionId: 'GC',
+    datasheetId: '000004025',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000004029_close_range_devastation',
+    label: 'Stormblade — repetir impactos disparo',
+    description: 'Each time this model makes a ranged attack with its Stormblade plasma blastgun that targets a unit within half range, you can re-roll the Hit roll.',
+    factionId: 'GC',
+    datasheetId: '000004029',
+    combatType: 'ranged',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000004030_tank_hunter',
+    label: 'Stygies Destroyer Tank Hunter — +1 herir disparo',
+    description: 'Each time this model makes a ranged attack that targets a VEHICLE unit, add 1 to the Wound roll.',
+    factionId: 'GC',
+    datasheetId: '000004030',
+    combatType: 'ranged',
+    effects: {
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000004033_mobile_hunter_killer',
+    label: 'Tauros Venator — repetir heridas',
+    description: 'Each time this model makes an attack that targets a MONSTER or VEHICLE unit, you can re-roll the Wound roll.',
+    factionId: 'GC',
+    datasheetId: '000004033',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000004034_support_vehicle',
+    label: 'Trojan Support Vehicle — repetir imp.1',
+    description: 'In your Command phase, select one friendly Astra Militarum Vehicle model within 3" of this model. That VEHICLE model regains up to D3 lost wounds and, until the start of your next Command phase, each time that VEHICLE model makes an attack, re-roll a Hit roll of 1. The same VEHICLE model cannot be s',
+    factionId: 'GC',
+    datasheetId: '000004034',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000004118_alpha_invader',
+    label: 'Hyperadapted Raveners — Sustained 1',
+    description: 'Weapons equipped by models in this unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'GC',
+    datasheetId: '000004118',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+
+  // ─── GK generated entries ───────────────────
+  {
+    id: 'ldr_000000373_untouchable_purity',
+    label: 'Kaldor Draigo — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 4+ ability against mortal wounds.',
+    factionId: 'GK',
+    leaderDatasheetId: '000000373',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000000379_inspiring_exemplar',
+    label: 'Brotherhood Champion — +1 Ataques CaC',
+    description: 'Each time this model destroys an enemy CHARACTER model in the Fight phase, you gain 1CP and until the end of the battle, add 1 to the Attacks characteristic of its Nemesis force weapon.',
+    factionId: 'GK',
+    datasheetId: '000000379',
+    combatType: 'melee',
+    effects: {
+      attacksMod: 1,
+    },
+  },
+  {
+    id: 'ldr_000000380_champion_of_the_order_of_purifiers_psych',
+    label: 'Castellan Crowe — +1 Ataques (Líder)',
+    description: 'While this model is leading a unit, add 1 to the Attacks characteristic of Purifying Flame weapons equipped by models in that unit.',
+    factionId: 'GK',
+    leaderDatasheetId: '000000380',
+    effects: {
+      attacksMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000380_foresight_psychic',
+    label: 'Castellan Crowe — repetir impactos',
+    description: 'Each time this model makes an attack that targets a CHARACTER unit, you can re-roll the Hit roll.',
+    factionId: 'GK',
+    datasheetId: '000000380',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000000382_force_edge_psychic',
+    label: 'Brotherhood Terminator Squad — +1 PA CaC',
+    description: 'Each time a model in this unit makes a melee attack that targets a unit (excluding MONSTERS and VEHICLES), improve the Armour Penetration characteristic of that attack by 1.',
+    factionId: 'GK',
+    datasheetId: '000000382',
+    combatType: 'melee',
+    effects: {
+      apMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000383_sanctity_of_purpose',
+    label: 'Purifier Squad — repetir her.1',
+    description: 'Each time a model in this unit makes an attack, re-roll a Wound roll of 1. If the target is within range of an objective marker, you can re-roll the Wound roll instead.',
+    factionId: 'GK',
+    datasheetId: '000000383',
+    effects: {
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000000384_attuned_onslaught_psychic',
+    label: 'Paladin Squad — +1 Daño CaC',
+    description: 'Each time this unit makes a Charge move, until the end of the turn, add 1 to the Damage characteristic of melee weapons equipped by PALADIN SQUAD models in this unit.',
+    factionId: 'GK',
+    datasheetId: '000000384',
+    combatType: 'melee',
+    effects: {
+      damageMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000395_fire_focus',
+    label: 'Razorback — +1 PA disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit hit by one or more of those attacks. Until the end of the turn, each time a friendly model that disembarked from this TRANSPORT this turn makes an attack that targets that enemy unit, improve the Armour Penetration characterist',
+    factionId: 'GK',
+    datasheetId: '000000395',
+    combatType: 'ranged',
+    effects: {
+      apMod: 1,
+    },
+  },
+  {
+    id: 'aura_000000396_truesilver_aegis_aura',
+    label: 'Rhino — FNP 6+ (Aura)',
+    description: 'While a friendly Grey Knights unit is wholly within 6" of this unit, models in that unit have the Feel No Pain 6+ ability against mortal wounds.',
+    factionId: 'GK',
+    sourceDatasheetId: '000000396',
+    effects: {
+      feelNoPainThreshold: 6,
+    },
+  },
+  {
+    id: 'unit_000000400_guidance_of_the_ancients_psychic',
+    label: 'Venerable Dreadnought — +1 impactar disparo',
+    description: 'In your Shooting phase, after this unit has shot, select one enemy unit hit by one or more of those attacks. Until the end of the phase, each time a Grey Knights model from your army makes an attack that targets that unit, add 1 to the Hit roll.',
+    factionId: 'GK',
+    datasheetId: '000000400',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000001360_surge_of_wrath_psychic',
+    label: 'Grand Master In Nemesis Dreadknight — repetir impactos, repetir heridas CaC',
+    description: 'Each time this model makes a melee attack that targets a MONSTER or VEHICLE unit, you can re-roll the Hit roll, you can re-roll the Wound roll and you can re-roll the Damage roll.',
+    factionId: 'GK',
+    datasheetId: '000001360',
+    combatType: 'melee',
+    effects: {
+      rerollAllHits: true,
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000001363_interceptor',
+    label: 'Stormhawk Interceptor — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that can FLY, add 1 to the Hit roll.',
+    factionId: 'GK',
+    datasheetId: '000001363',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000001364_strafing_run',
+    label: 'Stormtalon Gunship — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that cannot FLY, add 1 to the Hit roll.',
+    factionId: 'GK',
+    datasheetId: '000001364',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002768_fire_support',
+    label: 'Grey Knights Relic Razorback — repetir heridas disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit it scored one or more hits against this phase. Until the end of the phase, each time a friendly model that disembarked from this Transport this turn makes an attack that targets that enemy unit, you can re-roll the Wound roll.',
+    factionId: 'GK',
+    datasheetId: '000002768',
+    combatType: 'ranged',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+
+  // ─── LoV generated entries ───────────────────
+  {
+    id: 'unit_000002597_multispectral_visor',
+    label: 'Brôkhyr Iron-master — repetir her.1 disparo',
+    description: 'Each time a model in this unit makes a ranged attack, re-roll a Wound roll of 1.',
+    factionId: 'LoV',
+    datasheetId: '000002597',
+    combatType: 'ranged',
+    effects: {
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000002598_panspectral_scanning',
+    label: 'Hearthkyn Warriors — repetir imp.1 disparo',
+    description: 'Each time a model in this unit makes a ranged attack, re-roll a Hit roll of 1.',
+    factionId: 'LoV',
+    datasheetId: '000002598',
+    combatType: 'ranged',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000002599_decisive_destruction',
+    label: 'Einhyr Hearthguard — repetir imp.1 disparo',
+    description: 'Each time a model in this unit makes a ranged attack that targets the closest eligible target, re-roll a Hit roll of 1.',
+    factionId: 'LoV',
+    datasheetId: '000002599',
+    combatType: 'ranged',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000004142_resource_transmutation',
+    label: 'Arkanyst Evaluator — Sustained 1 disparo',
+    description: 'Once per turn, in your Shooting phase, one model with this ability can use it when it is selected to shoot. If it does, you must spend 1YP and, until the end of the phase, ranged weapons equipped by that model have the [SUSTAINED HITS 1] ability and, after that model has shot this phase, if one or m',
+    factionId: 'LoV',
+    datasheetId: '000004142',
+    combatType: 'ranged',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'unit_000004145_geomantic_hunters',
+    label: 'Cthonian Earthshakers — repetir heridas disparo',
+    description: 'Up to twice per battle, in your Shooting phase, when this unit is selected to shoot, it can use this ability. If it does, until the end of the phase, each time a model in this unit makes an attack with its breacher ordnance, you can re-roll the Wound roll.Designer’s Note: Place two breacher ordnance',
+    factionId: 'LoV',
+    datasheetId: '000004145',
+    combatType: 'ranged',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000004147_scanner_uplinks',
+    label: 'Kapricus Carrier — -1 impactar disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit (excluding MONSTERS and VEHICLES) hit by one or more of those attacks. Until the start of your next turn, that enemy unit is suppressed. While a unit is suppressed, each time a model in that unit makes an attack, subtract 1 fro',
+    factionId: 'LoV',
+    datasheetId: '000004147',
+    combatType: 'ranged',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000004201_break_the_foe',
+    label: 'Berehk Stornbröw — Sustained 1 CaC',
+    description: 'Melee weapons equipped by models in this model’s unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'LoV',
+    datasheetId: '000004201',
+    combatType: 'melee',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+
+  // ─── NEC generated entries ───────────────────
+  {
+    id: 'ldr_000000527_transient_madness',
+    label: 'Nemesor Zahndrekh — Lethal Hits, Sustained 1 (Líder)',
+    description: 'While this model is leading a unit, at the start of your Command phase, roll one D6: until the start of your next Command phase, weapons equipped by models in that unit gain the ability below that corresponds with that roll:1-2: [SUSTAINED HITS 1] 3-4: [LETHAL HITS] 5-6: [DEVASTATING WOUNDS]',
+    factionId: 'NEC',
+    leaderDatasheetId: '000000527',
+    effects: {
+      lethalHitsBonus: true,
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'unit_000000528_the_vargard_s_duty',
+    label: 'Vargard Obyron — FNP 4+',
+    description: 'While this model is in the same unit as Nemesor Zahndrekh, Character models in that unit have the Feel No Pain 4+ ability.',
+    factionId: 'NEC',
+    datasheetId: '000000528',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000000533_advanced_quantum_shielding',
+    label: 'Catacomb Command Barge — -1 herir',
+    description: 'Each time an attack targets this model, if the Strength characteristic of that attack is greater than this model’s Toughness characteristic, subtract 1 from the Wound roll.',
+    factionId: 'NEC',
+    datasheetId: '000000533',
+    target: 'defender',
+    effects: {
+      woundMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000535_implacable_eradication',
+    label: 'Immortals — repetir her.1',
+    description: 'Each time a model in this unit makes an attack, re-roll a Wound roll of 1. If the target of that attack is an enemy unit within range of an objective marker, you can re-roll the Wound roll instead.',
+    factionId: 'NEC',
+    datasheetId: '000000535',
+    effects: {
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000000536_guardian_protocols',
+    label: 'Lychguard — -1 herir',
+    description: 'While a Noble model is leading this unit, each time an attack targets this unit, if the Strength characteristic of that attack is greater than this unit’s Toughness characteristic, subtract 1 from the Wound roll.',
+    factionId: 'NEC',
+    datasheetId: '000000536',
+    target: 'defender',
+    effects: {
+      woundMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000545_atavistic_instigation',
+    label: 'Doom Scythe — -1 impactar, crit 5+ disparo',
+    description: 'Each time this model targets an enemy unit with its heavy death ray, your opponent must declare if that unit will stand firm or duck for cover:If it stands firm, when resolving ranged attacks against that unit this phase, a successful unmodified Hit roll of 5+ scores a Critical Hit.  If it ducks for',
+    factionId: 'NEC',
+    datasheetId: '000000545',
+    combatType: 'ranged',
+    effects: {
+      hitMod: -1,
+      critThreshold: 5,
+    },
+  },
+  {
+    id: 'unit_000000559_damaged_armour',
+    label: 'Canoptek Acanthrites — +1 PA disparo',
+    description: 'In your Shooting phase, after this unit has shot, select one enemy unit hit by one or more of those attacks. Until the end of the phase, each time a friendly NECRONS model makes an attack that targets that unit, on a Critical Wound, improve the Armour Penetration characteristic of that attack by 1.',
+    factionId: 'NEC',
+    datasheetId: '000000559',
+    combatType: 'ranged',
+    effects: {
+      apMod: 1,
+    },
+  },
+  {
+    id: 'aura_000000567_phase_shift_generator_aura',
+    label: 'Gauss Pylon — FNP 5+ disparo (Aura)',
+    description: 'While a friendly NECRONS unit is within 3" of this Fortification, models in that unit have a 5+ invulnerable save against ranged attacks.',
+    factionId: 'NEC',
+    sourceDatasheetId: '000000567',
+    combatType: 'ranged',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 5,
+    },
+  },
+  {
+    id: 'unit_000002110_whirling_onslaught',
+    label: 'Skorpekh Destroyers — repetir imp.1 CaC',
+    description: 'Each time a model in this unit makes a melee attack, re-roll a Hit roll of 1. If this unit made a Charge move this turn, you can re-roll the Hit roll instead.',
+    factionId: 'NEC',
+    datasheetId: '000002110',
+    combatType: 'melee',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000002111_bound_creation',
+    label: 'Cryptothralls — FNP 4+',
+    description: 'While this unit is in the same unit as a Cryptek model, that CRYPTEK model has the Feel No Pain 4+ ability.',
+    factionId: 'NEC',
+    datasheetId: '000002111',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000002116_optimised_for_slaughter',
+    label: 'Lokhust Heavy Destroyers — repetir her.1',
+    description: 'Each time a model in this unit makes an attack with an enmitic exterminator that targets a unit (excluding MONSTERS and VEHICLES), re-roll a Wound roll of 1. Each time a model in this unit makes an attack with a gauss destructor that targets a MONSTER or VEHICLE, re-roll a Wound roll of 1.',
+    factionId: 'NEC',
+    datasheetId: '000002116',
+    effects: {
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000002351_driven_by_hatred',
+    label: 'Lokhust Lord — repetir impactos, repetir heridas',
+    description: 'Each time this model makes an attack that targets an enemy unit that is Below Half-strength, you can re-roll the Hit roll and you can re-roll the Wound roll.',
+    factionId: 'NEC',
+    datasheetId: '000002351',
+    effects: {
+      rerollAllHits: true,
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000002359_hard_wired_for_destruction',
+    label: 'Lokhust Destroyers — repetir imp.1 disparo',
+    description: 'Each time a model in this unit makes a ranged attack that targets the closest eligible enemy unit, re-roll a Hit roll of 1. If the target of that attack is within range of an objective marker your opponent controls, you can re-roll the Hit roll instead.',
+    factionId: 'NEC',
+    datasheetId: '000002359',
+    combatType: 'ranged',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000004176_harassment_swarm_aura',
+    label: 'Canoptek Macrocytes — -1 impactar',
+    description: 'While an enemy unit (excluding MONSTERS and VEHICLES) is within 3" of this unit, each time a model in that unit makes an attack, subtract 1 from the Hit roll.',
+    factionId: 'NEC',
+    datasheetId: '000004176',
+    effects: {
+      hitMod: -1,
+    },
+  },
+
+  // ─── ORK generated entries ───────────────────
+  {
+    id: 'unit_000000012_mekaniak',
+    label: 'Mek — +1 impactar',
+    description: 'At the end of your Movement phase, you can select one friendly Orks Vehicle model within 3" of this model. That VEHICLE model regains up to D3 lost wounds, and, until the start of your next Movement phase, each time that VEHICLE model makes an attack, add 1 to the Hit roll. Each model can only be se',
+    factionId: 'ORK',
+    datasheetId: '000000012',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000019_pyromaniaks',
+    label: 'Burna Boyz — repetir her.1 disparo',
+    description: 'Each time a model in this unit makes a ranged attack with a burna that targets an enemy unit within 6", re-roll a Wound roll of 1. If the target of that attack is also within range of an objective marker, you can re-roll the Wound roll instead.',
+    factionId: 'ORK',
+    datasheetId: '000000019',
+    combatType: 'ranged',
+    effects: {
+      rerollWoundsOf1: true,
+    },
+  },
+]
+
+const RULES_5: ModifierRule[] = [
+  {
+    id: 'unit_000000020_tank_hunters',
+    label: 'Tankbustas — +1 impactar, +1 herir disparo',
+    description: 'Each time a model in this unit makes a ranged attack that targets a MONSTER or VEHICLE unit, add 1 to the Hit roll and add 1 to the Wound roll.',
+    factionId: 'ORK',
+    datasheetId: '000000020',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000021_da_boss_ladz',
+    label: 'Nobz — -1 herir',
+    description: 'While a Warboss model is leading this unit, each time an attack targets this unit, if the Strength characteristic of that attack is greater than the Toughness characteristic of this unit, subtract 1 from the Wound roll.',
+    factionId: 'ORK',
+    datasheetId: '000000021',
+    target: 'defender',
+    effects: {
+      woundMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000022_da_boss_iz_watchin',
+    label: 'Nob With Waaagh! Banner — FNP 4+',
+    description: 'While this model is gaining the benefits of the Waaagh! ability, it has a 4+ invulnerable save and an Objective Control characteristic of 5.',
+    factionId: 'ORK',
+    datasheetId: '000000022',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000000024_krumpin_time',
+    label: 'Meganobz — FNP 5+',
+    description: 'While the Waaagh! is active for your army, models in this unit have the Feel No Pain 5+ ability.',
+    factionId: 'ORK',
+    datasheetId: '000000024',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 5,
+    },
+  },
+  {
+    id: 'unit_000000032_blastajet_attack_run',
+    label: 'Wazbom Blastajet — repetir imp.1 disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that cannot FLY, re-roll a Hit roll of 1.',
+    factionId: 'ORK',
+    datasheetId: '000000032',
+    combatType: 'ranged',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000000033_drive_by_dakka',
+    label: 'Warbikers — +1 PA disparo',
+    description: 'Each time a model in this unit makes a ranged attack that targets a unit within 9", improve the Armour Penetration characteristic of that attack by 1.',
+    factionId: 'ORK',
+    datasheetId: '000000033',
+    combatType: 'ranged',
+    effects: {
+      apMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000034_drive_by_dakka',
+    label: 'Wartrakks — +1 PA disparo',
+    description: 'Each time a model in this unit makes a ranged attack that targets a unit within 9", improve the Armour Penetration characteristic of that attack by 1.',
+    factionId: 'ORK',
+    datasheetId: '000000034',
+    combatType: 'ranged',
+    effects: {
+      apMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000035_pyromaniaks',
+    label: 'Skorchas — repetir her.1 disparo',
+    description: 'Each time a model in this unit makes a ranged attack with a Torrent weapon that targets an enemy unit within 6", re-roll a Wound roll of 1. If the target of that attack is also within range of an objective marker, you can re-roll the Wound roll instead.',
+    factionId: 'ORK',
+    datasheetId: '000000035',
+    combatType: 'ranged',
+    effects: {
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000000037_splat',
+    label: 'Big Gunz — repetir imp.1 disparo',
+    description: 'Each time a model in this unit makes a ranged attack that targets a unit containing 10 or more models, re-roll a Hit roll of 1.',
+    factionId: 'ORK',
+    datasheetId: '000000037',
+    combatType: 'ranged',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000000038_splat',
+    label: 'Mek Gunz — repetir imp.1 disparo',
+    description: 'Each time a model in this unit makes a ranged attack that targets a unit that is at its Starting Strength (excluding MONSTERS and VEHICLES), re-roll a Hit roll of 1.',
+    factionId: 'ORK',
+    datasheetId: '000000038',
+    combatType: 'ranged',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000000039_ramshackle_but_rugged',
+    label: 'Battlewagon — -1 PA',
+    description: 'Each time an attack is allocated to this model, worsen the Armour Penetration characteristic of that attack by 1.',
+    factionId: 'ORK',
+    datasheetId: '000000039',
+    effects: {
+      apMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000041_shooty_power_trip',
+    label: 'Killa Kans — +1 Fuerza, +1 Ataques disparo',
+    description: 'Each time this unit is selected to shoot, you can roll one D6:On a 1-2, this unit suffers D3 mortal wounds.On a 3-4, until the end of the phase, add 1 to the Strength characteristic of ranged weapons equipped by models in this unit.On a 5-6, until the end of the phase, add 1 to the Attacks character',
+    factionId: 'ORK',
+    datasheetId: '000000041',
+    combatType: 'ranged',
+    effects: {
+      strengthMod: 1,
+      attacksMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000042_big_an_shooty',
+    label: 'Morkanaut — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack, if the Waaagh! is active for your army, add 1 to the Hit roll.',
+    factionId: 'ORK',
+    datasheetId: '000000042',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000043_big_an_stompy',
+    label: 'Gorkanaut — +1 impactar CaC',
+    description: 'Each time this model makes a melee attack, if the Waaagh! is active for your army, add 1 to the Hit roll.',
+    factionId: 'ORK',
+    datasheetId: '000000043',
+    combatType: 'melee',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000044_dat_s_our_loot',
+    label: 'Lootas — repetir imp.1 disparo',
+    description: 'Each time a model in this unit makes a ranged attack, re-roll a Hit roll of 1. If that attack targets a unit that is within range of an objective marker, you can re-roll the Hit roll instead.',
+    factionId: 'ORK',
+    datasheetId: '000000044',
+    combatType: 'ranged',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000000050_bizarrely_resilient',
+    label: 'Grot Mega-tank — -1 PA',
+    description: 'Each time an attack targets this model, worsen the Armour Penetration characteristic of that attack by 1.',
+    factionId: 'ORK',
+    datasheetId: '000000050',
+    target: 'defender',
+    effects: {
+      apMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000052_mekaniak',
+    label: 'Meka-dread — +1 impactar',
+    description: 'At the end of your Movement phase, you can select one friendly Orks Vehicle model within 3" of this model. That VEHICLE model regains up to D3 lost wounds, and, until the start of your next Movement phase, each time that VEHICLE model makes an attack, add 1 to the Hit roll. Each model can only be se',
+    factionId: 'ORK',
+    datasheetId: '000000052',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000056_wall_of_dakka',
+    label: 'Kill Tank — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit within half range, add 1 to the Hit roll.',
+    factionId: 'ORK',
+    datasheetId: '000000056',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000001385_furious_barrage',
+    label: 'Grot Bomm Launcha — repetir impactos disparo',
+    description: 'Each time this model makes a ranged attack that targets an enemy unit that contains five or more models, you can re-roll the Hit roll.',
+    factionId: 'ORK',
+    datasheetId: '000001385',
+    combatType: 'ranged',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000001386_interceptor',
+    label: 'Attack Fighta — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that can Fly, add 1 to the Hit roll.',
+    factionId: 'ORK',
+    datasheetId: '000001386',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000001387_strafing_run',
+    label: 'Fighta-bommer — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that cannot Fly, add 1 to the Hit roll.',
+    factionId: 'ORK',
+    datasheetId: '000001387',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000001538_rivetin_dakka',
+    label: 'Kustom Boosta-blasta — -1 impactar disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit hit by one or more of those attacks made with a rivet kannon. Until the start of your next turn, that enemy unit is suppressed. While a unit is suppressed, each time a model in that unit makes a ranged attack, subtract 1 from t',
+    factionId: 'ORK',
+    datasheetId: '000001538',
+    combatType: 'ranged',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000001540_dust_trails_aura',
+    label: 'Boomdakka Snazzwagon — -1 impactar',
+    description: 'While an enemy unit (excluding MONSTERS and VEHICLES) is within 6" of this model, each time a model in that unit makes an attack, subtract 1 from the Hit roll.',
+    factionId: 'ORK',
+    datasheetId: '000001540',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000001545_fortification',
+    label: 'Mekboy Workshop — -1 impactar',
+    description: 'While an enemy unit is only within Engagement Range of one or more FORTIFICATIONS from your army:That unit can still be selected as the target of ranged attacks, but each time such an attack is made, unless it is made with a Pistol, subtract 1 from the Hit roll.Models in that unit do not need to tak',
+    factionId: 'ORK',
+    datasheetId: '000001545',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'ldr_000002492_unstable_oracle',
+    label: 'Wurrboy — +2 Ataques (Líder)',
+    description: 'While this model is leading a unit, add 2 to the Attacks characteristic of this model’s Eyez of Mork weapon for every 5 models in that unit (rounding down), but while that unit contains 10 or more models, that weapon has the [HAZARDOUS] ability.',
+    factionId: 'ORK',
+    leaderDatasheetId: '000002492',
+    effects: {
+      attacksMod: 2,
+    },
+  },
+  {
+    id: 'unit_000002493_da_bigger_dey_iz',
+    label: 'Mozrog Skragbad — +1 Daño CaC',
+    description: 'Each time this model makes a melee attack that targets a MONSTER or VEHICLE unit, add 1 to the Damage characteristic of that attack. Each time this model makes a melee attack that targets a TITANIC unit, add 2 to the Damage characteristic of that attack instead.',
+    factionId: 'ORK',
+    datasheetId: '000002493',
+    combatType: 'melee',
+    effects: {
+      damageMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002494_monster_hunters',
+    label: 'Beast Snagga Boyz — repetir impactos',
+    description: 'Each time a model in this unit makes an attack that targets a MONSTER or VEHICLE unit, you can re-roll the Hit roll.',
+    factionId: 'ORK',
+    datasheetId: '000002494',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000002497_spirit_of_gork_psychic',
+    label: 'Kill Rig — +1 Fuerza, Lethal Hits CaC',
+    description: 'At the start of the Fight phase, you can select one friendly Orks unit within 12" of this model and roll one D6: on a 1, this model suffers D3 mortal wounds; on a 2-5, until the end of the phase, add 1 to the Strength characteristic of melee weapons equipped by models in that unit; on a 6, until the',
+    factionId: 'ORK',
+    datasheetId: '000002497',
+    combatType: 'melee',
+    effects: {
+      lethalHitsBonus: true,
+      strengthMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002498_on_da_hunt',
+    label: 'Hunta Rig — +1 Ataques',
+    description: 'For each model embarked within this TRANSPORT, add 1 to the Attacks characteristic of this model’s butcha boyz weapon (to a maximum of +6). The Attacks characteristic of that weapon can be modified even though it is an Extra Attacks weapon.',
+    factionId: 'ORK',
+    datasheetId: '000002498',
+    effects: {
+      attacksMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002499_fortification',
+    label: 'Big’ed Bossbunka — -1 impactar',
+    description: 'While an enemy unit is only within Engagement Range of one or more Fortifications from your army: That unit can still be selected as the target of ranged attacks, but each time such an attack is made, unless it is made with a Pistol, subtract 1 from the Hit roll.Models in that unit do not need to ta',
+    factionId: 'ORK',
+    datasheetId: '000002499',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000003709_gargantsmasha',
+    label: 'Ufthak Blackhawk — repetir impactos, repetir heridas',
+    description: 'Each time this model makes an attack that targets a TITANIC unit, you can re-roll the Hit roll and you can re-roll the Wound roll.',
+    factionId: 'ORK',
+    datasheetId: '000003709',
+    effects: {
+      rerollAllHits: true,
+      rerollAllWounds: true,
+    },
+  },
+
+  // ─── QI generated entries ───────────────────
+  {
+    id: 'unit_000000855_paladin_s_duty_bondsman',
+    label: 'Knight Paladin — Lethal Hits CaC',
+    description: 'While a model is affected by this ability, weapons equipped by that model have the [LETHAL HITS] ability, and melee weapons equipped by that model have the [LANCE] ability.',
+    factionId: 'QI',
+    datasheetId: '000000855',
+    combatType: 'melee',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+  {
+    id: 'unit_000000855_seasoned_noble',
+    label: 'Knight Paladin — +1 PA disparo',
+    description: 'Each time this model makes a ranged attack that targets the closest eligible target, improve the Armour Penetration characteristic of that attack by 1.',
+    factionId: 'QI',
+    datasheetId: '000000855',
+    combatType: 'ranged',
+    effects: {
+      apMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000856_aggressive_assault',
+    label: 'Knight Errant — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets the closest eligible target, add 1 to the Hit roll.',
+    factionId: 'QI',
+    datasheetId: '000000856',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000857_warden_s_duty_bondsman',
+    label: 'Knight Warden — Sustained 1 disparo',
+    description: 'While a model is affected by this ability, weapons equipped by that model have the [SUSTAINED HITS 1] ability, and ranged weapons equipped by that model have the [IGNORES COVER] ability.',
+    factionId: 'QI',
+    datasheetId: '000000857',
+    combatType: 'ranged',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'unit_000000858_gallant_s_duty_bondsman',
+    label: 'Knight Gallant — repetir impactos CaC',
+    description: 'While a model is affected by this ability, you can re-roll Charge rolls made for that model and each time that model makes a melee attack, you can re-roll the Hit roll.',
+    factionId: 'QI',
+    datasheetId: '000000858',
+    combatType: 'melee',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000000859_crusader_s_duty_bondsman',
+    label: 'Knight Crusader — +1 impactar disparo',
+    description: 'While a model is affected by this ability, each time that model makes a ranged attack, add 1 to the Hit roll.',
+    factionId: 'QI',
+    datasheetId: '000000859',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000859_punishing_salvoes',
+    label: 'Knight Crusader — Sustained 1 disparo',
+    description: 'In your Movement phase, if this model Remains Stationary, until the end of the turn, ranged weapons equipped by this model have the [SUSTAINED HITS 1] ability.',
+    factionId: 'QI',
+    datasheetId: '000000859',
+    combatType: 'ranged',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'unit_000000860_bastion_of_firepower',
+    label: 'Acastus Knight Porphyrion — Lethal Hits disparo',
+    description: 'Each time this model Remains Stationary, until the end of the turn, ranged weapons equipped by this model have the [LETHAL HITS] ability.',
+    factionId: 'QI',
+    datasheetId: '000000860',
+    combatType: 'ranged',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+  {
+    id: 'unit_000000862_atrapos_duty_bondsman',
+    label: 'Cerastus Knight Atrapos — repetir impactos, repetir heridas',
+    description: 'While a model is affected by this ability, each time that model makes an attack that targets a TITANIC or TOWERING model, you can re-roll the Hit roll and you can re-roll the Wound roll.',
+    factionId: 'QI',
+    datasheetId: '000000862',
+    effects: {
+      rerollAllHits: true,
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000000862_macro_extinction_protocols',
+    label: 'Cerastus Knight Atrapos — +1 impactar, +1 herir',
+    description: 'Each time this model makes an attack that targets a MONSTER or VEHICLE unit, add 1 to the Hit roll. If that target is TITANIC or TOWERING, add 1 to the Wound roll as well.',
+    factionId: 'QI',
+    datasheetId: '000000862',
+    effects: {
+      hitMod: 1,
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000863_castigator_s_duty_bondsman',
+    label: 'Cerastus Knight Castigator — Sustained 1 disparo',
+    description: 'While a model is affected by this ability, its ranged weapons have the [SUSTAINED HITS 1] ability and the Armour Penetration characteristic of its ranged weapons is improved by 1.',
+    factionId: 'QI',
+    datasheetId: '000000863',
+    combatType: 'ranged',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'unit_000000863_storm_of_bolts',
+    label: 'Cerastus Knight Castigator — -1 impactar disparo',
+    description: 'In your Shooting phase, after this model has shot, select one unit (excluding MONSTERS and VEHICLES) hit by one or more of those attacks. Until the start of your next turn, while this model is on the battlefield, that enemy unit is suppressed. While a unit is suppressed, each time a model in that un',
+    factionId: 'QI',
+    datasheetId: '000000863',
+    combatType: 'ranged',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000001481_suppression_protocols',
+    label: 'Armiger Helverin — -1 impactar disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit (excluding MONSTERS and VEHICLES) hit by one or more of those attacks made with an Armiger autocannon. Until the start of your next turn, that enemy unit is suppressed. While a unit is suppressed, each time a model in that unit',
+    factionId: 'QI',
+    datasheetId: '000001481',
+    combatType: 'ranged',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000001482_impetuous_glory',
+    label: 'Armiger Warglaive — +1 Ataques',
+    description: 'Each time this model makes a Charge move, until the end of the turn, add 1 to the Attacks characteristic of this model’s reaper chain-cleaver - strike profile, and add 2 to the Attacks characteristic of this model’s reaper chain-cleaver - sweep profile.',
+    factionId: 'QI',
+    datasheetId: '000001482',
+    effects: {
+      attacksMod: 1,
+    },
+  },
+  {
+    id: 'unit_000001483_mentor_bondsman',
+    label: 'Knight Preceptor — repetir heridas',
+    description: 'Each time a model affected by this ability makes an attack that targets this model’s quarry, you can re-roll the Wound roll.',
+    factionId: 'QI',
+    datasheetId: '000001483',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000001483_exemplar_of_the_code',
+    label: 'Knight Preceptor — repetir heridas',
+    description: 'At the start of the battle, select one unit from your opponent’s army to be this model’s quarry. Each time this model makes an attack that targets its quarry, you can re-roll the Wound roll. Each time this model’s quarry is destroyed, you can select a new unit from your opponent’s army to be its qua',
+    factionId: 'QI',
+    datasheetId: '000001483',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000004149_selfless_protector',
+    label: 'Knight Defender — FNP 4+ disparo',
+    description: 'Each time a ranged attack is allocated to an Imperial Knights model from your army, if that model is not fully visible to every model in the attacking unit because of this Knight Defender model, that model has the Benefit of Cover and a 4+ invulnerable save against that attack.',
+    factionId: 'QI',
+    datasheetId: '000004149',
+    combatType: 'ranged',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000004213_thundercharge',
+    label: 'Knight Destrier — +2 Ataques CaC',
+    description: 'If this model is equipped with a thundershock spear and a bellatus reaper chainsword, add 2 to the Attacks characteristic of melee weapons equipped by this model.',
+    factionId: 'QI',
+    datasheetId: '000004213',
+    combatType: 'melee',
+    effects: {
+      attacksMod: 2,
+    },
+  },
+
+  // ─── QT generated entries ───────────────────
+  {
+    id: 'unit_000001099_bastion_of_firepower',
+    label: 'Chaos Acastus Knight Porphyrion — Lethal Hits disparo',
+    description: 'Each time this model Remains Stationary, until the end of the turn, ranged weapons equipped by this model have the [LETHAL HITS] ability.',
+    factionId: 'QT',
+    datasheetId: '000001099',
+    combatType: 'ranged',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+  {
+    id: 'unit_000002562_executioner',
+    label: 'War Dog Executioner — +1 impactar',
+    description: 'Each time this model makes an attack that targets a unit Below Half-strength, add 1 to the Hit roll. Each time an enemy unit is destroyed as the result of this model’s attacks, before removing the last model in that unit from the battlefield, each unit from your opponent’s army that is within 3" of ',
+    factionId: 'QT',
+    datasheetId: '000002562',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002563_stalker',
+    label: 'War Dog Stalker — +1 herir',
+    description: 'Each time this model makes an attack that targets an enemy unit, if there are no other units from your opponent’s army within 6" of that target, add 1 to the Wound roll.',
+    factionId: 'QT',
+    datasheetId: '000002563',
+    effects: {
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002566_huntsman',
+    label: 'War Dog Huntsman — repetir heridas',
+    description: 'Each time this model makes an attack that targets a MONSTER or VEHICLE unit, you can re-roll the Wound roll.',
+    factionId: 'QT',
+    datasheetId: '000002566',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000003846_mutated_bodyguard',
+    label: 'Traitor Enforcer — FNP 4+',
+    description: 'While this unit contains a Traitor Ogryn model, CHARACTER models in this unit have the Feel No Pain 4+ ability.',
+    factionId: 'QT',
+    datasheetId: '000003846',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000003855_mischief_makers_aura',
+    label: 'Mutoid Vermin — -1 impactar CaC',
+    description: 'While an enemy unit (excluding MONSTERS and VEHICLES) is within 6" of this unit, each time a model in that unit makes a melee attack, subtract 1 from the Hit roll.',
+    factionId: 'QT',
+    datasheetId: '000003855',
+    combatType: 'melee',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000003858_beastmaster',
+    label: 'Renegade Ogryn Beast Handler — repetir imp.1',
+    description: 'While this unit contains an Ogryn Pack Master model, you can re-roll Charge rolls made for this unit, and each time a Chaos Mauler Hound model in this unit makes an attack, re-roll a Hit roll of 1.',
+    factionId: 'QT',
+    datasheetId: '000003858',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+
+  // ─── SM generated entries ───────────────────
+  {
+    id: 'unit_000000061_chainsword_doctrines',
+    label: 'Assault Squad — Lethal Hits, Sustained 1',
+    description: 'Each time this unit is selected to fight, select one of the following abilities to apply to all Astartes chainswords equipped by models in this unit until the end of the phase: [SUSTAINED HITS 1] [LETHAL HITS] [LANCE]',
+    factionId: 'SM',
+    datasheetId: '000000061',
+    effects: {
+      lethalHitsBonus: true,
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'unit_000000068_suppression_fire',
+    label: 'Suppressor Squad — -1 impactar disparo',
+    description: 'In your Shooting phase, after this unit has shot, select one enemy unit hit by one or more of those attacks made with an accelerator autocannon. Until the start of your next turn, while this unit is on the battlefield, that enemy unit is suppressed. While a unit is suppressed, each time a model in t',
+    factionId: 'SM',
+    datasheetId: '000000068',
+    combatType: 'ranged',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000071_bladeguard',
+    label: 'Bladeguard Veteran Squad — repetir imp.1 CaC',
+    description: 'At the start of the Fight phase, you can select one of the following abilities to apply to models in this unit until the end of the phase: Swords of the Chapter: Each time a model in this unit makes a melee attack, re-roll a Hit roll of 1. Shields of the Chapter: Each time an invulnerable saving thr',
+    factionId: 'SM',
+    datasheetId: '000000071',
+    combatType: 'melee',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000000076_priority_objective_identified',
+    label: 'Lieutenant With Combi-weapon — repetir her.1',
+    description: 'At the start of the first battle round, if your army includes one or more models with this ability, you can select one objective marker on the battlefield. Until the end of the battle, while one or more models with this ability are on the battlefield, each time a friendly ADEPTUS ASTARTES model make',
+    factionId: 'SM',
+    datasheetId: '000000076',
+    effects: {
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000000084_interceptor',
+    label: 'Stormhawk Interceptor — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that can Fly, add 1 to the Hit roll.',
+    factionId: 'SM',
+    datasheetId: '000000084',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000091_ballistus_strike',
+    label: 'Ballistus Dreadnought — repetir impactos disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that is not Below Half-strength, you can re-roll the Hit roll.',
+    factionId: 'SM',
+    datasheetId: '000000091',
+    combatType: 'ranged',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000000092_ferocious_assault',
+    label: 'Sicaran Venator — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets the closest eligible MONSTER or VEHICLE unit, add 1 to the Hit roll.',
+    factionId: 'SM',
+    datasheetId: '000000092',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000095_honour_guard',
+    label: 'Ultramarines Honour Guard — -1 herir',
+    description: 'While a Captain or Chapter Master model is leading this unit, each time an attack targets this unit, subtract 1 from the Wound roll.',
+    factionId: 'SM',
+    datasheetId: '000000095',
+    target: 'defender',
+    effects: {
+      woundMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000097_fortification',
+    label: 'Hammerfall Bunker — -1 impactar',
+    description: 'While an enemy unit is only within Engagement Range of one or more FORTIFICATIONS from your army: That unit can still be selected as the target of ranged attacks, but each time such an attack is made, unless it is made with a Pistol, subtract 1 from the Hit roll. Models in that unit do not need to t',
+    factionId: 'SM',
+    datasheetId: '000000097',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000103_total_obliteration',
+    label: 'Eradicator Squad — repetir impactos, repetir heridas disparo',
+    description: 'Each time a ranged attack made by a model in this unit targets a MONSTER or VEHICLE model, you can re-roll the Hit roll, you can re-roll the Wound roll and you can re-roll the Damage roll.',
+    factionId: 'SM',
+    datasheetId: '000000103',
+    combatType: 'ranged',
+    effects: {
+      rerollAllHits: true,
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000000104_fury_of_the_first',
+    label: 'Relic Terminator Squad — +1 impactar disparo',
+    description: 'Each time a model in this unit makes an attack, you can ignore any or all modifiers to that attack’s Ballistic Skill or Weapon Skill characteristic and/or to the Hit roll. In addition, each time a model in this unit makes an attack that targets the enemy unit you selected for the Oath of Moment abil',
+    factionId: 'SM',
+    datasheetId: '000000104',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000110_powerful_volley',
+    label: 'Rapier Carrier — Lethal Hits disparo',
+    description: 'Each time this model shoots in your Shooting phase, provided it Remained Stationary this turn, all [HEAVY] weapons equipped by models in this unit have the [LETHAL HITS] ability.',
+    factionId: 'SM',
+    datasheetId: '000000110',
+    combatType: 'ranged',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+  {
+    id: 'unit_000000111_mortis_strike',
+    label: 'Mortis Dreadnought — repetir impactos disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that is not Below Half-strength, you can re-roll the Hit roll.',
+    factionId: 'SM',
+    datasheetId: '000000111',
+    combatType: 'ranged',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000000123_rotating_death',
+    label: 'Sicaran Punisher — Sustained 1',
+    description: 'This model’s Punisher rotary cannon has the [SUSTAINED HITS 1] ability when targeting INFANTRY units.',
+    factionId: 'SM',
+    datasheetId: '000000123',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'unit_000000124_hailstrike',
+    label: 'Storm Speeder Hailstrike — +1 PA disparo',
+    description: 'Each time this model has shot, select one enemy unit (excluding MONSTERS and VEHICLES) hit by one or more of those attacks. Until the end of the phase, each time a friendly ADEPTUS ASTARTES unit makes a ranged attack that targets that enemy unit, improve the Armour Penetration characteristic of that',
+    factionId: 'SM',
+    datasheetId: '000000124',
+    combatType: 'ranged',
+    effects: {
+      apMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000129_fire_support',
+    label: 'Razorback — repetir heridas disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit hit by one or more of those attacks, Until the end of the phase, each time a friendly model that disembarked from this Transport this turn makes an attack that targets that enemy unit, you can re-roll the Wound roll.',
+    factionId: 'SM',
+    datasheetId: '000000129',
+    combatType: 'ranged',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000000147_vanguard_assault',
+    label: 'Vanguard Veteran Squad With Jump Packs — Lethal Hits CaC',
+    description: 'Each time this unit ends a Charge move, until the end of the turn, melee weapons equipped by models in this unit have the [LETHAL HITS] ability.',
+    factionId: 'SM',
+    datasheetId: '000000147',
+    combatType: 'melee',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+  {
+    id: 'unit_000000148_unbreakable_duty',
+    label: 'Imperial Space Marine — FNP 4+',
+    description: 'While this model is within range of an objective marker and/or within 6" of the centre of the battlefield, this model has the Feel No Pain 4+ ability.',
+    factionId: 'SM',
+    datasheetId: '000000148',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000000153_black_rage',
+    label: 'Tycho The Lost — repetir impactos CaC',
+    description: 'Each time this model makes a melee attack, you can re-roll the Hit roll. While this model’s unit is not within 6" of one or more friendly Blood Angels Character models, or 12" of one or more friendly Chaplain models, it cannot be selected to Fall Back and its Objective Control characteristic is 0.',
+    factionId: 'SM',
+    datasheetId: '000000153',
+    combatType: 'melee',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'aura_000000154_shield_of_sanguinius_aura_psychic',
+    label: 'Librarian Dreadnought — FNP 5+ (Aura)',
+    description: 'While a friendly ADEPTUS ASTARTES unit is within 6" of this model, models in that unit have the Feel No Pain 5+ ability against mortal wounds and Psychic Attacks.',
+    factionId: 'SM',
+    sourceDatasheetId: '000000154',
+    effects: {
+      feelNoPainThreshold: 5,
+    },
+  },
+  {
+    id: 'unit_000000165_angelic_visage',
+    label: 'Sanguinary Guard — -1 impactar CaC',
+    description: 'Each time a melee attack targets this unit, subtract 1 from the Hit roll.',
+    factionId: 'SM',
+    datasheetId: '000000165',
+    combatType: 'melee',
+    target: 'defender',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000165_heirs_of_azkaellon',
+    label: 'Sanguinary Guard — -1 herir CaC',
+    description: 'While a Character model is leading this unit, each time a melee attack targets this unit, subtract 1 from the Wound roll.',
+    factionId: 'SM',
+    datasheetId: '000000165',
+    combatType: 'melee',
+    target: 'defender',
+    effects: {
+      woundMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000166_black_rage',
+    label: 'Death Company Dreadnought — repetir impactos CaC',
+    description: 'Each time this model makes a melee attack, you can re-roll the Hit roll. While this model’s unit is not within 6" of one or more friendly Blood Angels Character models, or 12" of one or more friendly Chaplain models, it cannot be selected to Fall Back and its Objective Control characteristic is 0.',
+    factionId: 'SM',
+    datasheetId: '000000166',
+    combatType: 'melee',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000000169_whirlwind_of_gore',
+    label: 'Gabriel Seth — +1 Ataques',
+    description: 'Each time this model fights, until that fight is resolved, add 1 to the Attacks characteristic of this model’s Blood Reaver for every 5 enemy models within 6" of this model.',
+    factionId: 'SM',
+    datasheetId: '000000169',
+    effects: {
+      attacksMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000230_deathwing',
+    label: 'Deathwing Terminator Squad — +1 impactar disparo',
+    description: 'Each time a model in this unit makes an attack, you can ignore any or all modifiers to that attack’s Ballistic Skill or Weapon Skill characteristics and/or to the Hit roll. In addition, each time a model in this unit makes an attack that targets the enemy unit you selected at the start of your Comma',
+    factionId: 'SM',
+    datasheetId: '000000230',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000239_lightning_fast_manoeuvres',
+    label: 'Nephilim Jetfighter — -1 impactar, -1 herir disparo',
+    description: 'Each time a ranged attack targets this model, subtract 1 from the Hit roll. If that attack was made by a model that can Fly, subtract 1 from the Wound roll as well.',
+    factionId: 'SM',
+    datasheetId: '000000239',
+    combatType: 'ranged',
+    target: 'defender',
+    effects: {
+      hitMod: -1,
+      woundMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000302_legendary_tenacity',
+    label: 'Bjorn The Fell-handed — -1 herir',
+    description: 'Each time an attack targets this model, if the Strength characteristic of that attack is greater than this model’s Toughness characteristic, subtract 1 from the Wound roll.',
+    factionId: 'SM',
+    datasheetId: '000000302',
+    target: 'defender',
+    effects: {
+      woundMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000305_cunning_hunters',
+    label: 'Grey Hunters — repetir her.1',
+    description: 'Each time a model in this unit makes an attack, re-roll a Wound roll of 1. If the target is within range of an objective marker, you can re-roll the Wound roll instead.',
+    factionId: 'SM',
+    datasheetId: '000000305',
+    effects: {
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000000306_judgement_of_the_omnissiah',
+    label: 'Iron Priest — repetir heridas CaC',
+    description: 'Each time this model makes an attack that targets an enemy unit within Engagement Range of one or more friendly Adeptus Astartes Vehicle units, you can re-roll the Wound roll.',
+    factionId: 'SM',
+    datasheetId: '000000306',
+    combatType: 'melee',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000000315_chosen_companions',
+    label: 'Wolf Guard — +1 impactar',
+    description: 'While a Character model is leading this unit, each time a model in this unit makes an attack, add 1 to the Hit roll.',
+    factionId: 'SM',
+    datasheetId: '000000315',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000317_champion_of_the_kingsguard',
+    label: 'Arjac Rockfist — repetir impactos, repetir heridas CaC',
+    description: 'Each time this model makes a melee attack that targets a CHARACTER unit, you can re-roll the Hit roll and you can re-roll the Wound roll.',
+    factionId: 'SM',
+    datasheetId: '000000317',
+    combatType: 'melee',
+    effects: {
+      rerollAllHits: true,
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000000318_rugged_resilience',
+    label: 'Wolf Guard Terminators — -1 herir',
+    description: 'Each time an attack targets this unit, if the Strength characteristic of that attack is greater than the Toughness characteristic of this unit, subtract 1 from the Wound roll.',
+    factionId: 'SM',
+    datasheetId: '000000318',
+    target: 'defender',
+    effects: {
+      woundMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000322_thunderous_charge',
+    label: 'Thunderwolf Cavalry — +1 Daño CaC',
+    description: 'Each time a model in this unit makes a melee attack with its Wolf Guard weapon, if it made a Charge move this turn, add 1 to the Damage characteristic of that attack.',
+    factionId: 'SM',
+    datasheetId: '000000322',
+    combatType: 'melee',
+    effects: {
+      damageMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000324_headstrong',
+    label: 'Skyclaws — +1 impactar CaC',
+    description: 'You can re-roll Charge rolls made for this unit. Each time this unit makes a Charge move, until the end of the turn, each time a model in this unit makes a melee attack, add 1 to the Hit roll.',
+    factionId: 'SM',
+    datasheetId: '000000324',
+    combatType: 'melee',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000326_fire_discipline',
+    label: 'Long Fangs — repetir imp.1 disparo',
+    description: 'Each time this unit Remains Stationary, if it includes a Long Fang Pack Leader, you can select one enemy unit that is visible to that model. Until the end of the turn, each time a model in this unit makes a ranged attack that targets that enemy unit, re-roll a Hit roll of 1.',
+    factionId: 'SM',
+    datasheetId: '000000326',
+    combatType: 'ranged',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000001153_atomantic_arc_reactor',
+    label: 'Cerberus — Lethal Hits disparo',
+    description: 'Each time this unit shoots its Cerberus neutron pulse array in your Shooting phase, provided it Remained Stationary this turn, that weapon has the [LETHAL HITS] ability.',
+    factionId: 'SM',
+    datasheetId: '000001153',
+    combatType: 'ranged',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+  {
+    id: 'unit_000001154_vanguard_assault',
+    label: 'Vanguard Veteran Squad — Lethal Hits CaC',
+    description: 'Each time this unit ends a Charge move, until the end of the turn, melee weapons equipped by models in this unit have the [LETHAL HITS] ability.',
+    factionId: 'SM',
+    datasheetId: '000001154',
+    combatType: 'melee',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+  {
+    id: 'unit_000001157_target_elimination',
+    label: 'Intercessor Squad — +2 Ataques',
+    description: 'Each time this unit is selected to shoot, it can use this ability. If it does, until the end of the phase, add 2 to the Attacks characteristic of bolt rifles equipped by models in this unit and you can only select one enemy unit as the target of all of this unit’s attacks.',
+    factionId: 'SM',
+    datasheetId: '000001157',
+    effects: {
+      attacksMod: 2,
+    },
+  },
+  {
+    id: 'unit_000001159_multi_spectrum_array',
+    label: 'Incursor Squad — +1 impactar disparo',
+    description: 'In your Shooting phase, after this unit has shot, select one enemy unit that was hit by one or more attacks made by this unit this phase. Until the end of the phase, each time a friendly ADEPTUS ASTARTES unit makes an attack that targets that enemy unit, add 1 to the Hit roll.',
+    factionId: 'SM',
+    datasheetId: '000001159',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000001163_overwhelming_short_range_firepower',
+    label: 'Sicaran Omega — repetir imp.1',
+    description: 'Each time this model makes an attack that targets the closest eligible enemy unit, re-roll a Hit roll of 1 and re-roll a Wound roll or 1.',
+    factionId: 'SM',
+    datasheetId: '000001163',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000001166_vanguard_assault',
+    label: 'Company Veterans On Bikes — Lethal Hits CaC',
+    description: 'Each time this unit ends a Charge move, until the end of the turn, melee weapons equipped by models in this unit have the [LETHAL HITS] ability.',
+    factionId: 'SM',
+    datasheetId: '000001166',
+    combatType: 'melee',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+  {
+    id: 'unit_000001167_martial_superiority',
+    label: 'Company Champion On Bike — repetir impactos, repetir heridas CaC',
+    description: 'Each time this model makes a melee attack that targets a CHARACTER unit, you can re-roll the Hit roll and you can re-roll the Wound roll.',
+    factionId: 'SM',
+    datasheetId: '000001167',
+    combatType: 'melee',
+    effects: {
+      rerollAllHits: true,
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000001168_isolate_and_destroy',
+    label: 'Land Speeder Tempest — +1 herir',
+    description: 'Each time this model makes an attack that targets an enemy unit, if there are no other units from your opponent’s army within 6" of that target, add 1 to the Wound roll.',
+    factionId: 'SM',
+    datasheetId: '000001168',
+    effects: {
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000001182_unbreakable_duty',
+    label: 'Ancient on Bike — FNP 4+',
+    description: 'While this model is within range of an objective marker and/or within 6" of the centre of the battlefield, this model has the Feel No Pain 4+ ability',
+    factionId: 'SM',
+    datasheetId: '000001182',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000001183_fury_of_the_first',
+    label: 'Terminator Squad — +1 impactar',
+    description: 'Each time a model in this unit makes an attack that targets your Oath of Moment target, add 1 to the Hit roll.',
+    factionId: 'SM',
+    datasheetId: '000001183',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000001185_armoured_spearhead',
+    label: 'Sicaran Battle Tank — repetir imp.1',
+    description: 'Each time this model makes an attack that targets an enemy unit, re-roll a Hit roll of 1 and, if that unit is within range of an objective marker you do not control, you can re-roll the Hit roll instead.',
+    factionId: 'SM',
+    datasheetId: '000001185',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000001190_strafing_run',
+    label: 'Stormtalon Gunship — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that cannot Fly, add 1 to the Hit roll.',
+    factionId: 'SM',
+    datasheetId: '000001190',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000001193_decimator_protocols',
+    label: 'Centurion Devastator Squad — repetir imp.1 disparo',
+    description: 'Each time a model in this unit makes a ranged attack, re-roll a Hit roll of 1. If the target of that attack is an enemy unit within range of an objective marker, you can re-roll the Hit roll instead.',
+    factionId: 'SM',
+    datasheetId: '000001193',
+    combatType: 'ranged',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000001606_shock_assault',
+    label: 'Assault Intercessor Squad — repetir her.1 CaC',
+    description: 'Each time a model in this unit targets an enemy unit with a melee attack, re-roll a Wound roll of 1. If that enemy unit is within range of an objective marker, you can re-roll the Wound roll instead.',
+    factionId: 'SM',
+    datasheetId: '000001606',
+    combatType: 'melee',
+    effects: {
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000001609_strafing_run',
+    label: 'Fire Raptor Gunship — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that cannot Fly, add 1 to the Hit roll.',
+    factionId: 'SM',
+    datasheetId: '000001609',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000001610_thunderstrike',
+    label: 'Storm Speeder Thunderstrike — +1 herir disparo',
+    description: 'Each time this model has shot, select one enemy MONSTER or VEHICLE unit that was hit by one or more attacks made by this model this phase. Until the end of the phase, each time a friendly ADEPTUS ASTARTES unit makes a ranged attack that targets that enemy unit, add 1 to the Wound roll.',
+    factionId: 'SM',
+    datasheetId: '000001610',
+    combatType: 'ranged',
+    effects: {
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000001667_rotating_death',
+    label: 'Gladiator Reaper — Sustained 2',
+    description: 'This model’s twin heavy onslaught gatling cannon has the [SUSTAINED HITS 2] ability when targeting INFANTRY units.',
+    factionId: 'SM',
+    datasheetId: '000001667',
+    effects: {
+      sustainedHitsBonus: 2,
+    },
+  },
+  {
+    id: 'unit_000001825_ferocious_assault',
+    label: 'Gladiator Valiant — +1 impactar',
+    description: 'Each time this model makes an attack with its twin las-talon that targets the closest eligible MONSTER or VEHICLE unit, add 1 to the Hit roll.',
+    factionId: 'SM',
+    datasheetId: '000001825',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000001997_black_rage',
+    label: 'Death Company Marines — repetir impactos CaC',
+    description: 'Each time this model makes a melee attack, you can re-roll the Hit roll. While this model’s unit is not within 6" of one or more friendly Blood Angels Character models, or 12" of one or more friendly Chaplain models, it cannot be selected to Fall Back and its Objective Control characteristic is 0.',
+    factionId: 'SM',
+    datasheetId: '000001997',
+    combatType: 'melee',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000001997_an_honourable_death_in_combat',
+    label: 'Death Company Marines — Sustained 1',
+    description: 'Each time a model in this unit makes an attack, that attack has the [SUSTAINED HITS 1] ability if this unit is below its Starting Strength, or the [SUSTAINED HITS 2] ability if this unit is Below Half-strength.',
+    factionId: 'SM',
+    datasheetId: '000001997',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'unit_000002099_close_quarters_firepower',
+    label: 'Aggressor Squad — +1 PA disparo',
+    description: 'Each time a model in this unit makes a ranged attack that targets the closest eligible target, improve the Armour Penetration characteristic of that attack by 1.',
+    factionId: 'SM',
+    datasheetId: '000002099',
+    combatType: 'ranged',
+    effects: {
+      apMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002234_martial_superiority',
+    label: 'Primaris Company Champion — repetir impactos, repetir heridas CaC',
+    description: 'Each time this model makes a melee attack that targets a CHARACTER unit, you can re-roll the Hit roll and you can re-roll the Wound roll.',
+    factionId: 'SM',
+    datasheetId: '000002234',
+    combatType: 'melee',
+    effects: {
+      rerollAllHits: true,
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000002255_sternguard_focus',
+    label: 'Sternguard Veteran Squad — repetir heridas',
+    description: 'Each time a model in this unit makes an attack that targets your Oath of Moment target, you can re-roll the Wound roll.',
+    factionId: 'SM',
+    datasheetId: '000002255',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000002268_armoured_spearhead',
+    label: 'Deimos Predator — repetir imp.1',
+    description: 'Each time this model makes an attack that targets an enemy unit, re-roll a Hit roll of 1 and, if that unit is within range of an objective marker you do not control, you can re-roll the Hit roll instead.',
+    factionId: 'SM',
+    datasheetId: '000002268',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000002269_deredeo_strike',
+    label: 'Deredeo Dreadnought — repetir impactos disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that is not Below Half-strength, you can re-roll the Hit roll.',
+    factionId: 'SM',
+    datasheetId: '000002269',
+    combatType: 'ranged',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000002285_black_rage',
+    label: 'Death Company Marines with Bolt Rifles — repetir impactos CaC',
+    description: 'Each time this model makes a melee attack, you can re-roll the Hit roll. While this model’s unit is not within 6" of one or more friendly Blood Angels Character models, or 12" of one or more friendly Chaplain models, it cannot be selected to Fall Back and its Objective Control characteristic is 0.',
+    factionId: 'SM',
+    datasheetId: '000002285',
+    combatType: 'melee',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000002285_visions_of_heresy',
+    label: 'Death Company Marines with Bolt Rifles — repetir impactos disparo',
+    description: 'Once per turn, you can target this unit with the Fire Overwatch or the Heroic Intervention Stratagem for 0CP. While resolving that Stratagem, each time a model in this unit makes a ranged attack you can re-roll the Hit roll, or you can re-roll the Charge roll made for this unit (whichever applies).',
+    factionId: 'SM',
+    datasheetId: '000002285',
+    combatType: 'ranged',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000002296_the_spiritshield_helm',
+    label: 'Lazarus — FNP 3+',
+    description: 'This model has the Feel No Pain 3+ ability against Psychic Attacks and mortal wounds.',
+    factionId: 'SM',
+    datasheetId: '000002296',
+    effects: {
+      feelNoPainThreshold: 3,
+    },
+  },
+  {
+    id: 'unit_000002700_suppression_fire',
+    label: 'Astraeus — -1 impactar disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit hit by one or more attacks made with its twin macro-accelerator cannon this phase. Until the start of your next turn, while this model is on the battlefield, that enemy unit is suppressed. While a unit is suppressed, each time ',
+    factionId: 'SM',
+    datasheetId: '000002700',
+    combatType: 'ranged',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000002703_annihilator_protocols',
+    label: 'Centurion Assault Squad — Sustained 2 CaC',
+    description: 'Melee weapons equipped by models in this unit have the [SUSTAINED HITS 2] ability when targeting MONSTER, VEHICLE or FORTIFICATION units.',
+    factionId: 'SM',
+    datasheetId: '000002703',
+    combatType: 'melee',
+    effects: {
+      sustainedHitsBonus: 2,
+    },
+  },
+  {
+    id: 'unit_000002706_siege_breaker_protocols',
+    label: 'Ironclad Dreadnought — +1 impactar, +1 herir CaC',
+    description: 'Each time this model makes a melee attack that targets a VEHICLE or FORTIFICATION unit, add 1 to the Hit roll and add 1 to the Wound roll.',
+    factionId: 'SM',
+    datasheetId: '000002706',
+    combatType: 'melee',
+    effects: {
+      hitMod: 1,
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002707_silent_fury',
+    label: 'Judiciar — +1 Ataques',
+    description: 'Each time this model destroys an enemy CHARACTER model, until the end of the battle, add 1 to the Attacks characteristic of its executioner relic blade.',
+    factionId: 'SM',
+    datasheetId: '000002707',
+    effects: {
+      attacksMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002711_target_sighted',
+    label: 'Land Speeder — +1 impactar disparo',
+    description: 'At the start of your Shooting phase, select one enemy unit that is visible to this model. Until the end of the phase, each time a friendly Adeptus Astartes model makes an attack with a Blast weapon that targets that enemy unit, add 1 to the Hit roll and that attack has the [IGNORES COVER] ability.',
+    factionId: 'SM',
+    datasheetId: '000002711',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002715_destructor',
+    label: 'Predator Destructor — +1 PA disparo',
+    description: 'Each time this model makes a ranged attack that targets an INFANTRY unit, improve the Armour Penetration characteristic of that attack by 1.',
+    factionId: 'SM',
+    datasheetId: '000002715',
+    combatType: 'ranged',
+    effects: {
+      apMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002720_fire_support',
+    label: 'Relic Razorback — repetir heridas disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit it scored one or more hits against this phase. Until the end of the phase, each time a friendly model that disembarked from this TRANSPORT this turn makes an attack that targets that enemy unit, you can re-roll the Wound roll.',
+    factionId: 'SM',
+    datasheetId: '000002720',
+    combatType: 'ranged',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000002722_executioner',
+    label: 'Repulsor Executioner — +1 impactar',
+    description: 'Each time this model makes an attack that targets a unit that is Below Half-strength, add 1 to the Hit roll.',
+    factionId: 'SM',
+    datasheetId: '000002722',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002726_forgefather',
+    label: 'Vulkan He’stan — repetir heridas disparo',
+    description: 'In your Shooting phase, select one enemy unit within 24" of and visible to this model. Until the end of the phase, each time a friendly ADEPTUS ASTARTES model makes a ranged attack with a Torrent or Melta weapon that targets that enemy unit, you can re-roll the Wound roll.',
+    factionId: 'SM',
+    datasheetId: '000002726',
+    combatType: 'ranged',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000002726_seeker_of_the_unfound',
+    label: 'Vulkan He’stan — FNP 4+',
+    description: 'The first time this model is set up on the battlefield, select one objective marker on the battlefield. While this model is within range of that objective marker, this model has an Objective Control characteristic of 10, a Leadership characteristic of 5+ and the Feel No Pain 4+ ability.',
+    factionId: 'SM',
+    datasheetId: '000002726',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000002729_interceptor',
+    label: 'Xiphon Interceptor — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that can Fly, add 1 to the Hit roll.',
+    factionId: 'SM',
+    datasheetId: '000002729',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002737_black_rage',
+    label: 'Death Company Marines With Jump Packs — repetir impactos CaC',
+    description: 'Each time this model makes a melee attack, you can re-roll the Hit roll. While this model’s unit is not within 6" of one or more friendly Blood Angels Character models, or 12" of one or more friendly Chaplain models, it cannot be selected to Fall Back and its Objective Control characteristic is 0.',
+    factionId: 'SM',
+    datasheetId: '000002737',
+    combatType: 'melee',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000002772_command_squad',
+    label: 'Company Heroes — -1 herir',
+    description: 'While a CHARACTER model is leading this unit, each time an attack targets this unit, subtract 1 from the Wound roll.',
+    factionId: 'SM',
+    datasheetId: '000002772',
+    target: 'defender',
+    effects: {
+      woundMod: -1,
+    },
+  },
+  {
+    id: 'unit_000002775_unbreakable_duty',
+    label: 'Ancient — FNP 4+',
+    description: 'While this model is within range of an objective marker and/or within 6" of the centre of the battlefield, this model has the Feel No Pain 4+ ability.',
+    factionId: 'SM',
+    datasheetId: '000002775',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000002780_fortis_doctrines',
+    label: 'Fortis Kill Team — +1 impactar, +1 herir',
+    description: 'Each time a model in this unit makes an attack that targets a unit that is below its Starting Strength, add 1 to the Hit roll. If that attack targets a unit that is Below Half-strength, add 1 to the Hit roll and add 1 to the Wound roll instead.',
+    factionId: 'SM',
+    datasheetId: '000002780',
+    effects: {
+      hitMod: 1,
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002783_death_to_the_alien',
+    label: 'Deathwatch Veterans — repetir imp.1',
+    description: 'Each time a model in this unit makes an attack, re-roll a Hit roll of 1. If the target of that attack does not have the IMPERIUM or CHAOS keywords, you can re-roll the Hit roll instead.',
+    factionId: 'SM',
+    datasheetId: '000002783',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000002788_priority_target_acquisition',
+    label: 'Gladiator Valiant — +1 impactar',
+    description: 'Each time this model makes an attack with its twin las-talon that targets the closest eligible MONSTER or VEHICLE unit, add 1 to the Hit roll.',
+    factionId: 'SM',
+    datasheetId: '000002788',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002789_reaping_tally',
+    label: 'Gladiator Reaper — Sustained 2',
+    description: 'This model’s twin heavy onslaught gatling cannon has the [SUSTAINED HITS 2] ability while targeting INFANTRY units.',
+    factionId: 'SM',
+    datasheetId: '000002789',
+    effects: {
+      sustainedHitsBonus: 2,
+    },
+  },
+  {
+    id: 'unit_000002790_interception_strike',
+    label: 'Repulsor Executioner — repetir impactos disparo',
+    description: 'Each time this model makes a ranged attack that targets an enemy unit within 12" of one or more ADEPTUS ASTARTES units from your army, you can re-roll the Hit roll.',
+    factionId: 'SM',
+    datasheetId: '000002790',
+    combatType: 'ranged',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000002805_close_in_for_the_kill',
+    label: 'Cyberwolf — +1 impactar, +1 herir',
+    description: 'Each time this model makes an attack that targets an enemy unit that is Below Half-strength, add 1 to the Hit roll and add 1 to the Wound roll.',
+    factionId: 'SM',
+    datasheetId: '000002805',
+    effects: {
+      hitMod: 1,
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002806_morkai_s_howl',
+    label: 'Hounds Of Morkai — -1 impactar disparo',
+    description: 'In your Shooting phase, you can select one enemy unit within 12" of this unit (if a Lieutenant in Reiver Armour is leading this unit, you can select one enemy unit within 18" instead). That unit must take a Battle-shock test, subtracting 1 from the result if it is a PSYKER unit. If that test is fail',
+    factionId: 'SM',
+    datasheetId: '000002806',
+    combatType: 'ranged',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000003698_braziers_of_judgement',
+    label: 'Inner Circle Companions — -1 impactar',
+    description: 'While a Character model is leading this unit, each time an attack targets this unit, subtract 1 from the Hit roll.',
+    factionId: 'SM',
+    datasheetId: '000003698',
+    target: 'defender',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000003698_enmity_for_the_unworthy',
+    label: 'Inner Circle Companions — +1 impactar',
+    description: 'Each time a model in this unit makes an attack that targets a CHARACTER unit, add 1 to the Hit roll.',
+    factionId: 'SM',
+    datasheetId: '000003698',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000003832_black_rage',
+    label: 'Death Company Captain — repetir impactos CaC',
+    description: 'Each time this model makes a melee attack, you can re-roll the Hit roll. While this model’s unit is not within 6" of one or more friendly Blood Angels Character models, or 12" of one or more friendly Chaplain models, it cannot be selected to Fall Back and its Objective Control characteristic is 0.',
+    factionId: 'SM',
+    datasheetId: '000003832',
+    combatType: 'melee',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000003835_black_rage',
+    label: 'Death Company Dreadnought with Magna-grapple — repetir impactos CaC',
+    description: 'Each time this model makes a melee attack, you can re-roll the Hit roll. While this model’s unit is not within 6" of one or more friendly Blood Angels Character models, or 12" of one or more friendly Chaplain models, it cannot be selected to Fall Back and its Objective Control characteristic is 0.',
+    factionId: 'SM',
+    datasheetId: '000003835',
+    combatType: 'melee',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000003836_black_rage',
+    label: 'Death Company Marines with Boltguns — repetir impactos CaC',
+    description: 'Each time this model makes a melee attack, you can re-roll the Hit roll. While this model’s unit is not within 6" of one or more friendly Blood Angels Character models, or 12" of one or more friendly Chaplain models, it cannot be selected to Fall Back and its Objective Control characteristic is 0.',
+    factionId: 'SM',
+    datasheetId: '000003836',
+    combatType: 'melee',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000003836_an_honourable_death_in_combat',
+    label: 'Death Company Marines with Boltguns — Sustained 1',
+    description: 'Each time a model in this unit makes an attack, that attack has the [SUSTAINED HITS 1] ability if this unit is below its Starting Strength, or the [SUSTAINED HITS 2] ability if this unit is Below Half-strength.',
+    factionId: 'SM',
+    datasheetId: '000003836',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'unit_000003837_black_rage',
+    label: 'Death Company Marines with Boltguns and Jump Packs — repetir impactos CaC',
+    description: 'Each time this model makes a melee attack, you can re-roll the Hit roll. While this model’s unit is not within 6" of one or more friendly Blood Angels Character models, or 12" of one or more friendly Chaplain models, it cannot be selected to Fall Back and its Objective Control characteristic is 0.',
+    factionId: 'SM',
+    datasheetId: '000003837',
+    combatType: 'melee',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000003874_talonstrike_doctrines',
+    label: 'Talonstrike Kill Team — +1 PA CaC',
+    description: 'Each time this unit is set up on the battlefield, until the end of the turn:Improve the Armour Penetration characteristic of weapons equipped by models in this unit by 1.Melee weapons equipped by models in this unit have the [LANCE] ability.',
+    factionId: 'SM',
+    datasheetId: '000003874',
+    combatType: 'melee',
+    effects: {
+      apMod: 1,
+    },
+  },
+  {
+    id: 'unit_000004132_hammer_blow',
+    label: 'Wulfen with Storm Shields — -1 impactar CaC',
+    description: 'In the Fight phase, after this unit has fought, select one enemy MONSTER or VEHICLE unit hit by one or more of those attacks. Until the end of the next turn, that enemy unit is suppressed. While a unit is suppressed, each time a model in that unit makes an attack, subtract 1 from the Hit roll.',
+    factionId: 'SM',
+    datasheetId: '000004132',
+    combatType: 'melee',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000004137_virtuous_onslaught',
+    label: 'Sternguard Veteran Squad — repetir her.1',
+    description: 'Each time a model in this unit makes an attack that targets the closest eligible target, re-roll a Wound roll of 1.',
+    factionId: 'SM',
+    datasheetId: '000004137',
+    effects: {
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000004139_legacy_of_jerulas',
+    label: 'Land Raider Crusader — repetir imp.1, repetir her.1 disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit hit by one or more of those attacks. Until the end of the turn, each time a friendly model that disembarked from this TRANSPORT this turn makes an attack that targets that enemy unit, re-roll a Hit roll of 1 and re-roll a Wound',
+    factionId: 'SM',
+    datasheetId: '000004139',
+    combatType: 'ranged',
+    effects: {
+      rerollHitsOf1: true,
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000004166_cold_and_calculating',
+    label: 'Caanok Var — Lethal Hits, Sustained 1',
+    description: 'Each time a model in this model’s unit makes an attack that targets a MONSTER or VEHICLE unit, that attack has the [LETHAL HITS] ability. Each time a model in this model’s unit makes an attack that targets any other unit, that attack has the [SUSTAINED HITS 1] ability.',
+    factionId: 'SM',
+    datasheetId: '000004166',
+    effects: {
+      lethalHitsBonus: true,
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'unit_000004175_death_to_the_alien',
+    label: 'Decimus Kill Team — repetir imp.1',
+    description: 'Each time a model in this unit makes an attack, re-roll a Hit roll of 1. If the target of that attack does not have the IMPERIUM or CHAOS keywords, you can re-roll the Hit roll instead.',
+    factionId: 'SM',
+    datasheetId: '000004175',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000004182_deadly_stalkers',
+    label: 'Wolf Scouts — +1 herir',
+    description: 'Each time a model in this unit makes an attack that targets an enemy unit, if there are no other units from your opponent’s army within 6" of that target, add 1 to the Wound roll.',
+    factionId: 'SM',
+    datasheetId: '000004182',
+    effects: {
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000004185_ultramarines_honour_guard',
+    label: 'Victrix Honour Guard — -1 herir',
+    description: 'While a Captain or Chapter Master model is leading this unit, each time an attack targets this unit, subtract 1 from the Wound roll.',
+    factionId: 'SM',
+    datasheetId: '000004185',
+    target: 'defender',
+    effects: {
+      woundMod: -1,
+    },
+  },
+  {
+    id: 'unit_000004187_press_the_attack',
+    label: 'Captain Titus — Sustained 1',
+    description: 'Weapons equipped by models in this model’s unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'SM',
+    datasheetId: '000004187',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+
+  // ─── TAU generated entries ───────────────────
+  {
+    id: 'ldr_000000405_volley_fire',
+    label: 'Cadre Fireblade — +1 Ataques disparo (Líder)',
+    description: 'While this model is leading a unit, add 1 to the Attacks characteristic of ranged weapons equipped by models in that unit.',
+    factionId: 'TAU',
+    leaderDatasheetId: '000000405',
+    combatType: 'ranged',
+    effects: {
+      attacksMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000408_martial_warrior',
+    label: 'Aun’shi — Sustained 2',
+    description: 'Each time this model is selected to fight, select one of the following abilities to be active while resolving those attacks: Direct Grace: Fidelity has the [PRECISION] ability. Forceful Strike: Fidelity has the [DEVASTATING WOUNDS] ability. Whirling Stance: Fidelity has the [SUSTAINED HITS 2] abilit',
+    factionId: 'TAU',
+    datasheetId: '000000408',
+    effects: {
+      sustainedHitsBonus: 2,
+    },
+  },
+  {
+    id: 'unit_000000411_suppression_volley',
+    label: 'Strike Team — -1 impactar disparo',
+    description: 'In your Shooting phase, after this unit has shot, select one enemy INFANTRY unit hit by one or more of those attacks. Until the start of your next turn, while this unit is on the battlefield, that enemy unit is suppressed. While a unit is suppressed, each time a model in that unit makes an attack, s',
+    factionId: 'TAU',
+    datasheetId: '000000411',
+    combatType: 'ranged',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000412_breach_and_clear',
+    label: 'Breacher Team — repetir heridas disparo',
+    description: 'Each time a model in this unit makes a ranged attack that targets an enemy unit within range of an objective marker, you can re-roll the Wound roll.',
+    factionId: 'TAU',
+    datasheetId: '000000412',
+    combatType: 'ranged',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000000417_forward_observers',
+    label: 'Stealth Battlesuits — repetir imp.1, repetir her.1 disparo',
+    description: 'Each time this unit is an Observer unit, until the end of the phase, each time a ranged attack is made by a model in a Guided unit that targets their Spotted unit, re-roll a Hit roll of 1 and re-roll a Wound roll of 1.',
+    factionId: 'TAU',
+    datasheetId: '000000417',
+    combatType: 'ranged',
+    effects: {
+      rerollHitsOf1: true,
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000000425_ground_strike_fighter',
+    label: 'Razorshark Strike Fighter — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets an enemy unit that cannot FLY, add 1 to the Hit roll.',
+    factionId: 'TAU',
+    datasheetId: '000000425',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000428_precise_targeting',
+    label: 'Firesight Team — repetir impactos',
+    description: 'Each time a model in this unit makes an attack that targets a Spotted unit, you can re-roll the Hit roll.',
+    factionId: 'TAU',
+    datasheetId: '000000428',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000000430_velocity_tracker',
+    label: 'Sky Ray Gunship — repetir impactos disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that can FLY, you can re-roll the Hit roll.',
+    factionId: 'TAU',
+    datasheetId: '000000430',
+    combatType: 'ranged',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000000432_armour_hunter',
+    label: 'Hammerhead Gunship — +1 impactar',
+    description: 'Each time this model makes an attack that targets a MONSTER or VEHICLE, add 1 to the Hit roll.',
+    factionId: 'TAU',
+    datasheetId: '000000432',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000433_advanced_armour',
+    label: 'Broadside Battlesuits — FNP 4+',
+    description: 'Models in this unit have the Feel No Pain 4+ ability against mortal wounds.',
+    factionId: 'TAU',
+    datasheetId: '000000433',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000000434_titan_killer',
+    label: 'Stormsurge — repetir impactos disparo',
+    description: 'Each time this model makes a ranged attack that targets a Titanic or TOWERING unit, you can re-roll the Hit roll.',
+    factionId: 'TAU',
+    datasheetId: '000000434',
+    combatType: 'ranged',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000000435_fortification',
+    label: 'Tidewall Droneport — -1 impactar',
+    description: 'While an enemy unit is only within Engagement Range of one or more Fortifications from your army: That unit can still be selected as the target of ranged attacks, but each time such an attack is made, unless it is made with a Pistol, subtract 1 from the Hit roll. Models in that unit do not need to t',
+    factionId: 'TAU',
+    datasheetId: '000000435',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000436_fortification',
+    label: 'Tidewall Shieldline — -1 impactar',
+    description: 'While an enemy unit is only within Engagement Range of one or more Fortifications from your army: That unit can still be selected as the target of ranged attacks, but each time such an attack is made, unless it is made with a Pistol, subtract 1 from the Hit roll. Models in that unit do not need to t',
+    factionId: 'TAU',
+    datasheetId: '000000436',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000437_fortification',
+    label: 'Tidewall Gunrig — -1 impactar',
+    description: 'While an enemy unit is only within Engagement Range of one or more Fortifications from your army: That unit can still be selected as the target of ranged attacks, but each time such an attack is made, unless it is made with a Pistol, subtract 1 from the Hit roll. Models in that unit do not need to t',
+    factionId: 'TAU',
+    datasheetId: '000000437',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'ldr_000000439_eclipse_field_generator',
+    label: 'Shas’o R’alai — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have a 5+ invulnerable save.',
+    factionId: 'TAU',
+    leaderDatasheetId: '000000439',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 5,
+    },
+  },
+  {
+    id: 'unit_000000439_assassin',
+    label: 'Shas’o R’alai — repetir impactos',
+    description: 'Each time this model makes an attack that targets a Character unit, you can re-roll the Hit roll.',
+    factionId: 'TAU',
+    datasheetId: '000000439',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'opb_000000445_nova_shielding',
+    label: 'R’varna Battlesuit — -1 herir disparo [OPB]',
+    description: 'Once per battle, when this model is selected as the target of a ranged attack, it can use this ability. If it does, until the end of the phase, each time an attack targets this model, if the Strength characteristic of that attack is greater than the Toughness characteristic of this model, subtract 1',
+    factionId: 'TAU',
+    datasheetId: '000000445',
+    combatType: 'ranged',
+    target: 'defender',
+    effects: {
+      woundMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000446_coordinated_strike',
+    label: 'Ta’unar Supremacy Armour — repetir imp.1',
+    description: 'While this model is a Guided unit, each time it makes an attack that targets its Spotted unit, re-roll a Hit roll of 1.',
+    factionId: 'TAU',
+    datasheetId: '000000446',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000000447_high_intensity_markerlights',
+    label: 'Tetras — repetir impactos',
+    description: 'Each time this unit is an Observer unit, until the end of the phase, each time a model in its Guided unit makes an attack that targets their Spotted unit, you can re-roll the Hit roll.',
+    factionId: 'TAU',
+    datasheetId: '000000447',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000000453_agile_dogfighter',
+    label: 'Barracuda — -1 impactar',
+    description: 'Each time an attack targets this model, subtract 1 from the Hit roll.',
+    factionId: 'TAU',
+    datasheetId: '000000453',
+    target: 'defender',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000457_aggressive_deployment',
+    label: 'Manta — repetir heridas disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit hit by one or more of those attacks. Until the end of the phase, each time a friendly model that disembarked from this TRANSPORT this turn makes an attack that targets that enemy unit, you can re-roll the Wound roll.',
+    factionId: 'TAU',
+    datasheetId: '000000457',
+    combatType: 'ranged',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000000458_fortification',
+    label: 'Remote Sensor Tower — -1 impactar',
+    description: 'While an enemy unit is only within Engagement Range of one or more Fortifications from your army: That unit can still be selected as the target of ranged attacks, but each time such an attack is made, unless it is made with a Pistol, subtract 1 from the Hit roll. Models in that unit do not need to t',
+    factionId: 'TAU',
+    datasheetId: '000000458',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000459_fortification',
+    label: 'Drone Sentry Turret — -1 impactar',
+    description: 'While an enemy unit is only within Engagement Range of one or more Fortifications from your army: That unit can still be selected as the target of ranged attacks, but each time such an attack is made, unless it is made with a Pistol, subtract 1 from the Hit roll. Models in that unit do not need to t',
+    factionId: 'TAU',
+    datasheetId: '000000459',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000002588_bounty_hunters',
+    label: 'Kroot Farstalkers — Lethal Hits',
+    description: 'At the start of the battle, select one unit from your opponent’s army. Each time a model in this unit makes an attack that targets that unit, that attack has the [LETHAL HITS] and [PRECISION] abilities.',
+    factionId: 'TAU',
+    datasheetId: '000002588',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+  {
+    id: 'unit_000003699_sunforge',
+    label: 'Crisis Sunforge Battlesuits — repetir heridas disparo',
+    description: 'Each time a model in this unit makes a ranged attack that targets a MONSTER or VEHICLE unit, you can re-roll the Wound roll and you can re-roll the Damage roll.',
+    factionId: 'TAU',
+    datasheetId: '000003699',
+    combatType: 'ranged',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000003700_fireknife',
+    label: 'Crisis Fireknife Battlesuits — repetir imp.1 disparo',
+    description: 'Each time a model in this unit makes a ranged attack, re-roll a Hit roll of 1. If that attack targets a unit that is at its Starting Strength, you can re-roll the Hit roll instead.',
+    factionId: 'TAU',
+    datasheetId: '000003700',
+    combatType: 'ranged',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000003701_starscythe',
+    label: 'Crisis Starscythe Battlesuits — +1 PA disparo',
+    description: 'Each time a model in this unit makes a ranged attack (excluding attacks that target MONSTERS and VEHICLES), improve the Armour Penetration characteristic of that attack by 1.',
+    factionId: 'TAU',
+    datasheetId: '000003701',
+    combatType: 'ranged',
+    effects: {
+      apMod: 1,
+    },
+  },
+  {
+    id: 'unit_000003705_advanced_scouting',
+    label: 'Kroot Lone-Spear — repetir impactos disparo',
+    description: 'Each time this model makes a ranged attack that hits an enemy unit, until the end of the turn, each time another Kroot model from your army makes an attack that targets that enemy unit, you can re-roll the Hit roll.',
+    factionId: 'TAU',
+    datasheetId: '000003705',
+    combatType: 'ranged',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000004203_exemplars_of_mont_ka',
+    label: 'The Twin Lance — Sustained 1 disparo',
+    description: 'Each time a model in this unit makes a ranged attack that targets the closest eligible target, that attack has the [SUSTAINED HITS 1] and [IGNORES COVER] abilities.',
+    factionId: 'TAU',
+    datasheetId: '000004203',
+    combatType: 'ranged',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+
+  // ─── TL generated entries ───────────────────
+  {
+    id: 'unit_000002077_titanic_fire_support',
+    label: 'Warbringer Nemesis Titan — +1 PA disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit hit by one or more of those attacks. Until the end of the phase, each time a friendly Imperium model makes an attack that targets that enemy unit, on a Critical Wound, improve the Armour Penetration characteristic of that attac',
+    factionId: 'TL',
+    datasheetId: '000002077',
+    combatType: 'ranged',
+    effects: {
+      apMod: 1,
+    },
+  },
+
+  // ─── TS generated entries ───────────────────
+  {
+    id: 'unit_000001020_bringers_of_change',
+    label: 'Rubric Marines — repetir her.1 disparo',
+    description: 'Each time a model in this unit makes a ranged attack, re-roll a Wound roll of 1. If that attack targets a unit within range of an objective marker you do not control, you can re-roll the Wound roll instead.',
+    factionId: 'TS',
+    datasheetId: '000001020',
+    combatType: 'ranged',
+    effects: {
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000001021_devoted_to_destruction',
+    label: 'Helbrute — +2 Ataques CaC',
+    description: 'If this model is equipped with two melee weapons in addition to its close combat weapon, add 2 to the Attacks characteristic of those two weapons.',
+    factionId: 'TS',
+    datasheetId: '000001021',
+    combatType: 'melee',
+    effects: {
+      attacksMod: 2,
+    },
+  },
+  {
+    id: 'unit_000001022_sorcerous_support',
+    label: 'Chaos Rhino — +1 impactar, +1 herir disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit hit by one or more of those attacks. Until the end of the phase, each time a friendly model that disembarked from this TRANSPORT this turn makes a Psychic Attack that targets that enemy unit, add 1 to the Hit roll and add 1 to ',
+    factionId: 'TS',
+    datasheetId: '000001022',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000001028_blazing_salvoes',
+    label: 'Forgefiend — -1 impactar disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit hit by one or more of those attacks. Until the start of your next turn, that enemy unit is suppressed. While a unit is suppressed, each time a model in that unit makes an attack, subtract 1 from the Hit roll.',
+    factionId: 'TS',
+    datasheetId: '000001028',
+    combatType: 'ranged',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'ldr_000001033_arcane_shield_psychic',
+    label: 'Exalted Sorcerer — FNP 4+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have a 4+ invulnerable save.',
+    factionId: 'TS',
+    leaderDatasheetId: '000001033',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000001035_rites_of_coalescence',
+    label: 'Scarab Occult Terminators — -1 herir',
+    description: 'While this unit contains one or more PSYKER models, each time an attack targets this unit, subtract 1 from the Wound roll.',
+    factionId: 'TS',
+    datasheetId: '000001035',
+    target: 'defender',
+    effects: {
+      woundMod: -1,
+    },
+  },
+  {
+    id: 'unit_000002501_ensorcelled_annihilation',
+    label: 'Chaos Predator Annihilator — repetir impactos disparo',
+    description: 'Each time this model makes a ranged attack that targets a MONSTER or VEHICLE unit that was hit by one or more Psychic Attacks made by a Thousand Sons Psyker model from your army this phase (including the Doombolt Ritual), you can re-roll the Hit roll and you can re-roll the Damage roll.',
+    factionId: 'TS',
+    datasheetId: '000002501',
+    combatType: 'ranged',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'ldr_000003597_lord_of_fate',
+    label: 'Chaos Lord On Disc Of Tzeentch — FNP 5+ (Líder)',
+    description: 'While this model is leading a unit, models in that unit have the Feel No Pain 5+ ability against mortal wounds.',
+    factionId: 'TS',
+    leaderDatasheetId: '000003597',
+    effects: {
+      feelNoPainThreshold: 5,
+    },
+  },
+  {
+    id: 'unit_000003598_interceptor',
+    label: 'Hell Blade — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that can FLY, add 1 to the Hit roll.',
+    factionId: 'TS',
+    datasheetId: '000003598',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000003615_strafing_run',
+    label: 'Fire Raptor Gunship — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that cannot Fly, add 1 to the Hit roll.',
+    factionId: 'TS',
+    datasheetId: '000003615',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000003623_deredeo_strike',
+    label: 'Deredeo Dreadnought — repetir impactos disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that is not Below Half-strength, you can re-roll the Hit roll.',
+    factionId: 'TS',
+    datasheetId: '000003623',
+    combatType: 'ranged',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000003627_atomantic_arc_reactor',
+    label: 'Cerberus — Lethal Hits disparo',
+    description: 'Each time this unit shoots its Cerberus neutron pulse array in your Shooting phase, provided it Remained Stationary this turn, that weapon has the [LETHAL HITS] ability.',
+    factionId: 'TS',
+    datasheetId: '000003627',
+    combatType: 'ranged',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+  {
+    id: 'unit_000003639_armoured_spearhead',
+    label: 'Sicaran Battle Tank — repetir imp.1',
+    description: 'Each time this model makes an attack that targets an enemy unit, re-roll a Hit roll of 1 and, if that unit is within range of an objective marker you do not control, you can re-roll the Hit roll instead.',
+    factionId: 'TS',
+    datasheetId: '000003639',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000003663_interceptor',
+    label: 'Xiphon Interceptor — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that can Fly, add 1 to the Hit roll.',
+    factionId: 'TS',
+    datasheetId: '000003663',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000003667_powerful_volley',
+    label: 'Rapier Carrier — Lethal Hits disparo',
+    description: 'Each time this model shoots in your Shooting phase, provided it Remained Stationary this turn, all [HEAVY] weapons equipped by models in this unit have the [LETHAL HITS] ability.',
+    factionId: 'TS',
+    datasheetId: '000003667',
+    combatType: 'ranged',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+  {
+    id: 'unit_000003675_ferocious_assault',
+    label: 'Sicaran Venator — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets the closest eligible MONSTER or VEHICLE unit, add 1 to the Hit roll.',
+    factionId: 'TS',
+    datasheetId: '000003675',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000003683_rotating_death',
+    label: 'Sicaran Punisher — Sustained 1',
+    description: 'This model’s Punisher rotary cannon has the [SUSTAINED HITS 1] ability when targeting INFANTRY units.',
+    factionId: 'TS',
+    datasheetId: '000003683',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'unit_000004120_hunter_of_souls',
+    label: 'Daemon Prince of Tzeentch with Wings — repetir imp.1, repetir her.1',
+    description: 'Each time this model makes an attack that targets a CHARACTER unit, re-roll a Hit roll of 1 and re-roll a Wound roll of 1 (if that attack targets a PSYKER CHARACTER unit, you can re-roll the Hit roll and you can re-roll the Wound roll instead). Each time this model destroys a CHARACTER unit, this mo',
+    factionId: 'TS',
+    datasheetId: '000004120',
+    effects: {
+      rerollHitsOf1: true,
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000004120_aetherstride_psychic',
+    label: 'Daemon Prince of Tzeentch with Wings — Sustained 3',
+    description: 'In your Movement phase, when this model is set up on the battlefield using the Deep Strike ability, it can perform an aetherstride. If it does:It can be set up anywhere on the battlefield that is more than 6" horizontally away from all enemy units.Until the end of the turn, its Dark Blessing has the',
+    factionId: 'TS',
+    datasheetId: '000004120',
+    effects: {
+      sustainedHitsBonus: 3,
+    },
+  },
+
+  // ─── TYR generated entries ───────────────────
+  {
+    id: 'unit_000000463_hypnotic_gaze_psychic',
+    label: 'Broodlord — -1 impactar CaC',
+    description: 'At the start of the Fight phase, select one enemy unit within Engagement Range of this model. Until the end of the phase, each time a model in that unit makes an attack, subtract 1 from the Hit roll.',
+    factionId: 'TYR',
+    datasheetId: '000000463',
+    combatType: 'melee',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000467_vanguard_predator',
+    label: 'Genestealers — repetir imp.1, repetir her.1',
+    description: 'Each time a model in this unit makes an attack, re-roll a Hit roll of 1. If the target is within range of one or more objective markers, re-roll a Wound roll of 1 as well.',
+    factionId: 'TYR',
+    datasheetId: '000000467',
+    effects: {
+      rerollHitsOf1: true,
+      rerollWoundsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000000471_guardian_organism',
+    label: 'Tyrant Guard — FNP 5+',
+    description: 'While a Character model is leading this unit, that CHARACTER has the Feel No Pain 5+ ability.',
+    factionId: 'TYR',
+    datasheetId: '000000471',
+    effects: {
+      feelNoPainThreshold: 5,
+    },
+  },
+  {
+    id: 'unit_000000474_encephalic_diffusion_aura_psychic',
+    label: 'Maleceptor — -1 impactar, -1 herir',
+    description: 'While an enemy unit is within 6" of this model, each time a model in that unit makes an attack, subtract 1 from the Hit roll, and, if that enemy unit is Below Half-strength, subtract 1 from the Wound roll as well.',
+    factionId: 'TYR',
+    datasheetId: '000000474',
+    effects: {
+      hitMod: -1,
+      woundMod: -1,
+    },
+  },
+  {
+    id: 'aura_000000475_warp_field_aura_psychic',
+    label: 'Zoanthropes — FNP 6+ (Aura)',
+    description: 'While a friendly Tyranids unit is within 6" of this unit, models in that unit have a 6+ invulnerable save.',
+    factionId: 'TYR',
+    sourceDatasheetId: '000000475',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 6,
+    },
+  },
+  {
+    id: 'unit_000000486_airborne_predator',
+    label: 'Hive Crone — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that can FLY, add 1 to the Hit roll.',
+    factionId: 'TYR',
+    datasheetId: '000000486',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000495_symbiotic_targeting',
+    label: 'Exocrine — repetir imp.1 disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit hit by one or more of those attacks. Until the end of the phase, each time a friendly TYRANIDS model makes an attack that targets that unit, re-roll a Hit roll of 1.',
+    factionId: 'TYR',
+    datasheetId: '000000495',
+    combatType: 'ranged',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000000499_prey_adaptation',
+    label: 'Malanthrope — Lethal Hits, Sustained 1 CaC',
+    description: 'Each time this model\'s unit is selected to fight, select one of the following abilities to apply to all melee weapons equipped by models in that unit until the end of the phase:[SUSTAINED HITS 1] [LANCE] [LETHAL HITS]',
+    factionId: 'TYR',
+    datasheetId: '000000499',
+    combatType: 'melee',
+    effects: {
+      lethalHitsBonus: true,
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'unit_000000503_overgrown_barbs',
+    label: 'Barbed Hierodule — -1 impactar disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit (excluding TITANIC units) that was hit by one or more of those attacks. Until the start of your next turn, while this model is on the battlefield, that enemy unit is suppressed. While a unit is suppressed, each time a model in ',
+    factionId: 'TYR',
+    datasheetId: '000000503',
+    combatType: 'ranged',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000000504_frenzied_metabolism',
+    label: 'Harridan — +1 herir',
+    description: 'Each time this model is selected to shoot, you can use this ability. If you do, until the end of the phase, each time this model makes an attack, add 1 to the Wound roll. After resolving those attacks, roll one D6: on a 2+, this model suffers D3 mortal wounds.',
+    factionId: 'TYR',
+    datasheetId: '000000504',
+    effects: {
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000505_apex_beast',
+    label: 'Hierophant — +1 impactar',
+    description: 'Each time this model makes an attack that targets a unit that is Battle-shocked, add 1 to the Hit roll.',
+    factionId: 'TYR',
+    datasheetId: '000000505',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002689_bio_stimulus',
+    label: 'Psychophage — +1 PA',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit hit by one or more of those attacks. Until the end of the turn, each time a friendly TYRANIDS unit makes a melee attack that targets that enemy unit, improve the Armour Penetration characteristic of that attack by 1. The same e',
+    factionId: 'TYR',
+    datasheetId: '000002689',
+    effects: {
+      apMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002689_feeding_frenzy',
+    label: 'Psychophage — +1 impactar, +1 herir CaC',
+    description: 'Each time this model makes a melee attack that targets a unit that is below its Starting Strength, add 1 to the Hit roll. If that target is also Below Half-strength, add 1 to the Wound roll as well.',
+    factionId: 'TYR',
+    datasheetId: '000002689',
+    combatType: 'melee',
+    effects: {
+      hitMod: 1,
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002691_adaptive_instincts',
+    label: 'Tyranid Warriors With Melee Bio-weapons — repetir imp.1 CaC',
+    description: 'At the start of the Fight phase, select one of the following:Aggression Imperative: Until the end of the phase, each time a model in this unit makes an attack, re-roll a Hit roll of 1.Bioregeneration: Until the end of the phase, each time a saving throw is made for a model in this unit, re-roll a sa',
+    factionId: 'TYR',
+    datasheetId: '000002691',
+    combatType: 'melee',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000002751_singular_purpose',
+    label: 'Norn Emissary — FNP 5+',
+    description: 'At the start of the first battle round, select one of the following:Select one enemy unit. Until the end of the battle, each time this model makes an attack that targets that unit, you can re-roll the Hit roll and you can re-roll the Wound roll.Select one objective marker. Until the end of the battl',
+    factionId: 'TYR',
+    datasheetId: '000002751',
+    effects: {
+      feelNoPainThreshold: 5,
+    },
+  },
+  {
+    id: 'unit_000002751_unnatural_resilience',
+    label: 'Norn Emissary — FNP 4+',
+    description: 'This model has the Feel No Pain 4+ ability against mortal wounds.',
+    factionId: 'TYR',
+    datasheetId: '000002751',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000002752_singular_purpose',
+    label: 'Norn Assimilator — FNP 5+',
+    description: 'At the start of the first battle round, select one of the following:Select one enemy unit. Until the end of the battle, each time this model makes an attack that targets that unit, you can re-roll the Hit roll and you can re-roll the Wound roll.Select one objective marker. Until the end of the battl',
+    factionId: 'TYR',
+    datasheetId: '000002752',
+    effects: {
+      feelNoPainThreshold: 5,
+    },
+  },
+  {
+    id: 'unit_000002753_psychological_saboteur_aura',
+    label: 'Neurolictor — -1 impactar, +1 herir',
+    description: 'While an enemy unit is within 12" of this model, if that unit is Battle-shocked:Each time a model in that unit makes an attack, subtract 1 from the Hit roll.Each time a friendly TYRANIDS model makes an attack that targets that unit, add 1 to the Wound roll.',
+    factionId: 'TYR',
+    datasheetId: '000002753',
+    target: 'defender',
+    effects: {
+      hitMod: -1,
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000004117_alpha_invader',
+    label: 'Hyperadapted Raveners — Sustained 1',
+    description: 'Weapons equipped by models in this unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'TYR',
+    datasheetId: '000004117',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'unit_000004202_alpha_warrior',
+    label: 'Tyranid Prime with Lash Whip — Sustained 1',
+    description: 'Weapons equipped by models in this model’s unit have the [SUSTAINED HITS 1] ability.',
+    factionId: 'TYR',
+    datasheetId: '000004202',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+
+  // ─── UN generated entries ───────────────────
+  {
+    id: 'unit_000000243_vantage_point',
+    label: 'Fortress Of Redemption — +1 PA disparo',
+    description: 'While a model is on top of the tower roof of this FORTIFICATION, improve the Armour Penetration characteristic of ranged weapons equipped by that model by 1.',
+    factionId: 'UN',
+    datasheetId: '000000243',
+    combatType: 'ranged',
+    effects: {
+      apMod: 1,
+    },
+  },
+  {
+    id: 'unit_000000917_automated_defences',
+    label: 'Vengeance Weapon Battery — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets the closest enemy unit: If that attack is made with a Punisher gatling cannon and the target is not a MONSTER or VEHICLE, add 1 to the Hit roll. If that attack is made with a battle cannon and the target is a MONSTER or VEHICLE, add 1 to the Hi',
+    factionId: 'UN',
+    datasheetId: '000000917',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'aura_000000922_projected_void_shields_aura',
+    label: 'Void Shield Generator — FNP 4+ disparo (Aura)',
+    description: 'While a friendly model is wholly within 6" of this FORTIFICATION, that model has a 4+ invulnerable save against ranged attacks.',
+    factionId: 'UN',
+    sourceDatasheetId: '000000922',
+    combatType: 'ranged',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000000923_skyshield',
+    label: 'Skyshield Landing Pad — FNP 5+ disparo',
+    description: 'Friendly INFANTRY models and friendly units that can Fly can be set up or end any type of move on top of the platform section of this FORTIFICATION. While such a model is on the platform section of this FORTIFICATION, that model has a 5+ invulnerable save against ranged attacks.',
+    factionId: 'UN',
+    datasheetId: '000000923',
+    combatType: 'ranged',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 5,
+    },
+  },
+  {
+    id: 'unit_000001603_threat_level_rising',
+    label: 'Spindle Drones — +1 impactar, +1 herir',
+    description: 'Each time a model in this unit makes an attack, add 1 to the Hit roll if this unit is below its Starting Strength, and add 1 to the Wound roll as well if this unit is Below Half-strength.',
+    factionId: 'UN',
+    datasheetId: '000001603',
+    effects: {
+      hitMod: 1,
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002809_defence_line',
+    label: 'Wall Of Martyrs Defence Line — FNP 4+',
+    description: 'When this FORTIFICATION is set up, all parts of it must be set up within 1" of another part. While an INFANTRY model has the Benefit of Cover as a result of this FORTIFICATION (see in FORTIFICATION section), that model has a 4+ invulnerable save.',
+    factionId: 'UN',
+    datasheetId: '000002809',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000002810_defence_line',
+    label: 'Wall Of Martyrs Defence Emplacement — FNP 4+',
+    description: 'While an INFANTRY model has the Benefit of Cover as a result of this Fortification(see below), that model has a 4+ invulnerable save.',
+    factionId: 'UN',
+    datasheetId: '000002810',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'unit_000002811_defence_line',
+    label: 'Aegis Defence Line With Weapon Emplacement — FNP 4+',
+    description: 'When this FORTIFICATION is set up, all parts of it must be set up within 1" of another part. While an INFANTRY model has the Benefit of Cover as a result of this FORTIFICATION (see below), that model has a 4+ invulnerable save.',
+    factionId: 'UN',
+    datasheetId: '000002811',
+    target: 'defender',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+
+  // ─── WE generated entries ───────────────────
+  {
+    id: 'unit_000002626_a_worthy_skull',
+    label: 'Master of Executions — repetir impactos, repetir heridas CaC',
+    description: 'Each time this model makes a melee attack that targets a CHARACTER unit, you can re-roll the Hit roll and you can re-roll the Wound roll. Each time this model’s unit destroys a CHARACTER model, you gain 1CP.',
+    factionId: 'WE',
+    datasheetId: '000002626',
+    combatType: 'melee',
+    effects: {
+      rerollAllHits: true,
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000002629_bloody_fury',
+    label: 'Chaos Terminators — repetir impactos disparo',
+    description: 'Each time a model in this unit makes a ranged attack that targets the closest enemy unit, you can re-roll the Hit roll. Each time this unit declares a charge that targets the closest eligible enemy unit, you can re-roll the Charge roll.',
+    factionId: 'WE',
+    datasheetId: '000002629',
+    combatType: 'ranged',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000002632_devoted_to_destruction',
+    label: 'Helbrute — +2 Ataques CaC',
+    description: 'If this model is equipped with two melee weapons in addition to its close combat weapon, add 2 to the Attacks characteristic of those two weapons.',
+    factionId: 'WE',
+    datasheetId: '000002632',
+    combatType: 'melee',
+    effects: {
+      attacksMod: 2,
+    },
+  },
+  {
+    id: 'unit_000002636_punishing_suppression',
+    label: 'Chaos Predator Destructor — -1 impactar disparo',
+    description: 'In your Shooting phase, after this model has shot, select one enemy unit hit by one or more of those attacks (excluding MONSTERS and VEHICLES). Until the start of your next turn, that enemy unit is suppressed. While a unit is suppressed, each time a model in that unit makes an attack, subtract 1 fro',
+    factionId: 'WE',
+    datasheetId: '000002636',
+    combatType: 'ranged',
+    effects: {
+      hitMod: -1,
+    },
+  },
+  {
+    id: 'unit_000002637_blood_hungry_annihilator',
+    label: 'Chaos Predator Annihilator — repetir heridas disparo',
+    description: 'Each time this model makes a ranged attack that targets the closest eligible MONSTER or VEHICLE target within 18", you can re-roll the Wound roll and you can re-roll the Damage roll.',
+    factionId: 'WE',
+    datasheetId: '000002637',
+    combatType: 'ranged',
+    effects: {
+      rerollAllWounds: true,
+    },
+  },
+  {
+    id: 'unit_000002638_furious_onslaught',
+    label: 'Forgefiend — repetir impactos disparo',
+    description: 'Each time this model makes a ranged attack that targets the closest eligible target within 18", you can re-roll the Hit roll.',
+    factionId: 'WE',
+    datasheetId: '000002638',
+    combatType: 'ranged',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000002639_savage_exaltation',
+    label: 'Maulerfiend — +1 impactar, +1 herir CaC',
+    description: 'Each time this model makes a melee attack that targets an enemy unit that is below its Starting Strength, add 1 to the Hit roll and, if that attack targets an enemy unit that is Below Half-strength, add 1 to the Wound roll as well.',
+    factionId: 'WE',
+    datasheetId: '000002639',
+    combatType: 'melee',
+    effects: {
+      hitMod: 1,
+      woundMod: 1,
+    },
+  },
+  {
+    id: 'unit_000002641_airborne_predator',
+    label: 'Heldrake — +1 impactar',
+    description: 'Each time this model makes an attack that targets a unit that can FLY, add 1 to the Hit roll.',
+    factionId: 'WE',
+    datasheetId: '000002641',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000003589_runes_of_the_blood_god',
+    label: 'Greater Brass Scorpion — FNP 4+',
+    description: 'This model has the Feel No Pain 4+ ability against mortal wounds and Psychic Attacks.',
+    factionId: 'WE',
+    datasheetId: '000003589',
+    effects: {
+      feelNoPainThreshold: 4,
+    },
+  },
+  {
+    id: 'opb_000003590_bloodlust',
+    label: 'Kytan Ravager — Sustained 1 CaC [OPB]',
+    description: 'Each time this model makes a Charge move, until the end of the turn, its melee weapons have the [SUSTAINED HITS 1] ability. In addition, once per battle, this model is eligible to declare a charge in a turn in which it Advanced.',
+    factionId: 'WE',
+    datasheetId: '000003590',
+    combatType: 'melee',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'unit_000003601_interceptor',
+    label: 'Hell Blade — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that can FLY, add 1 to the Hit roll.',
+    factionId: 'WE',
+    datasheetId: '000003601',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000003617_strafing_run',
+    label: 'Fire Raptor Gunship — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that cannot Fly, add 1 to the Hit roll.',
+    factionId: 'WE',
+    datasheetId: '000003617',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000003625_deredeo_strike',
+    label: 'Deredeo Dreadnought — repetir impactos disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that is not Below Half-strength, you can re-roll the Hit roll.',
+    factionId: 'WE',
+    datasheetId: '000003625',
+    combatType: 'ranged',
+    effects: {
+      rerollAllHits: true,
+    },
+  },
+  {
+    id: 'unit_000003629_atomantic_arc_reactor',
+    label: 'Cerberus — Lethal Hits disparo',
+    description: 'Each time this unit shoots its Cerberus neutron pulse array in your Shooting phase, provided it Remained Stationary this turn, that weapon has the [LETHAL HITS] ability.',
+    factionId: 'WE',
+    datasheetId: '000003629',
+    combatType: 'ranged',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+  {
+    id: 'unit_000003641_armoured_spearhead',
+    label: 'Sicaran Battle Tank — repetir imp.1',
+    description: 'Each time this model makes an attack that targets an enemy unit, re-roll a Hit roll of 1 and, if that unit is within range of an objective marker you do not control, you can re-roll the Hit roll instead.',
+    factionId: 'WE',
+    datasheetId: '000003641',
+    effects: {
+      rerollHitsOf1: true,
+    },
+  },
+  {
+    id: 'unit_000003665_interceptor',
+    label: 'Xiphon Interceptor — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets a unit that can Fly, add 1 to the Hit roll.',
+    factionId: 'WE',
+    datasheetId: '000003665',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000003669_powerful_volley',
+    label: 'Rapier Carrier — Lethal Hits disparo',
+    description: 'Each time this model shoots in your Shooting phase, provided it Remained Stationary this turn, all [HEAVY] weapons equipped by models in this unit have the [LETHAL HITS] ability.',
+    factionId: 'WE',
+    datasheetId: '000003669',
+    combatType: 'ranged',
+    effects: {
+      lethalHitsBonus: true,
+    },
+  },
+  {
+    id: 'unit_000003677_ferocious_assault',
+    label: 'Sicaran Venator — +1 impactar disparo',
+    description: 'Each time this model makes a ranged attack that targets the closest eligible MONSTER or VEHICLE unit, add 1 to the Hit roll.',
+    factionId: 'WE',
+    datasheetId: '000003677',
+    combatType: 'ranged',
+    effects: {
+      hitMod: 1,
+    },
+  },
+  {
+    id: 'unit_000003685_rotating_death',
+    label: 'Sicaran Punisher — Sustained 1',
+    description: 'This model’s Punisher rotary cannon has the [SUSTAINED HITS 1] ability when targeting INFANTRY units.',
+    factionId: 'WE',
+    datasheetId: '000003685',
+    effects: {
+      sustainedHitsBonus: 1,
+    },
+  },
+  {
+    id: 'aura_000004104_rage_embodied_aura',
+    label: 'Skarbrand — +1 Ataques CaC (Aura)',
+    description: 'While a friendly Blood Legions unit is within 6" of this model, add 1 to the Attacks characteristic of melee weapons equipped by models in that unit.',
+    factionId: 'WE',
+    sourceDatasheetId: '000004104',
+    combatType: 'melee',
+    effects: {
+      attacksMod: 1,
+    },
+  },
+
+
+]
+
+export const MODIFIER_RULES: ModifierRule[] = [
+  ...RULES_1,
+  ...RULES_2,
+  ...RULES_3,
+  ...RULES_4,
+  ...RULES_5,
 ]

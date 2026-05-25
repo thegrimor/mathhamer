@@ -293,9 +293,25 @@ def effects_label(effects, combat_type):
 
 # ─── Main builder ─────────────────────────────────────────────────────────────
 
+_re_leader_text   = re.compile(r'while this (model|character|unit) is leading', re.IGNORECASE)
+_re_aura_friendly = re.compile(
+    r'while a friendly.{0,100}within \d+"|'
+    r'friendly .{0,80}within \d+".{0,40}(?:have|has|gain)|'
+    r'each friendly .{0,80}within \d+"',
+    re.IGNORECASE
+)
+
+
 def build_rules():
     stratagems = load_csv('Stratagems.csv')
     det_abilities = load_csv('Detachment_abilities.csv')
+    datasheets_raw = load_csv('Datasheets.csv')
+    ds_abilities_raw = load_csv('Datasheets_abilities.csv')
+
+    ds_by_id = {d['id']: d for d in datasheets_raw}
+    abilities_by_ds = defaultdict(list)
+    for ab in ds_abilities_raw:
+        abilities_by_ds[ab['datasheet_id']].append(ab)
 
     rules = []
     seen_ids = set()
@@ -418,6 +434,64 @@ def build_rules():
         if combat_type: rule['combatType'] = combat_type
         rules.append(rule)
 
+    # ── 4. Leader abilities → leaderDatasheetId rules ────────────────────────
+    for dsid, ds in ds_by_id.items():
+        fid = ds.get('faction_id', '')
+        if not fid:
+            continue
+        for ab in abilities_by_ds.get(dsid, []):
+            desc_raw = ab.get('description', '')
+            if not _re_leader_text.search(desc_raw):
+                continue
+            full_text = strip_html(desc_raw)
+            effects = detect_effects(full_text, full_text)
+            if not effects:
+                continue
+            combat_type = detect_combat_type('', full_text)
+            target = detect_target(full_text)
+            base = f"ldr_{dsid}_{slugify(ab.get('name', 'ability'))}"
+            rule_id = unique_id(base)
+            lbl = f"{ds['name']} — {effects_label(effects, combat_type)} (Líder)"
+            rule = {
+                'id': rule_id, 'label': lbl,
+                'description': full_text[:300],
+                'factionId': fid, 'leaderDatasheetId': dsid,
+                'target': target, 'effects': effects,
+            }
+            if combat_type:
+                rule['combatType'] = combat_type
+            rules.append(rule)
+
+    # ── 5. Aura/support abilities → sourceDatasheetId rules ──────────────────
+    for dsid, ds in ds_by_id.items():
+        fid = ds.get('faction_id', '')
+        if not fid:
+            continue
+        for ab in abilities_by_ds.get(dsid, []):
+            desc_raw = ab.get('description', '')
+            if _re_leader_text.search(desc_raw):
+                continue  # already handled as leader
+            if not _re_aura_friendly.search(desc_raw):
+                continue
+            full_text = strip_html(desc_raw)
+            effects = detect_effects(full_text, full_text)
+            if not effects:
+                continue
+            combat_type = detect_combat_type('', full_text)
+            target = detect_target(full_text)
+            base = f"aura_{dsid}_{slugify(ab.get('name', 'ability'))}"
+            rule_id = unique_id(base)
+            lbl = f"{ds['name']} — {effects_label(effects, combat_type)} (Aura)"
+            rule = {
+                'id': rule_id, 'label': lbl,
+                'description': full_text[:300],
+                'factionId': fid, 'sourceDatasheetId': dsid,
+                'target': target, 'effects': effects,
+            }
+            if combat_type:
+                rule['combatType'] = combat_type
+            rules.append(rule)
+
     return rules
 
 
@@ -455,6 +529,12 @@ def emit_rule(r):
         lines.append(f"    factionId: {ts_str(r['factionId'])},")
     if r.get('detachmentId'):
         lines.append(f"    detachmentId: {ts_str(r['detachmentId'])},")
+    if r.get('datasheetId'):
+        lines.append(f"    datasheetId: {ts_str(r['datasheetId'])},")
+    if r.get('leaderDatasheetId'):
+        lines.append(f"    leaderDatasheetId: {ts_str(r['leaderDatasheetId'])},")
+    if r.get('sourceDatasheetId'):
+        lines.append(f"    sourceDatasheetId: {ts_str(r['sourceDatasheetId'])},")
     if r.get('combatType'):
         lines.append(f"    combatType: {ts_str(r['combatType'])},")
     if r.get('target') and r['target'] != 'attacker':

@@ -13,16 +13,16 @@ interface Props {
   gameData: GameData
   panel: PanelState
   side: 'left' | 'right'
-  onWeaponChange?: (w: Weapon | null) => void
+  onWeaponsChange?: (ws: Weapon[]) => void
   onModelChange?: (m: ModelProfile | null) => void
-  selectedWeapon?: Weapon | null
+  selectedWeapons?: Weapon[]
   combatType?: CombatType
   activeModifierIds?: Set<string>
   onModifierToggle?: (id: string) => void
 }
 
 export function UnitPanel({
-  gameData, panel, side, onWeaponChange, onModelChange, selectedWeapon,
+  gameData, panel, side, onWeaponsChange, onModelChange, selectedWeapons = [],
   combatType = 'ranged', activeModifierIds, onModifierToggle,
 }: Props) {
   const [modelIdx, setModelIdx] = useState(0)
@@ -35,24 +35,37 @@ export function UnitPanel({
   }
 
   function handleWeaponSelect(w: Weapon) {
-    if (!isAttacker) return
-    const same = selectedWeapon?.name === w.name && selectedWeapon?.line === w.line
-    onWeaponChange?.(same ? null : w)
+    if (!isAttacker || !onWeaponsChange) return
+    const exists = selectedWeapons.some(x => x.name === w.name && x.line === w.line)
+    onWeaponsChange(
+      exists
+        ? selectedWeapons.filter(x => !(x.name === w.name && x.line === w.line))
+        : [...selectedWeapons, w],
+    )
+  }
+
+  const anySelectedHeavy = selectedWeapons.some(w => w.isHeavy)
+  const heavyModActive = activeModifierIds?.has('weapon_heavy') ?? false
+
+  function handleHeavyToggle() {
+    onModifierToggle?.('weapon_heavy')
   }
 
   const visibleRules = useMemo(() => {
-    const { factionId, detachmentId } = panel.selection
+    const { factionId, detachmentId, datasheetId } = panel.selection
     return MODIFIER_RULES.filter(rule => {
       const ruleTarget = rule.target ?? 'attacker'
       if (isAttacker && ruleTarget === 'defender') return false
       if (!isAttacker && ruleTarget === 'attacker') return false
       if (rule.factionId && rule.factionId !== factionId) return false
       if (rule.detachmentId && rule.detachmentId !== detachmentId) return false
+      if (rule.datasheetId && rule.datasheetId !== datasheetId) return false
+      if (rule.leaderDatasheetId && rule.leaderDatasheetId !== panel.selection.characterId) return false
       if (rule.combatType && rule.combatType !== combatType) return false
-      if (rule.id === 'weapon_heavy' && !selectedWeapon?.isHeavy) return false
+      if (rule.id === 'weapon_heavy' && !anySelectedHeavy) return false
       return true
     })
-  }, [isAttacker, panel.selection, combatType, selectedWeapon])
+  }, [isAttacker, panel.selection, combatType, anySelectedHeavy])
 
   const roleLabel = selectedUnit?.role ? ` · ${selectedUnit.role}` : ''
 
@@ -84,7 +97,7 @@ export function UnitPanel({
               <div className="px-3 py-2 text-xs font-display uppercase tracking-wide text-gold border-b border-rim-bright bg-surface-2">
                 Armamento
                 <span className="text-parchment-dim normal-case tracking-normal font-mono ml-2">
-                  (selecciona para calcular)
+                  (multiselección permitida)
                 </span>
               </div>
               {selectedUnit.weapons.length === 0 ? (
@@ -96,8 +109,10 @@ export function UnitPanel({
                   <WeaponCard
                     key={`${w.name}-${i}`}
                     weapon={w}
-                    isSelected={!!selectedWeapon && selectedWeapon.name === w.name && selectedWeapon.line === w.line}
+                    isSelected={selectedWeapons.some(x => x.name === w.name && x.line === w.line)}
                     onSelect={handleWeaponSelect}
+                    heavyModActive={w.isHeavy ? heavyModActive : undefined}
+                    onHeavyToggle={w.isHeavy ? handleHeavyToggle : undefined}
                   />
                 ))
               )}

@@ -14,28 +14,29 @@ export default function App() {
   const leftPanel = usePanelState(gameData)
   const rightPanel = usePanelState(gameData)
 
-  const [selectedWeapon, setSelectedWeapon] = useState<Weapon | null>(null)
+  const [selectedWeapons, setSelectedWeapons] = useState<Weapon[]>([])
   const [defenderModel, setDefenderModel] = useState<ModelProfile | null>(null)
   const [mobileTab, setMobileTab] = useState<MobileTab>('attacker')
   const [combatType, setCombatType] = useState<CombatType>('ranged')
   const [attackerActiveIds, setAttackerActiveIds] = useState<Set<string>>(new Set())
   const [defenderActiveIds, setDefenderActiveIds] = useState<Set<string>>(new Set())
 
-  // Derive combatType from selected weapon
+  // Derive combatType from first selected weapon
   useEffect(() => {
-    if (selectedWeapon) {
-      setCombatType(selectedWeapon.range === 'Melee' ? 'melee' : 'ranged')
+    if (selectedWeapons.length > 0) {
+      setCombatType(selectedWeapons[0].range === 'Melee' ? 'melee' : 'ranged')
     }
-  }, [selectedWeapon])
+  }, [selectedWeapons])
 
-  // Clear modifier selections when faction changes
+  // Clear weapon + modifier selections when faction or unit changes
   useEffect(() => {
+    setSelectedWeapons([])
     setAttackerActiveIds(new Set())
-  }, [leftPanel.selection.factionId])
+  }, [leftPanel.selection.factionId, leftPanel.selection.datasheetId])
 
   useEffect(() => {
     setDefenderActiveIds(new Set())
-  }, [rightPanel.selection.factionId])
+  }, [rightPanel.selection.factionId, rightPanel.selection.datasheetId])
 
   function toggleAttackerModifier(id: string) {
     setAttackerActiveIds(prev => {
@@ -159,8 +160,8 @@ export default function App() {
             gameData={gameData}
             panel={leftPanel}
             side="left"
-            onWeaponChange={setSelectedWeapon}
-            selectedWeapon={selectedWeapon}
+            onWeaponsChange={setSelectedWeapons}
+            selectedWeapons={selectedWeapons}
             combatType={combatType}
             activeModifierIds={attackerActiveIds}
             onModifierToggle={toggleAttackerModifier}
@@ -168,7 +169,7 @@ export default function App() {
         )}
         {mobileTab === 'result' && (
           <DamageCalculator
-            weapon={selectedWeapon}
+            weapons={selectedWeapons}
             defenderModel={effectiveDefenderModel}
             attackerName={attackerName}
             defenderName={defenderName}
@@ -197,8 +198,8 @@ export default function App() {
             gameData={gameData}
             panel={leftPanel}
             side="left"
-            onWeaponChange={setSelectedWeapon}
-            selectedWeapon={selectedWeapon}
+            onWeaponsChange={setSelectedWeapons}
+            selectedWeapons={selectedWeapons}
             combatType={combatType}
             activeModifierIds={attackerActiveIds}
             onModifierToggle={toggleAttackerModifier}
@@ -207,7 +208,7 @@ export default function App() {
         <div className="border-r border-rim-bright overflow-y-auto bg-surface-2 sticky-col">
           <div className="sticky top-[45px] max-h-[calc(100vh-45px)] overflow-y-auto">
             <DamageCalculator
-              weapon={selectedWeapon}
+              weapons={selectedWeapons}
               defenderModel={effectiveDefenderModel}
               attackerName={attackerName}
               defenderName={defenderName}

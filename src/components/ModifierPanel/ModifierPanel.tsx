@@ -31,13 +31,26 @@ function RuleButton({ rule, active, onToggle }: { rule: ModifierRule; active: bo
 }
 
 export function ModifierPanel({ rules, activeIds, onToggle }: Props) {
-  const armyRules = rules.filter(r => !r.isStratagem)
+  const unitRules  = rules.filter(r => !r.isStratagem && (r.datasheetId || r.leaderDatasheetId || r.sourceDatasheetId))
+  const armyRules  = rules.filter(r => !r.isStratagem && !r.datasheetId && !r.leaderDatasheetId && !r.sourceDatasheetId)
   const stratagems = rules.filter(r => r.isStratagem)
 
   if (rules.length === 0) return null
 
   return (
     <div>
+      {unitRules.length > 0 && (
+        <>
+          <div className="px-3 py-2 text-xs font-display uppercase tracking-wide text-parchment border-b border-t border-rim-bright bg-surface-2">
+            Reglas de Unidad
+          </div>
+          <div className="px-3 py-2 flex flex-col gap-1.5">
+            {unitRules.map(rule => (
+              <RuleButton key={rule.id} rule={rule} active={activeIds.has(rule.id)} onToggle={onToggle} />
+            ))}
+          </div>
+        </>
+      )}
       {armyRules.length > 0 && (
         <>
           <div className="px-3 py-2 text-xs font-display uppercase tracking-wide text-gold border-b border-t border-rim-bright bg-surface-2">

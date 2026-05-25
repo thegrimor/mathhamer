@@ -64,6 +64,7 @@ function parseWeapon(raw: RawDatasheetWargear): Weapon {
     isDevastatingWounds: desc.includes('devastating wounds'),
     isLethalHits: desc.includes('lethal hits'),
     isHeavy: /\bheavy\b/i.test(type),
+    isTwinLinked: desc.includes('twin-linked'),
     sustainedHitsValue: parseSustainedHits(desc),
   }
 }
