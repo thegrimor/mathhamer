@@ -1581,6 +1581,7 @@ const RULES_1: ModifierRule[] = [
   },
   { id: 'adm_unshackled_wrath_lethal',    label: 'UNSHACKLED WRATH — Lethal Hits, disparo (1CP)',    description: 'Eradication Cohort: ranged weapons gain [LETHAL HITS].', factionId: 'AdM', detachmentId: '000001143', combatType: 'ranged', isStratagem: true, cpCost: 1, effects: { lethalHitsBonus: true } },
   { id: 'adm_unshackled_wrath_sustained', label: 'UNSHACKLED WRATH — Sustained Hits 1, disparo (1CP)', description: 'Eradication Cohort: ranged weapons gain [SUSTAINED HITS 1].', factionId: 'AdM', detachmentId: '000001143', combatType: 'ranged', isStratagem: true, cpCost: 1, effects: { sustainedHitsBonus: 1 } },
+  { id: 'adm_threat_cogitation_targeters', label: 'THREAT-COGITATION TARGETERS — rerollar daño vs MONSTER/VEHICLE, disparo (1PC)', description: 'Eradication Cohort: Until the end of the phase, each time a ranged attack made by a model in your unit is allocated to a MONSTER or VEHICLE model, you can re-roll the Damage roll.', factionId: 'AdM', detachmentId: '000001143', combatType: 'ranged', isStratagem: true, cpCost: 1, effects: { rerollAllDamage: true } },
   {
     id: 'adm_auto_oracular_retrieval',
     label: 'AUTO-ORACULAR RETRIEVAL — +1 herir, disparo (2CP)',
