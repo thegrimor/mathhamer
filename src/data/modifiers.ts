@@ -1516,15 +1516,20 @@ const RULES_1: ModifierRule[] = [
   },
   },
   {
-    id: 'adm_murderous_imperative',
-    label: 'Murderous Imperative — repetir impactos 1, repetir heridas 1',
-    description: 'Each time a model in a Skitarii unit from your army makes an attack: If the Protector Imperative is active for that unit, re-roll a Hit roll of 1. If the Conqueror Imperative is active for that unit, re-roll a Wound roll of 1.',
+    id: 'adm_murderous_imperative_protector',
+    label: 'Murderous Imperative — repetir impactos 1 (Doctrina Protectora)',
+    description: 'Each time a model in a Skitarii unit makes an attack: if the Protector Imperative is active for that unit, re-roll a Hit roll of 1.',
     factionId: 'AdM',
     detachmentId: '000001143',
-    effects: {
-    rerollHitsOf1: true,
-    rerollWoundsOf1: true,
+    effects: { rerollHitsOf1: true },
   },
+  {
+    id: 'adm_murderous_imperative_conqueror',
+    label: 'Murderous Imperative — repetir heridas 1 (Doctrina Conquistadora)',
+    description: 'Each time a model in a Skitarii unit makes an attack: if the Conqueror Imperative is active for that unit, re-roll a Wound roll of 1.',
+    factionId: 'AdM',
+    detachmentId: '000001143',
+    effects: { rerollWoundsOf1: true },
   },
   {
     id: 'adm_chant_of_the_remorseless_fist',
