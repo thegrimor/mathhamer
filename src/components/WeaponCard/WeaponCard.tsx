@@ -24,7 +24,7 @@ export function WeaponCard({ weapon, isSelected, onSelect, heavyModActive, onHea
   const aFixed = parseFloat(weapon.A)
 
   const hasBadges = weapon.isTorrent || weapon.isBlast || weapon.isDevastatingWounds ||
-    weapon.isLethalHits || weapon.isHeavy || weapon.sustainedHitsValue > 0
+    weapon.isLethalHits || weapon.isHeavy || weapon.sustainedHitsValue > 0 || weapon.isTwinLinked
 
   return (
     <button
@@ -61,6 +61,7 @@ export function WeaponCard({ weapon, isSelected, onSelect, heavyModActive, onHea
           {weapon.isDevastatingWounds && <Badge label="Dev. Wounds" />}
           {weapon.isLethalHits        && <Badge label="Lethal Hits" />}
           {weapon.isHeavy             && <Badge label="Heavy" />}
+          {weapon.isTwinLinked        && <Badge label="Twin-Linked" />}
           {weapon.sustainedHitsValue > 0 && <Badge label={`Sustained ${weapon.sustainedHitsValue}`} />}
           {weapon.isHeavy && onHeavyToggle && (
             <button
