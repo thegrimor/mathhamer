@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useGameData } from '@/hooks/useGameData'
 import { usePanelState } from '@/hooks/usePanelState'
+import { useTheme } from '@/hooks/useTheme'
 import { UnitPanel } from '@/components/UnitPanel/UnitPanel'
 import { DamageCalculator } from '@/components/DamageCalculator/DamageCalculator'
+import { ThemePicker } from '@/components/ThemePicker/ThemePicker'
 import { resolveModifiers } from '@/utils/mathhammer'
 import { MODIFIER_RULES } from '@/data/modifiers'
 import type { Weapon, ModelProfile, CombatType } from '@/types'
@@ -10,6 +12,7 @@ import type { Weapon, ModelProfile, CombatType } from '@/types'
 type MobileTab = 'attacker' | 'result' | 'defender'
 
 export default function App() {
+  const [currentTheme, setTheme, themes] = useTheme()
   const gameData = useGameData()
   const leftPanel = usePanelState(gameData)
   const rightPanel = usePanelState(gameData)
@@ -129,10 +132,10 @@ export default function App() {
 
       {/* App header */}
       <header className="border-b-2 border-crimson bg-surface-2 px-4 py-2.5 sticky top-0 z-20">
-        <div className="flex items-baseline gap-3">
+        <div className="flex items-center gap-3">
           <h1
             className="font-display text-sm uppercase tracking-[5px] text-crimson-bright"
-            style={{ textShadow: '0 0 10px #ff2222' }}
+            style={{ textShadow: `0 0 10px ${currentTheme.colors.crimsonBright}` }}
           >
             Cogitador
           </h1>
@@ -140,6 +143,11 @@ export default function App() {
           <span className="font-mono text-[9px] text-parchment-dim uppercase tracking-widest hidden sm:inline">
             WH40K · 10ª Ed.
           </span>
+          <ThemePicker
+            currentTheme={currentTheme}
+            themes={themes}
+            onSelect={setTheme}
+          />
         </div>
       </header>
 
