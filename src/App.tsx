@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useMemo } from 'react'
 import { useGameData } from '@/hooks/useGameData'
 import { usePanelState } from '@/hooks/usePanelState'
 import { useTheme } from '@/hooks/useTheme'
+import { useLocalStorage } from '@/hooks/useLocalStorage'
 import { UnitPanel } from '@/components/UnitPanel/UnitPanel'
 import { DamageCalculator } from '@/components/DamageCalculator/DamageCalculator'
 import { ThemePicker } from '@/components/ThemePicker/ThemePicker'
@@ -14,17 +15,24 @@ type MobileTab = 'attacker' | 'result' | 'defender'
 export default function App() {
   const [currentTheme, setTheme, themes] = useTheme()
   const gameData = useGameData()
-  const leftPanel = usePanelState(gameData)
-  const rightPanel = usePanelState(gameData)
+  const leftPanel = usePanelState(gameData, 'mathhammer-left-panel')
+  const rightPanel = usePanelState(gameData, 'mathhammer-right-panel')
 
   const [selectedWeapons, setSelectedWeapons] = useState<Weapon[]>([])
   const [defenderModel, setDefenderModel] = useState<ModelProfile | null>(null)
   const [mobileTab, setMobileTab] = useState<MobileTab>('attacker')
-  const [combatType, setCombatType] = useState<CombatType>('ranged')
-  const [attackerActiveIds, setAttackerActiveIds] = useState<Set<string>>(new Set())
-  const [defenderActiveIds, setDefenderActiveIds] = useState<Set<string>>(new Set())
-  const [meltaActive, setMeltaActive] = useState(false)
-  const [overwatchActive, setOverwatchActive] = useState(false)
+  const [combatType, setCombatType] = useLocalStorage<CombatType>('mathhammer-combat-type', 'ranged')
+  const [attackerIdsArr, setAttackerIdsArr] = useLocalStorage<string[]>('mathhammer-attacker-mods', [])
+  const [defenderIdsArr, setDefenderIdsArr] = useLocalStorage<string[]>('mathhammer-defender-mods', [])
+  const [meltaActive, setMeltaActive] = useLocalStorage<boolean>('mathhammer-melta', false)
+  const [overwatchActive, setOverwatchActive] = useLocalStorage<boolean>('mathhammer-overwatch', false)
+
+  const attackerActiveIds = useMemo(() => new Set(attackerIdsArr), [attackerIdsArr])
+  const defenderActiveIds = useMemo(() => new Set(defenderIdsArr), [defenderIdsArr])
+
+  // Refs to skip clear effects on initial mount (so restored localStorage state is kept)
+  const skipAttackerClear = useRef(true)
+  const skipDefenderClear = useRef(true)
 
   // Derive combatType from first selected weapon
   useEffect(() => {
@@ -37,29 +45,55 @@ export default function App() {
 
   // Clear weapon + modifier selections when faction or unit changes
   useEffect(() => {
+    if (skipAttackerClear.current) { skipAttackerClear.current = false; return }
     setSelectedWeapons([])
-    setAttackerActiveIds(new Set())
+    setAttackerIdsArr([])
     setMeltaActive(false)
     setOverwatchActive(false)
   }, [leftPanel.selection.factionId, leftPanel.selection.datasheetId])
 
   useEffect(() => {
-    setDefenderActiveIds(new Set())
+    if (skipDefenderClear.current) { skipDefenderClear.current = false; return }
+    setDefenderIdsArr([])
   }, [rightPanel.selection.factionId, rightPanel.selection.datasheetId])
 
+  // Restore selected weapons from localStorage when unit is (re)loaded
+  useEffect(() => {
+    if (!leftPanel.selectedUnit || !leftPanel.selection.datasheetId) return
+    try {
+      const raw = localStorage.getItem(`mathhammer-weapons-${leftPanel.selection.datasheetId}`)
+      if (raw) {
+        const lines: number[] = JSON.parse(raw)
+        const restored = leftPanel.selectedUnit.weapons.filter(w => lines.includes(w.line))
+        setSelectedWeapons(restored)
+      }
+    } catch {}
+  }, [leftPanel.selectedUnit, leftPanel.selection.datasheetId])
+
+  // Persist selected weapon lines whenever selection changes
+  useEffect(() => {
+    if (!leftPanel.selection.datasheetId) return
+    try {
+      localStorage.setItem(
+        `mathhammer-weapons-${leftPanel.selection.datasheetId}`,
+        JSON.stringify(selectedWeapons.map(w => w.line)),
+      )
+    } catch {}
+  }, [selectedWeapons, leftPanel.selection.datasheetId])
+
   function toggleAttackerModifier(id: string) {
-    setAttackerActiveIds(prev => {
+    setAttackerIdsArr(prev => {
       const next = new Set(prev)
       if (next.has(id)) next.delete(id); else next.add(id)
-      return next
+      return Array.from(next)
     })
   }
 
   function toggleDefenderModifier(id: string) {
-    setDefenderActiveIds(prev => {
+    setDefenderIdsArr(prev => {
       const next = new Set(prev)
       if (next.has(id)) next.delete(id); else next.add(id)
-      return next
+      return Array.from(next)
     })
   }
 

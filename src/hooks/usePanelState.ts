@@ -1,7 +1,17 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import type { GameData, PanelSelection, Datasheet, Detachment, DetachmentAbility, Stratagem } from '@/types'
 import { MODIFIER_RULES } from '@/data/modifiers'
 import { LEADER_FOLLOWERS } from '@/data/leaderFollowers'
+
+const EMPTY_SELECTION: PanelSelection = { factionId: null, detachmentId: null, datasheetId: null, characterId: null }
+
+function readSelection(key: string): PanelSelection {
+  try {
+    const raw = localStorage.getItem(key)
+    if (raw) return JSON.parse(raw) as PanelSelection
+  } catch {}
+  return EMPTY_SELECTION
+}
 
 export interface PanelState {
   selection: PanelSelection
@@ -17,10 +27,14 @@ export interface PanelState {
   selectCharacter: (id: string | null) => void
 }
 
-export function usePanelState(gameData: GameData): PanelState {
-  const [selection, setSelection] = useState<PanelSelection>({
-    factionId: null, detachmentId: null, datasheetId: null, characterId: null,
-  })
+export function usePanelState(gameData: GameData, storageKey: string): PanelState {
+  const [selection, setSelection] = useState<PanelSelection>(() => readSelection(storageKey))
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(storageKey, JSON.stringify(selection))
+    } catch {}
+  }, [storageKey, selection])
 
   const availableDetachments = useMemo(
     () => selection.factionId
