@@ -196,6 +196,8 @@ export default function App() {
             onCombatTypeChange={setCombatType}
             unitMin={leftPanel.selectedUnit?.modelCountMin}
             unitMax={leftPanel.selectedUnit?.modelCountMax}
+            defenderMin={rightPanel.selectedUnit?.modelCountMin}
+            defenderMax={rightPanel.selectedUnit?.modelCountMax}
           />
         )}
         {mobileTab === 'defender' && (
@@ -240,6 +242,8 @@ export default function App() {
               onCombatTypeChange={setCombatType}
               unitMin={leftPanel.selectedUnit?.modelCountMin}
               unitMax={leftPanel.selectedUnit?.modelCountMax}
+              defenderMin={rightPanel.selectedUnit?.modelCountMin}
+              defenderMax={rightPanel.selectedUnit?.modelCountMax}
             />
           </div>
         </div>
