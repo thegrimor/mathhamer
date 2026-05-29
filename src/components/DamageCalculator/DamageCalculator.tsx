@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { calculateDamage, getBlastBonusAttacks } from '@/utils/mathhammer'
 import type { Weapon, ModelProfile, CombatModifiers, CombatType } from '@/types'
 
@@ -11,6 +11,8 @@ interface Props {
   mods: CombatModifiers
   combatType: CombatType
   onCombatTypeChange: (t: CombatType) => void
+  unitMin?: number
+  unitMax?: number
 }
 
 function Row({ label, value, detail, highlight }: { label: string; value: string; detail?: string; highlight?: boolean }) {
@@ -33,6 +35,10 @@ function pct(n: number): string {
 
 function fmt(n: number): string {
   return n.toFixed(2)
+}
+
+function wKey(w: Weapon): string {
+  return `${w.line}:${w.name}`
 }
 
 function CombatTypeSelector({
@@ -63,30 +69,46 @@ function CombatTypeSelector({
   )
 }
 
-function WeaponBreakdown({ weapon, defenderModel, mods, numModels, blastTargetModels, defenderKeywords }: {
+function WeaponBreakdown({ weapon, defenderModel, mods, qty, onQtyChange, blastTargetModels, defenderKeywords }: {
   weapon: Weapon
   defenderModel: ModelProfile
   mods: CombatModifiers
-  numModels: number
+  qty: number
+  onQtyChange: (delta: number) => void
   blastTargetModels: number
   defenderKeywords?: string[]
 }) {
   const [open, setOpen] = useState(false)
   const calc = calculateDamage(weapon, defenderModel, mods, defenderKeywords ?? [], blastTargetModels)
-  const total = calc.expectedTotalDamage * numModels
+  const total = calc.expectedTotalDamage * qty
 
   return (
     <div className="border border-rim-bright bg-surface-2">
-      <button
-        onClick={() => setOpen(o => !o)}
-        className="w-full flex items-center justify-between px-3 py-2 hover:bg-surface-3 transition-colors"
-      >
-        <span className="text-xs font-mono text-parchment truncate">{weapon.name}</span>
-        <div className="flex items-center gap-3 shrink-0">
-          <span className="text-sm font-mono font-bold text-crimson-bright">{fmt(total)}</span>
-          <span className="text-parchment-dim text-xs">{open ? '▲' : '▼'}</span>
+      <div className="flex items-center gap-2 px-3 py-2 hover:bg-surface-3 transition-colors">
+        <button
+          onClick={() => setOpen(o => !o)}
+          className="flex-1 min-w-0 text-left"
+        >
+          <span className="text-xs font-mono text-parchment truncate block">{weapon.name}</span>
+        </button>
+        <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-1">
+            <button
+              onClick={() => onQtyChange(-1)}
+              className="w-5 h-5 border border-rim-bright text-parchment hover:border-gold hover:text-gold font-mono text-xs flex items-center justify-center transition-colors"
+            >−</button>
+            <span className="text-xs font-mono text-gold-bright w-5 text-center">×{qty}</span>
+            <button
+              onClick={() => onQtyChange(+1)}
+              className="w-5 h-5 border border-rim-bright text-parchment hover:border-gold hover:text-gold font-mono text-xs flex items-center justify-center transition-colors"
+            >+</button>
+          </div>
+          <span className="text-sm font-mono font-bold text-crimson-bright w-12 text-right">{fmt(total)}</span>
+          <button onClick={() => setOpen(o => !o)} className="text-parchment-dim text-xs w-4">
+            {open ? '▲' : '▼'}
+          </button>
         </div>
-      </button>
+      </div>
       {open && (
         <div className="px-3 py-2 border-t border-rim-bright">
           {calc.blastBonusAttacks != null && (
@@ -120,7 +142,7 @@ function WeaponBreakdown({ weapon, defenderModel, mods, numModels, blastTargetMo
             detail={`${fmt(calc.expectedWounds)} × ${pct(calc.saveFailProbability)}`}
           />
           <Row label="Daño/herida" value={fmt(calc.avgDamagePerWound)} detail={weapon.D} />
-          <Row label="Bajas esperadas" value={fmt(calc.expectedKills)} detail={`/${defenderModel.W}H`} />
+          <Row label="Bajas esperadas" value={fmt(calc.expectedKills * qty)} detail={`/${defenderModel.W}H · ×${qty}`} highlight />
         </div>
       )}
     </div>
@@ -129,9 +151,34 @@ function WeaponBreakdown({ weapon, defenderModel, mods, numModels, blastTargetMo
 
 export function DamageCalculator({
   weapons, defenderModel, defenderKeywords = [], attackerName, defenderName, mods, combatType, onCombatTypeChange,
+  unitMin, unitMax,
 }: Props) {
-  const [numModels, setNumModels] = useState(1)
+  const [weaponQuantities, setWeaponQuantities] = useState<Record<string, number>>({})
   const [blastTargetModels, setBlastTargetModels] = useState(1)
+
+  function getQty(w: Weapon): number {
+    return weaponQuantities[wKey(w)] ?? (unitMin ?? 1)
+  }
+
+  function adjustQty(w: Weapon, delta: number) {
+    const current = getQty(w)
+    const next = current + delta
+    const bounded = Math.max(1, unitMax !== undefined ? Math.min(unitMax, next) : next)
+    setWeaponQuantities(prev => ({ ...prev, [wKey(w)]: bounded }))
+  }
+
+  // Clean up stale weapon quantities when selection changes
+  useEffect(() => {
+    setWeaponQuantities(prev => {
+      if (Object.keys(prev).length === 0) return prev
+      const activeKeys = new Set(weapons.map(wKey))
+      const next: Record<string, number> = {}
+      for (const [k, v] of Object.entries(prev)) {
+        if (activeKeys.has(k)) next[k] = v
+      }
+      return Object.keys(next).length === Object.keys(prev).length ? prev : next
+    })
+  }, [weapons])
 
   const hasBlastWeapons = weapons.some(w => w.isBlast)
 
@@ -143,6 +190,11 @@ export function DamageCalculator({
     mods.attacksMod !== 0 || mods.rerollDamageOf1 || mods.rerollAllDamage
 
   const weaponLocked = weapons.length > 0
+
+  const compText = unitMin === undefined ? '' :
+    unitMin === unitMax
+      ? `${unitMin} modelo${unitMin !== 1 ? 's' : ''}`
+      : `${unitMin}–${unitMax} modelos`
 
   if (weapons.length === 0 || !defenderModel) {
     return (
@@ -158,13 +210,12 @@ export function DamageCalculator({
   }
 
   const breakdowns = weapons.map(w => calculateDamage(w, defenderModel, mods, defenderKeywords, blastTargetModels))
-  const totalDamagePerModel = breakdowns.reduce((s, b) => s + b.expectedTotalDamage, 0)
-  const totalDamage = totalDamagePerModel * numModels
-  const totalKills = breakdowns.reduce((s, b) => s + b.expectedKills, 0) * numModels
+  const totalDamage = breakdowns.reduce((s, b, i) => s + b.expectedTotalDamage * getQty(weapons[i]), 0)
+  const totalKills = breakdowns.reduce((s, b, i) => s + b.expectedKills * getQty(weapons[i]), 0)
 
-  // Combined stats for single-weapon display
   const isSingle = weapons.length === 1
   const calc = breakdowns[0]
+  const singleQty = getQty(weapons[0])
 
   return (
     <div className="p-4 flex flex-col gap-4">
@@ -183,21 +234,38 @@ export function DamageCalculator({
         </p>
       </div>
 
-      {/* Attacker models input */}
-      <div className="flex items-center justify-between bg-surface-3 border border-rim-bright px-3 py-2 rounded-sm">
-        <span className="text-xs font-display uppercase tracking-wide text-gold">Modelos atacantes</span>
-        <div className="flex items-center gap-3">
-          <button
-            onClick={() => setNumModels(n => Math.max(1, n - 1))}
-            className="w-8 h-8 border border-rim-bright text-parchment hover:border-gold hover:text-gold font-mono text-lg flex items-center justify-center transition-colors"
-          >−</button>
-          <span className="text-xl font-mono font-bold text-parchment w-8 text-center">{numModels}</span>
-          <button
-            onClick={() => setNumModels(n => n + 1)}
-            className="w-8 h-8 border border-rim-bright text-parchment hover:border-gold hover:text-gold font-mono text-lg flex items-center justify-center transition-colors"
-          >+</button>
+      {/* Attacker models / weapon quantity (single weapon) */}
+      {isSingle && (
+        <div className="flex items-center justify-between bg-surface-3 border border-rim-bright px-3 py-2 rounded-sm">
+          <div>
+            <span className="text-xs font-display uppercase tracking-wide text-gold">Modelos atacantes</span>
+            {compText && (
+              <span className="block text-[9px] font-mono text-parchment-dim mt-0.5">
+                Composición: {compText}
+              </span>
+            )}
+          </div>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => adjustQty(weapons[0], -1)}
+              className="w-8 h-8 border border-rim-bright text-parchment hover:border-gold hover:text-gold font-mono text-lg flex items-center justify-center transition-colors"
+            >−</button>
+            <span className="text-xl font-mono font-bold text-parchment w-8 text-center">{singleQty}</span>
+            <button
+              onClick={() => adjustQty(weapons[0], +1)}
+              className="w-8 h-8 border border-rim-bright text-parchment hover:border-gold hover:text-gold font-mono text-lg flex items-center justify-center transition-colors"
+            >+</button>
+          </div>
         </div>
-      </div>
+      )}
+
+      {/* Composition info (multi-weapon) */}
+      {!isSingle && compText && (
+        <div className="flex items-center justify-between bg-surface-3 border border-rim-bright px-3 py-1.5 rounded-sm">
+          <span className="text-xs font-display uppercase tracking-wide text-parchment-dim">Composición</span>
+          <span className="text-xs font-mono text-gold">{compText}</span>
+        </div>
+      )}
 
       {/* Blast target models input */}
       {hasBlastWeapons && (
@@ -227,7 +295,10 @@ export function DamageCalculator({
       {/* Big number */}
       <div className="flex flex-col items-center py-2">
         <span className="text-xs font-display uppercase tracking-[3px] text-gold-bright mb-1">
-          Daño esperado{numModels > 1 ? ` · ×${numModels} modelos` : ''}
+          {isSingle
+            ? `Daño esperado · ×${singleQty} modelo${singleQty !== 1 ? 's' : ''}`
+            : 'Daño esperado total'
+          }
         </span>
         <span
           className="text-6xl font-display font-black text-crimson-bright leading-none"
@@ -238,11 +309,6 @@ export function DamageCalculator({
         <span className="text-xs font-mono text-gold mt-2">
           ≈ {fmt(totalKills)} bajas
         </span>
-        {numModels > 1 && (
-          <span className="text-xs font-mono text-parchment-dim mt-1">
-            {fmt(totalDamagePerModel)} daño por modelo
-          </span>
-        )}
         {hasActiveMods && (
           <span className="text-xs font-mono text-gold mt-1 uppercase tracking-wider">
             con modificadores
@@ -287,7 +353,7 @@ export function DamageCalculator({
             detail={`${fmt(calc.expectedWounds)} × ${pct(calc.saveFailProbability)}`}
           />
           <Row label="Daño/herida" value={fmt(calc.avgDamagePerWound)} detail={weapons[0].D} />
-          <Row label="Bajas esperadas" value={fmt(calc.expectedKills * numModels)} detail={`/${defenderModel.W}H por modelo`} highlight />
+          <Row label="Bajas esperadas" value={fmt(calc.expectedKills * singleQty)} detail={`/${defenderModel.W}H por modelo`} highlight />
           {calc.autoWoundsFromCrits > 0 && calc.expectedWounds > 0 && (
             <Row
               label="Contribución críticos"
@@ -303,6 +369,9 @@ export function DamageCalculator({
         <div className="flex flex-col gap-2">
           <p className="text-xs font-display uppercase tracking-wide text-gold-bright">
             Desglose por arma
+            <span className="normal-case tracking-normal font-mono text-parchment-dim ml-2 text-[9px]">
+              · ajusta ×cantidad por arma
+            </span>
           </p>
           {weapons.map((w, i) => (
             <WeaponBreakdown
@@ -310,7 +379,8 @@ export function DamageCalculator({
               weapon={w}
               defenderModel={defenderModel}
               mods={mods}
-              numModels={numModels}
+              qty={getQty(w)}
+              onQtyChange={(delta) => adjustQty(w, delta)}
               blastTargetModels={blastTargetModels}
               defenderKeywords={defenderKeywords}
             />

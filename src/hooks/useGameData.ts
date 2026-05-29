@@ -33,6 +33,33 @@ function splitIds(raw: string): string[] {
   return raw.split(',').map(s => s.trim()).filter(Boolean)
 }
 
+function stripHtml(s: string): string {
+  return s.replace(/<[^>]+>/g, '')
+}
+
+function parseUnitCompositionRange(lines: string[]): { min: number; max: number } {
+  const orIdx = lines.findIndex(l => stripHtml(l).trim().toUpperCase() === 'OR')
+  const relevant = orIdx >= 0 ? lines.slice(0, orIdx) : lines
+  let totalMin = 0
+  let totalMax = 0
+  for (const line of relevant) {
+    const clean = stripHtml(line)
+    const rangeMatch = clean.match(/(\d+)\s*-\s*(\d+)/)
+    if (rangeMatch) {
+      totalMin += parseInt(rangeMatch[1])
+      totalMax += parseInt(rangeMatch[2])
+    } else {
+      const nums = clean.match(/\d+/g)
+      if (nums) {
+        const sum = nums.reduce((s, n) => s + parseInt(n), 0)
+        totalMin += sum
+        totalMax += sum
+      }
+    }
+  }
+  return { min: Math.max(1, totalMin), max: Math.max(1, totalMax) }
+}
+
 function parseSustainedHits(desc: string): number {
   // e.g. "sustained hits 2", "sustained hits d3"
   const m = desc.match(/sustained hits (\d+|d\d+)/i)
@@ -143,6 +170,8 @@ function enrichDatasheet(
     .sort((a, b) => parseInt(a.line) - parseInt(b.line))
     .map(c => c.description)
 
+  const { min: modelCountMin, max: modelCountMax } = parseUnitCompositionRange(unitComposition)
+
   return {
     id: raw.id,
     name: raw.name,
@@ -161,6 +190,8 @@ function enrichDatasheet(
     keywords,
     factionKeywords,
     unitComposition,
+    modelCountMin,
+    modelCountMax,
   }
 }
 

@@ -194,6 +194,8 @@ export default function App() {
             mods={mods}
             combatType={combatType}
             onCombatTypeChange={setCombatType}
+            unitMin={leftPanel.selectedUnit?.modelCountMin}
+            unitMax={leftPanel.selectedUnit?.modelCountMax}
           />
         )}
         {mobileTab === 'defender' && (
@@ -236,6 +238,8 @@ export default function App() {
               mods={mods}
               combatType={combatType}
               onCombatTypeChange={setCombatType}
+              unitMin={leftPanel.selectedUnit?.modelCountMin}
+              unitMax={leftPanel.selectedUnit?.modelCountMax}
             />
           </div>
         </div>

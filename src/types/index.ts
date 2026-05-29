@@ -265,6 +265,8 @@ export interface Datasheet {
   keywords: string[]
   factionKeywords: string[]
   unitComposition: string[]
+  modelCountMin: number
+  modelCountMax: number
 }
 
 export interface GameData {
