@@ -66,7 +66,7 @@ function CombatTypeSelector({
               : 'border-rim-bright text-parchment-dim hover:border-parchment-dim hover:text-parchment'
           } ${locked ? 'opacity-60 cursor-default' : ''}`}
         >
-          {t === 'ranged' ? 'Disparo' : 'CàC'}
+          {t === 'ranged' ? 'Disparo' : 'CaC'}
         </button>
       ))}
       {locked && <span className="text-xs font-mono text-parchment-dim ml-1">⊙ auto</span>}
