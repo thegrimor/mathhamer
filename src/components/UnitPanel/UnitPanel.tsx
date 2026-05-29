@@ -19,11 +19,14 @@ interface Props {
   combatType?: CombatType
   activeModifierIds?: Set<string>
   onModifierToggle?: (id: string) => void
+  weaponAntiKeywords?: string[]
+  defenderKeywords?: string[]
 }
 
 export function UnitPanel({
   gameData, panel, side, onWeaponsChange, onModelChange, selectedWeapons = [],
   combatType = 'ranged', activeModifierIds, onModifierToggle,
+  weaponAntiKeywords = [], defenderKeywords = [],
 }: Props) {
   const [modelIdx, setModelIdx] = useState(0)
   const { selectedUnit, detachmentAbilities, applicableStratagems } = panel
@@ -53,6 +56,7 @@ export function UnitPanel({
 
   const visibleRules = useMemo(() => {
     const { factionId, detachmentId, datasheetId } = panel.selection
+    const defKwLower = defenderKeywords.map(k => k.toLowerCase())
     return MODIFIER_RULES.filter(rule => {
       const ruleTarget = rule.target ?? 'attacker'
       if (isAttacker && ruleTarget === 'defender') return false
@@ -63,9 +67,11 @@ export function UnitPanel({
       if (rule.leaderDatasheetId && rule.leaderDatasheetId !== panel.selection.characterId) return false
       if (rule.combatType && rule.combatType !== combatType) return false
       if (rule.id === 'weapon_heavy' && !anySelectedHeavy) return false
+      if (rule.requiresAntiKeyword && !weaponAntiKeywords.includes(rule.requiresAntiKeyword)) return false
+      if (rule.requiresTargetKeyword && !defKwLower.includes(rule.requiresTargetKeyword.toLowerCase())) return false
       return true
     })
-  }, [isAttacker, panel.selection, combatType, anySelectedHeavy])
+  }, [isAttacker, panel.selection, combatType, anySelectedHeavy, weaponAntiKeywords, defenderKeywords])
 
   const roleLabel = selectedUnit?.role ? ` · ${selectedUnit.role}` : ''
 

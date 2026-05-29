@@ -94,6 +94,7 @@ export const DEFAULT_MODS: CombatModifiers = {
   rerollDamageOf1: false,
   rerollAllDamage: false,
   feelNoPainThreshold: null,
+  woundCritThreshold: 7,
 }
 
 export function resolveModifiers(activeIds: string[], rules: ModifierRule[]): CombatModifiers {
@@ -118,7 +119,8 @@ export function resolveModifiers(activeIds: string[], rules: ModifierRule[]): Co
     if (e.rerollAllDamage)     result.rerollAllDamage      = true
     if (e.lethalHitsBonus)     result.lethalHitsBonus      = true
     if (e.sustainedHitsBonus)  result.sustainedHitsBonus   = Math.max(result.sustainedHitsBonus, e.sustainedHitsBonus)
-    if (e.critThreshold != null) result.critThreshold      = Math.min(result.critThreshold, e.critThreshold)
+    if (e.critThreshold != null) result.critThreshold           = Math.min(result.critThreshold, e.critThreshold)
+    if (e.woundCritThreshold != null) result.woundCritThreshold = Math.min(result.woundCritThreshold, e.woundCritThreshold)
     if (e.feelNoPainThreshold != null) {
       result.feelNoPainThreshold = result.feelNoPainThreshold === null
         ? e.feelNoPainThreshold
@@ -151,6 +153,7 @@ export function mergeMods(
     lethalHitsBonus:    base.lethalHitsBonus    || attackerRuleMods.lethalHitsBonus,
     sustainedHitsBonus: Math.max(base.sustainedHitsBonus, attackerRuleMods.sustainedHitsBonus),
     critThreshold:      Math.min(base.critThreshold, attackerRuleMods.critThreshold),
+    woundCritThreshold: Math.min(base.woundCritThreshold, attackerRuleMods.woundCritThreshold),
     feelNoPainThreshold:
       defenderRuleMods.feelNoPainThreshold !== null
         ? defenderRuleMods.feelNoPainThreshold
@@ -162,6 +165,7 @@ export function calculateDamage(
   weapon: Weapon,
   defenderModel: ModelProfile,
   mods: CombatModifiers = DEFAULT_MODS,
+  defenderKeywords: string[] = [],
 ): DamageBreakdown {
   const avgAttacks  = parseDiceAverage(weapon.A) + mods.attacksMod
   const pHit        = weapon.isTorrent ? 1 : hitProbabilityWithMods(weapon.bsWs, mods)
@@ -182,6 +186,22 @@ export function calculateDamage(
   const sustainedX = weapon.sustainedHitsValue + mods.sustainedHitsBonus
   const sustainedExtraHits = sustainedX > 0 ? avgAttacks * CRIT * sustainedX : 0
 
+  // Determinar umbral efectivo de herida crítica ANTI:
+  // tomar el mínimo entre lo que ofrecen los modificadores y las entradas ANTI del arma vs defensor
+  let effectiveWoundCritThreshold = mods.woundCritThreshold
+  if (weapon.antiEntries.length > 0 && defenderKeywords.length > 0) {
+    const defKwLower = defenderKeywords.map(k => k.toLowerCase())
+    for (const entry of weapon.antiEntries) {
+      if (defKwLower.includes(entry.keyword)) {
+        effectiveWoundCritThreshold = Math.min(effectiveWoundCritThreshold, entry.threshold)
+      }
+    }
+  }
+  const hasWoundCrit = effectiveWoundCritThreshold <= 6
+  const WOUND_CRIT   = hasWoundCrit
+    ? Math.min(5 / 6, Math.max(1 / 6, (7 - effectiveWoundCritThreshold) / 6))
+    : 0
+
   let expectedHits: number
   let expectedWounds: number
   let autoWoundsFromCrits: number
@@ -197,7 +217,24 @@ export function calculateDamage(
     expectedWounds       = expectedHits * pWound
   }
 
-  const expectedFailedSaves = expectedWounds * pFailSave
+  // Heridas críticas ANTI: tiradas de herida >= umbral cuentan como críticas.
+  // Sin Devastating Wounds: pasan por salvación normalmente (sin impacto en daño esperado).
+  // Con Devastating Wounds: esquivan salvación → se cuentan como woundsSkippingSave.
+  const antiCritWounds = hasWoundCrit
+    ? (isLethal
+        ? avgAttacks * Math.max(0, pHit - CRIT) * WOUND_CRIT  // solo hits no-lethal van a tirada de herida
+        : expectedHits * WOUND_CRIT)
+    : 0
+
+  let expectedFailedSaves: number
+  if (weapon.isDevastatingWounds && hasWoundCrit) {
+    const woundsSkippingSave = autoWoundsFromCrits + antiCritWounds
+    const woundsNeedingSave  = expectedWounds - autoWoundsFromCrits - antiCritWounds
+    expectedFailedSaves = woundsSkippingSave + Math.max(0, woundsNeedingSave) * pFailSave
+  } else {
+    expectedFailedSaves = expectedWounds * pFailSave
+  }
+
   const rawDmg        = parseDiceAverageWithReroll(weapon.D, effectiveMods.rerollAllDamage, effectiveMods.rerollDamageOf1) + effectiveMods.damageMod
   const avgDmgPerWound = mods.damageReduction > 0
     ? Math.max(rawDmg - mods.damageReduction, 1)
@@ -216,6 +253,7 @@ export function calculateDamage(
     woundProbability: pWound,
     expectedWounds,
     autoWoundsFromCrits,
+    antiCritWounds,
     saveFailProbability: pFailSave,
     expectedFailedSaves,
     avgDamagePerWound: avgDmgPerWound,

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import Papa from 'papaparse'
 import type {
   GameData, Faction, Detachment, DetachmentAbility, Stratagem, Datasheet,
-  ModelProfile, Weapon, Ability,
+  ModelProfile, Weapon, Ability, AntiEntry,
   RawFaction, RawDatasheet, RawDatasheetModel, RawDatasheetWargear,
   RawDatasheetAbility, RawAbility, RawDetachment, RawDetachmentAbility,
   RawStratagem, RawDatasheetStratagem, RawDatasheetKeyword, RawDatasheetUnitComposition,
@@ -45,6 +45,16 @@ function parseSustainedHits(desc: string): number {
   return 0
 }
 
+function parseAntiEntries(desc: string): AntiEntry[] {
+  const RE = /anti-([\w][\w ]*?)\s+(\d)\+/gi
+  const entries: AntiEntry[] = []
+  let m: RegExpExecArray | null
+  while ((m = RE.exec(desc)) !== null) {
+    entries.push({ keyword: m[1].toLowerCase().trim(), threshold: parseInt(m[2]) })
+  }
+  return entries
+}
+
 function parseWeapon(raw: RawDatasheetWargear): Weapon {
   const desc = (raw.description ?? '').toLowerCase()
   const type = raw.type ?? ''
@@ -66,6 +76,7 @@ function parseWeapon(raw: RawDatasheetWargear): Weapon {
     isHeavy: /\bheavy\b/i.test(type),
     isTwinLinked: desc.includes('twin-linked'),
     sustainedHitsValue: parseSustainedHits(desc),
+    antiEntries: parseAntiEntries(desc),
   }
 }
 

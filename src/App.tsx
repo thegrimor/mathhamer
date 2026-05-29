@@ -75,6 +75,13 @@ export default function App() {
   const attackerName = leftPanel.selectedUnit?.name ?? ''
   const defenderName = rightPanel.selectedUnit?.name ?? ''
 
+  const defenderKeywords: string[] = rightPanel.selectedUnit
+    ? [...rightPanel.selectedUnit.keywords, ...rightPanel.selectedUnit.factionKeywords]
+    : []
+  const selectedWeaponAntiKeywords: string[] = selectedWeapons.flatMap(w =>
+    w.antiEntries.map(e => e.keyword)
+  )
+
   if (gameData.loading) {
     return (
       <div className="min-h-screen bg-surface flex items-center justify-center">
@@ -165,12 +172,15 @@ export default function App() {
             combatType={combatType}
             activeModifierIds={attackerActiveIds}
             onModifierToggle={toggleAttackerModifier}
+            weaponAntiKeywords={selectedWeaponAntiKeywords}
+            defenderKeywords={defenderKeywords}
           />
         )}
         {mobileTab === 'result' && (
           <DamageCalculator
             weapons={selectedWeapons}
             defenderModel={effectiveDefenderModel}
+            defenderKeywords={defenderKeywords}
             attackerName={attackerName}
             defenderName={defenderName}
             mods={mods}
@@ -203,6 +213,8 @@ export default function App() {
             combatType={combatType}
             activeModifierIds={attackerActiveIds}
             onModifierToggle={toggleAttackerModifier}
+            weaponAntiKeywords={selectedWeaponAntiKeywords}
+            defenderKeywords={defenderKeywords}
           />
         </div>
         <div className="border-r border-rim-bright overflow-y-auto bg-surface-2 sticky-col">
@@ -210,6 +222,7 @@ export default function App() {
             <DamageCalculator
               weapons={selectedWeapons}
               defenderModel={effectiveDefenderModel}
+              defenderKeywords={defenderKeywords}
               attackerName={attackerName}
               defenderName={defenderName}
               mods={mods}
