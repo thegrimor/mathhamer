@@ -8831,6 +8831,19 @@ const RULES_3: ModifierRule[] = [
   },
   },
   {
+    id: 'ts_destined_by_fate',
+    label: 'DESTINED BY FATE — daño a 0 (psíquico) (1CP)',
+    description: 'Grand Coven: Just after a saving throw is failed for a Thousand Sons Psyker model from your army, change the Damage characteristic of that attack to 0.',
+    factionId: 'TS',
+    detachmentId: '000001061',
+    target: 'defender',
+    isStratagem: true,
+    cpCost: 1,
+    effects: {
+    damageReduction: 1,
+  },
+  },
+  {
     id: 'ts_implacable_guardians',
     label: 'IMPLACABLE GUARDIANS — −1 daño, disparo (2CP)',
     description: 'Rubricae Phalanx: Until the end of the phase, each time an attack is allocated to a model in your unit (excluding PSYKER models), subtract 1 from the Damage characteristic of that attack.',
@@ -10559,6 +10572,18 @@ const RULES_4: ModifierRule[] = [
     datasheetId: '000003922',
     effects: {
       rerollAllHits: true,
+    },
+  },
+
+  {
+    id: 'opb_000002617_ablative_plating',
+    label: 'Rogal Dorn Battle Tank — daño a 0 [OPB]',
+    description: 'Ablative Plating: Once per battle, when an attack is allocated to this model, you can change the Damage characteristic of that attack to 0.',
+    factionId: 'AM',
+    datasheetId: '000002617',
+    target: 'defender',
+    effects: {
+      damageReduction: 1,
     },
   },
 
@@ -15266,6 +15291,18 @@ const RULES_5: ModifierRule[] = [
     },
   },
 
+  {
+    id: 'opb_000000420_stealth_drones',
+    label: 'Ghostkeel Battlesuit — daño a 0 ×2 [OPB]',
+    description: 'Stealth Drones: Twice per battle, after an attack has been allocated to this model, you can change the Damage characteristic of that attack to 0.',
+    factionId: 'TAU',
+    datasheetId: '000000420',
+    target: 'defender',
+    effects: {
+      damageReduction: 1,
+    },
+  },
+
   // ─── TL generated entries ───────────────────
   {
     id: 'unit_000002077_titanic_fire_support',
@@ -15700,6 +15737,18 @@ const RULES_5: ModifierRule[] = [
     datasheetId: '000004202',
     effects: {
       sustainedHitsBonus: 1,
+    },
+  },
+
+  {
+    id: 'opb_000000496_resilient_organism',
+    label: 'Tyrannofex — daño a 0 [OPB]',
+    description: 'Resilient Organism: Once per battle, when an attack is allocated to this model, you can change the Damage characteristic of that attack to 0.',
+    factionId: 'TYR',
+    datasheetId: '000000496',
+    target: 'defender',
+    effects: {
+      damageReduction: 1,
     },
   },
 
