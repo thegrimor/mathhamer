@@ -43,7 +43,9 @@ export function hitProbabilityWithMods(bsWs: string, mods: CombatModifiers): num
   if (bsWs.trim() === '*') return 1
   const val = parseStat(bsWs)
   if (val === null) return 0
-  const effectiveBs = val - mods.hitMod
+  // Overwatch: la tirada base es siempre 6+, ignorando la HA/HP de la unidad
+  const baseThreshold = mods.overwatchHit ? 6 : val
+  const effectiveBs = baseThreshold - mods.hitMod
   const baseP = Math.min(5 / 6, Math.max(1 / 6, (7 - effectiveBs) / 6))
   if (mods.rerollAllHits)  return baseP + (1 - baseP) * baseP
   if (mods.rerollHitsOf1)  return baseP + (1 / 6) * baseP
@@ -84,6 +86,7 @@ export const DEFAULT_MODS: CombatModifiers = {
   rerollHitsOf1: false,
   rerollAllHits: false,
   critThreshold: 6,
+  overwatchHit: false,
   strengthMod: 0,
   woundMod: 0,
   rerollWoundsOf1: false,
@@ -148,6 +151,7 @@ export function mergeMods(
     attacksMod:         base.attacksMod         + attackerRuleMods.attacksMod,
     damageMod:          base.damageMod          + attackerRuleMods.damageMod          + defenderRuleMods.damageMod,
     damageReduction:    base.damageReduction    + attackerRuleMods.damageReduction    + defenderRuleMods.damageReduction,
+    overwatchHit:       base.overwatchHit       || attackerRuleMods.overwatchHit,
     rerollHitsOf1:      base.rerollHitsOf1      || attackerRuleMods.rerollHitsOf1,
     rerollAllHits:      base.rerollAllHits      || attackerRuleMods.rerollAllHits,
     rerollWoundsOf1:    base.rerollWoundsOf1    || attackerRuleMods.rerollWoundsOf1,
