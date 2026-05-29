@@ -216,6 +216,20 @@ export function DamageCalculator({
       <div className="flex flex-col items-center justify-center min-h-[300px] p-6 gap-4">
         <div className="w-px h-12 bg-gradient-to-b from-transparent via-crimson-dim to-transparent" />
         <CombatTypeSelector combatType={combatType} onChange={onCombatTypeChange} locked={weaponLocked} />
+        {canOverwatch && onOverwatchToggle && weapons.length > 0 && (
+          <button
+            onClick={onOverwatchToggle}
+            className={`flex items-center gap-2 px-4 py-1.5 text-xs font-display uppercase tracking-wide border transition-colors ${
+              overwatchActive
+                ? 'border-crimson bg-crimson/20 text-crimson-bright'
+                : 'border-rim-bright text-parchment-dim hover:border-crimson-dim hover:text-parchment'
+            }`}
+          >
+            <span className="text-[10px]">⚡</span>
+            Overwatch
+            {overwatchActive && <span className="font-mono normal-case tracking-normal text-[9px] text-crimson-bright ml-1">6+</span>}
+          </button>
+        )}
         <p className="text-crimson-dim font-display text-xs uppercase tracking-[4px] text-center leading-loose">
           {weapons.length === 0 ? '// selecciona arma\ndel atacante' : '// selecciona\ndefensor'}
         </p>
