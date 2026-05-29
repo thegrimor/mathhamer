@@ -22,12 +22,6 @@ const RULES_1: ModifierRule[] = [
   },
   },
   {
-    id: 'generic_reroll_damage_1s',
-    label: 'Rerollar dados de daño de 1',
-    description: 'Habilidad genérica: repetir los dados de daño que muestren 1. Representa reglas de unidad o habilidades de destacamento que otorgan este efecto.',
-    effects: { rerollDamageOf1: true },
-  },
-  {
     id: 'core_command_reroll_damage',
     label: 'COMMAND RE-ROLL — repetir dado de daño (1PC)',
     description: 'Core – Battle Tactic Stratagem (1CP): Just after making a Damage roll for a model in your unit, re-roll that roll.',
