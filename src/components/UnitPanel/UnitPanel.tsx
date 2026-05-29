@@ -136,6 +136,9 @@ export function UnitPanel({
           <AbilityList
             abilities={selectedUnit.abilities}
             detachmentAbilities={detachmentAbilities}
+            relatedRules={visibleRules}
+            activeModifierIds={activeModifierIds}
+            onModifierToggle={onModifierToggle}
           />
           <StratList stratagems={applicableStratagems} />
         </>
