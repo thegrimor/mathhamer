@@ -14,6 +14,8 @@ interface Props {
   unitMin?: number
   unitMax?: number
   meltaActive?: boolean
+  defenderMin?: number
+  defenderMax?: number
 }
 
 function Row({ label, value, detail, highlight }: { label: string; value: string; detail?: string; highlight?: boolean }) {
@@ -157,9 +159,14 @@ function WeaponBreakdown({ weapon, defenderModel, mods, qty, onQtyChange, blastT
 export function DamageCalculator({
   weapons, defenderModel, defenderKeywords = [], attackerName, defenderName, mods, combatType, onCombatTypeChange,
   unitMin, unitMax, meltaActive,
+  unitMin, unitMax, defenderMin, defenderMax,
 }: Props) {
   const [weaponQuantities, setWeaponQuantities] = useState<Record<string, number>>({})
-  const [blastTargetModels, setBlastTargetModels] = useState(1)
+  const [defenderModels, setDefenderModels] = useState(defenderMin ?? 1)
+
+  useEffect(() => {
+    setDefenderModels(defenderMin ?? 1)
+  }, [defenderMin])
 
   function getQty(w: Weapon): number {
     return weaponQuantities[wKey(w)] ?? (unitMin ?? 1)
@@ -220,6 +227,7 @@ export function DamageCalculator({
       : mods
     return calculateDamage(w, defenderModel, wMods, defenderKeywords, blastTargetModels)
   })
+  const breakdowns = weapons.map(w => calculateDamage(w, defenderModel, mods, defenderKeywords, defenderModels))
   const totalDamage = breakdowns.reduce((s, b, i) => s + b.expectedTotalDamage * getQty(weapons[i]), 0)
   const totalKills = breakdowns.reduce((s, b, i) => s + b.expectedKills * getQty(weapons[i]), 0)
 
@@ -277,30 +285,33 @@ export function DamageCalculator({
         </div>
       )}
 
-      {/* Blast target models input */}
-      {hasBlastWeapons && (
-        <div className="flex items-center justify-between bg-surface-3 border border-crimson/40 px-3 py-2 rounded-sm">
-          <div>
-            <span className="text-xs font-display uppercase tracking-wide text-crimson-bright">
-              Modelos en objetivo
-            </span>
+      {/* Defender models counter */}
+      <div className="flex items-center justify-between bg-surface-3 border border-gold/40 px-3 py-2 rounded-sm">
+        <div>
+          <span className="text-xs font-display uppercase tracking-wide text-gold">Modelos en objetivo</span>
+          {defenderMin !== undefined && (
             <span className="block text-[9px] font-mono text-parchment-dim mt-0.5">
-              Blast: +{getBlastBonusAttacks(blastTargetModels)}A extra (+1A cada 5 modelos)
+              Composición: {defenderMin === defenderMax ? `${defenderMin} modelo${defenderMin !== 1 ? 's' : ''}` : `${defenderMin}–${defenderMax} modelos`}
             </span>
-          </div>
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => setBlastTargetModels(n => Math.max(1, n - 1))}
-              className="w-8 h-8 border border-crimson/40 text-parchment hover:border-crimson hover:text-crimson font-mono text-lg flex items-center justify-center transition-colors"
-            >−</button>
-            <span className="text-xl font-mono font-bold text-parchment w-8 text-center">{blastTargetModels}</span>
-            <button
-              onClick={() => setBlastTargetModels(n => n + 1)}
-              className="w-8 h-8 border border-crimson/40 text-parchment hover:border-crimson hover:text-crimson font-mono text-lg flex items-center justify-center transition-colors"
-            >+</button>
-          </div>
+          )}
+          {hasBlastWeapons && (
+            <span className="block text-[9px] font-mono text-crimson-bright mt-0.5">
+              Blast: +{getBlastBonusAttacks(defenderModels)}A extra (+1A cada 5 modelos)
+            </span>
+          )}
         </div>
-      )}
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => setDefenderModels(n => Math.max(1, defenderMax !== undefined ? Math.min(defenderMax, n - 1) : n - 1))}
+            className="w-8 h-8 border border-gold/40 text-parchment hover:border-gold hover:text-gold font-mono text-lg flex items-center justify-center transition-colors"
+          >−</button>
+          <span className="text-xl font-mono font-bold text-parchment w-8 text-center">{defenderModels}</span>
+          <button
+            onClick={() => setDefenderModels(n => defenderMax !== undefined ? Math.min(defenderMax, n + 1) : n + 1)}
+            className="w-8 h-8 border border-gold/40 text-parchment hover:border-gold hover:text-gold font-mono text-lg flex items-center justify-center transition-colors"
+          >+</button>
+        </div>
+      </div>
 
       {/* Big number */}
       <div className="flex flex-col items-center py-2">
@@ -317,7 +328,7 @@ export function DamageCalculator({
           {fmt(totalDamage)}
         </span>
         <span className="text-xs font-mono text-gold mt-2">
-          ≈ {fmt(totalKills)} bajas
+          ≈ {fmt(totalKills)} bajas{defenderModels > 1 ? ` de ${defenderModels}` : ''}
         </span>
         {hasActiveMods && (
           <span className="text-xs font-mono text-gold mt-1 uppercase tracking-wider">
@@ -391,7 +402,7 @@ export function DamageCalculator({
               mods={mods}
               qty={getQty(w)}
               onQtyChange={(delta) => adjustQty(w, delta)}
-              blastTargetModels={blastTargetModels}
+              blastTargetModels={defenderModels}
               defenderKeywords={defenderKeywords}
               meltaActive={meltaActive}
             />

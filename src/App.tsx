@@ -201,6 +201,8 @@ export default function App() {
             unitMin={leftPanel.selectedUnit?.modelCountMin}
             unitMax={leftPanel.selectedUnit?.modelCountMax}
             meltaActive={meltaActive}
+            defenderMin={rightPanel.selectedUnit?.modelCountMin}
+            defenderMax={rightPanel.selectedUnit?.modelCountMax}
           />
         )}
         {mobileTab === 'defender' && (
@@ -248,6 +250,8 @@ export default function App() {
               unitMin={leftPanel.selectedUnit?.modelCountMin}
               unitMax={leftPanel.selectedUnit?.modelCountMax}
               meltaActive={meltaActive}
+              defenderMin={rightPanel.selectedUnit?.modelCountMin}
+              defenderMax={rightPanel.selectedUnit?.modelCountMax}
             />
           </div>
         </div>
