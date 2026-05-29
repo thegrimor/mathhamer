@@ -1,41 +1,7 @@
 import type { Weapon, ModelProfile, DamageBreakdown, CombatModifiers, ModifierRule } from '@/types'
 
-export function getBlastMinAttacks(targetModels: number): number {
-  if (targetModels >= 11) return 6
-  if (targetModels >= 5)  return 3
-  return 0
-}
-
-export function parseDiceAverageBlast(expr: string, minAttacks: number): number {
-  if (minAttacks <= 0) return parseDiceAverage(expr)
-  const s = expr.trim().toUpperCase()
-  const match = s.match(/^(\d*)D(\d+)([+-]\d+)?$/)
-  if (!match) {
-    const fixed = parseFloat(s)
-    return isNaN(fixed) ? Math.max(1, minAttacks) : Math.max(fixed, minAttacks)
-  }
-  const coeff = match[1] ? parseInt(match[1]) : 1
-  const faces = parseInt(match[2])
-  const bonus = match[3] ? parseInt(match[3]) : 0
-  // DP: dp[k] = number of ways to roll sum k with `coeff` dice of `faces` sides
-  let dp: number[] = new Array(coeff * faces + 1).fill(0)
-  dp[0] = 1
-  for (let d = 0; d < coeff; d++) {
-    const next: number[] = new Array(coeff * faces + 1).fill(0)
-    for (let s2 = 0; s2 <= coeff * faces; s2++) {
-      if (dp[s2] === 0) continue
-      for (let face = 1; face <= faces; face++) {
-        next[s2 + face] += dp[s2]
-      }
-    }
-    dp = next
-  }
-  const total = faces ** coeff
-  let expected = 0
-  for (let k = coeff; k <= coeff * faces; k++) {
-    expected += Math.max(k + bonus, minAttacks) * dp[k]
-  }
-  return expected / total
+export function getBlastBonusAttacks(targetModels: number): number {
+  return Math.floor(targetModels / 5)
 }
 
 export function parseDiceAverageWithReroll(expr: string, rerollAll: boolean, rerollOf1: boolean): number {
@@ -206,10 +172,8 @@ export function calculateDamage(
   defenderKeywords: string[] = [],
   blastTargetModels: number = 0,
 ): DamageBreakdown {
-  const blastMin = weapon.isBlast ? getBlastMinAttacks(blastTargetModels) : 0
-  const avgAttacks = (blastMin > 0
-    ? parseDiceAverageBlast(weapon.A, blastMin)
-    : parseDiceAverage(weapon.A)) + mods.attacksMod
+  const blastBonus = weapon.isBlast ? getBlastBonusAttacks(blastTargetModels) : 0
+  const avgAttacks = parseDiceAverage(weapon.A) + blastBonus + mods.attacksMod
   const pHit        = weapon.isTorrent ? 1 : hitProbabilityWithMods(weapon.bsWs, mods)
   const effectiveMods = weapon.isTwinLinked
     ? { ...mods, rerollAllWounds: true }
@@ -289,7 +253,7 @@ export function calculateDamage(
   return {
     weaponName: weapon.name,
     avgAttacks,
-    blastMinAttacks: blastMin > 0 ? blastMin : undefined,
+    blastBonusAttacks: blastBonus > 0 ? blastBonus : undefined,
     hitProbability: pHit,
     expectedHits,
     sustainedExtraHits,

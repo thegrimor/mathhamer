@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { calculateDamage, getBlastMinAttacks } from '@/utils/mathhammer'
+import { calculateDamage, getBlastBonusAttacks } from '@/utils/mathhammer'
 import type { Weapon, ModelProfile, CombatModifiers, CombatType } from '@/types'
 
 interface Props {
@@ -89,8 +89,8 @@ function WeaponBreakdown({ weapon, defenderModel, mods, numModels, blastTargetMo
       </button>
       {open && (
         <div className="px-3 py-2 border-t border-rim-bright">
-          {calc.blastMinAttacks != null && (
-            <Row label="↳ Blast mín." value={`${calc.blastMinAttacks}A`} highlight />
+          {calc.blastBonusAttacks != null && (
+            <Row label="↳ Blast bonus" value={`+${calc.blastBonusAttacks}A`} highlight />
           )}
           <Row label="Ataques" value={fmt(calc.avgAttacks)} />
           <Row
@@ -207,7 +207,7 @@ export function DamageCalculator({
               Modelos en objetivo
             </span>
             <span className="block text-[9px] font-mono text-parchment-dim mt-0.5">
-              Blast: {blastTargetModels >= 11 ? 'mín. 6A' : blastTargetModels >= 5 ? 'mín. 3A' : 'sin mínimo'} · {getBlastMinAttacks(blastTargetModels) === 0 ? '1–4 modelos' : blastTargetModels >= 11 ? '11+ modelos' : '5–10 modelos'}
+              Blast: +{getBlastBonusAttacks(blastTargetModels)}A extra (+1A cada 5 modelos)
             </span>
           </div>
           <div className="flex items-center gap-3">
@@ -256,8 +256,8 @@ export function DamageCalculator({
           <p className="text-xs font-display uppercase tracking-wide text-gold-bright mb-1">
             Desglose
           </p>
-          {calc.blastMinAttacks != null && (
-            <Row label="↳ Blast mín." value={`${calc.blastMinAttacks}A`} highlight />
+          {calc.blastBonusAttacks != null && (
+            <Row label="↳ Blast bonus" value={`+${calc.blastBonusAttacks}A`} highlight />
           )}
           <Row label="Ataques" value={fmt(calc.avgAttacks)} />
           <Row
