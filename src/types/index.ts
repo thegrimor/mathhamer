@@ -159,6 +159,11 @@ export interface ModelProfile {
   baseSize: string
 }
 
+export interface AntiEntry {
+  keyword: string   // lowercase normalizado, e.g. 'infantry', 'fly', 'epic hero'
+  threshold: number // 2, 3, 4 o 5
+}
+
 export interface Weapon {
   line: number
   name: string
@@ -177,6 +182,7 @@ export interface Weapon {
   isHeavy: boolean
   isTwinLinked: boolean
   sustainedHitsValue: number
+  antiEntries: AntiEntry[]
 }
 
 export type CombatType = 'ranged' | 'melee' | 'any'
@@ -200,6 +206,7 @@ export interface CombatModifiers {
   rerollDamageOf1: boolean
   rerollAllDamage: boolean
   feelNoPainThreshold: number | null
+  woundCritThreshold: number  // 7 = desactivado; valores activos 2–6 (paralelo a critThreshold)
 }
 
 export interface ModifierRule {
@@ -217,6 +224,8 @@ export interface ModifierRule {
   isStratagem?: boolean
   cpCost?: number
   effects: Partial<CombatModifiers>
+  requiresAntiKeyword?: string    // regla solo aparece si el arma tiene ANTI-<keyword>
+  requiresTargetKeyword?: string  // regla solo aparece si el defensor tiene esta keyword
 }
 
 export interface Ability {
@@ -286,6 +295,7 @@ export interface DamageBreakdown {
   woundProbability: number
   expectedWounds: number
   autoWoundsFromCrits: number
+  antiCritWounds: number
   saveFailProbability: number
   expectedFailedSaves: number
   avgDamagePerWound: number

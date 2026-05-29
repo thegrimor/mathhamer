@@ -5,6 +5,7 @@ import type { Weapon, ModelProfile, CombatModifiers, CombatType } from '@/types'
 interface Props {
   weapons: Weapon[]
   defenderModel: ModelProfile | null
+  defenderKeywords?: string[]
   attackerName: string
   defenderName: string
   mods: CombatModifiers
@@ -62,14 +63,15 @@ function CombatTypeSelector({
   )
 }
 
-function WeaponBreakdown({ weapon, defenderModel, mods, numModels }: {
+function WeaponBreakdown({ weapon, defenderModel, mods, numModels, defenderKeywords }: {
   weapon: Weapon
   defenderModel: ModelProfile
   mods: CombatModifiers
   numModels: number
+  defenderKeywords?: string[]
 }) {
   const [open, setOpen] = useState(false)
-  const calc = calculateDamage(weapon, defenderModel, mods)
+  const calc = calculateDamage(weapon, defenderModel, mods, defenderKeywords ?? [])
   const total = calc.expectedTotalDamage * numModels
 
   return (
@@ -98,6 +100,9 @@ function WeaponBreakdown({ weapon, defenderModel, mods, numModels }: {
           {calc.autoWoundsFromCrits > 0 && (
             <Row label="↳ Auto (Lethal Hits)" value={`+${fmt(calc.autoWoundsFromCrits)}`} highlight />
           )}
+          {calc.antiCritWounds > 0 && (
+            <Row label="↳ Crit herida (ANTI)" value={`${fmt(calc.antiCritWounds)}`} highlight />
+          )}
           <Row
             label="Heridas"
             value={fmt(calc.expectedWounds)}
@@ -119,7 +124,7 @@ function WeaponBreakdown({ weapon, defenderModel, mods, numModels }: {
 }
 
 export function DamageCalculator({
-  weapons, defenderModel, attackerName, defenderName, mods, combatType, onCombatTypeChange,
+  weapons, defenderModel, defenderKeywords = [], attackerName, defenderName, mods, combatType, onCombatTypeChange,
 }: Props) {
   const [numModels, setNumModels] = useState(1)
 
@@ -145,7 +150,7 @@ export function DamageCalculator({
     )
   }
 
-  const breakdowns = weapons.map(w => calculateDamage(w, defenderModel, mods))
+  const breakdowns = weapons.map(w => calculateDamage(w, defenderModel, mods, defenderKeywords))
   const totalDamagePerModel = breakdowns.reduce((s, b) => s + b.expectedTotalDamage, 0)
   const totalDamage = totalDamagePerModel * numModels
   const totalKills = breakdowns.reduce((s, b) => s + b.expectedKills, 0) * numModels
@@ -231,6 +236,9 @@ export function DamageCalculator({
           {calc.autoWoundsFromCrits > 0 && (
             <Row label="↳ Auto (Lethal Hits)" value={`+${fmt(calc.autoWoundsFromCrits)}`} highlight />
           )}
+          {calc.antiCritWounds > 0 && (
+            <Row label="↳ Crit herida (ANTI)" value={`${fmt(calc.antiCritWounds)}`} highlight />
+          )}
           <Row
             label="Heridas"
             value={fmt(calc.expectedWounds)}
@@ -268,6 +276,7 @@ export function DamageCalculator({
               defenderModel={defenderModel}
               mods={mods}
               numModels={numModels}
+              defenderKeywords={defenderKeywords}
             />
           ))}
         </div>
