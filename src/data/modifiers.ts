@@ -15292,8 +15292,19 @@ const RULES_5: ModifierRule[] = [
   },
 
   {
-    id: 'opb_000000420_stealth_drones',
-    label: 'Ghostkeel Battlesuit — daño a 0 ×2 [OPB]',
+    id: 'opb_000000420_stealth_drones_1',
+    label: 'Ghostkeel — Stealth Drones (uso 1/2) [OPB]',
+    description: 'Stealth Drones: Twice per battle, after an attack has been allocated to this model, you can change the Damage characteristic of that attack to 0.',
+    factionId: 'TAU',
+    datasheetId: '000000420',
+    target: 'defender',
+    effects: {
+      damageReduction: 1,
+    },
+  },
+  {
+    id: 'opb_000000420_stealth_drones_2',
+    label: 'Ghostkeel — Stealth Drones (uso 2/2) [OPB]',
     description: 'Stealth Drones: Twice per battle, after an attack has been allocated to this model, you can change the Damage characteristic of that attack to 0.',
     factionId: 'TAU',
     datasheetId: '000000420',
