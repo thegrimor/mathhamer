@@ -207,7 +207,7 @@ export function DamageCalculator({
               Modelos en objetivo
             </span>
             <span className="block text-[9px] font-mono text-parchment-dim mt-0.5">
-              Blast: {blastTargetModels >= 11 ? 'mín. 6A' : blastTargetModels >= 6 ? 'mín. 3A' : 'sin mínimo'} · {getBlastMinAttacks(blastTargetModels) === 0 ? '1–5 modelos' : blastTargetModels >= 11 ? '11+ modelos' : '6–10 modelos'}
+              Blast: {blastTargetModels >= 11 ? 'mín. 6A' : blastTargetModels >= 5 ? 'mín. 3A' : 'sin mínimo'} · {getBlastMinAttacks(blastTargetModels) === 0 ? '1–4 modelos' : blastTargetModels >= 11 ? '11+ modelos' : '5–10 modelos'}
             </span>
           </div>
           <div className="flex items-center gap-3">

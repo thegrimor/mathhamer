@@ -2,7 +2,7 @@ import type { Weapon, ModelProfile, DamageBreakdown, CombatModifiers, ModifierRu
 
 export function getBlastMinAttacks(targetModels: number): number {
   if (targetModels >= 11) return 6
-  if (targetModels >= 6)  return 3
+  if (targetModels >= 5)  return 3
   return 0
 }
 
