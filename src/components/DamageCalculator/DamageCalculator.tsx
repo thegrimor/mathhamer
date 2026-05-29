@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { calculateDamage } from '@/utils/mathhammer'
+import { calculateDamage, getBlastBonusAttacks } from '@/utils/mathhammer'
 import type { Weapon, ModelProfile, CombatModifiers, CombatType } from '@/types'
 
 interface Props {
@@ -63,15 +63,16 @@ function CombatTypeSelector({
   )
 }
 
-function WeaponBreakdown({ weapon, defenderModel, mods, numModels, defenderKeywords }: {
+function WeaponBreakdown({ weapon, defenderModel, mods, numModels, blastTargetModels, defenderKeywords }: {
   weapon: Weapon
   defenderModel: ModelProfile
   mods: CombatModifiers
   numModels: number
+  blastTargetModels: number
   defenderKeywords?: string[]
 }) {
   const [open, setOpen] = useState(false)
-  const calc = calculateDamage(weapon, defenderModel, mods, defenderKeywords ?? [])
+  const calc = calculateDamage(weapon, defenderModel, mods, defenderKeywords ?? [], blastTargetModels)
   const total = calc.expectedTotalDamage * numModels
 
   return (
@@ -88,6 +89,9 @@ function WeaponBreakdown({ weapon, defenderModel, mods, numModels, defenderKeywo
       </button>
       {open && (
         <div className="px-3 py-2 border-t border-rim-bright">
+          {calc.blastBonusAttacks != null && (
+            <Row label="↳ Blast bonus" value={`+${calc.blastBonusAttacks}A`} highlight />
+          )}
           <Row label="Ataques" value={fmt(calc.avgAttacks)} />
           <Row
             label="Impactos"
@@ -127,6 +131,9 @@ export function DamageCalculator({
   weapons, defenderModel, defenderKeywords = [], attackerName, defenderName, mods, combatType, onCombatTypeChange,
 }: Props) {
   const [numModels, setNumModels] = useState(1)
+  const [blastTargetModels, setBlastTargetModels] = useState(1)
+
+  const hasBlastWeapons = weapons.some(w => w.isBlast)
 
   const hasActiveMods =
     mods.hitMod !== 0 || mods.rerollHitsOf1 || mods.rerollAllHits ||
@@ -150,7 +157,7 @@ export function DamageCalculator({
     )
   }
 
-  const breakdowns = weapons.map(w => calculateDamage(w, defenderModel, mods, defenderKeywords))
+  const breakdowns = weapons.map(w => calculateDamage(w, defenderModel, mods, defenderKeywords, blastTargetModels))
   const totalDamagePerModel = breakdowns.reduce((s, b) => s + b.expectedTotalDamage, 0)
   const totalDamage = totalDamagePerModel * numModels
   const totalKills = breakdowns.reduce((s, b) => s + b.expectedKills, 0) * numModels
@@ -176,7 +183,7 @@ export function DamageCalculator({
         </p>
       </div>
 
-      {/* Models input */}
+      {/* Attacker models input */}
       <div className="flex items-center justify-between bg-surface-3 border border-rim-bright px-3 py-2 rounded-sm">
         <span className="text-xs font-display uppercase tracking-wide text-gold">Modelos atacantes</span>
         <div className="flex items-center gap-3">
@@ -191,6 +198,31 @@ export function DamageCalculator({
           >+</button>
         </div>
       </div>
+
+      {/* Blast target models input */}
+      {hasBlastWeapons && (
+        <div className="flex items-center justify-between bg-surface-3 border border-crimson/40 px-3 py-2 rounded-sm">
+          <div>
+            <span className="text-xs font-display uppercase tracking-wide text-crimson-bright">
+              Modelos en objetivo
+            </span>
+            <span className="block text-[9px] font-mono text-parchment-dim mt-0.5">
+              Blast: +{getBlastBonusAttacks(blastTargetModels)}A extra (+1A cada 5 modelos)
+            </span>
+          </div>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setBlastTargetModels(n => Math.max(1, n - 1))}
+              className="w-8 h-8 border border-crimson/40 text-parchment hover:border-crimson hover:text-crimson font-mono text-lg flex items-center justify-center transition-colors"
+            >−</button>
+            <span className="text-xl font-mono font-bold text-parchment w-8 text-center">{blastTargetModels}</span>
+            <button
+              onClick={() => setBlastTargetModels(n => n + 1)}
+              className="w-8 h-8 border border-crimson/40 text-parchment hover:border-crimson hover:text-crimson font-mono text-lg flex items-center justify-center transition-colors"
+            >+</button>
+          </div>
+        </div>
+      )}
 
       {/* Big number */}
       <div className="flex flex-col items-center py-2">
@@ -224,6 +256,9 @@ export function DamageCalculator({
           <p className="text-xs font-display uppercase tracking-wide text-gold-bright mb-1">
             Desglose
           </p>
+          {calc.blastBonusAttacks != null && (
+            <Row label="↳ Blast bonus" value={`+${calc.blastBonusAttacks}A`} highlight />
+          )}
           <Row label="Ataques" value={fmt(calc.avgAttacks)} />
           <Row
             label="Impactos"
@@ -276,6 +311,7 @@ export function DamageCalculator({
               defenderModel={defenderModel}
               mods={mods}
               numModels={numModels}
+              blastTargetModels={blastTargetModels}
               defenderKeywords={defenderKeywords}
             />
           ))}

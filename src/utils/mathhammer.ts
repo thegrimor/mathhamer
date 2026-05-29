@@ -1,5 +1,9 @@
 import type { Weapon, ModelProfile, DamageBreakdown, CombatModifiers, ModifierRule } from '@/types'
 
+export function getBlastBonusAttacks(targetModels: number): number {
+  return Math.floor(targetModels / 5)
+}
+
 export function parseDiceAverageWithReroll(expr: string, rerollAll: boolean, rerollOf1: boolean): number {
   const base = parseDiceAverage(expr)
   if (!rerollAll && !rerollOf1) return base
@@ -166,8 +170,10 @@ export function calculateDamage(
   defenderModel: ModelProfile,
   mods: CombatModifiers = DEFAULT_MODS,
   defenderKeywords: string[] = [],
+  blastTargetModels: number = 0,
 ): DamageBreakdown {
-  const avgAttacks  = parseDiceAverage(weapon.A) + mods.attacksMod
+  const blastBonus = weapon.isBlast ? getBlastBonusAttacks(blastTargetModels) : 0
+  const avgAttacks = parseDiceAverage(weapon.A) + blastBonus + mods.attacksMod
   const pHit        = weapon.isTorrent ? 1 : hitProbabilityWithMods(weapon.bsWs, mods)
   const effectiveMods = weapon.isTwinLinked
     ? { ...mods, rerollAllWounds: true }
@@ -247,6 +253,7 @@ export function calculateDamage(
   return {
     weaponName: weapon.name,
     avgAttacks,
+    blastBonusAttacks: blastBonus > 0 ? blastBonus : undefined,
     hitProbability: pHit,
     expectedHits,
     sustainedExtraHits,
