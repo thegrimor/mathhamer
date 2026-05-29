@@ -289,6 +289,7 @@ export interface PanelSelection {
 export interface DamageBreakdown {
   weaponName: string
   avgAttacks: number
+  blastMinAttacks?: number
   hitProbability: number
   expectedHits: number
   sustainedExtraHits: number
