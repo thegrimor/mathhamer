@@ -24,11 +24,14 @@ export default function App() {
   const [attackerActiveIds, setAttackerActiveIds] = useState<Set<string>>(new Set())
   const [defenderActiveIds, setDefenderActiveIds] = useState<Set<string>>(new Set())
   const [meltaActive, setMeltaActive] = useState(false)
+  const [overwatchActive, setOverwatchActive] = useState(false)
 
   // Derive combatType from first selected weapon
   useEffect(() => {
     if (selectedWeapons.length > 0) {
-      setCombatType(selectedWeapons[0].range === 'Melee' ? 'melee' : 'ranged')
+      const isRanged = selectedWeapons[0].range !== 'Melee'
+      setCombatType(isRanged ? 'ranged' : 'melee')
+      if (!isRanged) setOverwatchActive(false)
     }
   }, [selectedWeapons])
 
@@ -37,6 +40,7 @@ export default function App() {
     setSelectedWeapons([])
     setAttackerActiveIds(new Set())
     setMeltaActive(false)
+    setOverwatchActive(false)
   }, [leftPanel.selection.factionId, leftPanel.selection.datasheetId])
 
   useEffect(() => {
@@ -74,6 +78,7 @@ export default function App() {
       defenderMods.feelNoPainThreshold !== null
         ? defenderMods.feelNoPainThreshold
         : attackerMods.feelNoPainThreshold,
+    overwatchHit: overwatchActive,
   }
 
   const effectiveDefenderModel = defenderModel ?? rightPanel.selectedUnit?.models[0] ?? null
@@ -203,6 +208,8 @@ export default function App() {
             meltaActive={meltaActive}
             defenderMin={rightPanel.selectedUnit?.modelCountMin}
             defenderMax={rightPanel.selectedUnit?.modelCountMax}
+            overwatchActive={overwatchActive}
+            onOverwatchToggle={() => setOverwatchActive(v => !v)}
           />
         )}
         {mobileTab === 'defender' && (
@@ -252,6 +259,8 @@ export default function App() {
               meltaActive={meltaActive}
               defenderMin={rightPanel.selectedUnit?.modelCountMin}
               defenderMax={rightPanel.selectedUnit?.modelCountMax}
+              overwatchActive={overwatchActive}
+              onOverwatchToggle={() => setOverwatchActive(v => !v)}
             />
           </div>
         </div>

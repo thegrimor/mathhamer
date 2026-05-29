@@ -16,6 +16,8 @@ interface Props {
   meltaActive?: boolean
   defenderMin?: number
   defenderMax?: number
+  overwatchActive?: boolean
+  onOverwatchToggle?: () => void
 }
 
 function Row({ label, value, detail, highlight }: { label: string; value: string; detail?: string; highlight?: boolean }) {
@@ -158,7 +160,7 @@ function WeaponBreakdown({ weapon, defenderModel, mods, qty, onQtyChange, blastT
 
 export function DamageCalculator({
   weapons, defenderModel, defenderKeywords = [], attackerName, defenderName, mods, combatType, onCombatTypeChange,
-  unitMin, unitMax, defenderMin, defenderMax, meltaActive,
+  unitMin, unitMax, defenderMin, defenderMax, meltaActive, overwatchActive = false, onOverwatchToggle,
 }: Props) {
   const [weaponQuantities, setWeaponQuantities] = useState<Record<string, number>>({})
   const [defenderModels, setDefenderModels] = useState(defenderMin ?? 1)
@@ -207,6 +209,8 @@ export function DamageCalculator({
       ? `${unitMin} modelo${unitMin !== 1 ? 's' : ''}`
       : `${unitMin}–${unitMax} modelos`
 
+  const canOverwatch = combatType === 'ranged'
+
   if (weapons.length === 0 || !defenderModel) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[300px] p-6 gap-4">
@@ -237,6 +241,24 @@ export function DamageCalculator({
     <div className="p-4 flex flex-col gap-4">
       {/* Combat type selector */}
       <CombatTypeSelector combatType={combatType} onChange={onCombatTypeChange} locked={weaponLocked} />
+
+      {/* Overwatch toggle */}
+      {canOverwatch && onOverwatchToggle && (
+        <div className="flex items-center justify-center">
+          <button
+            onClick={onOverwatchToggle}
+            className={`flex items-center gap-2 px-4 py-1.5 text-xs font-display uppercase tracking-wide border transition-colors ${
+              overwatchActive
+                ? 'border-crimson bg-crimson/20 text-crimson-bright'
+                : 'border-rim-bright text-parchment-dim hover:border-crimson-dim hover:text-parchment'
+            }`}
+          >
+            <span className="text-[10px]">⚡</span>
+            Overwatch
+            {overwatchActive && <span className="font-mono normal-case tracking-normal text-[9px] text-crimson-bright ml-1">6+</span>}
+          </button>
+        </div>
+      )}
 
       {/* Header */}
       <div className="text-center border-b border-rim-bright pb-3">
@@ -408,6 +430,16 @@ export function DamageCalculator({
         </div>
       )}
 
+      {/* Overwatch notice */}
+      {overwatchActive && (
+        <div className="border border-crimson/60 bg-crimson/10 px-3 py-2 text-[10px] font-mono text-crimson-bright leading-relaxed">
+          <span className="font-display uppercase tracking-wide">Overwatch activo</span>
+          {' '}— impactos a 6+ (tirada sin modificar).
+          Las reglas que mejoran Overwatch (ej. Adeptus Astartes 5+) se aplican con el modificador de impacto correspondiente.
+          Armas Torrent siguen impactando automáticamente.
+        </div>
+      )}
+
       {/* Context */}
       <div className="text-xs font-mono text-parchment-dim border border-rim-bright p-3 space-y-1 leading-relaxed">
         {isSingle && (
@@ -429,6 +461,7 @@ export function DamageCalculator({
             {weapons[0].isMelta && meltaActive && ` [Melta ½ dist. +${weapons[0].meltaValue}D]`}
             {mods.attacksMod !== 0 && ` [+${mods.attacksMod}A]`}
             {(mods.rerollDamageOf1 || mods.rerollAllDamage) && ' [RR Daño]'}
+            {overwatchActive && ' [Overwatch 6+]'}
           </p>
         )}
         <p>
