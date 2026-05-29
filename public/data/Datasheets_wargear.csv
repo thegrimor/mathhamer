@@ -3121,6 +3121,7 @@
 000000969|10|1||Shearing claws – strike||Melee|Melee|5|3|16|-3|D6+1|
 000000969|11|2||Shearing claws – sweep||Melee|Melee|10|3|6|-2|1|
 000000969|12|1||Electroscourge|extra attacks, sustained hits 2|Melee|Melee|5|3|12|-2|2|
+000000969|13|1||Excruciator cannon||36|Ranged|6|3|6|-1|2|
 000000970|1|1||Daemongore cannon|blast|18|Ranged|D6|3|14|-4|D6+2|
 000000970|2|1||Gorestorm cannon|blast|24|Ranged|D6+3|3|10|-2|3|
 000000970|3|1||Hades gatling cannon|sustained hits 1|48|Ranged|12|3|8|-2|2|
@@ -3202,6 +3203,7 @@
 000001030|10|1||Electroscourge|extra attacks, sustained hits 2|Melee|Melee|5|3|12|-2|2|
 000001030|11|1||Shearing claws – strike||Melee|Melee|5|3|16|-3|D6+1|
 000001030|12|2||Shearing claws – sweep||Melee|Melee|10|3|6|-2|1|
+000001030|13|1||Excruciator cannon||36|Ranged|6|3|6|-2|2|
 000001031|1|1||Gaze of Magnus|devastating wounds, psychic|24|Ranged|3D3|2|11|-2|3|
 000001031|2|1||Tzeentch’s Firestorm|blast, ignores cover, psychic|24|Ranged|D6+3|2|6|-1|2|
 000001031|3|1||Blade of Magnus – strike|devastating wounds, psychic|Melee|Melee|7|2|16|-3|3|
@@ -9251,6 +9253,7 @@
 000004207|10|1||Electroscourge|extra attacks, sustained hits 2|Melee|Melee|7|3|12|-2|2|
 000004207|11|1||Shearing claws – strike||Melee|Melee|6|3|16|-3|D6+1|
 000004207|12|2||Shearing claws – sweep||Melee|Melee|12|3|6|-2|1|
+000004207|13|1||Excruciator cannon|rapid fire 3|36|Ranged|6|4|6|-1|2|
 000004208|1|1||Hades battle cannon|blast|48|Ranged|D6+3|3|10|-1|3|
 000004208|2|1||Ectoplasma destructor|blast|36|Ranged|D6|3|12|-3|3|
 000004208|3|1||Excruciator cannon||36|Ranged|6|3|6|-1|2|
@@ -9263,6 +9266,7 @@
 000004208|10|1||Shearing claws – strike|precision|Melee|Melee|5|3|16|-3|D6+1|
 000004208|11|2||Shearing claws – sweep||Melee|Melee|10|3|6|-2|1|
 000004208|12|1||Electroscourge|extra attacks, sustained hits 2|Melee|Melee|5|3|12|-2|2|
+000004208|13|1||Excruciator cannon||36|Ranged|6|3|6|-1|2|
 000004209|1|1||Ectoplasma destructor|blast, lethal hits|36|Ranged|D6|3|12|-3|3|
 000004209|2|1||Excruciator cannon|lethal hits|36|Ranged|6|3|6|-1|2|
 000004209|3|1||Hades battle cannon|blast, lethal hits|48|Ranged|D6+3|3|10|-1|3|
@@ -9275,6 +9279,7 @@
 000004209|10|1||Electroscourge|extra attacks, sustained hits 2|Melee|Melee|5|3|12|-2|2|
 000004209|11|1||Shearing claws – strike|lethal hits|Melee|Melee|5|3|16|-3|D6+1|
 000004209|12|2||Shearing claws – sweep|lethal hits|Melee|Melee|10|3|6|-2|1|
+000004209|13|1||Excruciator cannon|lethal hits|36|Ranged|6|3|6|-1|2|
 000004210|1|1||Jericho-class conversion resonator – titanic impact|devastating wounds|24|Ranged|2|2|12|-3|D6+2|
 000004210|2|2||Jericho-class conversion resonator – shockwave|blast, sustained hits 1|24|Ranged|D6+2|2|6|-2|1|
 000004210|3|1||Rod of the War Forge – strike||Melee|Melee|6|2|10|-2|3|
