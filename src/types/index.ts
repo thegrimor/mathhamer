@@ -181,6 +181,8 @@ export interface Weapon {
   isLethalHits: boolean
   isHeavy: boolean
   isTwinLinked: boolean
+  isMelta: boolean
+  meltaValue: number
   sustainedHitsValue: number
   antiEntries: AntiEntry[]
 }

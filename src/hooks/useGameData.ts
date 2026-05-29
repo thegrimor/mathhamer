@@ -102,6 +102,8 @@ function parseWeapon(raw: RawDatasheetWargear): Weapon {
     isLethalHits: desc.includes('lethal hits'),
     isHeavy: /\bheavy\b/i.test(type),
     isTwinLinked: desc.includes('twin-linked'),
+    isMelta: /\bmelta\s+\d+/i.test(desc),
+    meltaValue: parseInt(desc.match(/\bmelta\s+(\d+)/i)?.[1] ?? '0') || 0,
     sustainedHitsValue: parseSustainedHits(desc),
     antiEntries: parseAntiEntries(desc),
   }

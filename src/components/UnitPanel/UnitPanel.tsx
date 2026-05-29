@@ -21,12 +21,15 @@ interface Props {
   onModifierToggle?: (id: string) => void
   weaponAntiKeywords?: string[]
   defenderKeywords?: string[]
+  meltaActive?: boolean
+  onMeltaToggle?: () => void
 }
 
 export function UnitPanel({
   gameData, panel, side, onWeaponsChange, onModelChange, selectedWeapons = [],
   combatType = 'ranged', activeModifierIds, onModifierToggle,
   weaponAntiKeywords = [], defenderKeywords = [],
+  meltaActive, onMeltaToggle,
 }: Props) {
   const [modelIdx, setModelIdx] = useState(0)
   const { selectedUnit, detachmentAbilities, applicableStratagems } = panel
@@ -53,6 +56,8 @@ export function UnitPanel({
   function handleHeavyToggle() {
     onModifierToggle?.('weapon_heavy')
   }
+
+  const anySelectedMelta = selectedWeapons.some(w => w.isMelta)
 
   const visibleRules = useMemo(() => {
     const { factionId, detachmentId, datasheetId } = panel.selection
@@ -119,6 +124,8 @@ export function UnitPanel({
                     onSelect={handleWeaponSelect}
                     heavyModActive={w.isHeavy ? heavyModActive : undefined}
                     onHeavyToggle={w.isHeavy ? handleHeavyToggle : undefined}
+                    meltaModActive={w.isMelta && anySelectedMelta ? meltaActive : undefined}
+                    onMeltaToggle={w.isMelta ? onMeltaToggle : undefined}
                   />
                 ))
               )}
