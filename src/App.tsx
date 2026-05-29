@@ -23,6 +23,7 @@ export default function App() {
   const [combatType, setCombatType] = useState<CombatType>('ranged')
   const [attackerActiveIds, setAttackerActiveIds] = useState<Set<string>>(new Set())
   const [defenderActiveIds, setDefenderActiveIds] = useState<Set<string>>(new Set())
+  const [meltaActive, setMeltaActive] = useState(false)
 
   // Derive combatType from first selected weapon
   useEffect(() => {
@@ -35,6 +36,7 @@ export default function App() {
   useEffect(() => {
     setSelectedWeapons([])
     setAttackerActiveIds(new Set())
+    setMeltaActive(false)
   }, [leftPanel.selection.factionId, leftPanel.selection.datasheetId])
 
   useEffect(() => {
@@ -182,6 +184,8 @@ export default function App() {
             onModifierToggle={toggleAttackerModifier}
             weaponAntiKeywords={selectedWeaponAntiKeywords}
             defenderKeywords={defenderKeywords}
+            meltaActive={meltaActive}
+            onMeltaToggle={() => setMeltaActive(v => !v)}
           />
         )}
         {mobileTab === 'result' && (
@@ -196,6 +200,7 @@ export default function App() {
             onCombatTypeChange={setCombatType}
             unitMin={leftPanel.selectedUnit?.modelCountMin}
             unitMax={leftPanel.selectedUnit?.modelCountMax}
+            meltaActive={meltaActive}
           />
         )}
         {mobileTab === 'defender' && (
@@ -225,6 +230,8 @@ export default function App() {
             onModifierToggle={toggleAttackerModifier}
             weaponAntiKeywords={selectedWeaponAntiKeywords}
             defenderKeywords={defenderKeywords}
+            meltaActive={meltaActive}
+            onMeltaToggle={() => setMeltaActive(v => !v)}
           />
         </div>
         <div className="border-r border-rim-bright overflow-y-auto bg-surface-2 sticky-col">
@@ -240,6 +247,7 @@ export default function App() {
               onCombatTypeChange={setCombatType}
               unitMin={leftPanel.selectedUnit?.modelCountMin}
               unitMax={leftPanel.selectedUnit?.modelCountMax}
+              meltaActive={meltaActive}
             />
           </div>
         </div>

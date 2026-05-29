@@ -13,6 +13,7 @@ interface Props {
   onCombatTypeChange: (t: CombatType) => void
   unitMin?: number
   unitMax?: number
+  meltaActive?: boolean
 }
 
 function Row({ label, value, detail, highlight }: { label: string; value: string; detail?: string; highlight?: boolean }) {
@@ -69,7 +70,7 @@ function CombatTypeSelector({
   )
 }
 
-function WeaponBreakdown({ weapon, defenderModel, mods, qty, onQtyChange, blastTargetModels, defenderKeywords }: {
+function WeaponBreakdown({ weapon, defenderModel, mods, qty, onQtyChange, blastTargetModels, defenderKeywords, meltaActive }: {
   weapon: Weapon
   defenderModel: ModelProfile
   mods: CombatModifiers
@@ -77,9 +78,13 @@ function WeaponBreakdown({ weapon, defenderModel, mods, qty, onQtyChange, blastT
   onQtyChange: (delta: number) => void
   blastTargetModels: number
   defenderKeywords?: string[]
+  meltaActive?: boolean
 }) {
   const [open, setOpen] = useState(false)
-  const calc = calculateDamage(weapon, defenderModel, mods, defenderKeywords ?? [], blastTargetModels)
+  const effectiveMods = (meltaActive && weapon.isMelta)
+    ? { ...mods, damageMod: mods.damageMod + weapon.meltaValue }
+    : mods
+  const calc = calculateDamage(weapon, defenderModel, effectiveMods, defenderKeywords ?? [], blastTargetModels)
   const total = calc.expectedTotalDamage * qty
 
   return (
@@ -151,7 +156,7 @@ function WeaponBreakdown({ weapon, defenderModel, mods, qty, onQtyChange, blastT
 
 export function DamageCalculator({
   weapons, defenderModel, defenderKeywords = [], attackerName, defenderName, mods, combatType, onCombatTypeChange,
-  unitMin, unitMax,
+  unitMin, unitMax, meltaActive,
 }: Props) {
   const [weaponQuantities, setWeaponQuantities] = useState<Record<string, number>>({})
   const [blastTargetModels, setBlastTargetModels] = useState(1)
@@ -209,7 +214,12 @@ export function DamageCalculator({
     )
   }
 
-  const breakdowns = weapons.map(w => calculateDamage(w, defenderModel, mods, defenderKeywords, blastTargetModels))
+  const breakdowns = weapons.map(w => {
+    const wMods = (meltaActive && w.isMelta)
+      ? { ...mods, damageMod: mods.damageMod + w.meltaValue }
+      : mods
+    return calculateDamage(w, defenderModel, wMods, defenderKeywords, blastTargetModels)
+  })
   const totalDamage = breakdowns.reduce((s, b, i) => s + b.expectedTotalDamage * getQty(weapons[i]), 0)
   const totalKills = breakdowns.reduce((s, b, i) => s + b.expectedKills * getQty(weapons[i]), 0)
 
@@ -383,6 +393,7 @@ export function DamageCalculator({
               onQtyChange={(delta) => adjustQty(w, delta)}
               blastTargetModels={blastTargetModels}
               defenderKeywords={defenderKeywords}
+              meltaActive={meltaActive}
             />
           ))}
         </div>
@@ -406,6 +417,7 @@ export function DamageCalculator({
             {(weapons[0].sustainedHitsValue + mods.sustainedHitsBonus) > 0
               && ` [Sustained ${weapons[0].sustainedHitsValue + mods.sustainedHitsBonus}]`}
             {weapons[0].isHeavy && ' [Heavy]'}
+            {weapons[0].isMelta && meltaActive && ` [Melta ½ dist. +${weapons[0].meltaValue}D]`}
             {mods.attacksMod !== 0 && ` [+${mods.attacksMod}A]`}
             {(mods.rerollDamageOf1 || mods.rerollAllDamage) && ' [RR Daño]'}
           </p>

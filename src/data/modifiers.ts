@@ -825,6 +825,15 @@ const RULES_1: ModifierRule[] = [
     sustainedHitsBonus: 1,
   },
   },
+  {
+    id: 'ldr_000000574_burning_lance',
+    label: 'Fuegan — Burning Lance (Alcance Melta +6")',
+    description: 'While this model is leading a unit, add 6" to the Range characteristic of Melta weapons equipped by models in that unit.',
+    factionId: 'AE',
+    leaderDatasheetId: '000000574',
+    combatType: 'ranged',
+    effects: {},
+  },
 
   // ═══ AM ═══
   // Voice of Command: órdenes del Oficial — solo 1 orden por unidad por fase (activar la que aplique)

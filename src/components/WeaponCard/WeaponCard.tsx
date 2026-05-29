@@ -7,6 +7,8 @@ interface Props {
   onSelect: (w: Weapon) => void
   heavyModActive?: boolean
   onHeavyToggle?: () => void
+  meltaModActive?: boolean
+  onMeltaToggle?: () => void
 }
 
 function Badge({ label }: { label: string }) {
@@ -17,7 +19,7 @@ function Badge({ label }: { label: string }) {
   )
 }
 
-export function WeaponCard({ weapon, isSelected, onSelect, heavyModActive, onHeavyToggle }: Props) {
+export function WeaponCard({ weapon, isSelected, onSelect, heavyModActive, onHeavyToggle, meltaModActive, onMeltaToggle }: Props) {
   const avgD = parseDiceAverage(weapon.D)
   const avgA = parseDiceAverage(weapon.A)
   const dFixed = parseFloat(weapon.D)
@@ -25,7 +27,7 @@ export function WeaponCard({ weapon, isSelected, onSelect, heavyModActive, onHea
 
   const hasBadges = weapon.isTorrent || weapon.isBlast || weapon.isDevastatingWounds ||
     weapon.isLethalHits || weapon.isHeavy || weapon.sustainedHitsValue > 0 || weapon.isTwinLinked ||
-    weapon.antiEntries.length > 0
+    weapon.isMelta || weapon.antiEntries.length > 0
 
   return (
     <button
@@ -63,6 +65,7 @@ export function WeaponCard({ weapon, isSelected, onSelect, heavyModActive, onHea
           {weapon.isLethalHits        && <Badge label="Lethal Hits" />}
           {weapon.isHeavy             && <Badge label="Heavy" />}
           {weapon.isTwinLinked        && <Badge label="Twin-Linked" />}
+          {weapon.isMelta             && <Badge label={`Melta ${weapon.meltaValue}`} />}
           {weapon.sustainedHitsValue > 0 && <Badge label={`Sustained ${weapon.sustainedHitsValue}`} />}
           {weapon.antiEntries.map((entry, i) => (
             <Badge key={i} label={`Anti-${entry.keyword} ${entry.threshold}+`} />
@@ -77,6 +80,18 @@ export function WeaponCard({ weapon, isSelected, onSelect, heavyModActive, onHea
               }`}
             >
               {heavyModActive ? '▶ Movido (−1)' : '○ Se movió'}
+            </button>
+          )}
+          {weapon.isMelta && onMeltaToggle && (
+            <button
+              onClick={e => { e.stopPropagation(); onMeltaToggle() }}
+              className={`text-[8px] px-1.5 py-0.5 border font-mono transition-colors ${
+                meltaModActive
+                  ? 'border-crimson text-crimson bg-crimson/10'
+                  : 'border-rim-bright text-parchment-dim hover:border-gold/50'
+              }`}
+            >
+              {meltaModActive ? `▶ ½ dist. (+${weapon.meltaValue}D)` : '○ ½ distancia'}
             </button>
           )}
         </div>
