@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { useGameData } from '@/hooks/useGameData'
 import { usePanelState } from '@/hooks/usePanelState'
 import { useTheme } from '@/hooks/useTheme'
@@ -22,17 +22,13 @@ export default function App() {
   const [defenderModel, setDefenderModel] = useState<ModelProfile | null>(null)
   const [mobileTab, setMobileTab] = useState<MobileTab>('attacker')
   const [combatType, setCombatType] = useLocalStorage<CombatType>('mathhammer-combat-type', 'ranged')
-  const [attackerIdsArr, setAttackerIdsArr] = useLocalStorage<string[]>('mathhammer-attacker-mods', [])
-  const [defenderIdsArr, setDefenderIdsArr] = useLocalStorage<string[]>('mathhammer-defender-mods', [])
-  const [meltaActive, setMeltaActive] = useLocalStorage<boolean>('mathhammer-melta', false)
-  const [overwatchActive, setOverwatchActive] = useLocalStorage<boolean>('mathhammer-overwatch', false)
+  const [attackerIdsArr, setAttackerIdsArr] = useState<string[]>([])
+  const [defenderIdsArr, setDefenderIdsArr] = useState<string[]>([])
+  const [meltaActive, setMeltaActive] = useState(false)
+  const [overwatchActive, setOverwatchActive] = useState(false)
 
   const attackerActiveIds = useMemo(() => new Set(attackerIdsArr), [attackerIdsArr])
   const defenderActiveIds = useMemo(() => new Set(defenderIdsArr), [defenderIdsArr])
-
-  // Refs to skip clear effects on initial mount (so restored localStorage state is kept)
-  const skipAttackerClear = useRef(true)
-  const skipDefenderClear = useRef(true)
 
   // Derive combatType from first selected weapon
   useEffect(() => {
@@ -43,43 +39,71 @@ export default function App() {
     }
   }, [selectedWeapons])
 
-  // Clear weapon + modifier selections when faction or unit changes
+  // Save all attacker unit-state together under a per-unit key
+  // (datasheetId excluded from deps intentionally — we read it at call time to avoid
+  //  saving stale weapons from the previous unit when the key changes)
   useEffect(() => {
-    if (skipAttackerClear.current) { skipAttackerClear.current = false; return }
-    setSelectedWeapons([])
-    setAttackerIdsArr([])
-    setMeltaActive(false)
-    setOverwatchActive(false)
-  }, [leftPanel.selection.factionId, leftPanel.selection.datasheetId])
+    const id = leftPanel.selection.datasheetId
+    if (!id) return
+    try {
+      localStorage.setItem(`mathhammer-attacker-${id}`, JSON.stringify({
+        weaponLines: selectedWeapons.map(w => w.line),
+        activeModIds: attackerIdsArr,
+        meltaActive,
+        overwatchActive,
+      }))
+    } catch {}
+  }, [selectedWeapons, attackerIdsArr, meltaActive, overwatchActive]) // eslint-disable-line react-hooks/exhaustive-deps
 
-  useEffect(() => {
-    if (skipDefenderClear.current) { skipDefenderClear.current = false; return }
-    setDefenderIdsArr([])
-  }, [rightPanel.selection.factionId, rightPanel.selection.datasheetId])
-
-  // Restore selected weapons from localStorage when unit is (re)loaded
+  // Restore attacker state when the selected unit resolves (page load or unit change)
   useEffect(() => {
     if (!leftPanel.selectedUnit || !leftPanel.selection.datasheetId) return
     try {
-      const raw = localStorage.getItem(`mathhammer-weapons-${leftPanel.selection.datasheetId}`)
+      const raw = localStorage.getItem(`mathhammer-attacker-${leftPanel.selection.datasheetId}`)
       if (raw) {
-        const lines: number[] = JSON.parse(raw)
-        const restored = leftPanel.selectedUnit.weapons.filter(w => lines.includes(w.line))
-        setSelectedWeapons(restored)
+        const saved = JSON.parse(raw)
+        setSelectedWeapons(leftPanel.selectedUnit.weapons.filter(w => (saved.weaponLines ?? []).includes(w.line)))
+        setAttackerIdsArr(saved.activeModIds ?? [])
+        setMeltaActive(saved.meltaActive ?? false)
+        setOverwatchActive(saved.overwatchActive ?? false)
+      } else {
+        setSelectedWeapons([])
+        setAttackerIdsArr([])
+        setMeltaActive(false)
+        setOverwatchActive(false)
       }
-    } catch {}
+    } catch {
+      setSelectedWeapons([])
+      setAttackerIdsArr([])
+      setMeltaActive(false)
+      setOverwatchActive(false)
+    }
   }, [leftPanel.selectedUnit, leftPanel.selection.datasheetId])
 
-  // Persist selected weapon lines whenever selection changes
+  // Save defender modifier IDs per unit
   useEffect(() => {
-    if (!leftPanel.selection.datasheetId) return
+    const id = rightPanel.selection.datasheetId
+    if (!id) return
     try {
-      localStorage.setItem(
-        `mathhammer-weapons-${leftPanel.selection.datasheetId}`,
-        JSON.stringify(selectedWeapons.map(w => w.line)),
-      )
+      localStorage.setItem(`mathhammer-defender-${id}`, JSON.stringify({ activeModIds: defenderIdsArr }))
     } catch {}
-  }, [selectedWeapons, leftPanel.selection.datasheetId])
+  }, [defenderIdsArr]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Restore defender modifier IDs when defender unit resolves
+  useEffect(() => {
+    if (!rightPanel.selectedUnit || !rightPanel.selection.datasheetId) return
+    try {
+      const raw = localStorage.getItem(`mathhammer-defender-${rightPanel.selection.datasheetId}`)
+      if (raw) {
+        const saved = JSON.parse(raw)
+        setDefenderIdsArr(saved.activeModIds ?? [])
+      } else {
+        setDefenderIdsArr([])
+      }
+    } catch {
+      setDefenderIdsArr([])
+    }
+  }, [rightPanel.selectedUnit, rightPanel.selection.datasheetId])
 
   function toggleAttackerModifier(id: string) {
     setAttackerIdsArr(prev => {
