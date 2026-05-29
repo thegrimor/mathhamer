@@ -158,8 +158,7 @@ function WeaponBreakdown({ weapon, defenderModel, mods, qty, onQtyChange, blastT
 
 export function DamageCalculator({
   weapons, defenderModel, defenderKeywords = [], attackerName, defenderName, mods, combatType, onCombatTypeChange,
-  unitMin, unitMax, meltaActive,
-  unitMin, unitMax, defenderMin, defenderMax,
+  unitMin, unitMax, defenderMin, defenderMax, meltaActive,
 }: Props) {
   const [weaponQuantities, setWeaponQuantities] = useState<Record<string, number>>({})
   const [defenderModels, setDefenderModels] = useState(defenderMin ?? 1)
@@ -225,9 +224,8 @@ export function DamageCalculator({
     const wMods = (meltaActive && w.isMelta)
       ? { ...mods, damageMod: mods.damageMod + w.meltaValue }
       : mods
-    return calculateDamage(w, defenderModel, wMods, defenderKeywords, blastTargetModels)
+    return calculateDamage(w, defenderModel, wMods, defenderKeywords, defenderModels)
   })
-  const breakdowns = weapons.map(w => calculateDamage(w, defenderModel, mods, defenderKeywords, defenderModels))
   const totalDamage = breakdowns.reduce((s, b, i) => s + b.expectedTotalDamage * getQty(weapons[i]), 0)
   const totalKills = breakdowns.reduce((s, b, i) => s + b.expectedKills * getQty(weapons[i]), 0)
 
