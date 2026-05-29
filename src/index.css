@@ -61,6 +61,16 @@
 /* ============================================================
    BASE
    ============================================================ */
+/* ============================================================
+   RGB TRIPLETS — needed for rgba() with dynamic theme colors
+   ============================================================ */
+:root {
+  --scanline-rgb: 196, 30, 30;
+  --vignette-rgb: 196, 30, 30;
+  --grid-h-rgb:   196, 30, 30;
+  --grid-v-rgb:   200, 150, 42;
+}
+
 @layer base {
   *, *::before, *::after {
     box-sizing: border-box;
@@ -69,8 +79,8 @@
   }
 
   body {
-    background: #080808;
-    color: #e8dcc8;
+    background: var(--color-surface);
+    color: var(--color-parchment);
     font-family: 'Share Tech Mono', monospace;
     overflow-x: hidden;
     position: relative;
@@ -85,15 +95,15 @@
         0deg,
         transparent,
         transparent 2px,
-        rgba(196, 30, 30, 0.015) 2px,
-        rgba(196, 30, 30, 0.015) 4px
+        rgba(var(--grid-h-rgb), 0.015) 2px,
+        rgba(var(--grid-h-rgb), 0.015) 4px
       ),
       repeating-linear-gradient(
         90deg,
         transparent,
         transparent 80px,
-        rgba(200, 150, 42, 0.02) 80px,
-        rgba(200, 150, 42, 0.02) 81px
+        rgba(var(--grid-v-rgb), 0.02) 80px,
+        rgba(var(--grid-v-rgb), 0.02) 81px
       );
     pointer-events: none;
     z-index: 0;
@@ -105,7 +115,7 @@
     inset: 0;
     background: radial-gradient(
       ellipse at 50% 0%,
-      rgba(196, 30, 30, 0.08) 0%,
+      rgba(var(--vignette-rgb), 0.08) 0%,
       transparent 60%
     );
     pointer-events: none;
@@ -122,8 +132,117 @@
   left: 0;
   right: 0;
   height: 40%;
-  background: linear-gradient(transparent, rgba(196, 30, 30, 0.03), transparent);
+  background: linear-gradient(transparent, rgba(var(--scanline-rgb), 0.03), transparent);
   animation: scan 8s linear infinite;
   pointer-events: none;
   z-index: 1;
+}
+
+/* ============================================================
+   THEME OVERRIDES — runtime, outside @theme {} for Tailwind 4
+   ============================================================ */
+
+:root[data-theme="imperial"] {
+  --color-crimson:       #c41e1e;
+  --color-crimson-bright:#ff2222;
+  --color-crimson-dim:   #7a0f0f;
+  --color-gold:          #c8962a;
+  --color-gold-bright:   #f0b840;
+  --color-neon:          #2aff6a;
+  --color-surface:       #080808;
+  --color-surface-2:     #0f0f0f;
+  --color-surface-3:     #161616;
+  --color-surface-4:     #1e1e1e;
+  --color-parchment:     #e8dcc8;
+  --color-parchment-dim: #a89880;
+  --color-rim:           #2a2218;
+  --color-rim-bright:    #4a3a28;
+  --scanline-rgb:  196, 30, 30;
+  --vignette-rgb:  196, 30, 30;
+  --grid-h-rgb:    196, 30, 30;
+  --grid-v-rgb:    200, 150, 42;
+}
+
+:root[data-theme="chaos"] {
+  --color-crimson:       #9b1fa8;
+  --color-crimson-bright:#d930f0;
+  --color-crimson-dim:   #5a0f63;
+  --color-gold:          #00d4c8;
+  --color-gold-bright:   #20f5e8;
+  --color-neon:          #ff36f7;
+  --color-surface:       #06030d;
+  --color-surface-2:     #0d0616;
+  --color-surface-3:     #130a1f;
+  --color-surface-4:     #1c1228;
+  --color-parchment:     #e2d0f0;
+  --color-parchment-dim: #9880b0;
+  --color-rim:           #1e0a28;
+  --color-rim-bright:    #3a1a50;
+  --scanline-rgb:  155, 31, 168;
+  --vignette-rgb:  155, 31, 168;
+  --grid-h-rgb:    155, 31, 168;
+  --grid-v-rgb:    0, 212, 200;
+}
+
+:root[data-theme="necron"] {
+  --color-crimson:       #0d7a6b;
+  --color-crimson-bright:#00e5c8;
+  --color-crimson-dim:   #074a3e;
+  --color-gold:          #39e800;
+  --color-gold-bright:   #80ff20;
+  --color-neon:          #d4ff40;
+  --color-surface:       #020b09;
+  --color-surface-2:     #050f0d;
+  --color-surface-3:     #091512;
+  --color-surface-4:     #0e1e1b;
+  --color-parchment:     #d8ebe6;
+  --color-parchment-dim: #8ab0a8;
+  --color-rim:           #0d2820;
+  --color-rim-bright:    #1a4034;
+  --scanline-rgb:  13, 122, 107;
+  --vignette-rgb:  0, 229, 200;
+  --grid-h-rgb:    13, 122, 107;
+  --grid-v-rgb:    57, 232, 0;
+}
+
+:root[data-theme="tau"] {
+  --color-crimson:       #1565c0;
+  --color-crimson-bright:#4da6ff;
+  --color-crimson-dim:   #0a3d7a;
+  --color-gold:          #e87020;
+  --color-gold-bright:   #ff9040;
+  --color-neon:          #00e5ff;
+  --color-surface:       #030810;
+  --color-surface-2:     #060d1c;
+  --color-surface-3:     #0a1428;
+  --color-surface-4:     #101c34;
+  --color-parchment:     #d0e4f8;
+  --color-parchment-dim: #7a9fc0;
+  --color-rim:           #0c1e3a;
+  --color-rim-bright:    #1a3460;
+  --scanline-rgb:  21, 101, 192;
+  --vignette-rgb:  21, 101, 192;
+  --grid-h-rgb:    21, 101, 192;
+  --grid-v-rgb:    232, 112, 32;
+}
+
+:root[data-theme="ork"] {
+  --color-crimson:       #2a6e1a;
+  --color-crimson-bright:#50d820;
+  --color-crimson-dim:   #154010;
+  --color-gold:          #c85000;
+  --color-gold-bright:   #f07820;
+  --color-neon:          #d0ff00;
+  --color-surface:       #040800;
+  --color-surface-2:     #080f02;
+  --color-surface-3:     #0d1504;
+  --color-surface-4:     #141e08;
+  --color-parchment:     #d8e4c0;
+  --color-parchment-dim: #88a060;
+  --color-rim:           #1a2808;
+  --color-rim-bright:    #2e4010;
+  --scanline-rgb:  42, 110, 26;
+  --vignette-rgb:  42, 110, 26;
+  --grid-h-rgb:    42, 110, 26;
+  --grid-v-rgb:    200, 80, 0;
 }
