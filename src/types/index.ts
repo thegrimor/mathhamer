@@ -227,8 +227,9 @@ export interface ModifierRule {
   isStratagem?: boolean
   cpCost?: number
   effects: Partial<CombatModifiers>
-  requiresAntiKeyword?: string    // regla solo aparece si el arma tiene ANTI-<keyword>
-  requiresTargetKeyword?: string  // regla solo aparece si el defensor tiene esta keyword
+  requiresAntiKeyword?: string      // regla solo aparece si el arma tiene ANTI-<keyword>
+  requiresTargetKeyword?: string    // regla solo aparece si el defensor tiene esta keyword
+  requiresAttackerKeyword?: string  // regla solo aparece si la unidad atacante tiene esta keyword
 }
 
 export interface Ability {
