@@ -1481,6 +1481,15 @@ const RULES_1: ModifierRule[] = [
   },
   },
   {
+    id: 'adm_conqueror_doctrina_ap_mech',
+    label: 'Doctrina Conquistadora — +1 PA, mech (regla de ejército)',
+    description: 'Conqueror Imperative: extra AP cuando la regla de ejército lo permite para tu mech. Activa este toggle manualmente según la situación de juego.',
+    factionId: 'AdM',
+    effects: {
+    apMod: 1,
+  },
+  },
+  {
     id: 'adm_benedictions_panegyric',
     label: 'Benedictions — Panegyric Procession: +1 PA disparo (media distancia)',
     description: 'Data-Psalm Conclave: Each time a CULT MECHANICUS model makes a ranged attack that targets a unit within half range of that weapon, improve the Armour Penetration characteristic of that attack by 1.',

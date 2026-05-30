@@ -59,6 +59,13 @@ export function UnitPanel({
 
   const anySelectedMelta = selectedWeapons.some(w => w.isMelta)
 
+  const attackerKeywords = useMemo(
+    () => selectedUnit
+      ? [...selectedUnit.keywords, ...selectedUnit.factionKeywords].map(k => k.toLowerCase())
+      : [],
+    [selectedUnit],
+  )
+
   const visibleRules = useMemo(() => {
     const { factionId, detachmentId, datasheetId } = panel.selection
     const defKwLower = defenderKeywords.map(k => k.toLowerCase())
@@ -74,9 +81,10 @@ export function UnitPanel({
       if (rule.id === 'weapon_heavy' && !anySelectedHeavy) return false
       if (rule.requiresAntiKeyword && !weaponAntiKeywords.includes(rule.requiresAntiKeyword)) return false
       if (rule.requiresTargetKeyword && !defKwLower.includes(rule.requiresTargetKeyword.toLowerCase())) return false
+      if (rule.requiresAttackerKeyword && !attackerKeywords.includes(rule.requiresAttackerKeyword.toLowerCase())) return false
       return true
     })
-  }, [isAttacker, panel.selection, combatType, anySelectedHeavy, weaponAntiKeywords, defenderKeywords])
+  }, [isAttacker, panel.selection, combatType, anySelectedHeavy, weaponAntiKeywords, defenderKeywords, attackerKeywords])
 
   const roleLabel = selectedUnit?.role ? ` · ${selectedUnit.role}` : ''
 
