@@ -6,7 +6,8 @@ import { AbilityList } from '@/components/AbilityList/AbilityList'
 import { StratList } from '@/components/StratList/StratList'
 import { ModifierPanel } from '@/components/ModifierPanel/ModifierPanel'
 import { MODIFIER_RULES } from '@/data/modifiers'
-import type { GameData, Weapon, ModelProfile, CombatType } from '@/types'
+import { parseBcpList } from '@/utils/parseBcpList'
+import type { GameData, Weapon, ModelProfile, CombatType, Datasheet } from '@/types'
 import type { PanelState } from '@/hooks/usePanelState'
 
 interface Props {
@@ -32,8 +33,41 @@ export function UnitPanel({
   meltaActive, onMeltaToggle,
 }: Props) {
   const [modelIdx, setModelIdx] = useState(0)
+  const [showImport, setShowImport] = useState(false)
+  const [importText, setImportText] = useState('')
+  const [importError, setImportError] = useState<string | null>(null)
   const { selectedUnit, detachmentAbilities, applicableStratagems } = panel
   const isAttacker = side === 'left'
+
+  function handleImport() {
+    const parsed = parseBcpList(importText)
+    if (!parsed) { setImportError('Formato no reconocido'); return }
+
+    const faction = gameData.factions.find(
+      f => f.name.toLowerCase() === parsed.factionName.toLowerCase()
+    )
+    if (!faction) { setImportError(`Ejército no encontrado: "${parsed.factionName}"`); return }
+
+    const detachment = gameData.detachments.find(
+      d => d.factionId === faction.id &&
+           d.name.toLowerCase() === parsed.detachmentName.toLowerCase()
+    )
+
+    const matchedIds = parsed.unitNames
+      .map(name => gameData.datasheets.find(
+        (ds: Datasheet) => ds.factionId === faction.id &&
+              ds.name.toLowerCase() === name.toLowerCase()
+      ))
+      .filter((ds): ds is Datasheet => ds !== undefined)
+      .map((ds: Datasheet) => ds.id)
+
+    panel.selectFaction(faction.id)
+    if (detachment) panel.selectDetachment(detachment.id)
+    panel.setRosterIds(matchedIds)
+    setShowImport(false)
+    setImportError(null)
+    setImportText('')
+  }
 
   function handleModelSelect(i: number) {
     setModelIdx(i)
@@ -82,6 +116,7 @@ export function UnitPanel({
       if (rule.requiresAntiKeyword && !weaponAntiKeywords.includes(rule.requiresAntiKeyword)) return false
       if (rule.requiresTargetKeyword && !defKwLower.includes(rule.requiresTargetKeyword.toLowerCase())) return false
       if (rule.requiresAttackerKeyword && !attackerKeywords.includes(rule.requiresAttackerKeyword.toLowerCase())) return false
+      if (rule.sourceDatasheetId && panel.rosterIds !== null && !panel.rosterIds.includes(rule.sourceDatasheetId)) return false
       return true
     })
   }, [isAttacker, panel.selection, combatType, anySelectedHeavy, weaponAntiKeywords, defenderKeywords, attackerKeywords])
@@ -97,6 +132,52 @@ export function UnitPanel({
         </span>
         {selectedUnit && (
           <span className="text-[9px] font-mono text-parchment-dim ml-2">{selectedUnit.name}{roleLabel}</span>
+        )}
+      </div>
+
+      {/* Importar lista BCP */}
+      <div className="border-b border-rim-bright">
+        <div className="flex items-center gap-2 px-3 py-1.5">
+          <button
+            onClick={() => setShowImport(v => !v)}
+            className="flex-1 flex items-center justify-between text-[9px] font-display uppercase tracking-widest text-parchment-dim hover:text-parchment transition-colors"
+          >
+            <span>Lista BCP</span>
+            <span>{showImport ? '▴' : '▾'}</span>
+          </button>
+          {panel.rosterIds !== null && (
+            <>
+              <span className="text-[8px] font-mono bg-gold/20 text-gold-bright px-1.5 border border-gold/40">
+                {panel.rosterIds.length} uds.
+              </span>
+              <button
+                onClick={() => panel.setRosterIds(null)}
+                className="text-[9px] font-display uppercase tracking-widest text-parchment-dim hover:text-crimson transition-colors px-1"
+              >
+                Limpiar
+              </button>
+            </>
+          )}
+        </div>
+        {showImport && (
+          <div className="px-3 pb-3 flex flex-col gap-2">
+            <textarea
+              value={importText}
+              onChange={e => setImportText(e.target.value)}
+              placeholder="Pega aquí tu lista BCP..."
+              rows={6}
+              className="w-full bg-surface-2 border border-rim-bright text-parchment font-mono text-[10px] px-2 py-1.5 outline-none focus:border-gold resize-none"
+            />
+            {importError && (
+              <p className="text-[9px] font-mono text-crimson-bright">{importError}</p>
+            )}
+            <button
+              onClick={handleImport}
+              className="self-start px-3 py-1 text-[9px] font-display uppercase tracking-widest border border-gold/50 text-gold hover:bg-gold/10 transition-colors"
+            >
+              Importar
+            </button>
+          </div>
         )}
       </div>
 
