@@ -32,6 +32,11 @@ export default function App() {
     setWeaponQuantities(prev => ({ ...prev, [key]: qty }))
   }
 
+  function handleClearWeapons() {
+    setSelectedWeapons([])
+    setWeaponQuantities({})
+  }
+
   const attackerActiveIds = useMemo(() => new Set(attackerIdsArr), [attackerIdsArr])
   const defenderActiveIds = useMemo(() => new Set(defenderIdsArr), [defenderIdsArr])
 
@@ -271,6 +276,7 @@ export default function App() {
             selectedWeapons={selectedWeapons}
             weaponQuantities={weaponQuantities}
             onQuantityChange={handleQuantityChange}
+            onClearWeapons={handleClearWeapons}
             combatType={combatType}
             activeModifierIds={attackerActiveIds}
             onModifierToggle={toggleAttackerModifier}
@@ -324,6 +330,7 @@ export default function App() {
             selectedWeapons={selectedWeapons}
             weaponQuantities={weaponQuantities}
             onQuantityChange={handleQuantityChange}
+            onClearWeapons={handleClearWeapons}
             combatType={combatType}
             activeModifierIds={attackerActiveIds}
             onModifierToggle={toggleAttackerModifier}

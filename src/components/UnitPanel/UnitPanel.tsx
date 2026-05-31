@@ -23,6 +23,7 @@ interface Props {
   selectedWeapons?: Weapon[]
   weaponQuantities?: Record<string, number>
   onQuantityChange?: (key: string, qty: number) => void
+  onClearWeapons?: () => void
   combatType?: CombatType
   activeModifierIds?: Set<string>
   onModifierToggle?: (id: string) => void
@@ -34,7 +35,7 @@ interface Props {
 
 export function UnitPanel({
   gameData, panel, side, onWeaponsChange, onModelChange, selectedWeapons = [],
-  weaponQuantities = {}, onQuantityChange,
+  weaponQuantities = {}, onQuantityChange, onClearWeapons,
   combatType = 'ranged', activeModifierIds, onModifierToggle,
   weaponAntiKeywords = [], defenderKeywords = [],
   meltaActive, onMeltaToggle,
@@ -325,6 +326,18 @@ export function UnitPanel({
                     )
                   })}
                 </>
+              )}
+
+              {/* Clear button */}
+              {selectedWeapons.length > 0 && onClearWeapons && (
+                <div className="px-3 py-2 border-t border-rim-bright flex justify-end">
+                  <button
+                    onClick={onClearWeapons}
+                    className="text-[9px] font-display uppercase tracking-widest text-parchment-dim hover:text-crimson transition-colors"
+                  >
+                    Limpiar selección
+                  </button>
+                </div>
               )}
             </div>
           )}
