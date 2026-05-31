@@ -1,0 +1,2359 @@
+
+## Adepta Sororitas
+  Aestred Thurga And Agathae Dolan
+    - Battle Sisters Squad
+    - Celestian Insidiants
+    - Celestian Sacresants
+    - Crusaders
+    - Dominion Squad
+    - Retributor Squad
+    - Sisters Novitiate Squad
+  Canoness
+    - Battle Sisters Squad
+    - Celestian Insidiants
+    - Celestian Sacresants
+    - Crusaders
+    - Dominion Squad
+    - Retributor Squad
+    - Sisters Novitiate Squad
+  Canoness with Jump Pack
+    - Seraphim Squad
+    - Zephyrim Squad
+  Dialogus
+    - Battle Sisters Squad
+    - Celestian Insidiants
+    - Celestian Sacresants
+    - Crusaders
+    - Dominion Squad
+    - Retributor Squad
+    - Sisters Novitiate Squad
+  Dogmata
+    - Battle Sisters Squad
+    - Celestian Insidiants
+    - Celestian Sacresants
+    - Crusaders
+    - Dominion Squad
+    - Retributor Squad
+  Hospitaller
+    - Battle Sisters Squad
+    - Celestian Insidiants
+    - Celestian Sacresants
+    - Crusaders
+    - Dominion Squad
+    - Retributor Squad
+    - Sisters Novitiate Squad
+  Imagifier
+    - Battle Sisters Squad
+    - Celestian Insidiants
+    - Celestian Sacresants
+    - Crusaders
+    - Dominion Squad
+    - Retributor Squad
+  Junith Eruita
+    - Battle Sisters Squad
+    - Celestian Insidiants
+    - Celestian Sacresants
+    - Crusaders
+    - Dominion Squad
+    - Retributor Squad
+    - Sisters Novitiate Squad
+  Ministorum Priest
+    - Arco-flagellants
+    - Battle Sisters Squad
+    - Celestian Insidiants
+    - Crusaders
+    - Dominion Squad
+    - Sanctifiers
+    - Sisters Novitiate Squad
+  Morvenn Vahl
+    - Paragon Warsuits
+  Palatine
+    - Battle Sisters Squad
+    - Celestian Insidiants
+    - Celestian Sacresants
+    - Crusaders
+    - Dominion Squad
+    - Retributor Squad
+    - Sisters Novitiate Squad
+  Saint Celestine
+    - Seraphim Squad
+    - Zephyrim Squad
+  Triumph Of Saint Katherine
+    - Battle Sisters Squad
+    - Crusaders
+
+## Adeptus Custodes
+  Aleya
+    - Prosecutors
+    - Vigilators
+    - Witchseekers
+  Blade Champion
+    - Custodian Guard
+    - Custodian Wardens
+  Knight-centura
+    - Prosecutors
+    - Vigilators
+    - Witchseekers
+  Shield-captain
+    - Custodian Guard
+    - Custodian Wardens
+  Shield-captain In Allarus Terminator Armour
+    - Allarus Custodians
+  Shield-captain On Dawneagle Jetbike
+    - Vertus Praetors
+  Trajann Valoris
+    - Custodian Guard
+    - Custodian Wardens
+  Valerian
+    - Custodian Guard
+    - Custodian Wardens
+
+## Adeptus Mechanicus
+  Cybernetica Datasmith
+    - Kastelan Robots
+  Skitarii Marshal
+    - Hastarii Exterminators
+    - Hastarii Fusiliers
+    - Skitarii Rangers
+    - Skitarii Vanguard
+  Tech-priest Dominus
+    - Corpuscarii Electro-priests
+    - Fulgurite Electro-priests
+    - Hastarii Exterminators
+    - Hastarii Fusiliers
+    - Kataphron Breachers
+    - Kataphron Destroyers
+    - Servitor Battleclade
+    - Skitarii Rangers
+    - Skitarii Vanguard
+  Tech-priest Enginseer
+    - Corpuscarii Electro-priests
+    - Fulgurite Electro-priests
+    - Hastarii Exterminators
+    - Hastarii Fusiliers
+    - Kataphron Breachers
+    - Kataphron Destroyers
+    - Servitor Battleclade
+    - Skitarii Rangers
+    - Skitarii Vanguard
+  Tech-priest Manipulus
+    - Corpuscarii Electro-priests
+    - Fulgurite Electro-priests
+    - Hastarii Exterminators
+    - Hastarii Fusiliers
+    - Kataphron Breachers
+    - Kataphron Destroyers
+    - Servitor Battleclade
+    - Skitarii Rangers
+    - Skitarii Vanguard
+  Technoarcheologist
+    - Corpuscarii Electro-priests
+    - Fulgurite Electro-priests
+    - Hastarii Exterminators
+    - Hastarii Fusiliers
+    - Kataphron Breachers
+    - Kataphron Destroyers
+    - Servitor Battleclade
+    - Skitarii Rangers
+    - Skitarii Vanguard
+
+## Aeldari
+  Asurmen
+    - Dire Avengers
+  Autarch
+    - Dark Reapers
+    - Dire Avengers
+    - Fire Dragons
+    - Guardian Defenders
+    - Howling Banshees
+    - Storm Guardians
+    - Striking Scorpions
+  Autarch Skyrunner
+    - Windriders
+  Autarch Wayleaper
+    - Swooping Hawks
+    - Warp Spiders
+  Baharroth
+    - Swooping Hawks
+  Bonesinger
+    - Wraithblades
+    - Wraithguard
+    - Wraithlord
+  Eldrad Ulthran
+    - Guardian Defenders
+    - Storm Guardians
+    - Warlock Conclave
+  Farseer
+    - Guardian Defenders
+    - Storm Guardians
+    - Warlock Conclave
+  Farseer Skyrunner
+    - Windriders
+  Fuegan
+    - Fire Dragons
+  Illic Nightspear
+    - Rangers
+  Irillyth
+    - Shadow Spectres
+  Jain Zar
+    - Howling Banshees
+  Karandras
+    - Striking Scorpions
+  Kharseth
+    - Corsair Voidreavers
+    - Corsair Voidscarred
+  Lhykhis
+    - Warp Spiders
+  Maugan Ra
+    - Dark Reapers
+  Prince Yriel
+    - Corsair Voidreavers
+    - Corsair Voidscarred
+  Prince Yriel (Legendary)
+    - Corsair Voidreavers
+    - Corsair Voidscarred
+    - Guardian Defenders
+    - Storm Guardians
+  Shadowseer
+    - Troupe
+  The Visarch
+    - Corsair Voidreavers
+    - Corsair Voidscarred
+    - Guardian Defenders
+    - Storm Guardians
+    - Ynnari Incubi
+    - Ynnari Kabalite Warriors
+    - Ynnari Wyches
+  Troupe Master
+    - Troupe
+  Warlock
+    - Guardian Defenders
+    - Storm Guardians
+  Ynnari Archon
+    - Ynnari Incubi
+    - Ynnari Kabalite Warriors
+  Ynnari Succubus
+    - Ynnari Wyches
+  Yvraine
+    - Corsair Voidreavers
+    - Corsair Voidscarred
+    - Guardian Defenders
+    - Storm Guardians
+    - Ynnari Incubi
+    - Ynnari Kabalite Warriors
+    - Ynnari Wyches
+
+## Astra Militarum
+  Cadian Castellan
+    - Cadian Shock Troops
+    - Kasrkin
+  Cadian Command Squad
+    - Cadian Shock Troops
+  Catachan Command Squad
+    - Catachan Jungle Fighters
+  Commissar
+    - Cadian Shock Troops
+    - Catachan Jungle Fighters
+    - Death Korps Of Krieg
+    - Kasrkin
+    - Krieg Combat Engineers
+    - Tempestus Scions
+  Commissar Graves on Foot
+    - Cadian Shock Troops
+    - Catachan Jungle Fighters
+    - Death Korps Of Krieg
+    - Kasrkin
+    - Krieg Combat Engineers
+    - Tempestus Scions
+  Commissar Yarrick
+    - Cadian Shock Troops
+    - Catachan Jungle Fighters
+    - Death Korps Of Krieg
+    - Kasrkin
+    - Krieg Combat Engineers
+    - Tempestus Scions
+  Death Rider Commissar
+    - Death Riders
+  Hell’s Last
+    - Cadian Shock Troops
+  Krieg Command Squad
+    - Death Korps Of Krieg
+    - Krieg Combat Engineers
+  Lord Marshal Dreir
+    - Death Riders
+  Lord Solar Leontus
+    - Attilan Rough Riders
+    - Cadian Shock Troops
+    - Catachan Jungle Fighters
+    - Death Korps Of Krieg
+    - Death Riders
+    - Kasrkin
+    - Krieg Combat Engineers
+  Militarum Tempestus Command Squad
+    - Tempestus Scions
+  Ministorum Priest
+    - Cadian Shock Troops
+    - Catachan Jungle Fighters
+    - Death Korps Of Krieg
+    - Kasrkin
+    - Krieg Combat Engineers
+    - Tempestus Scions
+  Primaris Psyker
+    - Cadian Shock Troops
+    - Catachan Jungle Fighters
+    - Death Korps Of Krieg
+    - Kasrkin
+    - Krieg Combat Engineers
+    - Tempestus Scions
+  Provisionally Prepared
+    - Ratlings
+  Quartermaster Cadre Squad
+    - Death Korps Grenadier Squad
+    - Death Korps Of Krieg
+  Sergeant Harker
+    - Catachan Jungle Fighters
+  Tech-Priest Enginseer
+    - Cadian Shock Troops
+    - Catachan Jungle Fighters
+    - Death Korps Of Krieg
+    - Kasrkin
+    - Krieg Combat Engineers
+  Ursula Creed
+    - Cadian Shock Troops
+    - Kasrkin
+  ‘Iron Hand’ Straken
+    - Catachan Jungle Fighters
+
+## Chaos Daemons
+  Bloodmaster
+    - Bloodletters
+  Changecaster
+    - Blue Horrors
+    - Pink Horrors
+  Chaos Lord
+    - Chosen
+    - Legionaries
+  Chaos Lord In Terminator Armour
+    - Chaos Terminator Squad
+  Chaos Lord On Disc Of Tzeentch
+    - Chosen
+    - Legionaries
+  Chaos Lord On Palanquin Of Nurgle
+    - Chosen
+    - Legionaries
+  Chaos Lord with Jump Pack
+    - Raptors
+  Contorted Epitome
+    - Daemonettes
+  Cultist Firebrand
+    - Accursed Cultists
+    - Cultist Mob
+  Dark Apostle
+    - Accursed Cultists
+    - Chosen
+    - Cultist Mob
+    - Legionaries
+  Dark Commune
+    - Accursed Cultists
+    - Cultist Mob
+  Epidemius
+    - Plaguebearers
+  Exalted Flamer
+    - Flamers
+  Fateskimmer
+    - Screamers
+  Fluxmaster
+    - Blue Horrors
+    - Pink Horrors
+  Herald Of Slaanesh On Steed Of Slaanesh
+    - Seekers
+  Horticulous Slimux
+    - Beasts Of Nurgle
+  Infernal Enrapturess
+    - Daemonettes
+  Karanak
+    - Flesh Hounds
+  Karanak
+    - Flesh Hounds
+  Master Of Possession
+    - Chosen
+    - Legionaries
+    - Possessed
+  Poxbringer
+    - Plaguebearers
+  Renegade Enforcer
+    - Renegade Heavy Weapons Squad
+    - Traitor Guardsmen Squad
+  Rogue Psyker
+    - Accursed Cultists
+    - Cultist Mob
+    - Negavolt Cultists
+  Skullmaster
+    - Bloodcrushers
+  Skulltaker
+    - Bloodletters
+  Sloppity Bilepiper
+    - Plaguebearers
+  Sorcerer
+    - Chosen
+    - Legionaries
+  Sorcerer In Terminator Armour
+    - Chaos Terminator Squad
+  Sorcerer On Disc Of Tzeentch
+    - Chosen
+    - Legionaries
+  Sorcerer On Palanquin Of Nurgle
+    - Chosen
+    - Legionaries
+  Spoilpox Scrivener
+    - Plaguebearers
+  Syll’esske
+    - Daemonettes
+  Tormentbringer
+    - Hellflayer
+    - Hellflayers
+  Traitor Enforcer
+    - Traitor Guardsmen Squad
+  Tranceweaver
+    - Daemonettes
+
+## Chaos Knights
+  Cultist Firebrand
+    - Accursed Cultists
+    - Cultist Mob
+  Dark Commune
+    - Accursed Cultists
+    - Cultist Mob
+  Renegade Enforcer
+    - Renegade Heavy Weapons Squad
+    - Traitor Guardsmen Squad
+  Rogue Psyker
+    - Accursed Cultists
+    - Cultist Mob
+    - Negavolt Cultists
+  Traitor Enforcer
+    - Traitor Guardsmen Squad
+
+## Chaos Space Marines
+  Abaddon The Despoiler
+    - Chaos Terminator Squad
+    - Chosen
+  Chaos Lord
+    - Chosen
+    - Legionaries
+    - Nemesis Claw
+    - Red Corsairs Raiders
+  Chaos Lord In Terminator Armour
+    - Chaos Terminator Squad
+  Chaos Lord On Bike
+    - Chaos Bikers
+  Chaos Lord On Disc Of Tzeentch
+    - Chosen
+    - Legionaries
+    - Nemesis Claw
+    - Red Corsairs Raiders
+    - Rubric Marines
+  Chaos Lord On Juggernaut
+    - Chaos Bikers
+    - Khorne Berzerkers
+  Chaos Lord On Palanquin Of Nurgle
+    - Chosen
+    - Legionaries
+    - Nemesis Claw
+    - Plague Marines
+    - Red Corsairs Raiders
+  Chaos Lord On Steed Of Slaanesh
+    - Chaos Bikers
+  Chaos Lord with Jump Pack
+    - Raptors
+  Cultist Firebrand
+    - Accursed Cultists
+    - Cultist Mob
+  Dark Apostle
+    - Accursed Cultists
+    - Chosen
+    - Cultist Mob
+    - Legionaries
+    - Nemesis Claw
+    - Red Corsairs Raiders
+  Dark Commune
+    - Accursed Cultists
+    - Cultist Mob
+  Exalted Champion
+    - Chosen
+    - Legionaries
+    - Nemesis Claw
+    - Red Corsairs Raiders
+  Fabius Bile
+    - Accursed Cultists
+    - Chosen
+    - Cultist Mob
+    - Legionaries
+    - Red Corsairs Raiders
+  Haarken Worldclaimer
+    - Raptors
+  Huron Blackheart
+    - Chaos Terminator Squad
+    - Chosen
+    - Legionaries
+    - Masters of the Maelstrom
+    - Red Corsairs Raiders
+  Kravek Morne
+    - Chaos Terminator Squad
+    - Mutilators
+    - Mutilators (Legendary)
+    - Obliterators
+  Master Of Executions
+    - Chosen
+    - Legionaries
+    - Nemesis Claw
+    - Red Corsairs Raiders
+  Master Of Possession
+    - Chosen
+    - Legionaries
+    - Nemesis Claw
+    - Possessed
+    - Red Corsairs Raiders
+  Red Corsairs Reave-Captain
+    - Chosen
+    - Legionaries
+    - Nemesis Claw
+    - Red Corsairs Raiders
+  Renegade Enforcer
+    - Renegade Heavy Weapons Squad
+    - Traitor Guardsmen Squad
+  Rogue Psyker
+    - Accursed Cultists
+    - Cultist Mob
+    - Negavolt Cultists
+  Sorcerer
+    - Chosen
+    - Legionaries
+    - Nemesis Claw
+    - Red Corsairs Raiders
+  Sorcerer In Terminator Armour
+    - Chaos Terminator Squad
+  Sorcerer On Bike
+    - Chaos Bikers
+  Sorcerer On Disc Of Tzeentch
+    - Chosen
+    - Legionaries
+    - Nemesis Claw
+    - Red Corsairs Raiders
+    - Rubric Marines
+  Sorcerer On Palanquin Of Nurgle
+    - Chosen
+    - Legionaries
+    - Nemesis Claw
+    - Plague Marines
+    - Red Corsairs Raiders
+  Sorcerer On Steed Of Slaanesh
+    - Chaos Bikers
+  Traitor Enforcer
+    - Traitor Guardsmen Squad
+  Warpsmith
+    - Chosen
+    - Havocs
+    - Legionaries
+    - Nemesis Claw
+    - Red Corsairs Raiders
+
+## Death Guard
+  Biologus Putrifier
+    - Plague Marines
+  Chaos Lord On Palanquin Of Nurgle
+    - Plague Marines
+  Death Guard Chaos Lord
+    - Plague Marines
+  Death Guard Chaos Lord In Terminator Armour
+    - Blightlord Terminators
+    - Deathshroud Terminators
+  Death Guard Sorcerer In Terminator Armour
+    - Blightlord Terminators
+    - Deathshroud Terminators
+  Foul Blightspawn
+    - Plague Marines
+  Icon Bearer
+    - Plague Marines
+  Lord of Contagion
+    - Blightlord Terminators
+    - Deathshroud Terminators
+  Lord of Poxes
+    - Plague Marines
+  Lord of Virulence
+    - Blightlord Terminators
+    - Deathshroud Terminators
+  Malignant Plaguecaster
+    - Plague Marines
+    - Poxwalkers
+  Noxious Blightbringer
+    - Plague Marines
+    - Poxwalkers
+  Plague Surgeon
+    - Plague Marines
+  Sorcerer On Palanquin Of Nurgle
+    - Plague Marines
+  Tallyman
+    - Plague Marines
+  Typhus
+    - Blightlord Terminators
+    - Deathshroud Terminators
+    - Poxwalkers
+
+## Drukhari
+  Archon
+    - Hand of the Archon
+    - Incubi
+    - Kabalite Warriors
+  Drazhar
+    - Incubi
+  Haemonculus
+    - Wracks
+  Kharseth
+    - Corsair Voidreavers
+    - Corsair Voidscarred
+  Lady Malys
+    - Hand of the Archon
+    - Incubi
+    - Kabalite Warriors
+  Lelith Hesperax
+    - Wyches
+  Prince Yriel
+    - Corsair Voidreavers
+    - Corsair Voidscarred
+  Shadowseer
+    - Troupe
+  Succubus
+    - Wyches
+  Troupe Master
+    - Troupe
+  Urien Rakarth
+    - Wracks
+
+## Emperor’s Children
+  Lord Exultant
+    - Infractors
+    - Tormentors
+  Lord Kakophonist
+    - Chaos Terminators
+    - Noise Marines
+  Lucius the Eternal
+    - Flawless Blades
+  Sorcerer
+    - Infractors
+    - Noise Marines
+    - Tormentors
+
+## Genestealer Cults
+  Abominant
+    - Aberrants
+  Acolyte Iconward
+    - Acolyte Hybrids With Autopistols
+    - Acolyte Hybrids With Hand Flamers
+    - Hybrid Metamorphs
+    - Neophyte Hybrids
+  Benefictus
+    - Acolyte Hybrids With Autopistols
+    - Acolyte Hybrids With Hand Flamers
+    - Hybrid Metamorphs
+    - Neophyte Hybrids
+  Biophagus
+    - Aberrants
+    - Acolyte Hybrids With Autopistols
+    - Acolyte Hybrids With Hand Flamers
+    - Hybrid Metamorphs
+    - Neophyte Hybrids
+  Cadian Castellan
+    - Cadian Shock Troops
+    - Kasrkin
+  Cadian Command Squad
+    - Cadian Shock Troops
+  Catachan Command Squad
+    - Catachan Jungle Fighters
+  Clamavus
+    - Acolyte Hybrids With Autopistols
+    - Acolyte Hybrids With Hand Flamers
+    - Hybrid Metamorphs
+    - Neophyte Hybrids
+  Death Rider Commissar
+    - Death Riders
+  Hell’s Last
+    - Cadian Shock Troops
+  Hyperadapted Raveners
+    - Raveners
+  Jackal Alphus
+    - Atalan Jackals
+  Krieg Command Squad
+    - Death Korps Of Krieg
+    - Krieg Combat Engineers
+  Locus
+    - Acolyte Hybrids With Autopistols
+    - Acolyte Hybrids With Hand Flamers
+    - Hybrid Metamorphs
+    - Neophyte Hybrids
+  Magus
+    - Acolyte Hybrids With Autopistols
+    - Acolyte Hybrids With Hand Flamers
+    - Hybrid Metamorphs
+    - Neophyte Hybrids
+  Nexos
+    - Acolyte Hybrids With Autopistols
+    - Acolyte Hybrids With Hand Flamers
+    - Hybrid Metamorphs
+    - Neophyte Hybrids
+  Patriarch
+    - Purestrain Genestealers
+  Primaris Psyker
+    - Cadian Shock Troops
+    - Catachan Jungle Fighters
+    - Death Korps Of Krieg
+    - Kasrkin
+    - Krieg Combat Engineers
+  Primus
+    - Acolyte Hybrids With Autopistols
+    - Acolyte Hybrids With Hand Flamers
+    - Hybrid Metamorphs
+    - Neophyte Hybrids
+  Quartermaster Cadre Squad
+    - Death Korps Grenadier Squad
+    - Death Korps Of Krieg
+  Winged Tyranid Prime
+    - Gargoyles
+
+## Grey Knights
+  Brother-captain
+    - Brotherhood Terminator Squad
+    - Paladin Squad
+  Brother-captain Stern
+    - Brotherhood Terminator Squad
+    - Paladin Squad
+  Brotherhood Champion
+    - Purgation Squad
+    - Strike Squad
+  Brotherhood Chaplain
+    - Brotherhood Terminator Squad
+    - Paladin Squad
+  Brotherhood Librarian
+    - Brotherhood Terminator Squad
+    - Paladin Squad
+  Brotherhood Techmarine
+    - Purgation Squad
+    - Purifier Squad
+    - Strike Squad
+  Castellan Crowe
+    - Purifier Squad
+  Grand Master
+    - Brotherhood Terminator Squad
+    - Paladin Squad
+  Grand Master Voldus
+    - Brotherhood Terminator Squad
+    - Paladin Squad
+  Kaldor Draigo
+    - Brotherhood Terminator Squad
+    - Paladin Squad
+
+## Imperial Agents
+  Inquisitor
+    - Aquila Kill Team
+    - Assault Intercessor Squad
+    - Battle Sisters Squad
+    - Blood Claws
+    - Brotherhood Terminator Squad
+    - Cadian Shock Troops
+    - Cadian Shock Troops
+    - Catachan Jungle Fighters
+    - Catachan Jungle Fighters
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Custodian Guard
+    - Death Korps Of Krieg
+    - Death Korps Of Krieg
+    - Deathwatch Kill Team
+    - Deathwatch Terminator Squad
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Exaction Squad
+    - Fortis Kill Team
+    - Grey Hunters
+    - Grey Knights Terminator Squad
+    - Heavy Intercessor Squad
+    - Imperial Navy Breachers
+    - Inquisitorial Agents
+    - Intercessor Squad
+    - Proteus Kill Team
+    - Sanctifiers
+    - Sisters of Battle Squad
+    - Skitarii Rangers
+    - Skitarii Rangers
+    - Skitarii Vanguard
+    - Skitarii Vanguard
+    - Spectrus Kill Team
+    - Strike Squad
+    - Subductor Squad
+    - Tactical Squad
+    - Vigilant Squad
+  Inquisitor Coteaz
+    - Aquila Kill Team
+    - Assault Intercessor Squad
+    - Battle Sisters Squad
+    - Blood Claws
+    - Brotherhood Terminator Squad
+    - Cadian Shock Troops
+    - Cadian Shock Troops
+    - Catachan Jungle Fighters
+    - Catachan Jungle Fighters
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Custodian Guard
+    - Death Korps Of Krieg
+    - Death Korps Of Krieg
+    - Deathwatch Kill Team
+    - Deathwatch Terminator Squad
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Exaction Squad
+    - Fortis Kill Team
+    - Grey Hunters
+    - Grey Knights Terminator Squad
+    - Heavy Intercessor Squad
+    - Imperial Navy Breachers
+    - Inquisitorial Agents
+    - Intercessor Squad
+    - Proteus Kill Team
+    - Skitarii Rangers
+    - Skitarii Rangers
+    - Skitarii Vanguard
+    - Skitarii Vanguard
+    - Spectrus Kill Team
+    - Strike Squad
+    - Subductor Squad
+    - Tactical Squad
+    - Vigilant Squad
+  Inquisitor Draxus
+    - Aquila Kill Team
+    - Assault Intercessor Squad
+    - Battle Sisters Squad
+    - Blood Claws
+    - Brotherhood Terminator Squad
+    - Cadian Shock Troops
+    - Cadian Shock Troops
+    - Catachan Jungle Fighters
+    - Catachan Jungle Fighters
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Custodian Guard
+    - Death Korps Of Krieg
+    - Death Korps Of Krieg
+    - Deathwatch Kill Team
+    - Deathwatch Terminator Squad
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Exaction Squad
+    - Fortis Kill Team
+    - Grey Hunters
+    - Heavy Intercessor Squad
+    - Imperial Navy Breachers
+    - Inquisitorial Agents
+    - Intercessor Squad
+    - Proteus Kill Team
+    - Skitarii Rangers
+    - Skitarii Rangers
+    - Skitarii Vanguard
+    - Skitarii Vanguard
+    - Spectrus Kill Team
+    - Strike Squad
+    - Subductor Squad
+    - Tactical Squad
+    - Vigilant Squad
+  Inquisitor Eisenhorn
+    - Aquila Kill Team
+    - Assault Intercessor Squad
+    - Battle Sisters Squad
+    - Blood Claws
+    - Brotherhood Terminator Squad
+    - Cadian Shock Troops
+    - Cadian Shock Troops
+    - Catachan Jungle Fighters
+    - Catachan Jungle Fighters
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Custodian Guard
+    - Daemonhost
+    - Death Korps Of Krieg
+    - Death Korps Of Krieg
+    - Deathwatch Kill Team
+    - Deathwatch Terminator Squad
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Exaction Squad
+    - Fortis Kill Team
+    - Grey Hunters
+    - Heavy Intercessor Squad
+    - Imperial Navy Breachers
+    - Indomitor Kill Team
+    - Inquisitorial Agents
+    - Intercessor Squad
+    - Kill Team Cassius
+    - Proteus Kill Team
+    - Skitarii Rangers
+    - Skitarii Rangers
+    - Skitarii Vanguard
+    - Skitarii Vanguard
+    - Spectrus Kill Team
+    - Strike Squad
+    - Subductor Squad
+    - Tactical Squad
+    - Vigilant Squad
+  Inquisitor Greyfax
+    - Aquila Kill Team
+    - Assault Intercessor Squad
+    - Battle Sisters Squad
+    - Blood Claws
+    - Brotherhood Terminator Squad
+    - Cadian Shock Troops
+    - Cadian Shock Troops
+    - Catachan Jungle Fighters
+    - Catachan Jungle Fighters
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Custodian Guard
+    - Death Korps Of Krieg
+    - Death Korps Of Krieg
+    - Deathwatch Kill Team
+    - Deathwatch Terminator Squad
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Exaction Squad
+    - Fortis Kill Team
+    - Grey Hunters
+    - Heavy Intercessor Squad
+    - Imperial Navy Breachers
+    - Inquisitorial Agents
+    - Intercessor Squad
+    - Proteus Kill Team
+    - Sanctifiers
+    - Sisters of Battle Squad
+    - Skitarii Rangers
+    - Skitarii Rangers
+    - Skitarii Vanguard
+    - Skitarii Vanguard
+    - Spectrus Kill Team
+    - Strike Squad
+    - Subductor Squad
+    - Tactical Squad
+    - Vigilant Squad
+  Inquisitor In Terminator Armour
+    - Aquila Kill Team
+    - Assault Intercessor Squad
+    - Battle Sisters Squad
+    - Blood Claws
+    - Brotherhood Terminator Squad
+    - Cadian Shock Troops
+    - Cadian Shock Troops
+    - Catachan Jungle Fighters
+    - Catachan Jungle Fighters
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Custodian Guard
+    - Death Korps Of Krieg
+    - Death Korps Of Krieg
+    - Deathwatch Kill Team
+    - Deathwatch Terminator Squad
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Exaction Squad
+    - Fortis Kill Team
+    - Grey Hunters
+    - Grey Knights Terminator Squad
+    - Heavy Intercessor Squad
+    - Imperial Navy Breachers
+    - Indomitor Kill Team
+    - Inquisitorial Agents
+    - Intercessor Squad
+    - Kill Team Cassius
+    - Proteus Kill Team
+    - Sanctifiers
+    - Sisters of Battle Squad
+    - Skitarii Rangers
+    - Skitarii Rangers
+    - Skitarii Vanguard
+    - Skitarii Vanguard
+    - Spectrus Kill Team
+    - Strike Squad
+    - Subductor Squad
+    - Tactical Squad
+    - Vigilant Squad
+  Inquisitor Ostromandeus
+    - Aquila Kill Team
+    - Assault Intercessor Squad
+    - Battle Sisters Squad
+    - Blood Claws
+    - Brotherhood Terminator Squad
+    - Cadian Shock Troops
+    - Cadian Shock Troops
+    - Catachan Jungle Fighters
+    - Catachan Jungle Fighters
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Custodian Guard
+    - Death Korps Of Krieg
+    - Death Korps Of Krieg
+    - Deathwatch Kill Team
+    - Deathwatch Terminator Squad
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Exaction Squad
+    - Fortis Kill Team
+    - Grey Hunters
+    - Heavy Intercessor Squad
+    - Imperial Navy Breachers
+    - Inquisitorial Agents
+    - Intercessor Squad
+    - Proteus Kill Team
+    - Sisters of Battle Squad
+    - Skitarii Rangers
+    - Skitarii Rangers
+    - Skitarii Vanguard
+    - Skitarii Vanguard
+    - Spectrus Kill Team
+    - Strike Squad
+    - Subductor Squad
+    - Tactical Squad
+    - Vigilant Squad
+  Janus Draik
+    - Imperial Navy Breachers
+    - Voidsmen-at-arms
+  Jokaero Weaponsmith
+    - Inquisitorial Agents
+  Ministorum Priest
+    - Exaction Squad
+    - Imperial Navy Breachers
+    - Inquisitorial Agents
+    - Sanctifiers
+    - Sisters of Battle Squad
+    - Subductor Squad
+    - Vigilant Squad
+  Navigator
+    - Imperial Navy Breachers
+    - Voidsmen-at-arms
+  Neyam Shai Murad
+    - Imperial Navy Breachers
+    - Voidsmen-at-arms
+  Rogue Trader Entourage
+    - Imperial Navy Breachers
+    - Voidsmen-at-arms
+  Watch Captain Artemis
+    - Aquila Kill Team
+    - Deathwatch Kill Team
+    - Deathwatch Terminator Squad
+    - Fortis Kill Team
+    - Indomitor Kill Team
+    - Kill Team Cassius
+    - Proteus Kill Team
+    - Spectrus Kill Team
+  Watch Master
+    - Aquila Kill Team
+    - Deathwatch Kill Team
+    - Deathwatch Terminator Squad
+    - Fortis Kill Team
+    - Indomitor Kill Team
+    - Kill Team Cassius
+    - Proteus Kill Team
+    - Spectrus Kill Team
+
+## Imperial Knights
+  Skitarii Marshal
+    - Skitarii Rangers
+    - Skitarii Vanguard
+  Tech-priest Dominus
+    - Skitarii Rangers
+    - Skitarii Vanguard
+  Tech-priest Manipulus
+    - Skitarii Rangers
+    - Skitarii Vanguard
+
+## Leagues of Votann
+  Berehk Stornbröw
+    - Cthonian Beserks
+  Brôkhyr Iron-master
+    - Brôkhyr Thunderkyn
+    - Hearthkyn Warriors
+  Einhyr Champion
+    - Einhyr Hearthguard
+  Grimnyr
+    - Hearthkyn Warriors
+  Kâhl
+    - Einhyr Hearthguard
+    - Hearthkyn Warriors
+  Memnyr Strategist
+    - Ironkin Steeljacks with Heavy Volkanite Disintegrators
+    - Ironkin Steeljacks with Melee Weapons
+  Ûthar the Destined
+    - Einhyr Hearthguard
+    - Hearthkyn Warriors
+
+## Necrons
+  Anrakyr The Traveller
+    - Immortals
+  Chronomancer
+    - Immortals
+    - Necron Warriors
+  Geomancer
+    - Canoptek Macrocytes
+    - Immortals
+    - Necron Warriors
+  Imotekh The Stormlord
+    - Immortals
+    - Lychguard
+    - Necron Warriors
+  Lokhust Lord
+    - Lokhust Destroyers
+    - Lokhust Heavy Destroyers
+  Lord
+    - Immortals
+    - Lychguard
+    - Necron Warriors
+  Nemesor Zahndrekh
+    - Immortals
+    - Lychguard
+    - Necron Warriors
+  Orikan The Diviner
+    - Immortals
+    - Necron Warriors
+  Overlord
+    - Immortals
+    - Lychguard
+    - Necron Warriors
+  Overlord with translocation shroud
+    - Immortals
+    - Lychguard
+    - Necron Warriors
+  Plasmancer
+    - Immortals
+    - Necron Warriors
+  Psychomancer
+    - Immortals
+    - Necron Warriors
+  Royal Warden
+    - Immortals
+    - Necron Warriors
+  Skorpekh Lord
+    - Skorpekh Destroyers
+  Technomancer
+    - Canoptek Wraiths
+    - Immortals
+    - Necron Warriors
+  Trazyn The Infinite
+    - Immortals
+    - Lychguard
+    - Necron Warriors
+  Vargard Obyron
+    - Immortals
+    - Lychguard
+    - Necron Warriors
+
+## Orks
+  Beastboss
+    - Beast Snagga Boyz
+  Beastboss On Squigosaur
+    - Squighog Boyz
+  Big Mek
+    - Boyz
+    - Breaka Boyz
+    - Lootas
+    - Mek Gunz
+    - Nobz
+    - Tankbustas
+  Big Mek In Mega Armour
+    - Meganobz
+  Big Mek On Warbike
+    - Warbikers
+  Big Mek With Kustom Force Field
+    - Boyz
+    - Breaka Boyz
+    - Burna Boyz
+    - Lootas
+    - Nobz
+    - Tankbustas
+  Big Mek With Shokk Attack Gun
+    - Boyz
+    - Breaka Boyz
+    - Lootas
+    - Mek Gunz
+    - Nobz
+    - Tankbustas
+  Boss Snikrot
+    - Kommandos
+  Boss Zagstruk
+    - Stormboyz
+  Da Red Gobbo
+    - Gretchin
+  Deffkilla Wartrike
+    - Warbikers
+  Ghazghkull Thraka
+    - Boyz
+    - Breaka Boyz
+    - Meganobz
+    - Nobz
+  Kaptin Badrukk
+    - Flash Gitz
+  Mad Dok Grotsnik
+    - Boyz
+    - Breaka Boyz
+    - Burna Boyz
+    - Lootas
+    - Nobz
+    - Tankbustas
+  Mek
+    - Boyz
+    - Breaka Boyz
+    - Lootas
+    - Mek Gunz
+    - Nobz
+    - Tankbustas
+  Mozrog Skragbad
+    - Squighog Boyz
+  Nob With Waaagh! Banner
+    - Boyz
+    - Breaka Boyz
+    - Nobz
+  Painboss
+    - Beast Snagga Boyz
+  Painboy
+    - Boyz
+    - Breaka Boyz
+    - Burna Boyz
+    - Lootas
+    - Nobz
+    - Tankbustas
+  Painboy On Warbike
+    - Warbikers
+  Ufthak Blackhawk
+    - Boyz
+    - Breaka Boyz
+    - Nobz
+  Warboss
+    - Boyz
+    - Breaka Boyz
+    - Nobz
+  Warboss In Mega Armour
+    - Meganobz
+  Warboss On Warbike
+    - Nobz On Warbikes
+    - Warbikers
+  Weirdboy
+    - Boyz
+    - Breaka Boyz
+  Wurrboy
+    - Beast Snagga Boyz
+  Zodgrod Wortsnagga
+    - Gretchin
+
+## Space Marines
+  Adrax Agatone
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Bladeguard Veteran Squad
+    - Command Squad
+    - Company Heroes
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Fortis Kill Team
+    - Infernus Squad
+    - Inner Circle Companions
+    - Intercessor Squad
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Sword Brethren Squad
+    - Tactical Squad
+    - Vanguard Veteran Squad
+    - Victrix Honour Guard
+    - Wolf Guard
+  Ancient
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Desolation Squad
+    - Devastator Squad
+    - Fortis Kill Team
+    - Hellblaster Squad
+    - Infernus Squad
+    - Inner Circle Companions
+    - Intercessor Squad
+    - Long Fangs
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Sword Brethren Squad
+    - Tactical Squad
+    - Vanguard Veteran Squad
+    - Wolf Guard
+  Ancient In Terminator Armour
+    - Deathwatch Terminator Squad
+    - Deathwing Command Squad
+    - Deathwing Knights
+    - Deathwing Terminator Squad
+    - Relic Terminator Squad
+    - Terminator Assault Squad
+    - Terminator Squad
+    - Terminator Squad
+  Ancient on Bike
+    - Bike Squad
+    - Company Veterans On Bikes
+    - Outrider Squad
+    - Ravenwing Black Knights
+  Apothecary
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Desolation Squad
+    - Devastator Squad
+    - Fortis Kill Team
+    - Hellblaster Squad
+    - Infernus Squad
+    - Inner Circle Companions
+    - Intercessor Squad
+    - Long Fangs
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Sword Brethren Squad
+    - Tactical Squad
+    - Vanguard Veteran Squad
+    - Wolf Guard
+  Apothecary Biologis
+    - Aggressor Squad
+    - Eradicator Squad
+    - Heavy Intercessor Squad
+    - Indomitor Kill Team
+  Apothecary on Bike
+    - Bike Squad
+    - Company Veterans On Bikes
+    - Outrider Squad
+    - Ravenwing Black Knights
+  Arjac Rockfist
+    - Wolf Guard Terminators
+  Asmodai
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Bladeguard Veteran Squad
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Death Company Marines
+    - Death Company Marines with Bolt Rifles
+    - Death Company Marines with Boltguns
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Fortis Kill Team
+    - Hellblaster Squad
+    - Infernus Squad
+    - Inner Circle Companions
+    - Intercessor Squad
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Sword Brethren Squad
+    - Tactical Squad
+    - Vanguard Veteran Squad
+    - Wolf Guard
+  Astorath
+    - Death Company Marines With Jump Packs
+    - Death Company Marines with Boltguns and Jump Packs
+  Azrael
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Bladeguard Veteran Squad
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Fortis Kill Team
+    - Hellblaster Squad
+    - Infernus Squad
+    - Inner Circle Companions
+    - Intercessor Squad
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Sword Brethren Squad
+    - Tactical Squad
+    - Vanguard Veteran Squad
+    - Wolf Guard
+  Belial
+    - Deathwatch Terminator Squad
+    - Deathwing Command Squad
+    - Deathwing Knights
+    - Deathwing Terminator Squad
+    - Relic Terminator Squad
+    - Terminator Assault Squad
+    - Terminator Squad
+    - Terminator Squad
+  Bladeguard Ancient
+    - Bladeguard Veteran Squad
+  Blood Angels Captain
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Command Squad
+    - Company Heroes
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Fortis Kill Team
+    - Infernus Squad
+    - Inner Circle Companions
+    - Intercessor Squad
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Sword Brethren Squad
+    - Tactical Squad
+    - Vanguard Veteran Squad
+    - Victrix Honour Guard
+    - Wolf Guard
+  Brother Corbulo
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Desolation Squad
+    - Devastator Squad
+    - Fortis Kill Team
+    - Hellblaster Squad
+    - Infernus Squad
+    - Inner Circle Companions
+    - Intercessor Squad
+    - Long Fangs
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Sword Brethren Squad
+    - Tactical Squad
+    - Vanguard Veteran Squad
+    - Vanguard Veteran Squad With Jump Packs
+    - Wolf Guard
+  Caanok Var
+    - Deathwatch Terminator Squad
+    - Deathwing Command Squad
+    - Deathwing Knights
+    - Deathwing Terminator Squad
+    - Relic Terminator Squad
+    - Terminator Assault Squad
+    - Terminator Squad
+    - Terminator Squad
+  Canis Wolfborn
+    - Fenrisian Wolves
+    - Thunderwolf Cavalry
+  Captain
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Bladeguard Veteran Squad
+    - Command Squad
+    - Company Heroes
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Fortis Kill Team
+    - Hellblaster Squad
+    - Infernus Squad
+    - Inner Circle Companions
+    - Intercessor Squad
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Sword Brethren Squad
+    - Tactical Squad
+    - Vanguard Veteran Squad
+    - Victrix Honour Guard
+    - Wolf Guard
+  Captain In Gravis Armour
+    - Aggressor Squad
+    - Eradicator Squad
+    - Heavy Intercessor Squad
+    - Indomitor Kill Team
+  Captain In Phobos Armour
+    - Eliminator Squad
+    - Hounds Of Morkai
+    - Incursor Squad
+    - Infiltrator Squad
+    - Reiver Squad
+    - Scout Squad
+    - Spectrus Kill Team
+    - Wolf Scouts (Legendary)
+  Captain In Terminator Armour
+    - Deathwatch Terminator Squad
+    - Deathwing Command Squad
+    - Deathwing Knights
+    - Deathwing Terminator Squad
+    - Relic Terminator Squad
+    - Terminator Assault Squad
+    - Terminator Squad
+    - Terminator Squad
+  Captain Titus
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Bladeguard Veteran Squad
+    - Command Squad
+    - Company Heroes
+    - Crusader Squad
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Fortis Kill Team
+    - Hellblaster Squad
+    - Infernus Squad
+    - Inner Circle Companions
+    - Intercessor Squad
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Sword Brethren Squad
+    - Vanguard Veteran Squad
+    - Victrix Honour Guard
+    - Wardens of Ultramar
+    - Wolf Guard
+  Captain Tycho
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Bladeguard Veteran Squad
+    - Command Squad
+    - Company Heroes
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Fortis Kill Team
+    - Hellblaster Squad
+    - Infernus Squad
+    - Inner Circle Companions
+    - Intercessor Squad
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Sword Brethren Squad
+    - Tactical Squad
+    - Vanguard Veteran Squad
+    - Vanguard Veteran Squad With Jump Packs
+    - Victrix Honour Guard
+    - Wolf Guard
+  Captain With Jump Pack
+    - Assault Intercessors With Jump Packs
+    - Assault Squad with Jump Packs
+    - Sanguinary Guard
+    - Skyclaws
+    - Talonstrike Kill Team
+    - Vanguard Veteran Squad With Jump Packs
+    - Wolf Guard
+  Captain on Bike
+    - Bike Squad
+    - Company Veterans On Bikes
+    - Outrider Squad
+    - Ravenwing Black Knights
+  Castellan
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Fortis Kill Team
+    - Infernus Squad
+    - Inner Circle Companions
+    - Intercessor Squad
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Sword Brethren Squad
+    - Vanguard Veteran Squad
+    - Wolf Guard
+  Cato Sicarius
+    - Victrix Honour Guard
+  Chaplain
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Bladeguard Veteran Squad
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Death Company Marines
+    - Death Company Marines with Bolt Rifles
+    - Death Company Marines with Boltguns
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Fortis Kill Team
+    - Hellblaster Squad
+    - Infernus Squad
+    - Inner Circle Companions
+    - Intercessor Squad
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Sword Brethren Squad
+    - Tactical Squad
+    - Vanguard Veteran Squad
+    - Wolf Guard
+  Chaplain Cassius
+    - Assault Squad
+    - Command Squad
+    - Crusader Squad (Legendary)
+    - Deathwatch Veterans
+    - Inner Circle Companions
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Tactical Squad
+    - Tyrannic War Veterans
+    - Vanguard Veteran Squad
+    - Vanguard Veteran Squad With Jump Packs
+    - Wolf Guard
+  Chaplain Grimaldus
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Decimus Kill Team
+    - Fortis Kill Team
+    - Infernus Squad
+    - Intercessor Squad
+    - Sword Brethren Squad
+    - Vanguard Veteran Squad
+  Chaplain In Terminator Armour
+    - Deathwatch Terminator Squad
+    - Deathwing Command Squad
+    - Deathwing Knights
+    - Deathwing Terminator Squad
+    - Relic Terminator Squad
+    - Terminator Assault Squad
+    - Terminator Squad
+    - Terminator Squad
+  Chaplain Kastiel
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Bladeguard Veteran Squad
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Death Company Marines
+    - Death Company Marines with Bolt Rifles
+    - Death Company Marines with Boltguns
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Fortis Kill Team
+    - Hellblaster Squad
+    - Infernus Squad
+    - Inner Circle Companions
+    - Intercessor Squad
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Sword Brethren Squad
+    - Tactical Squad
+    - Vanguard Veteran Squad
+    - Wolf Guard
+  Chaplain On Bike
+    - Bike Squad
+    - Company Veterans On Bikes
+    - Outrider Squad
+    - Ravenwing Black Knights
+  Chaplain With Jump Pack
+    - Assault Intercessors With Jump Packs
+    - Assault Squad with Jump Packs
+    - Death Company Marines With Jump Packs
+    - Death Company Marines with Boltguns and Jump Packs
+    - Skyclaws
+    - Talonstrike Kill Team
+    - Vanguard Veteran Squad With Jump Packs
+    - Wolf Guard
+  Chief Librarian Tigurius
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Bladeguard Veteran Squad
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Desolation Squad
+    - Devastator Squad
+    - Fortis Kill Team
+    - Inner Circle Companions
+    - Intercessor Squad
+    - Long Fangs
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Sword Brethren Squad
+    - Tactical Squad
+    - Vanguard Veteran Squad
+    - Wolf Guard
+  Commander Dante
+    - Assault Intercessors With Jump Packs
+    - Assault Squad with Jump Packs
+    - Sanguinary Guard
+    - Skyclaws
+    - Talonstrike Kill Team
+    - Vanguard Veteran Squad
+    - Vanguard Veteran Squad With Jump Packs
+    - Wolf Guard
+  Company Champion On Bike
+    - Bike Squad
+    - Company Veterans On Bikes
+    - Outrider Squad
+    - Ravenwing Black Knights
+  Crusade Ancient
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Sword Brethren Squad
+  Cyberwolf
+    - Fenrisian Wolves
+  Darnath Lysander
+    - Deathwatch Terminator Squad
+    - Deathwing Command Squad
+    - Deathwing Knights
+    - Deathwing Terminator Squad
+    - Relic Terminator Squad
+    - Terminator Assault Squad
+    - Terminator Squad
+    - Terminator Squad
+  Death Company Captain
+    - Death Company Marines
+    - Death Company Marines with Bolt Rifles
+  Death Company Captain with Jump Pack
+    - Death Company Marines With Jump Packs
+  Deathwing Strikemaster
+    - Deathwatch Terminator Squad
+    - Deathwing Command Squad
+    - Deathwing Knights
+    - Deathwing Terminator Squad
+    - Relic Terminator Squad
+    - Terminator Assault Squad
+    - Terminator Squad
+    - Terminator Squad
+  Emperor’s Champion
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Fortis Kill Team
+    - Inner Circle Companions
+    - Intercessor Squad
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Sword Brethren Squad
+    - Vanguard Veteran Squad
+    - Wolf Guard
+  Execrator
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Sword Brethren Squad
+  Ezekiel
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Bladeguard Veteran Squad
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Fortis Kill Team
+    - Hellblaster Squad
+    - Infernus Squad
+    - Inner Circle Companions
+    - Intercessor Squad
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Sword Brethren Squad
+    - Tactical Squad
+    - Vanguard Veteran Squad
+    - Wolf Guard
+  Ferren Areios
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Bladeguard Veteran Squad
+    - Command Squad
+    - Company Heroes
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Fortis Kill Team
+    - Hellblaster Squad
+    - Infernus Squad
+    - Inner Circle Companions
+    - Intercessor Squad
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Sword Brethren Squad
+    - Tactical Squad
+    - Vanguard Veteran Squad
+    - Victrix Honour Guard
+    - Wolf Guard
+  Gabriel Seth
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Bladeguard Veteran Squad
+    - Command Squad
+    - Company Heroes
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Fortis Kill Team
+    - Hellblaster Squad
+    - Infernus Squad
+    - Inner Circle Companions
+    - Intercessor Squad
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Sword Brethren Squad
+    - Tactical Squad
+    - Vanguard Veteran Squad
+    - Vanguard Veteran Squad With Jump Packs
+    - Wolf Guard
+  Harald Deathwolf
+    - Thunderwolf Cavalry
+  High Marshal Helbrecht
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Decimus Kill Team
+    - Fortis Kill Team
+    - Intercessor Squad
+    - Sword Brethren Squad
+    - Vanguard Veteran Squad
+  Imperial Space Marine
+    - Assault Squad
+    - Command Squad
+    - Crusader Squad (Legendary)
+    - Devastator Squad
+    - Long Fangs
+    - Tactical Squad
+    - Vanguard Veteran Squad
+    - Vanguard Veteran Squad With Jump Packs
+    - Wolf Guard
+  Iron Father Feirros
+    - Aggressor Squad
+    - Eradicator Squad
+    - Heavy Intercessor Squad
+    - Indomitor Kill Team
+  Iron Priest
+    - Blood Claws
+    - Grey Hunters
+    - Wolf Guard Headtakers
+  Iron Priest On Thunderwolf
+    - Thunderwolf Cavalry
+  Judiciar
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Bladeguard Veteran Squad
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Fortis Kill Team
+    - Infernus Squad
+    - Inner Circle Companions
+    - Intercessor Squad
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Sword Brethren Squad
+    - Tactical Squad
+    - Vanguard Veteran Squad
+    - Wolf Guard
+  Judiciar Xacharus
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Bladeguard Veteran Squad
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Fortis Kill Team
+    - Infernus Squad
+    - Inner Circle Companions
+    - Intercessor Squad
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Sword Brethren Squad
+    - Tactical Squad
+    - Vanguard Veteran Squad
+    - Wolf Guard
+  Kayvaan Shrike
+    - Assault Intercessors With Jump Packs
+    - Assault Squad with Jump Packs
+    - Skyclaws
+    - Talonstrike Kill Team
+    - Vanguard Veteran Squad With Jump Packs
+    - Wolf Guard
+  Kor’sarro Khan
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Bladeguard Veteran Squad
+    - Command Squad
+    - Company Heroes
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Fortis Kill Team
+    - Inner Circle Companions
+    - Intercessor Squad
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Sword Brethren Squad
+    - Tactical Squad
+    - Vanguard Veteran Squad
+    - Victrix Honour Guard
+    - Wolf Guard
+  Krom Dragongaze
+    - Blood Claws
+    - Grey Hunters
+    - Wolf Guard
+    - Wolf Guard Battle Leader
+    - Wolf Guard Headtakers
+    - Wolf Guard Terminators
+  Lazarus
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Bladeguard Veteran Squad
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Fortis Kill Team
+    - Infernus Squad
+    - Inner Circle Companions
+    - Intercessor Squad
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Sword Brethren Squad
+    - Tactical Squad
+    - Vanguard Veteran Squad
+    - Wolf Guard
+  Lemartes
+    - Death Company Marines With Jump Packs
+    - Death Company Marines with Boltguns and Jump Packs
+  Librarian
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Desolation Squad
+    - Devastator Squad
+    - Fortis Kill Team
+    - Hellblaster Squad
+    - Infernus Squad
+    - Inner Circle Companions
+    - Intercessor Squad
+    - Long Fangs
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Sword Brethren Squad
+    - Tactical Squad
+    - Vanguard Veteran Squad
+    - Wolf Guard
+  Librarian In Phobos Armour
+    - Eliminator Squad
+    - Hounds Of Morkai
+    - Incursor Squad
+    - Infiltrator Squad
+    - Reiver Squad
+    - Spectrus Kill Team
+  Librarian In Terminator Armour
+    - Deathwatch Terminator Squad
+    - Deathwing Command Squad
+    - Deathwing Knights
+    - Deathwing Terminator Squad
+    - Relic Terminator Squad
+    - Terminator Assault Squad
+    - Terminator Squad
+    - Terminator Squad
+  Librarian on Bike
+    - Bike Squad
+    - Company Veterans On Bikes
+    - Outrider Squad
+    - Ravenwing Black Knights
+  Librarian with Jump Pack
+    - Assault Squad with Jump Packs
+    - Skyclaws
+    - Vanguard Veteran Squad With Jump Packs
+    - Wolf Guard
+  Lieutenant
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Bladeguard Veteran Squad
+    - Command Squad
+    - Company Heroes
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Fortis Kill Team
+    - Hellblaster Squad
+    - Infernus Squad
+    - Inner Circle Companions
+    - Intercessor Squad
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Sword Brethren Squad
+    - Tactical Squad
+    - Vanguard Veteran Squad
+    - Wolf Guard
+  Lieutenant In Phobos Armour
+    - Hounds Of Morkai
+    - Incursor Squad
+    - Infiltrator Squad
+    - Reiver Squad
+    - Spectrus Kill Team
+  Lieutenant In Reiver Armour
+    - Hounds Of Morkai
+    - Reiver Squad
+  Logan Grimnar
+    - Wolf Guard Terminators
+  Logan Grimnar On Stormrider
+    - Thunderwolf Cavalry
+  Lukas The Trickster
+    - Blood Claws
+  Marneus Calgar in Armour of Antilochus
+    - Aggressor Squad
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Bladeguard Veteran Squad
+    - Command Squad
+    - Company Heroes
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Deathwatch Terminator Squad
+    - Deathwatch Veterans
+    - Deathwing Command Squad
+    - Deathwing Knights
+    - Deathwing Terminator Squad
+    - Decimus Kill Team
+    - Eradicator Squad
+    - Fortis Kill Team
+    - Heavy Intercessor Squad
+    - Indomitor Kill Team
+    - Infernus Squad
+    - Inner Circle Companions
+    - Intercessor Squad
+    - Relic Terminator Squad
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Sword Brethren Squad
+    - Tactical Squad
+    - Terminator Assault Squad
+    - Terminator Squad
+    - Terminator Squad
+    - Vanguard Veteran Squad
+    - Victrix Honour Guard
+    - Wolf Guard
+  Marshal
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Fortis Kill Team
+    - Infernus Squad
+    - Inner Circle Companions
+    - Intercessor Squad
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Sword Brethren Squad
+    - Vanguard Veteran Squad
+    - Wolf Guard
+  Njal Stormcaller
+    - Blood Claws
+    - Grey Hunters
+    - Wolf Guard Headtakers
+  Pedro Kantor
+    - Bladeguard Veteran Squad
+    - Command Squad
+    - Company Heroes
+    - Crusader Squad (Legendary)
+    - Deathwatch Veterans
+    - Inner Circle Companions
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Tactical Squad
+    - Wolf Guard
+  Primaris Company Champion
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Bladeguard Veteran Squad
+    - Crusader Squad
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Fortis Kill Team
+    - Infernus Squad
+    - Inner Circle Companions
+    - Intercessor Squad
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Sword Brethren Squad
+    - Vanguard Veteran Squad
+    - Wolf Guard
+  Ragnar Blackmane
+    - Blood Claws
+    - Wolf Guard Headtakers
+  Ravenwing Command Squad
+    - Bike Squad
+    - Company Veterans On Bikes
+    - Outrider Squad
+    - Ravenwing Black Knights
+  Sammael
+    - Bike Squad
+    - Company Veterans On Bikes
+    - Outrider Squad
+    - Ravenwing Black Knights
+  Sanguinary Priest
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Bladeguard Veteran Squad
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Desolation Squad
+    - Devastator Squad
+    - Fortis Kill Team
+    - Hellblaster Squad
+    - Infernus Squad
+    - Inner Circle Companions
+    - Intercessor Squad
+    - Long Fangs
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Sword Brethren Squad
+    - Tactical Squad
+    - Vanguard Veteran Squad
+    - Wolf Guard
+  Sanguinary Priest With Jump Pack
+    - Assault Intercessors With Jump Packs
+    - Assault Squad with Jump Packs
+    - Skyclaws
+    - Talonstrike Kill Team
+    - Vanguard Veteran Squad With Jump Packs
+    - Wolf Guard
+  Sanguinary Priest on Bike
+    - Bike Squad
+    - Company Veterans On Bikes
+    - Outrider Squad
+    - Ravenwing Black Knights
+  Sergeant Telion
+    - Scout Sniper Squad
+    - Scout Squad
+    - Wolf Scouts (Legendary)
+  Suboden Khan
+    - Bike Squad
+    - Company Veterans On Bikes
+    - Outrider Squad
+    - Ravenwing Black Knights
+  Techmarine
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Decimus Kill Team
+    - Desolation Squad
+    - Devastator Squad
+    - Fortis Kill Team
+    - Intercessor Squad
+    - Long Fangs
+    - Sword Brethren Squad
+    - Tactical Squad
+    - Vanguard Veteran Squad
+  Techmarine on Bike
+    - Bike Squad
+    - Company Veterans On Bikes
+    - Outrider Squad
+    - Ravenwing Black Knights
+  Tor Garadon
+    - Aggressor Squad
+    - Eradicator Squad
+    - Heavy Intercessor Squad
+    - Indomitor Kill Team
+  Tycho The Lost
+    - Death Company Marines
+    - Death Company Marines with Bolt Rifles
+    - Death Company Marines with Boltguns
+  Ulrik The Slayer
+    - Blood Claws
+    - Grey Hunters
+    - Wolf Guard Headtakers
+  Uriel Ventris
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Bladeguard Veteran Squad
+    - Command Squad
+    - Company Heroes
+    - Crusader Squad
+    - Crusader Squad (Legendary)
+    - Deathwatch Veterans
+    - Decimus Kill Team
+    - Fortis Kill Team
+    - Inner Circle Companions
+    - Intercessor Squad
+    - Sternguard Veteran Squad
+    - Sternguard Veteran Squad
+    - Sword Brethren Squad
+    - Tactical Squad
+    - Vanguard Veteran Squad
+    - Victrix Honour Guard
+    - Wolf Guard
+  Vulkan He’stan
+    - Assault Intercessor Squad
+    - Assault Squad
+    - Command Squad
+    - Company Heroes
+    - Crusader Squad (Legendary)
+    - Infernus Squad
+    - Tactical Squad
+    - Vanguard Veteran Squad
+    - Victrix Honour Guard
+  Watch Captain Artemis
+    - Deathwatch Veterans
+    - Fortis Kill Team
+  Watch Master
+    - Deathwatch Veterans
+    - Fortis Kill Team
+  Wolf Guard Battle Leader
+    - Blood Claws
+    - Grey Hunters
+    - Wolf Guard Headtakers
+  Wolf Guard Battle Leader In Terminator Armour
+    - Deathwatch Terminator Squad
+    - Deathwing Command Squad
+    - Deathwing Knights
+    - Deathwing Terminator Squad
+    - Relic Terminator Squad
+    - Terminator Assault Squad
+    - Terminator Squad
+    - Terminator Squad
+    - Wolf Guard Terminators
+  Wolf Guard Battle Leader On Thunderwolf
+    - Thunderwolf Cavalry
+  Wolf Guard Pack Leader
+    - Blood Claws
+    - Grey Hunters
+    - Long Fangs
+  Wolf Guard Pack Leader In Terminator Armour
+    - Blood Claws
+    - Grey Hunters
+    - Long Fangs
+  Wolf Guard Pack Leader With Jump Pack
+    - Skyclaws
+  Wolf Lord on Thunderwolf
+    - Thunderwolf Cavalry
+  Wolf Priest
+    - Blood Claws
+    - Grey Hunters
+    - Wolf Guard Headtakers
+
+## Thousand Sons
+  Ahriman
+    - Rubric Marines
+    - Tzaangor Enlightened
+    - Tzaangor Enlightened with Fatecaster Greatbows
+  Chaos Lord On Disc Of Tzeentch
+    - Rubric Marines
+  Exalted Sorcerer
+    - Rubric Marines
+  Exalted Sorcerer on Disc of Tzeentch
+    - Rubric Marines
+    - Tzaangor Enlightened
+    - Tzaangor Enlightened with Fatecaster Greatbows
+  Infernal Master
+    - Rubric Marines
+  Sorcerer
+    - Rubric Marines
+  Sorcerer In Terminator Armour
+    - Scarab Occult Terminators
+  Tzaangor Shaman
+    - Tzaangor Enlightened
+    - Tzaangor Enlightened with Fatecaster Greatbows
+    - Tzaangors
+
+## Tyranids
+  Broodlord
+    - Genestealers
+  Hive Tyrant
+    - Tyrant Guard
+  Hyperadapted Raveners
+    - Raveners
+  Malanthrope
+    - Venomthropes
+  Neurotyrant
+    - Neurogaunts
+    - Tyrant Guard
+    - Zoanthropes
+  Old One Eye
+    - Carnifexes
+  The Swarmlord
+    - Tyrant Guard
+  Tyranid Prime with Lash Whip
+    - Hormagaunts
+    - Termagants
+    - Tyranid Warriors With Melee Bio-weapons
+    - Tyranid Warriors With Ranged Bio-weapons
+  Winged Tyranid Prime
+    - Gargoyles
+    - Tyranid Warriors With Melee Bio-weapons
+    - Tyranid Warriors With Ranged Bio-weapons
+
+## T’au Empire
+  Aun’shi
+    - Breacher Team
+    - Kroot Carnivores
+    - Strike Team
+  Cadre Fireblade
+    - Breacher Team
+    - Strike Team
+  Commander Farsight
+    - Crisis Fireknife Battlesuits
+    - Crisis Starscythe Battlesuits
+    - Crisis Sunforge Battlesuits
+  Commander In Coldstar Battlesuit
+    - Crisis Fireknife Battlesuits
+    - Crisis Starscythe Battlesuits
+    - Crisis Sunforge Battlesuits
+  Commander In Crisis Battlesuit
+    - Crisis Battlesuits
+    - Crisis Fireknife Battlesuits
+    - Crisis Starscythe Battlesuits
+    - Crisis Sunforge Battlesuits
+  Commander In Enforcer Battlesuit
+    - Crisis Fireknife Battlesuits
+    - Crisis Starscythe Battlesuits
+    - Crisis Sunforge Battlesuits
+  Darkstrider
+    - Pathfinder Team
+  Ethereal
+    - Breacher Team
+    - Strike Team
+  Kroot Flesh Shaper
+    - Kroot Carnivores
+    - Kroot Farstalkers
+  Kroot Trail Shaper
+    - Kroot Carnivores
+    - Kroot Farstalkers
+  Kroot War Shaper
+    - Kroot Carnivores
+    - Kroot Farstalkers
+  Shas’o R’alai
+    - Xv9 Hazard Battlesuits
+
+## World Eaters
+  Khârn The Betrayer
+    - Khorne Berzerkers
+  Lord Invocatus
+    - Eightbound
+    - Exalted Eightbound
+    - Khorne Berzerkers
+  Lord on Juggernaut
+    - Eightbound
+    - Exalted Eightbound
+    - Khorne Berzerkers
+  Master of Executions
+    - Khorne Berzerkers
+  Slaughterbound
+    - Eightbound
+    - Exalted Eightbound
