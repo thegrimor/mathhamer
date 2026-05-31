@@ -309,4 +309,8 @@ export interface DamageBreakdown {
   expectedTotalDamage: number
   expectedKills: number
   effectiveAP: number
+  standardDeviation: number
+  percentile10: number
+  percentile90: number
+  killProbability: number
 }
