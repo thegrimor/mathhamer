@@ -152,6 +152,14 @@ function WeaponBreakdown({ weapon, defenderModel, mods, qty, onQtyChange, blastT
           />
           <Row label="Daño/herida" value={fmt(calc.avgDamagePerWound)} detail={weapon.D} />
           <Row label="Bajas esperadas" value={fmt(calc.expectedKills * qty)} detail={`/${defenderModel.W}H · ×${qty}`} highlight />
+          {calc.standardDeviation > 0 && (
+            <Row label="Desv. típica (σ)" value={`±${calc.standardDeviation.toFixed(2)}`} detail="por modelo atacante" />
+          )}
+          <Row
+            label={`P(matar /${defenderModel.W}H)`}
+            value={`${(calc.killProbability * 100).toFixed(0)}%`}
+            detail="por modelo atacante"
+          />
         </div>
       )}
     </div>
@@ -348,28 +356,44 @@ export function DamageCalculator({
       </div>
 
       {/* Big number */}
-      <div className="flex flex-col items-center py-2">
-        <span className="text-xs font-display uppercase tracking-[3px] text-gold-bright mb-1">
-          {isSingle
-            ? `Daño esperado · ×${singleQty} modelo${singleQty !== 1 ? 's' : ''}`
-            : 'Daño esperado total'
-          }
-        </span>
-        <span
-          className="text-6xl font-display font-black text-crimson-bright leading-none"
-          style={{ textShadow: '0 0 20px #ff2222, 0 0 50px #c41e1e' }}
-        >
-          {fmt(totalDamage)}
-        </span>
-        <span className="text-xs font-mono text-gold mt-2">
-          ≈ {fmt(totalKills)} bajas{defenderModels > 1 ? ` de ${defenderModels}` : ''}
-        </span>
-        {hasActiveMods && (
-          <span className="text-xs font-mono text-gold mt-1 uppercase tracking-wider">
-            con modificadores
-          </span>
-        )}
-      </div>
+      {(() => {
+        // σ total scales as sqrt(qty) for independent identical attackers
+        const sigmaTotal = isSingle
+          ? calc.standardDeviation * Math.sqrt(singleQty)
+          : Math.sqrt(breakdowns.reduce((s, b, i) => s + b.standardDeviation * b.standardDeviation * getQty(weapons[i]), 0))
+        const p10Total = Math.max(0, totalDamage - 1.2816 * sigmaTotal)
+        const p90Total = totalDamage + 1.2816 * sigmaTotal
+        return (
+          <div className="flex flex-col items-center py-2">
+            <span className="text-xs font-display uppercase tracking-[3px] text-gold-bright mb-1">
+              {isSingle
+                ? `Daño esperado · ×${singleQty} modelo${singleQty !== 1 ? 's' : ''}`
+                : 'Daño esperado total'
+              }
+            </span>
+            <span
+              className="text-6xl font-display font-black text-crimson-bright leading-none"
+              style={{ textShadow: '0 0 20px #ff2222, 0 0 50px #c41e1e' }}
+            >
+              {fmt(totalDamage)}
+            </span>
+            {sigmaTotal > 0 && (
+              <span className="text-xs font-mono text-parchment-dim mt-1">
+                ±{sigmaTotal.toFixed(1)} σ
+                <span className="text-parchment-dim/60 ml-2">({p10Total.toFixed(1)}–{p90Total.toFixed(1)} rango P10–P90)</span>
+              </span>
+            )}
+            <span className="text-xs font-mono text-gold mt-1">
+              ≈ {fmt(totalKills)} bajas{defenderModels > 1 ? ` de ${defenderModels}` : ''}
+            </span>
+            {hasActiveMods && (
+              <span className="text-xs font-mono text-gold mt-1 uppercase tracking-wider">
+                con modificadores
+              </span>
+            )}
+          </div>
+        )
+      })()}
 
       {/* Single weapon breakdown */}
       {isSingle && (
@@ -416,6 +440,18 @@ export function DamageCalculator({
               detail="heridas auto / total"
             />
           )}
+          {calc.standardDeviation > 0 && (
+            <>
+              <Row label="Desv. típica (σ)" value={`±${calc.standardDeviation.toFixed(2)}`} detail="por modelo atacante" />
+              <Row label="Rango P10–P90" value={`${calc.percentile10.toFixed(2)} – ${calc.percentile90.toFixed(2)}`} detail="por modelo atacante" />
+            </>
+          )}
+          <Row
+            label={`P(matar 1 modelo /${defenderModel.W}H)`}
+            value={`${(calc.killProbability * 100).toFixed(0)}%`}
+            detail="por modelo atacante"
+            highlight
+          />
         </div>
       )}
 
