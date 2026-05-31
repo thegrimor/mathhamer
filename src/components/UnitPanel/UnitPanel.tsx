@@ -110,13 +110,22 @@ export function UnitPanel({
   const unitMax = selectedUnit?.modelCountMax
   const unitMin = selectedUnit?.modelCountMin
 
-  function getQty(w: Weapon, defaultQty: number): number {
-    return weaponQuantities[wKey(w)] ?? defaultQty
+  const defaultWeaponNamesSet = useMemo(
+    () => new Set(selectedUnit?.defaultWeaponNames ?? []),
+    [selectedUnit],
+  )
+
+  function defaultQtyFor(w: Weapon): number {
+    return defaultWeaponNamesSet.has(w.name.toLowerCase()) ? (unitMin ?? 1) : 1
   }
 
-  function adjustQty(w: Weapon, delta: number, maxQty: number, defaultQty: number) {
+  function getQty(w: Weapon): number {
+    return weaponQuantities[wKey(w)] ?? defaultQtyFor(w)
+  }
+
+  function adjustQty(w: Weapon, delta: number, maxQty: number) {
     if (!onQuantityChange) return
-    const current = getQty(w, defaultQty)
+    const current = getQty(w)
     const next = Math.max(1, Math.min(maxQty, current + delta))
     onQuantityChange(wKey(w), next)
   }
@@ -235,9 +244,8 @@ export function UnitPanel({
               ) : (
                 selectedUnit.weapons.map((w, i) => {
                   const isSelected = selectedWeapons.some(x => x.name === w.name && x.line === w.line)
-                  const defaultQty = unitMin ?? 1
                   const maxQty = unitMax ?? 99
-                  const qty = getQty(w, defaultQty)
+                  const qty = getQty(w)
                   return (
                     <div key={`${w.name}-${i}`}>
                       <WeaponCard
@@ -254,12 +262,12 @@ export function UnitPanel({
                           <span className="text-[9px] font-display uppercase tracking-wide text-gold">Atacantes</span>
                           <div className="flex items-center gap-1.5">
                             <button
-                              onClick={() => adjustQty(w, -1, maxQty, defaultQty)}
+                              onClick={() => adjustQty(w, -1, maxQty)}
                               className="w-5 h-5 border border-rim-bright text-parchment hover:border-gold hover:text-gold font-mono text-xs flex items-center justify-center transition-colors"
                             >−</button>
                             <span className="text-xs font-mono font-bold text-parchment w-6 text-center">×{qty}</span>
                             <button
-                              onClick={() => adjustQty(w, +1, maxQty, defaultQty)}
+                              onClick={() => adjustQty(w, +1, maxQty)}
                               className="w-5 h-5 border border-rim-bright text-parchment hover:border-gold hover:text-gold font-mono text-xs flex items-center justify-center transition-colors"
                             >+</button>
                           </div>
@@ -281,7 +289,7 @@ export function UnitPanel({
                   </div>
                   {characterDatasheet.weapons.map((w, i) => {
                     const isSelected = selectedWeapons.some(x => x.name === w.name && x.line === w.line)
-                    const qty = getQty(w, 1)
+                    const qty = getQty(w)
                     return (
                       <div key={`char-${w.name}-${i}`}>
                         <WeaponCard
@@ -298,12 +306,12 @@ export function UnitPanel({
                             <span className="text-[9px] font-display uppercase tracking-wide text-crimson">Atacantes</span>
                             <div className="flex items-center gap-1.5">
                               <button
-                                onClick={() => adjustQty(w, -1, 99, 1)}
+                                onClick={() => adjustQty(w, -1, 99)}
                                 className="w-5 h-5 border border-rim-bright text-parchment hover:border-crimson hover:text-crimson font-mono text-xs flex items-center justify-center transition-colors"
                               >−</button>
                               <span className="text-xs font-mono font-bold text-parchment w-6 text-center">×{qty}</span>
                               <button
-                                onClick={() => adjustQty(w, +1, 99, 1)}
+                                onClick={() => adjustQty(w, +1, 99)}
                                 className="w-5 h-5 border border-rim-bright text-parchment hover:border-crimson hover:text-crimson font-mono text-xs flex items-center justify-center transition-colors"
                               >+</button>
                             </div>
