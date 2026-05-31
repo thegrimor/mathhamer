@@ -84,11 +84,15 @@ export function UnitPanel({
   function handleWeaponSelect(w: Weapon) {
     if (!isAttacker || !onWeaponsChange) return
     const exists = selectedWeapons.some(x => x.name === w.name && x.line === w.line)
-    onWeaponsChange(
-      exists
-        ? selectedWeapons.filter(x => !(x.name === w.name && x.line === w.line))
-        : [...selectedWeapons, w],
-    )
+    if (exists) {
+      onWeaponsChange(selectedWeapons.filter(x => !(x.name === w.name && x.line === w.line)))
+    } else {
+      onWeaponsChange([...selectedWeapons, w])
+      // Persist the computed default so DamageCalculator sees it immediately
+      if (onQuantityChange && !(wKey(w) in weaponQuantities)) {
+        onQuantityChange(wKey(w), defaultQtyFor(w))
+      }
+    }
   }
 
   const anySelectedHeavy = selectedWeapons.some(w => w.isHeavy)
