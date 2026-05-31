@@ -5,6 +5,7 @@ import { GaussianChart } from './GaussianChart'
 
 interface Props {
   weapons: Weapon[]
+  weaponQuantities?: Record<string, number>
   defenderModel: ModelProfile | null
   defenderKeywords?: string[]
   attackerName: string
@@ -75,12 +76,11 @@ function CombatTypeSelector({
   )
 }
 
-function WeaponBreakdown({ weapon, defenderModel, mods, qty, onQtyChange, blastTargetModels, defenderKeywords, meltaActive }: {
+function WeaponBreakdown({ weapon, defenderModel, mods, qty, blastTargetModels, defenderKeywords, meltaActive }: {
   weapon: Weapon
   defenderModel: ModelProfile
   mods: CombatModifiers
   qty: number
-  onQtyChange: (delta: number) => void
   blastTargetModels: number
   defenderKeywords?: string[]
   meltaActive?: boolean
@@ -102,17 +102,7 @@ function WeaponBreakdown({ weapon, defenderModel, mods, qty, onQtyChange, blastT
           <span className="text-xs font-mono text-parchment truncate block">{weapon.name}</span>
         </button>
         <div className="flex items-center gap-2 shrink-0">
-          <div className="flex items-center gap-1">
-            <button
-              onClick={() => onQtyChange(-1)}
-              className="w-5 h-5 border border-rim-bright text-parchment hover:border-gold hover:text-gold font-mono text-xs flex items-center justify-center transition-colors"
-            >−</button>
-            <span className="text-xs font-mono text-gold-bright w-5 text-center">×{qty}</span>
-            <button
-              onClick={() => onQtyChange(+1)}
-              className="w-5 h-5 border border-rim-bright text-parchment hover:border-gold hover:text-gold font-mono text-xs flex items-center justify-center transition-colors"
-            >+</button>
-          </div>
+          <span className="text-xs font-mono text-gold-bright w-5 text-center">×{qty}</span>
           <span className="text-sm font-mono font-bold text-crimson-bright w-12 text-right">{fmt(total)}</span>
           <button onClick={() => setOpen(o => !o)} className="text-parchment-dim text-xs w-4">
             {open ? '▲' : '▼'}
@@ -168,10 +158,9 @@ function WeaponBreakdown({ weapon, defenderModel, mods, qty, onQtyChange, blastT
 }
 
 export function DamageCalculator({
-  weapons, defenderModel, defenderKeywords = [], attackerName, defenderName, mods, combatType, onCombatTypeChange,
+  weapons, weaponQuantities = {}, defenderModel, defenderKeywords = [], attackerName, defenderName, mods, combatType, onCombatTypeChange,
   unitMin, unitMax, defenderMin, defenderMax, meltaActive, overwatchActive = false, onOverwatchToggle,
 }: Props) {
-  const [weaponQuantities, setWeaponQuantities] = useState<Record<string, number>>({})
   const [defenderModels, setDefenderModels] = useState(defenderMin ?? 1)
 
   useEffect(() => {
@@ -181,26 +170,6 @@ export function DamageCalculator({
   function getQty(w: Weapon): number {
     return weaponQuantities[wKey(w)] ?? (unitMin ?? 1)
   }
-
-  function adjustQty(w: Weapon, delta: number) {
-    const current = getQty(w)
-    const next = current + delta
-    const bounded = Math.max(1, unitMax !== undefined ? Math.min(unitMax, next) : next)
-    setWeaponQuantities(prev => ({ ...prev, [wKey(w)]: bounded }))
-  }
-
-  // Clean up stale weapon quantities when selection changes
-  useEffect(() => {
-    setWeaponQuantities(prev => {
-      if (Object.keys(prev).length === 0) return prev
-      const activeKeys = new Set(weapons.map(wKey))
-      const next: Record<string, number> = {}
-      for (const [k, v] of Object.entries(prev)) {
-        if (activeKeys.has(k)) next[k] = v
-      }
-      return Object.keys(next).length === Object.keys(prev).length ? prev : next
-    })
-  }, [weapons])
 
   const hasBlastWeapons = weapons.some(w => w.isBlast)
 
@@ -301,33 +270,8 @@ export function DamageCalculator({
         </p>
       </div>
 
-      {/* Attacker models / weapon quantity (single weapon) */}
-      {isSingle && (
-        <div className="flex items-center justify-between bg-surface-3 border border-rim-bright px-3 py-2 rounded-sm">
-          <div>
-            <span className="text-xs font-display uppercase tracking-wide text-gold">Modelos atacantes</span>
-            {compText && (
-              <span className="block text-[9px] font-mono text-parchment-dim mt-0.5">
-                Composición: {compText}
-              </span>
-            )}
-          </div>
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => adjustQty(weapons[0], -1)}
-              className="w-8 h-8 border border-rim-bright text-parchment hover:border-gold hover:text-gold font-mono text-lg flex items-center justify-center transition-colors"
-            >−</button>
-            <span className="text-xl font-mono font-bold text-parchment w-8 text-center">{singleQty}</span>
-            <button
-              onClick={() => adjustQty(weapons[0], +1)}
-              className="w-8 h-8 border border-rim-bright text-parchment hover:border-gold hover:text-gold font-mono text-lg flex items-center justify-center transition-colors"
-            >+</button>
-          </div>
-        </div>
-      )}
-
-      {/* Composition info (multi-weapon) */}
-      {!isSingle && compText && (
+      {/* Composition info */}
+      {compText && (
         <div className="flex items-center justify-between bg-surface-3 border border-rim-bright px-3 py-1.5 rounded-sm">
           <span className="text-xs font-display uppercase tracking-wide text-parchment-dim">Composición</span>
           <span className="text-xs font-mono text-gold">{compText}</span>
@@ -468,7 +412,6 @@ export function DamageCalculator({
               defenderModel={defenderModel}
               mods={mods}
               qty={getQty(w)}
-              onQtyChange={(delta) => adjustQty(w, delta)}
               blastTargetModels={defenderModels}
               defenderKeywords={defenderKeywords}
               meltaActive={meltaActive}

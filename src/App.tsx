@@ -19,6 +19,7 @@ export default function App() {
   const rightPanel = usePanelState(gameData, 'mathhammer-right-panel')
 
   const [selectedWeapons, setSelectedWeapons] = useState<Weapon[]>([])
+  const [weaponQuantities, setWeaponQuantities] = useState<Record<string, number>>({})
   const [defenderModel, setDefenderModel] = useState<ModelProfile | null>(null)
   const [mobileTab, setMobileTab] = useState<MobileTab>('attacker')
   const [combatType, setCombatType] = useLocalStorage<CombatType>('mathhammer-combat-type', 'ranged')
@@ -26,6 +27,10 @@ export default function App() {
   const [defenderIdsArr, setDefenderIdsArr] = useState<string[]>([])
   const [meltaActive, setMeltaActive] = useState(false)
   const [overwatchActive, setOverwatchActive] = useState(false)
+
+  function handleQuantityChange(key: string, qty: number) {
+    setWeaponQuantities(prev => ({ ...prev, [key]: qty }))
+  }
 
   const attackerActiveIds = useMemo(() => new Set(attackerIdsArr), [attackerIdsArr])
   const defenderActiveIds = useMemo(() => new Set(defenderIdsArr), [defenderIdsArr])
@@ -51,9 +56,10 @@ export default function App() {
         activeModIds: attackerIdsArr,
         meltaActive,
         overwatchActive,
+        weaponQuantities,
       }))
     } catch {}
-  }, [selectedWeapons, attackerIdsArr, meltaActive, overwatchActive]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [selectedWeapons, attackerIdsArr, meltaActive, overwatchActive, weaponQuantities]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Restore attacker state when the selected unit resolves (page load or unit change)
   useEffect(() => {
@@ -66,17 +72,20 @@ export default function App() {
         setAttackerIdsArr(saved.activeModIds ?? [])
         setMeltaActive(saved.meltaActive ?? false)
         setOverwatchActive(saved.overwatchActive ?? false)
+        setWeaponQuantities(saved.weaponQuantities ?? {})
       } else {
         setSelectedWeapons([])
         setAttackerIdsArr([])
         setMeltaActive(false)
         setOverwatchActive(false)
+        setWeaponQuantities({})
       }
     } catch {
       setSelectedWeapons([])
       setAttackerIdsArr([])
       setMeltaActive(false)
       setOverwatchActive(false)
+      setWeaponQuantities({})
     }
   }, [leftPanel.selectedUnit, leftPanel.selection.datasheetId])
 
@@ -242,6 +251,8 @@ export default function App() {
             side="left"
             onWeaponsChange={setSelectedWeapons}
             selectedWeapons={selectedWeapons}
+            weaponQuantities={weaponQuantities}
+            onQuantityChange={handleQuantityChange}
             combatType={combatType}
             activeModifierIds={attackerActiveIds}
             onModifierToggle={toggleAttackerModifier}
@@ -254,6 +265,7 @@ export default function App() {
         {mobileTab === 'result' && (
           <DamageCalculator
             weapons={selectedWeapons}
+            weaponQuantities={weaponQuantities}
             defenderModel={effectiveDefenderModel}
             defenderKeywords={defenderKeywords}
             attackerName={attackerName}
@@ -292,6 +304,8 @@ export default function App() {
             side="left"
             onWeaponsChange={setSelectedWeapons}
             selectedWeapons={selectedWeapons}
+            weaponQuantities={weaponQuantities}
+            onQuantityChange={handleQuantityChange}
             combatType={combatType}
             activeModifierIds={attackerActiveIds}
             onModifierToggle={toggleAttackerModifier}
@@ -305,6 +319,7 @@ export default function App() {
           <div className="sticky top-[45px] max-h-[calc(100vh-45px)] overflow-y-auto">
             <DamageCalculator
               weapons={selectedWeapons}
+              weaponQuantities={weaponQuantities}
               defenderModel={effectiveDefenderModel}
               defenderKeywords={defenderKeywords}
               attackerName={attackerName}

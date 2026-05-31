@@ -10,6 +10,10 @@ import { parseBcpList } from '@/utils/parseBcpList'
 import type { GameData, Weapon, ModelProfile, CombatType, Datasheet } from '@/types'
 import type { PanelState } from '@/hooks/usePanelState'
 
+function wKey(w: Weapon): string {
+  return `${w.line}:${w.name}`
+}
+
 interface Props {
   gameData: GameData
   panel: PanelState
@@ -17,6 +21,8 @@ interface Props {
   onWeaponsChange?: (ws: Weapon[]) => void
   onModelChange?: (m: ModelProfile | null) => void
   selectedWeapons?: Weapon[]
+  weaponQuantities?: Record<string, number>
+  onQuantityChange?: (key: string, qty: number) => void
   combatType?: CombatType
   activeModifierIds?: Set<string>
   onModifierToggle?: (id: string) => void
@@ -28,6 +34,7 @@ interface Props {
 
 export function UnitPanel({
   gameData, panel, side, onWeaponsChange, onModelChange, selectedWeapons = [],
+  weaponQuantities = {}, onQuantityChange,
   combatType = 'ranged', activeModifierIds, onModifierToggle,
   weaponAntiKeywords = [], defenderKeywords = [],
   meltaActive, onMeltaToggle,
@@ -92,6 +99,27 @@ export function UnitPanel({
   }
 
   const anySelectedMelta = selectedWeapons.some(w => w.isMelta)
+
+  const characterDatasheet = useMemo(
+    () => panel.selection.characterId
+      ? gameData.datasheets.find(ds => ds.id === panel.selection.characterId) ?? null
+      : null,
+    [gameData.datasheets, panel.selection.characterId],
+  )
+
+  const unitMax = selectedUnit?.modelCountMax
+  const unitMin = selectedUnit?.modelCountMin
+
+  function getQty(w: Weapon, defaultQty: number): number {
+    return weaponQuantities[wKey(w)] ?? defaultQty
+  }
+
+  function adjustQty(w: Weapon, delta: number, maxQty: number, defaultQty: number) {
+    if (!onQuantityChange) return
+    const current = getQty(w, defaultQty)
+    const next = Math.max(1, Math.min(maxQty, current + delta))
+    onQuantityChange(wKey(w), next)
+  }
 
   const attackerKeywords = useMemo(
     () => selectedUnit
@@ -205,18 +233,86 @@ export function UnitPanel({
                   Sin armas registradas.
                 </p>
               ) : (
-                selectedUnit.weapons.map((w, i) => (
-                  <WeaponCard
-                    key={`${w.name}-${i}`}
-                    weapon={w}
-                    isSelected={selectedWeapons.some(x => x.name === w.name && x.line === w.line)}
-                    onSelect={handleWeaponSelect}
-                    heavyModActive={w.isHeavy ? heavyModActive : undefined}
-                    onHeavyToggle={w.isHeavy ? handleHeavyToggle : undefined}
-                    meltaModActive={w.isMelta && anySelectedMelta ? meltaActive : undefined}
-                    onMeltaToggle={w.isMelta ? onMeltaToggle : undefined}
-                  />
-                ))
+                selectedUnit.weapons.map((w, i) => {
+                  const isSelected = selectedWeapons.some(x => x.name === w.name && x.line === w.line)
+                  const defaultQty = unitMin ?? 1
+                  const maxQty = unitMax ?? 99
+                  const qty = getQty(w, defaultQty)
+                  return (
+                    <div key={`${w.name}-${i}`}>
+                      <WeaponCard
+                        weapon={w}
+                        isSelected={isSelected}
+                        onSelect={handleWeaponSelect}
+                        heavyModActive={w.isHeavy ? heavyModActive : undefined}
+                        onHeavyToggle={w.isHeavy ? handleHeavyToggle : undefined}
+                        meltaModActive={w.isMelta && anySelectedMelta ? meltaActive : undefined}
+                        onMeltaToggle={w.isMelta ? onMeltaToggle : undefined}
+                      />
+                      {isSelected && onQuantityChange && (
+                        <div className="flex items-center justify-between px-3 py-1.5 bg-surface-3 border-b border-rim-bright">
+                          <span className="text-[9px] font-display uppercase tracking-wide text-gold">Atacantes</span>
+                          <div className="flex items-center gap-1.5">
+                            <button
+                              onClick={() => adjustQty(w, -1, maxQty, defaultQty)}
+                              className="w-5 h-5 border border-rim-bright text-parchment hover:border-gold hover:text-gold font-mono text-xs flex items-center justify-center transition-colors"
+                            >−</button>
+                            <span className="text-xs font-mono font-bold text-parchment w-6 text-center">×{qty}</span>
+                            <button
+                              onClick={() => adjustQty(w, +1, maxQty, defaultQty)}
+                              className="w-5 h-5 border border-rim-bright text-parchment hover:border-gold hover:text-gold font-mono text-xs flex items-center justify-center transition-colors"
+                            >+</button>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )
+                })
+              )}
+
+              {/* Character weapons section */}
+              {characterDatasheet && characterDatasheet.weapons.length > 0 && (
+                <>
+                  <div className="px-3 py-2 text-xs font-display uppercase tracking-wide text-crimson border-b border-rim-bright bg-surface-2 mt-1">
+                    {characterDatasheet.name}
+                    <span className="text-parchment-dim normal-case tracking-normal font-mono ml-2 text-[9px]">
+                      personaje adjunto
+                    </span>
+                  </div>
+                  {characterDatasheet.weapons.map((w, i) => {
+                    const isSelected = selectedWeapons.some(x => x.name === w.name && x.line === w.line)
+                    const qty = getQty(w, 1)
+                    return (
+                      <div key={`char-${w.name}-${i}`}>
+                        <WeaponCard
+                          weapon={w}
+                          isSelected={isSelected}
+                          onSelect={handleWeaponSelect}
+                          heavyModActive={w.isHeavy ? heavyModActive : undefined}
+                          onHeavyToggle={w.isHeavy ? handleHeavyToggle : undefined}
+                          meltaModActive={w.isMelta && anySelectedMelta ? meltaActive : undefined}
+                          onMeltaToggle={w.isMelta ? onMeltaToggle : undefined}
+                        />
+                        {isSelected && onQuantityChange && (
+                          <div className="flex items-center justify-between px-3 py-1.5 bg-surface-3 border-b border-rim-bright">
+                            <span className="text-[9px] font-display uppercase tracking-wide text-crimson">Atacantes</span>
+                            <div className="flex items-center gap-1.5">
+                              <button
+                                onClick={() => adjustQty(w, -1, 99, 1)}
+                                className="w-5 h-5 border border-rim-bright text-parchment hover:border-crimson hover:text-crimson font-mono text-xs flex items-center justify-center transition-colors"
+                              >−</button>
+                              <span className="text-xs font-mono font-bold text-parchment w-6 text-center">×{qty}</span>
+                              <button
+                                onClick={() => adjustQty(w, +1, 99, 1)}
+                                className="w-5 h-5 border border-rim-bright text-parchment hover:border-crimson hover:text-crimson font-mono text-xs flex items-center justify-center transition-colors"
+                              >+</button>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    )
+                  })}
+                </>
               )}
             </div>
           )}
