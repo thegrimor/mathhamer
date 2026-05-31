@@ -37,6 +37,18 @@ function stripHtml(s: string): string {
   return s.replace(/<[^>]+>/g, '')
 }
 
+function parseDefaultWeaponNames(loadout: string): string[] {
+  const clean = stripHtml(loadout)
+  const names: string[] = []
+  const RE = /equipped with:\s*([^.]+)/gi
+  let m: RegExpExecArray | null
+  while ((m = RE.exec(clean)) !== null) {
+    const parts = m[1].split(';').map(s => s.trim().toLowerCase()).filter(Boolean)
+    names.push(...parts)
+  }
+  return [...new Set(names)]
+}
+
 function parseUnitCompositionRange(lines: string[]): { min: number; max: number } {
   const orIdx = lines.findIndex(l => stripHtml(l).trim().toUpperCase() === 'OR')
   const relevant = orIdx >= 0 ? lines.slice(0, orIdx) : lines
@@ -173,6 +185,7 @@ function enrichDatasheet(
     .map(c => c.description)
 
   const { min: modelCountMin, max: modelCountMax } = parseUnitCompositionRange(unitComposition)
+  const defaultWeaponNames = parseDefaultWeaponNames(raw.loadout || '')
 
   return {
     id: raw.id,
@@ -194,6 +207,7 @@ function enrichDatasheet(
     unitComposition,
     modelCountMin,
     modelCountMax,
+    defaultWeaponNames,
   }
 }
 

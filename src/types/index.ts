@@ -271,6 +271,7 @@ export interface Datasheet {
   unitComposition: string[]
   modelCountMin: number
   modelCountMax: number
+  defaultWeaponNames: string[]
 }
 
 export interface GameData {

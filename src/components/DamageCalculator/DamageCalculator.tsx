@@ -168,7 +168,7 @@ export function DamageCalculator({
   }, [defenderMin])
 
   function getQty(w: Weapon): number {
-    return weaponQuantities[wKey(w)] ?? (unitMin ?? 1)
+    return weaponQuantities[wKey(w)] ?? 1
   }
 
   const hasBlastWeapons = weapons.some(w => w.isBlast)
