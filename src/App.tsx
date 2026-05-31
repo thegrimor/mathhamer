@@ -64,15 +64,33 @@ export default function App() {
   // Restore attacker state when the selected unit resolves (page load or unit change)
   useEffect(() => {
     if (!leftPanel.selectedUnit || !leftPanel.selection.datasheetId) return
+
+    function fillMissingQtys(
+      qty: Record<string, number>,
+      weapons: Weapon[],
+    ): Record<string, number> {
+      const result = { ...qty }
+      const defaultNames = new Set(leftPanel.selectedUnit!.defaultWeaponNames)
+      const unitMin = leftPanel.selectedUnit!.modelCountMin
+      for (const w of weapons) {
+        const key = `${w.line}:${w.name}`
+        if (!(key in result)) {
+          result[key] = defaultNames.has(w.name.toLowerCase()) ? unitMin : 1
+        }
+      }
+      return result
+    }
+
     try {
       const raw = localStorage.getItem(`mathhammer-attacker-${leftPanel.selection.datasheetId}`)
       if (raw) {
         const saved = JSON.parse(raw)
-        setSelectedWeapons(leftPanel.selectedUnit.weapons.filter(w => (saved.weaponLines ?? []).includes(w.line)))
+        const restoredWeapons = leftPanel.selectedUnit.weapons.filter(w => (saved.weaponLines ?? []).includes(w.line))
+        setSelectedWeapons(restoredWeapons)
         setAttackerIdsArr(saved.activeModIds ?? [])
         setMeltaActive(saved.meltaActive ?? false)
         setOverwatchActive(saved.overwatchActive ?? false)
-        setWeaponQuantities(saved.weaponQuantities ?? {})
+        setWeaponQuantities(fillMissingQtys(saved.weaponQuantities ?? {}, restoredWeapons))
       } else {
         setSelectedWeapons([])
         setAttackerIdsArr([])
