@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { calculateDamage, getBlastBonusAttacks } from '@/utils/mathhammer'
 import type { Weapon, ModelProfile, CombatModifiers, CombatType } from '@/types'
+import { GaussianChart } from './GaussianChart'
 
 interface Props {
   weapons: Weapon[]
@@ -259,6 +260,12 @@ export function DamageCalculator({
   const calc = breakdowns[0]
   const singleQty = getQty(weapons[0])
 
+  const sigmaTotal = isSingle
+    ? calc.standardDeviation * Math.sqrt(singleQty)
+    : Math.sqrt(breakdowns.reduce((s, b, i) => s + b.standardDeviation * b.standardDeviation * getQty(weapons[i]), 0))
+  const p10Total = Math.max(0, totalDamage - 1.2816 * sigmaTotal)
+  const p90Total = totalDamage + 1.2816 * sigmaTotal
+
   return (
     <div className="p-4 flex flex-col gap-4">
       {/* Combat type selector */}
@@ -356,44 +363,34 @@ export function DamageCalculator({
       </div>
 
       {/* Big number */}
-      {(() => {
-        // σ total scales as sqrt(qty) for independent identical attackers
-        const sigmaTotal = isSingle
-          ? calc.standardDeviation * Math.sqrt(singleQty)
-          : Math.sqrt(breakdowns.reduce((s, b, i) => s + b.standardDeviation * b.standardDeviation * getQty(weapons[i]), 0))
-        const p10Total = Math.max(0, totalDamage - 1.2816 * sigmaTotal)
-        const p90Total = totalDamage + 1.2816 * sigmaTotal
-        return (
-          <div className="flex flex-col items-center py-2">
-            <span className="text-xs font-display uppercase tracking-[3px] text-gold-bright mb-1">
-              {isSingle
-                ? `Daño esperado · ×${singleQty} modelo${singleQty !== 1 ? 's' : ''}`
-                : 'Daño esperado total'
-              }
-            </span>
-            <span
-              className="text-6xl font-display font-black text-crimson-bright leading-none"
-              style={{ textShadow: '0 0 20px #ff2222, 0 0 50px #c41e1e' }}
-            >
-              {fmt(totalDamage)}
-            </span>
-            {sigmaTotal > 0 && (
-              <span className="text-xs font-mono text-parchment-dim mt-1">
-                ±{sigmaTotal.toFixed(1)} σ
-                <span className="text-parchment-dim/60 ml-2">({p10Total.toFixed(1)}–{p90Total.toFixed(1)} rango P10–P90)</span>
-              </span>
-            )}
-            <span className="text-xs font-mono text-gold mt-1">
-              ≈ {fmt(totalKills)} bajas{defenderModels > 1 ? ` de ${defenderModels}` : ''}
-            </span>
-            {hasActiveMods && (
-              <span className="text-xs font-mono text-gold mt-1 uppercase tracking-wider">
-                con modificadores
-              </span>
-            )}
-          </div>
-        )
-      })()}
+      <div className="flex flex-col items-center py-2">
+        <span className="text-xs font-display uppercase tracking-[3px] text-gold-bright mb-1">
+          {isSingle
+            ? `Daño esperado · ×${singleQty} modelo${singleQty !== 1 ? 's' : ''}`
+            : 'Daño esperado total'
+          }
+        </span>
+        <span
+          className="text-6xl font-display font-black text-crimson-bright leading-none"
+          style={{ textShadow: '0 0 20px #ff2222, 0 0 50px #c41e1e' }}
+        >
+          {fmt(totalDamage)}
+        </span>
+        {sigmaTotal > 0 && (
+          <span className="text-xs font-mono text-parchment-dim mt-1">
+            ±{sigmaTotal.toFixed(1)} σ
+            <span className="text-parchment-dim/60 ml-2">({p10Total.toFixed(1)}–{p90Total.toFixed(1)} rango P10–P90)</span>
+          </span>
+        )}
+        <span className="text-xs font-mono text-gold mt-1">
+          ≈ {fmt(totalKills)} bajas{defenderModels > 1 ? ` de ${defenderModels}` : ''}
+        </span>
+        {hasActiveMods && (
+          <span className="text-xs font-mono text-gold mt-1 uppercase tracking-wider">
+            con modificadores
+          </span>
+        )}
+      </div>
 
       {/* Single weapon breakdown */}
       {isSingle && (
@@ -488,6 +485,11 @@ export function DamageCalculator({
           Las reglas que mejoran Overwatch (ej. Adeptus Astartes 5+) se aplican con el modificador de impacto correspondiente.
           Armas Torrent siguen impactando automáticamente.
         </div>
+      )}
+
+      {/* Campana de Gauss */}
+      {sigmaTotal > 0.05 && (
+        <GaussianChart mean={totalDamage} sigma={sigmaTotal} targetWounds={defenderModel.W} />
       )}
 
       {/* Context */}
