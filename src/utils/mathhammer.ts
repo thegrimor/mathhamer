@@ -96,9 +96,10 @@ export function hitProbabilityWithMods(bsWs: string, mods: CombatModifiers): num
   if (bsWs.trim() === '*') return 1
   const val = parseStat(bsWs)
   if (val === null) return 0
-  // Overwatch: la tirada base es siempre 6+, ignorando la HA/HP de la unidad
+  // Overwatch: la tirada base es siempre 6+, ignorando la HA/HP de la unidad.
+  // Los modificadores de impacto NO se aplican en overwatch salvo que una regla lo indique explícitamente.
   const baseThreshold = mods.overwatchHit ? 6 : val
-  const effectiveBs = baseThreshold - mods.hitMod
+  const effectiveBs = mods.overwatchHit ? 6 : (baseThreshold - mods.hitMod)
   const baseP = Math.min(5 / 6, Math.max(1 / 6, (7 - effectiveBs) / 6))
   if (mods.rerollAllHits)  return baseP + (1 - baseP) * baseP
   if (mods.rerollHitsOf1)  return baseP + (1 / 6) * baseP
@@ -244,7 +245,10 @@ export function calculateDamage(
   const effectiveAP = apAdjusted - mods.saveMod
   const pFailSave   = saveFailProbability(defenderModel.Sv, defenderModel.invSv, effectiveAP)
 
-  const CRIT       = (7 - mods.critThreshold) / 6   // 1/6 normally, 2/6 when crits on 5+
+  // En overwatch los críticos tampoco se pueden reducir a 5+: solo impacta el 6,
+  // así que un resultado de 5 no puede ser un crítico si no es ni siquiera un impacto.
+  const effectiveCritThreshold = mods.overwatchHit ? Math.max(mods.critThreshold, 6) : mods.critThreshold
+  const CRIT       = (7 - effectiveCritThreshold) / 6   // 1/6 normally, 2/6 when crits on 5+
   const isLethal   = weapon.isLethalHits || mods.lethalHitsBonus
   const sustainedX = weapon.sustainedHitsValue + mods.sustainedHitsBonus
   const sustainedExtraHits = sustainedX > 0 ? avgAttacks * CRIT * sustainedX : 0
