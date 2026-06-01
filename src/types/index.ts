@@ -194,7 +194,8 @@ export interface CombatModifiers {
   rerollHitsOf1: boolean
   rerollAllHits: boolean
   critThreshold: number
-  overwatchHit: boolean  // true = impactar a 6+ base (Overwatch), hitMod sigue aplicándose
+  overwatchHit: boolean        // true = modo Overwatch; threshold base dado por overwatchThreshold
+  overwatchThreshold: number   // umbral de impacto en overwatch (6 por defecto; 5 si una regla lo permite)
   strengthMod: number
   woundMod: number
   rerollWoundsOf1: boolean

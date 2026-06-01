@@ -6334,13 +6334,12 @@ const RULES_2: ModifierRule[] = [
   },
   {
     id: 'sm_focused_response',
-    label: 'Focused Response — -1 impactar, crítico 5+',
+    label: 'Focused Response — overwatch 5+',
     description: 'Each time an ADEPTUS ASTARTES model from your army makes an attack while firing Overwatch, an unmodified Hit roll of 5+ is required to score a hit, instead of an unmodified 6. Each time an enemy unit makes an attack that targets an ADEPTUS ASTARTES unit from your army that is Set To Defend, subtract',
     factionId: 'SM',
     detachmentId: '000001139',
     effects: {
-    hitMod: -1,
-    critThreshold: 5,
+    overwatchThreshold: 5,
   },
   },
   {
@@ -8742,12 +8741,12 @@ const RULES_3: ModifierRule[] = [
   { id: 'ts_cabal_twist_of_fate_full',  label: 'Cabal: Twist of Fate (12+) — +2 PA',              description: "Twist of Fate (Warp Charge 9, result 12+): improve the Armour Penetration characteristic of each attack that targets the selected enemy unit by 2.", factionId: 'TS', effects: { apMod: 2 } },
   {
     id: 'ts_methodical_conquest',
-    label: 'Methodical Conquest — crítico 5+',
+    label: 'Methodical Conquest — overwatch 5+',
     description: 'Each time a THOUSAND SONS model from your army makes an attack while firing Overwatch, an unmodified Hit roll of 5+ is required to score a hit, instead of an unmodified 6. In addition, SCARAb OCCULT TERMiNATORS units from your army can perform the Set Overwatch Tactical Manoeuvre in the same turn as',
     factionId: 'TS',
     detachmentId: '000000971',
     effects: {
-    critThreshold: 5,
+    overwatchThreshold: 5,
   },
   },
   {
