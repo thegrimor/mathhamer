@@ -18,8 +18,7 @@ function normalCDF(z: number): number {
 export function parseDiceVariance(expr: string, rerollAll = false, rerollOf1 = false): number {
   const s = expr.trim().toUpperCase()
   if (!s || s === '-') return 0
-  const fixed = parseFloat(s)
-  if (!isNaN(fixed)) return 0
+  // parseFloat('2D6') = 2 (not NaN), so we must check the dice pattern first
   const match = s.match(/^(\d*)D(\d+)([+-]\d+)?$/)
   if (!match) return 0
   const coeff = match[1] ? parseInt(match[1]) : 1
@@ -190,39 +189,6 @@ export function resolveModifiers(activeIds: string[], rules: ModifierRule[]): Co
     }
   }
   return result
-}
-
-export function mergeMods(
-  base: CombatModifiers,
-  attackerRuleMods: CombatModifiers,
-  defenderRuleMods: CombatModifiers,
-): CombatModifiers {
-  return {
-    hitMod:             base.hitMod             + attackerRuleMods.hitMod             + defenderRuleMods.hitMod,
-    woundMod:           base.woundMod           + attackerRuleMods.woundMod           + defenderRuleMods.woundMod,
-    apMod:              base.apMod              + attackerRuleMods.apMod              + defenderRuleMods.apMod,
-    saveMod:            base.saveMod            + attackerRuleMods.saveMod            + defenderRuleMods.saveMod,
-    strengthMod:        base.strengthMod        + attackerRuleMods.strengthMod        + defenderRuleMods.strengthMod,
-    attacksMod:         base.attacksMod         + attackerRuleMods.attacksMod,
-    damageMod:          base.damageMod          + attackerRuleMods.damageMod          + defenderRuleMods.damageMod,
-    damageReduction:    base.damageReduction    + attackerRuleMods.damageReduction    + defenderRuleMods.damageReduction,
-    overwatchHit:       base.overwatchHit       || attackerRuleMods.overwatchHit,
-    overwatchThreshold: Math.min(base.overwatchThreshold, attackerRuleMods.overwatchThreshold),
-    rerollHitsOf1:      base.rerollHitsOf1      || attackerRuleMods.rerollHitsOf1,
-    rerollAllHits:      base.rerollAllHits      || attackerRuleMods.rerollAllHits,
-    rerollWoundsOf1:    base.rerollWoundsOf1    || attackerRuleMods.rerollWoundsOf1,
-    rerollAllWounds:    base.rerollAllWounds    || attackerRuleMods.rerollAllWounds,
-    rerollDamageOf1:    base.rerollDamageOf1    || attackerRuleMods.rerollDamageOf1,
-    rerollAllDamage:    base.rerollAllDamage    || attackerRuleMods.rerollAllDamage,
-    lethalHitsBonus:    base.lethalHitsBonus    || attackerRuleMods.lethalHitsBonus,
-    sustainedHitsBonus: Math.max(base.sustainedHitsBonus, attackerRuleMods.sustainedHitsBonus),
-    critThreshold:      Math.min(base.critThreshold, attackerRuleMods.critThreshold),
-    woundCritThreshold: Math.min(base.woundCritThreshold, attackerRuleMods.woundCritThreshold),
-    feelNoPainThreshold:
-      defenderRuleMods.feelNoPainThreshold !== null
-        ? defenderRuleMods.feelNoPainThreshold
-        : base.feelNoPainThreshold,
-  }
 }
 
 export function calculateDamage(
